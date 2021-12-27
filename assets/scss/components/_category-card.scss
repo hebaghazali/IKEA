@@ -1,0 +1,16 @@
+// @import "../abstracts/variables";
+
+.category{
+    border: none;
+    text-decoration: none;
+    color: black;
+    // margin: 5px;
+    // width: 15%;
+    &:hover{
+        text-decoration: underline;
+        color: black;
+    }
+    .category-body{
+        padding-left: 0px;
+    }
+}
