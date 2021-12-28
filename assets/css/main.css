@@ -1,13 +1,13 @@
-.category {
+.category-card {
   border: none;
   text-decoration: none;
   color: black;
 }
-.category:hover {
+.category-card:hover {
   text-decoration: underline;
   color: black;
 }
-.category .category-body {
+.category-card .category-body {
   padding-left: 0px;
 }
 
@@ -23,7 +23,7 @@
   width: 70%;
 }
 .row-card .card-right {
-  padding: 50px;
+  padding: 20px;
 }
 
 .head-title {
