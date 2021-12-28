@@ -1,36 +1,14 @@
-// @import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@500;900&display=swap');
+@font-face {
+  font-family: "Noto Sans";
+  src: url("../../fonts/NotoSans/NotoSans-Regular.ttf");
+}
 
-// body {
-//   font-family: 'Red Hat Display',
-//     sans-serif;
-// }
+body {
+  font-family: $default-font-family, sans-serif;
+}
 
-// h1 {
-//   font-weight: 900;
-//   font-size: $heading-1-font-size;
-//   line-height: $heading-1-font-size;
-//   color: $dark-color;
-// }
-
-// h2 {
-//   font-weight: 900;
-//   font-size: $heading-2-font-size;
-//   line-height: 2.44rem;
-//   color: $dark-color;
-// }
-
-// p {
-//   font-weight: 500;
-//   font-size: $paragraph-font-size;
-//   line-height: $default-line-height;
-//   color: $grey-color;
-// }
-
-// .overline {
-//   font-weight: 900;
-//   font-size: $small-font-size;
-//   line-height: $default-line-height;
-//   letter-spacing: .22rem;
-//   text-transform: uppercase;
-//   color: $color-primary;
-// }
+@mixin HandleParagraph {
+  color: rgb(92, 89, 89);
+  line-height: 1.6em;
+  margin-top: 30px;
+}

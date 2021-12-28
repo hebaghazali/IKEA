@@ -1,47 +1,17 @@
-body {
-  box-sizing: border-box;
-  overflow-x: hidden;
-}
+/* Error: Can't find stylesheet to import.
+ *    ,
+ * 10 | @import "components/category-card";
+ *    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+ *    '
+ *   assets\scss\main.scss 10:9  root stylesheet */
 
-.category {
-  border: none;
-  text-decoration: none;
-  color: black;
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: "Error: Can't find stylesheet to import.\a    \2577 \a 10 \2502  @import \"components/category-card\";\d\a    \2502          ^^^^^^^^^^^^^^^^^^^^^^^^^^\a    \2575 \a   assets\\scss\\main.scss 10:9  root stylesheet";
 }
-.category:hover {
-  text-decoration: underline;
-  color: black;
-}
-.category .category-body {
-  padding-left: 0px;
-}
-
-.breadcrumb-container {
-  margin-bottom: 3rem;
-}
-
-.breadcrumb-list {
-  padding: 1rem 0;
-}
-
-.bc-breadcrumb__link {
-  text-decoration: none;
-  font-size: 0.75rem;
-  line-height: 1.5;
-  font-weight: 400;
-  vertical-align: middle;
-}
-
-.head-title {
-  margin: 1.875rem 0.3rem;
-}
-
-.filter-btn {
-  border-radius: 20px;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  -ms-border-radius: 20px;
-  -o-border-radius: 20px;
-}
-
-/*# sourceMappingURL=main.css.map */
