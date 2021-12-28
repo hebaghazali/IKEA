@@ -1,0 +1,315 @@
+@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@500;900&display=swap");
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 112.5%;
+}
+
+body {
+  box-sizing: border-box;
+  overflow-x: hidden;
+  background-color: #FAFAFA;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px #28283D;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4D96A9;
+  border-radius: 10px;
+}
+
+body {
+  font-family: "Red Hat Display", sans-serif;
+}
+
+h1 {
+  font-weight: 900;
+  font-size: 3.56rem;
+  line-height: 3.56rem;
+  color: #28283D;
+}
+
+h2 {
+  font-weight: 900;
+  font-size: 2.22rem;
+  line-height: 2.44rem;
+  color: #28283D;
+}
+
+p {
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1.44rem;
+  color: #87879D;
+}
+
+.overline {
+  font-weight: 900;
+  font-size: 0.89rem;
+  line-height: 1.44rem;
+  letter-spacing: 0.22rem;
+  text-transform: uppercase;
+  color: #4D96A9;
+}
+
+.log-parent {
+  margin-top: 140px;
+}
+.log-parent .login-heading h3 {
+  font-weight: bold;
+}
+.log-parent .login-heading p {
+  color: #757575;
+  line-height: 1.6em;
+  margin-top: 30px;
+}
+.log-parent .login-heading button {
+  border-radius: 30px;
+  padding: 15px 50px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  margin-top: 70px;
+  background-color: transparent;
+}
+.log-parent .login-heading button:hover {
+  border-radius: 30px;
+  padding: 15px 50px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  margin-top: 70px;
+  background-color: #dad8d8;
+}
+.log-parent .login-form .sec-inp {
+  margin-bottom: 50px;
+}
+.log-parent .login-form a {
+  color: #757575;
+  font-size: 16px;
+}
+.log-parent .login-form .input-log input {
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #000;
+}
+.log-parent .login-form button {
+  border-radius: 30px;
+  padding: 15px 50px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  margin-top: 70px;
+  background-color: #222222;
+  color: white;
+  width: 100%;
+}
+.log-parent .login-form button:hover {
+  opacity: 0.8;
+}
+
+.fav-parent {
+  margin-top: 80px;
+}
+.fav-parent .center-fav-page h3, .fav-parent .center-fav-page .fav-srow h6, .fav-parent .prod-box-info .prod-price h6 {
+  text-align: center;
+  font-weight: bold;
+}
+.fav-parent .center-fav-page .product-space {
+  margin-top: 50px;
+}
+.fav-parent .center-fav-page .fav-srow, .fav-parent .center-fav-page .prod-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.fav-parent .prod-box-info .prod-txt {
+  margin-top: 35px;
+}
+.fav-parent .prod-box-info .prod-txt h5 {
+  color: black;
+  font-weight: bold;
+}
+.fav-parent .prod-box-info .prod-txt span {
+  color: #757575;
+  line-height: 1.6em;
+  margin-top: 30px;
+}
+.fav-parent .prod-box-info .prod-img img {
+  width: 200px;
+  height: 200px;
+}
+.fav-parent .prod-box-info .prod-infoo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+.fav-parent .prod-box-info .prod-infoo .prod-box {
+  margin-left: 30px;
+}
+.fav-parent .prod-box-info .prod-infoo .prod-box .card-button {
+  background-color: #0f58a1;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 15px;
+  width: 100%;
+}
+.fav-parent .prod-box-info .prod-infoo .prod-box .card-button i {
+  padding-right: 10px;
+}
+.fav-parent .prod-box-info .prod-infoo .prod-box .card-button:hover {
+  opacity: 0.8;
+}
+.fav-parent .prod-box-info .prod-infoo .prod-box select, .fav-parent .prod-box-info .prod-infoo .prod-box .del-prod i {
+  padding: 6px 10px;
+  margin-top: 5px;
+  cursor: pointer;
+  outline: none;
+}
+.fav-parent .prod-box-info .prod-infoo .prod-box .del-prod {
+  background-color: transparent;
+  margin-top: 3px;
+}
+.fav-parent .prod-price h6 {
+  margin-top: 30px;
+}
+.fav-parent .total-price {
+  margin-top: 100px;
+}
+.fav-parent .total-price .show-price {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px dashed #757575;
+  border-bottom: 1px dashed #757575;
+  padding: 8px;
+}
+.fav-parent .total-price .prod-box {
+  text-align: center;
+  margin: 20px auto;
+}
+.fav-parent .total-price .prod-box button {
+  background-color: #0f58a1;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 15px;
+  width: 50%;
+  margin-top: 20px;
+}
+
+.fav-parent .shopping-header h3 {
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.fav-parent .shopping-header h6 {
+  padding-top: 20px;
+}
+.fav-parent .shopping-header .shopping-total-price {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.fav-parent .shopping-header .shopping-total-price button {
+  background-color: #0f58a1;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 15px;
+}
+.fav-parent .shopping-page {
+  margin-top: 20px;
+}
+.fav-parent .shopping-page .shop-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  box-shadow: 4px 4px 4px 4px #e9e8e8;
+  width: 100%;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.fav-parent .shopping-page .shop-section .shop-icon .prod-box {
+  margin-bottom: 10px;
+}
+.fav-parent .shopping-page .shop-section .shop-icon .prod-box select {
+  padding: 6px 10px;
+  margin-top: 5px;
+  cursor: pointer;
+  outline: none;
+}
+.fav-parent .shopping-page .shop-section .shop-icon .prod-box i {
+  opacity: 0.6;
+}
+.fav-parent .shopping-page .shop-section .shopping-img img {
+  width: 200px;
+  height: 200px;
+}
+.fav-parent .shopping-page .shop-section .shopping-info {
+  padding-left: 8px;
+  padding-top: 20px;
+}
+.fav-parent .shopping-page .shop-section .shopping-info h6 {
+  font-weight: bold;
+}
+.fav-parent .shopping-page .shop-section .shopping-info p {
+  color: #757575;
+}
+.fav-parent .shopping-page .last-sec {
+  margin-top: 80px;
+  height: 400px;
+  background-color: white;
+  box-shadow: 4px 4px 4px 4px #e9e8e8;
+  width: 100%;
+  padding: 20px;
+}
+.fav-parent .shopping-page .last-sec .shopping-total-price {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.fav-parent .shopping-page .last-sec .shopping-total-price button {
+  background-color: #0f58a1;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 15px;
+}
+.fav-parent .shopping-page .last-sec .pay-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+.fav-parent .shopping-page .last-sec .txttxt {
+  text-align: center;
+}
+
+/*# sourceMappingURL=main.css.map */
