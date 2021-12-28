@@ -6,7 +6,16 @@
 
 @import "components/button";
 @import "components/card";
+@import "components/allMixin";
 
 @import "layout/header";
-@import "layout/footer";
 @import "layout/title";
+@import "layout/footer";
+
+@import "pages/login";
+@import "pages/favourite";
+@import "pages/shoppingBag";
+
+
+
+
