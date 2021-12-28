@@ -5,11 +5,17 @@
 @import "base/utilities";
 
 @import "components/button";
+@import "components/card";
+@import "components/allMixin";
 
 @import "layout/header";
+@import "layout/title";
 @import "layout/footer";
-// login
+
 @import "pages/login";
 @import "pages/favourite";
 @import "pages/shoppingBag";
-@import "components/allMixin";
+
+
+
+

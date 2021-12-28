@@ -8,8 +8,26 @@ $light-color: #FAFAFA;
 $grey-color: #87879D;
 
 // Font
+// main
 $heading-1-font-size: 3.56rem; // 64px
 $heading-2-font-size: 2.22rem; // 40px
 $paragraph-font-size: 1rem; // 18px
 $small-font-size: .89rem; // 16px
 $default-line-height: 1.44rem; // 26px
+
+// $heading-1-font-size: 3.56rem; // 64px
+// $heading-2-font-size: 2.22rem; // 40px
+// $paragraph-font-size: 1rem; // 18px
+// $small-font-size: .89rem; // 16px
+// $default-line-height: 1.44rem; // 26px
+
+// Font
+$default-font-family:'Noto IKEA', 'Noto Sans', 'Roboto', 'Open Sans', system-ui, sans-serif ;
+$title-font-size:1.5rem;
+$small-text-size:0.875rem;
+
+// colors
+$default-text-color:black;
+$small-text-color:#484848;
+$secondary-color:#F5F5F5;
+
