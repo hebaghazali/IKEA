@@ -1,0 +1,14 @@
+.row-card{
+    font-family: $default-font-family;
+    font-size: $title-font-size;
+    display:flex;
+    flex-direction:row;
+    background-color: burlywood;
+    width: 100%;
+    img{
+        width: 70%;
+    }
+    .card-right{
+        padding: 50px;
+    }
+}

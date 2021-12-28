@@ -1,3 +1,41 @@
+.category {
+  border: none;
+  text-decoration: none;
+  color: black;
+}
+.category:hover {
+  text-decoration: underline;
+  color: black;
+}
+.category .category-body {
+  padding-left: 0px;
+}
 
+.row-card {
+  font-family: "Noto IKEA", "Noto Sans", "Roboto", "Open Sans", system-ui, sans-serif;
+  font-size: 1.5rem;
+  display: flex;
+  flex-direction: row;
+  background-color: burlywood;
+  width: 100%;
+}
+.row-card img {
+  width: 70%;
+}
+.row-card .card-right {
+  padding: 50px;
+}
+
+.head-title {
+  margin: 1.875rem 0rem 0.3rem 0.3rem;
+  font-size: 1.5rem;
+}
+
+.small-text {
+  font-size: 0.875rem;
+  color: #484848;
+  margin: 0.5rem 0.3rem;
+  width: 70%;
+}
 
 /*# sourceMappingURL=main.css.map */
