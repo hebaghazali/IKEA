@@ -1,0 +1,28 @@
+.image-gallery{
+    margin: 10% 0%;
+    img{
+        max-width: 100%;
+        min-width: 100%;
+    }
+    .image-column{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        .short-img{
+            height: 41%;
+        }
+        .long-img{
+            height: 55%;
+        }
+        img{
+            max-width: 100%;
+            min-width: 100%;
+        }
+    }
+}
+.see-all-btn{
+    @include SeeAllBtn;
+    &:hover{
+        @include SeeAllBtnHover;
+    }
+}

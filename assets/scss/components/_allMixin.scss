@@ -70,3 +70,19 @@
     width: 100%;
     padding: $fixed-number-margin ;
 }
+
+@mixin SeeAllBtn {
+    @include HandleButton;
+    margin-top: 0;
+    margin-bottom: 15px;
+    padding: 10px 15px;
+    outline: solid;
+    outline-width: 1px;
+    outline-color: $secondary-color;
+    background-color: $default-background-color;
+    font-size: $small-text-size;
+    font-weight: $title-font-weight;
+}
+@mixin SeeAllBtnHover {
+    outline-color: $small-text-color;
+}

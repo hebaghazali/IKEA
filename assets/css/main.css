@@ -51,6 +51,13 @@ body {
   text-decoration: none;
   color: black;
 }
+.category-card img {
+  border-radius: 0%;
+  -webkit-border-radius: 0%;
+  -moz-border-radius: 0%;
+  -ms-border-radius: 0%;
+  -o-border-radius: 0%;
+}
 .category-card:hover {
   text-decoration: underline;
   color: black;
@@ -59,17 +66,30 @@ body {
   padding-left: 0px;
 }
 
+.row-card-holder {
+  margin: 10% 0%;
+}
 .row-card-holder .row-card {
-  font-family: "Noto Sans";
+  text-decoration: none;
+  -moz-text-decoration: none;
+  margin-top: 2%;
   font-size: 1.5rem;
+  font-weight: 900;
   display: flex;
   flex-direction: row;
 }
+.row-card-holder .row-card:hover {
+  text-decoration: underline;
+  -moz-text-decoration: underline;
+  text-decoration-color: #F5F5F5;
+  -moz-text-decoration-color: #F5F5F5;
+}
 .row-card-holder .row-card .card-right {
   padding: 20px;
-  background-color: burlywood;
+  background-color: #204b7e;
   display: flex;
   flex-direction: column;
+  color: #F5F5F5;
 }
 .row-card-holder .row-card .card-right .card-btn {
   border-radius: 50%;
@@ -190,14 +210,13 @@ body {
   }
 }
 .head-title {
-  margin: 1.875rem 0rem 1.875rem 0.3rem;
   font-size: 1.5rem;
+  font-weight: 900;
 }
 
 .small-text {
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   color: #484848;
-  margin: -1.875rem 0.3rem 1.875rem;
   width: 70%;
 }
 
@@ -455,6 +474,50 @@ body {
 }
 .fav-parent .shopping-page .last-sec .txttxt {
   text-align: center;
+}
+
+.image-gallery {
+  margin: 10% 0%;
+}
+.image-gallery img {
+  max-width: 100%;
+  min-width: 100%;
+}
+.image-gallery .image-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.image-gallery .image-column .short-img {
+  height: 41%;
+}
+.image-gallery .image-column .long-img {
+  height: 55%;
+}
+.image-gallery .image-column img {
+  max-width: 100%;
+  min-width: 100%;
+}
+
+.see-all-btn {
+  border-radius: 30px;
+  padding: 15px 50px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  margin-top: 70px;
+  margin-top: 0;
+  margin-bottom: 15px;
+  padding: 10px 15px;
+  outline: solid;
+  outline-width: 1px;
+  outline-color: #F5F5F5;
+  background-color: white;
+  font-size: 0.75rem;
+  font-weight: 900;
+}
+.see-all-btn:hover {
+  outline-color: #484848;
 }
 
 /*# sourceMappingURL=main.css.map */
