@@ -20,11 +20,65 @@
   </head>
 
   <body>
-    <div class="container">
+    <div class="body-container">
+      <div class="header-messages"></div>
+      <div class="navbar navbar-expand-xl navbar-light fixed-top bg-white">
+        <a href="#" class="navbar-brand">
+          <img class="logo" src="../assets/images/ikea-logo.svg" alt="logo"
+        /></a>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Products</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Rooms</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Offers</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">What's new</a>
+            </li>
+          </ul>
+        </div>
+        <div class="navbar-search">
+          <div class="search-box">
+            <i class="bi bi-search"></i>
+            <input type="text" placeholder="What are you looking for?" />
+            <i class="bi bi-camera"></i>
+          </div>
+        </div>
+        <div class="navbar-icons">
+          <div class="location-container">
+            <i class="bi bi-shop"></i>
+            <div class="location-text">
+              <small>See opening hours and more</small>
+              <strong>Select store</strong>
+            </div>
+          </div>
+          <i class="bi bi-person"></i>
+          <i class="bi bi-heart"></i>
+          <i class="bi bi-minecart-loaded"></i>
+        </div>
+
+        <!-- Toggler -->
+        <button
+          class="navbar-toggler toggler"
+          id="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+
       <!-- Categories cards -->
-      <div>
+      <div class="mt-nav-2 pt-nav border-top">
         <div class="row mx-auto g-3">
-            <h4 class="head-title">Furniture</h4>
+          <h4 class="head-title">Furniture</h4>
           <a class="card category-card col-4 col-lg-2" href="#">
             <img
               src="https://www.ikea.com/global/assets/navigation/images/gaming-furniture-55002.jpeg?imwidth=300"
@@ -231,7 +285,7 @@
       <!-- Cards with text right -->
       <div>
         <div class="row-card-holder">
-        <h4 class="head-title">Fun desks to keep your creativity flowing</h4>
+          <h4 class="head-title">Fun desks to keep your creativity flowing</h4>
           <a class="row card row-card g-0" href="#">
             <img
               class="col-12 col-sm-6 col-md-8"
@@ -252,29 +306,43 @@
       <!-- Gallery div -->
       <div>
         <div class="image-gallery row g-4">
-            <h4 class="head-title">
-                Stylish and smart wardrobes to fit your space
-              </h4>
-              <div class="d-flex flex-row justify-content-between">
-                  <p class="small-text">
-                      High quality wardrobes are full of choices so you can get the look you
-                      want on the outside and the interior organisers you want on the
-                      inside.
-                  </p>
-                  <button class="see-all-btn">See all wardrobes</button>
-              </div>
-            <div class="col-12 col-lg-6">
-                <img src="https://www.ikea.com/ext/ingkadam/m/2c5ef270297e6af5/original/PH177014-crop001.jpg?f=xl"/>
-            </div>
-            <div class="image-column col-6 col-lg-3">
-                <img class="short-img" src="https://www.ikea.com/ext/ingkadam/m/13eb5edd6b5d68a3/original/PH162765-crop001.jpg?f=xs"/>
-                <img class="long-img" src="https://www.ikea.com/ext/ingkadam/m/6624b8c6d7b521e4/original/PH176180-crop001.jpg?f=xs"/>
-            </div>
-            <div class="image-column col-6 col-lg-3">
-                <img class="long-img" src="https://www.ikea.com/ext/ingkadam/m/50d75c8a15d5f07b/original/PH176410-crop001.jpg?f=xs"/>
-                <img class="short-img" src="https://www.ikea.com/ext/ingkadam/m/32ec189635e109fb/original/PH162647.jpg?f=xs"/>
-            </div>
-        </div>   
+          <h4 class="head-title">
+            Stylish and smart wardrobes to fit your space
+          </h4>
+          <div class="d-flex flex-row justify-content-between">
+            <p class="small-text">
+              High quality wardrobes are full of choices so you can get the look
+              you want on the outside and the interior organisers you want on
+              the inside.
+            </p>
+            <button class="see-all-btn">See all wardrobes</button>
+          </div>
+          <div class="col-12 col-lg-6">
+            <img
+              src="https://www.ikea.com/ext/ingkadam/m/2c5ef270297e6af5/original/PH177014-crop001.jpg?f=xl"
+            />
+          </div>
+          <div class="image-column col-6 col-lg-3">
+            <img
+              class="short-img"
+              src="https://www.ikea.com/ext/ingkadam/m/13eb5edd6b5d68a3/original/PH162765-crop001.jpg?f=xs"
+            />
+            <img
+              class="long-img"
+              src="https://www.ikea.com/ext/ingkadam/m/6624b8c6d7b521e4/original/PH176180-crop001.jpg?f=xs"
+            />
+          </div>
+          <div class="image-column col-6 col-lg-3">
+            <img
+              class="long-img"
+              src="https://www.ikea.com/ext/ingkadam/m/50d75c8a15d5f07b/original/PH176410-crop001.jpg?f=xs"
+            />
+            <img
+              class="short-img"
+              src="https://www.ikea.com/ext/ingkadam/m/32ec189635e109fb/original/PH162647.jpg?f=xs"
+            />
+          </div>
+        </div>
       </div>
 
       <!-- Steps cards -->
