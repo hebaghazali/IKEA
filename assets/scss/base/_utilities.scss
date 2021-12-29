@@ -9,11 +9,11 @@
 }
 
 .mt-nav {
-  margin-top: 60px;
+  margin-top: 3.75rem;
 }
 
 .mt-nav-2 {
-  margin-top: 70px;
+  margin-top: 4.5rem;
 }
 
 .pt-nav {
@@ -22,6 +22,20 @@
 
 .ml-auto {
   margin-left: auto !important;
+}
+
+@media only screen and (max-width: 815px) {
+  .mt-nav {
+    // margin-top: 10rem;
+  }
+
+  .mt-nav-2 {
+    margin-top: 10rem;
+  }
+
+  .pt-nav {
+    padding-top: 4.5rem;
+  }
 }
 
 @media only screen and (max-width: 750px) {

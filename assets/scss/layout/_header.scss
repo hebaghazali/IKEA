@@ -98,8 +98,6 @@
 
 @media only screen and (max-width: 1200px) {
   .navbar {
-
-
     .navbar-icons {
       flex-basis: 16.67%;
 
@@ -112,6 +110,11 @@
 
 @media only screen and (max-width: 815px) {
   .navbar {
+    width: 95vw;
+    left: 0;
+    right: 0;
+    margin: auto;
+
     .navbar-search {
       order: 1;
       flex-basis: 100%;

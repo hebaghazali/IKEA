@@ -25,11 +25,11 @@ body {
 }
 
 .mt-nav {
-  margin-top: 60px;
+  margin-top: 3.75rem;
 }
 
 .mt-nav-2 {
-  margin-top: 70px;
+  margin-top: 4.5rem;
 }
 
 .pt-nav {
@@ -40,6 +40,15 @@ body {
   margin-left: auto !important;
 }
 
+@media only screen and (max-width: 815px) {
+  .mt-nav-2 {
+    margin-top: 10rem;
+  }
+
+  .pt-nav {
+    padding-top: 4.5rem;
+  }
+}
 @media only screen and (max-width: 750px) {
   .body-container {
     width: 98vw;
@@ -221,6 +230,12 @@ body {
   }
 }
 @media only screen and (max-width: 815px) {
+  .navbar {
+    width: 95vw;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
   .navbar .navbar-search {
     order: 1;
     flex-basis: 100%;
