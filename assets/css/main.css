@@ -40,6 +40,10 @@ body {
   margin-left: auto !important;
 }
 
+.w-49 {
+  width: 49%;
+}
+
 @media only screen and (max-width: 815px) {
   .mt-nav-2 {
     margin-top: 10rem;
@@ -148,6 +152,10 @@ body {
   text-decoration-color: #484848;
   -moz-text-decoration-color: #484848;
   color: #484848;
+}
+
+.sales-button img {
+  width: 100%;
 }
 
 .header-messages {
