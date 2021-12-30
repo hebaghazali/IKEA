@@ -4,11 +4,7 @@
     color: $small-text-color;
     font-size: $small-text-size;
     img{
-        border-radius: 0%;
-        -webkit-border-radius: 0%;
-        -moz-border-radius: 0%;
-        -ms-border-radius: 0%;
-        -o-border-radius: 0%;
+        @include radius(0px);
     }
     &:hover {
         text-decoration: underline;
@@ -40,16 +36,15 @@
         flex-direction: column;
         color: $secondary-color;
         .card-btn {
-            border-radius: 50%;
-            -webkit-border-radius: 50%;
-            -moz-border-radius: 50%;
-            -ms-border-radius: 50%;
-            -o-border-radius: 50%;
+            @include radius(50px);
             border: none;
             width: 60px;
             height: 60px;
             margin-top: auto;
             background-color: $default-background-color;
+            &:hover{
+                background-color: $secondary-color;
+            }
         }
     }
 }
