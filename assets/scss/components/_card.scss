@@ -4,12 +4,8 @@
     color: $small-text-color;
     font-size: $small-text-size;
     img{
-        border-radius: 0%;
-        -webkit-border-radius: 0%;
-        -moz-border-radius: 0%;
-        -ms-border-radius: 0%;
-        -o-border-radius: 0%;
-}
+        @include radius(0px);
+    }
     &:hover {
         text-decoration: underline;
         color: $default-text-color;
@@ -20,43 +16,39 @@
     }
 }
 
-.row-card-holder {
-    //height: 90vh;
-    margin: 10% 0%;
-    .row-card{
-        text-decoration:none;
-        -moz-text-decoration:none;
-        margin-top: 2%;
-        font-size: $title-font-size;
-        font-weight: $title-font-weight;
+.row-card{
+    text-decoration:none;
+    -moz-text-decoration:none;
+    font-size: $title-font-size;
+    font-weight: $title-font-weight;
+    display: flex;
+    flex-direction: row;
+    &:hover{ 
+        text-decoration:underline;
+        -moz-text-decoration:underline;
+        text-decoration-color: $secondary-color; 
+        -moz-text-decoration-color: $secondary-color;
+    }
+    .card-right {
+        padding: 20px;
+        background-color: #204b7e;
         display: flex;
-        flex-direction: row;
-        &:hover{ 
-            text-decoration:underline;
-            -moz-text-decoration:underline;
-            text-decoration-color: $secondary-color; 
-            -moz-text-decoration-color: $secondary-color;
-        }
-        .card-right {
-            padding: 20px;
-            background-color: #204b7e;
-            display: flex;
-            flex-direction: column;
-            color: $secondary-color;
-            .card-btn {
-                border-radius: 50%;
-                -webkit-border-radius: 50%;
-                -moz-border-radius: 50%;
-                -ms-border-radius: 50%;
-                -o-border-radius: 50%;
-                border: none;
-                width: 60px;
-                height: 60px;
-                margin-top: auto;
+        flex-direction: column;
+        color: $secondary-color;
+        .card-btn {
+            @include radius(50px);
+            border: none;
+            width: 60px;
+            height: 60px;
+            margin-top: auto;
+            background-color: $default-background-color;
+            &:hover{
+                background-color: $secondary-color;
             }
         }
     }
 }
+
 
 .step-card {
     border: none;

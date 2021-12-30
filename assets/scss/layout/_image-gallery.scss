@@ -1,5 +1,5 @@
 .image-gallery {
-  margin: 8% 0%;
+  margin: 3rem 0;
 
   img {
     max-width: 100%;
@@ -12,11 +12,21 @@
     justify-content: space-between;
 
     .short-img {
-      height: 41%;
+      height: 41.8%;
+
+      img {
+        height: 100%;
+        object-fit: cover;
+      }
     }
 
     .long-img {
       height: 55%;
+
+      img {
+        height: 100%;
+        object-fit: cover;
+      }
     }
 
     img {
