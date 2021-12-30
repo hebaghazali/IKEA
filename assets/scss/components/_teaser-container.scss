@@ -1,0 +1,18 @@
+.teaser-info-container {
+  display: flex;
+  justify-content: space-between;
+
+  h2 {
+    font-weight: 800;
+    font-size: $title-font-size;
+  }
+}
+
+.teaser-btn {
+  height: 2.5rem;
+  padding: 0 1.5rem;
+  border: 1px solid #dfdfdf;
+  font-size: $small-text-size;
+  font-weight: 800;
+  @include radius(4rem);
+}
