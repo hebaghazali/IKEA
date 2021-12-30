@@ -30,7 +30,8 @@
 }
 
 @media only screen and (max-width: 815px) {
-  .body-container{
+  .body-container {
+    margin-right: 1rem;
     padding-left: 0;
   }
   .mt-nav {
@@ -48,7 +49,6 @@
 
 @media only screen and (max-width: 750px) {
   .body-container {
-    // width: 98vw;
     margin: auto;
   }
 }

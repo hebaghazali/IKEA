@@ -6,6 +6,17 @@
   box-sizing: inherit;
 }
 
+a {
+  color: black;
+  text-decoration: none;
+}
+
+button {
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+
 @font-face {
   font-family: "Noto Sans";
   src: url("../fonts/NotoSans/NotoSans-Regular.ttf");
@@ -47,6 +58,7 @@ body {
 
 @media only screen and (max-width: 815px) {
   .body-container {
+    margin-right: 1rem;
     padding-left: 0;
   }
 
@@ -163,6 +175,28 @@ body {
   width: 100%;
 }
 
+.teaser-info-container {
+  display: flex;
+  justify-content: space-between;
+}
+.teaser-info-container h2 {
+  font-weight: 800;
+  font-size: 1.5rem;
+}
+
+.teaser-btn {
+  height: 2.5rem;
+  padding: 0 1.5rem;
+  border: 1px solid #dfdfdf;
+  font-size: 0.9rem;
+  font-weight: 800;
+  border-radius: 4rem;
+  -webkit-border-radius: 4rem;
+  -moz-border-radius: 4rem;
+  -ms-border-radius: 4rem;
+  -o-border-radius: 4rem;
+}
+
 .header-messages {
   min-height: 40px;
 }
@@ -260,7 +294,7 @@ body {
   }
 }
 .image-gallery {
-  margin: 8% 0%;
+  margin: 3rem 0;
 }
 .image-gallery img {
   max-width: 100%;
@@ -305,13 +339,21 @@ body {
   -moz-border-radius: 20px;
   -ms-border-radius: 20px;
   -o-border-radius: 20px;
+  background-color: #F5F5F5;
 }
 .filter-btn i {
   margin-left: 10px;
 }
+.filter-btn:hover {
+  background-color: #e8e8e8;
+}
+.filter-btn:active {
+  background-color: black;
+  color: white;
+}
 
 .description {
-  color: #757575;
+  color: #5c5959;
   line-height: 1.6em;
   margin-top: 30px;
 }
@@ -323,7 +365,7 @@ body {
   font-weight: bold;
 }
 .log-parent .login-heading p {
-  color: #757575;
+  color: #5c5959;
   line-height: 1.6em;
   margin-top: 30px;
 }
@@ -376,14 +418,17 @@ body {
 .fav-parent {
   margin-top: 80px;
 }
-.fav-parent .center-fav-page h3, .fav-parent .center-fav-page .fav-srow h6, .fav-parent .prod-box-info .prod-price h6 {
+.fav-parent .center-fav-page h3,
+.fav-parent .center-fav-page .fav-srow h6,
+.fav-parent .prod-box-info .prod-price h6 {
   text-align: center;
   font-weight: bold;
 }
 .fav-parent .center-fav-page .product-space {
   margin-top: 50px;
 }
-.fav-parent .center-fav-page .fav-srow, .fav-parent .center-fav-page .prod-info {
+.fav-parent .center-fav-page .fav-srow,
+.fav-parent .center-fav-page .prod-info {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -396,7 +441,7 @@ body {
   font-weight: bold;
 }
 .fav-parent .prod-box-info .prod-txt span {
-  color: #757575;
+  color: #5c5959;
   line-height: 1.6em;
   margin-top: 30px;
 }
@@ -430,7 +475,8 @@ body {
 .fav-parent .prod-box-info .prod-infoo .prod-box .card-button:hover {
   opacity: 0.8;
 }
-.fav-parent .prod-box-info .prod-infoo .prod-box select, .fav-parent .prod-box-info .prod-infoo .prod-box .del-prod i {
+.fav-parent .prod-box-info .prod-infoo .prod-box select,
+.fav-parent .prod-box-info .prod-infoo .prod-box .del-prod i {
   padding: 6px 10px;
   margin-top: 5px;
   cursor: pointer;

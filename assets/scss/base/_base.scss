@@ -5,3 +5,14 @@
   padding: 0;
   box-sizing: inherit;
 }
+
+a {
+  color: $default-text-color;
+  text-decoration: none;
+}
+
+button {
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
