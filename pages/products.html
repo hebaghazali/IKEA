@@ -5,6 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-------------- Start Font Awesome link --------------->
+    <!-- Icons -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+      integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP"
+      crossorigin="anonymous"
+    />
+    <!------------ End Font-awesome links ------------>
+
     <!-- Bootstrap CSS -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
@@ -14,52 +24,294 @@
     />
 
     <link rel="stylesheet" href="../assets/css/main.css" />
+    <!-- link code for icon link in top of page -->
+    <link rel="shortcut icon" href="../assets/images/ikea-logo.png" />
     <title>Products</title>
   </head>
   <body>
     <!-- Bootstrap JS -->
-    <div class="breadcrumb-container">
-        <nav style="--bs-breadcrumb-divider: '>';"  aria-label="breadcrumb">
-            <ol class="breadcrumb breadcrumb-list">
-              <li class="breadcrumb-item"><a class='bc-breadcrumb__link' href="#">products</a></li>
-              <li class="breadcrumb-item" aria-current="page"><a class='bc-breadcrumb__link' href="#">beds</a></li>
-            </ol>
+    <div class="body-container">
+      <div class="header-messages"></div>
+      <div class="navbar navbar-expand-xl navbar-light fixed-top bg-white">
+        <a href="#" class="navbar-brand">
+          <img class="logo" src="../assets/images/ikea-logo.svg" alt="logo"
+        /></a>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Products</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Rooms</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Offers</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">What's new</a>
+            </li>
+          </ul>
+        </div>
+        <div class="navbar-search">
+          <div class="search-box">
+            <i class="bi bi-search"></i>
+            <input type="text" placeholder="What are you looking for?" />
+            <i class="bi bi-camera"></i>
+          </div>
+        </div>
+        <div class="navbar-icons">
+          <div class="location-container">
+            <i class="bi bi-shop"></i>
+            <div class="location-text">
+              <small>See opening hours and more</small>
+              <strong>Select store</strong>
+            </div>
+          </div>
+          <i class="bi bi-person"></i>
+          <i class="bi bi-heart"></i>
+          <i class="bi bi-minecart-loaded"></i>
+        </div>
+
+        <!-- Toggler -->
+        <button
+          class="navbar-toggler toggler"
+          id="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+      <div class="breadcrumb-container border-top mt-nav-2">
+        <nav style="--bs-breadcrumb-divider: '>'" aria-label="breadcrumb">
+          <ol class="breadcrumb breadcrumb-list">
+            <li class="breadcrumb-item">
+              <a class="bc-breadcrumb__link" href="#">products</a>
+            </li>
+            <li class="breadcrumb-item" aria-current="page">
+              <a class="bc-breadcrumb__link" href="#">beds</a>
+            </li>
+          </ol>
         </nav>
-    </div>
-
-    <div style="margin: 1.875rem 0;">
-      <h1>Children beds</h1>
-    </div>
-
-    <section class='col-12 col-md-7 col-lg-7'>
-      <p>     
-         We understand that growing kids have lots of needs. Like a quiet spot to relax or a place to do their homework. That's why loft beds for kids are a super-smart multi-tasking solution, helping you free up space for a desk, sofa, wardrobe or pillow fort. Bring home a children's loft bed today!
-      </p>
-    </section>
-
-    <div class="row sticky-top ">
-      <div class="col-12 col-md-7 col-lg-7 "> 
-        <button type="button" class="btn btn-light filter-btn">compare</button>
-        <button type="button" class="btn btn-light filter-btn">sort</button>
-        <button type="button" class="btn btn-light filter-btn">color</button>
-        <button type="button" class="btn btn-light filter-btn">price</button>
-        <button type="button" class="btn btn-light filter-btn">special price</button>
-        <button type="button" class="btn btn-light filter-btn">All filters</button>
       </div>
 
-      <div class="col-5  "> 
-        <div class="float-lg-end float-md-end"> 
-          <p class="d-inline-flex">2 items</p>
-          <div class="btn-group me-2" role="group" aria-label="First group">
-            <button type="button" class="btn btn-outline-secondary">Product</button>
-            <button type="button" class="btn btn-outline-secondary">Room</button>
+      <div style="margin: 1.875rem 0">
+        <h3>Children beds</h3>
+      </div>
+
+      <section class="col-12 col-md-7 col-lg-7">
+        <p class="description">
+          We . understand that growing kids have lots of needs. Like a quiet
+          spot to relax or a place to do their homework. That's why loft beds
+          for kids are a super-smart multi-tasking solution, helping you free up
+          space for a desk, sofa, wardrobe or pillow fort. Bring home a
+          children's loft bed today!
+        </p>
+      </section>
+
+      <div class="row sticky-top filter-row">
+        <div class="col-12 col-md-7 col-lg-7">
+          <button type="button" class="btn btn-light filter-btn">
+            compare
+          </button>
+
+          <!-- drop down Button -->
+          <button
+            type="button"
+            class="btn btn-light filter-btn"
+            id="dropdownMenuLink"
+            data-bs-toggle="dropdown"
+          >
+            sort <i class="fas fa-chevron-down"></i>
+          </button>
+
+          <!-- drop down List -->
+          <ul
+            class="dropdown-menu mt-2"
+            style="width: 250px"
+            aria-labelledby="dropdownMenuLink"
+          >
+            <li
+              class="
+                dropdown-item
+                d-flex
+                flex-row
+                align-items-center
+                justify-content-between
+              "
+            >
+              <label class="form-check-label" for="bestmatch-radio">
+                Best match
+              </label>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="sort-group"
+                  id="bestmatch-radio"
+                />
+              </div>
+            </li>
+            <li
+              class="
+                dropdown-item
+                d-flex
+                flex-row
+                align-items-center
+                justify-content-between
+              "
+            >
+              <label class="form-check-label" for="lowToHigh-radio">
+                Price: low to high
+              </label>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="sort-group"
+                  id="lowToHigh-radio"
+                />
+              </div>
+            </li>
+            <li
+              class="
+                dropdown-item
+                d-flex
+                flex-row
+                align-items-center
+                justify-content-between
+              "
+            >
+              <label class="form-check-label" for="highToLowRadio">
+                Price: high to low
+              </label>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="sort-group"
+                  id="highToLowRadio"
+                />
+              </div>
+            </li>
+          </ul>
+
+          <!-- drop down Button -->
+          <button
+            type="button"
+            class="btn btn-light filter-btn"
+            id="dropdownMenuLink"
+            data-bs-toggle="dropdown"
+          >
+            color <i class="fas fa-chevron-down"></i>
+          </button>
+
+          <!-- drop down List -->
+          <ul
+            class="dropdown-menu mt-2"
+            style="width: 250px"
+            aria-labelledby="dropdownMenuLink"
+          ></ul>
+
+          <button
+            type="button"
+            class="btn btn-light filter-btn"
+            id="dropdownMenuLink"
+            data-bs-toggle="dropdown"
+          >
+            price <i class="fas fa-chevron-down"></i>
+          </button>
+          <!-- drop down List -->
+          <ul
+            class="dropdown-menu mt-2"
+            style="width: 250px"
+            aria-labelledby="dropdownMenuLink"
+          >
+            <li
+              class="
+                dropdown-item
+                d-flex
+                flex-row
+                align-items-center
+                justify-content-between
+              "
+            >
+              <label class="form-check-label" for=""> EGP 100-500 </label>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  id=""
+                />
+              </div>
+            </li>
+            <li
+              class="
+                dropdown-item
+                d-flex
+                flex-row
+                align-items-center
+                justify-content-between
+              "
+            >
+              <label class="form-check-label" for=""> EGP 500-1000 </label>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  id=""
+                />
+              </div>
+            </li>
+            <li
+              class="
+                dropdown-item
+                d-flex
+                flex-row
+                align-items-center
+                justify-content-between
+              "
+            >
+              <label class="form-check-label" for=""> EGP 1000-1500 </label>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  id=""
+                />
+              </div>
+            </li>
+          </ul>
+          <button type="button" class="btn btn-light filter-btn">
+            size <i class="fas fa-chevron-down"></i>
+          </button>
+          <button type="button" class="btn btn-light filter-btn">
+            All filters <i class="fas fa-filter"></i>
+          </button>
+        </div>
+
+        <div class="col-5">
+          <div class="float-lg-end float-md-end">
+            <p class="d-inline-flex">2 items</p>
+            <div class="btn-group me-2" role="group" aria-label="First group">
+              <button type="button" class="btn btn-outline-secondary">
+                Product
+              </button>
+              <button type="button" class="btn btn-outline-secondary">
+                Room
+              </button>
+            </div>
           </div>
         </div>
       </div>
 
+      <div style="height: 1000px; background-color: aliceblue"></div>
     </div>
-
-    <div style="height: 1000px;"></div>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"

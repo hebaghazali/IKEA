@@ -71,7 +71,13 @@
     padding: $fixed-number-margin ;
 }
 
-//style for buttons in category page
+@mixin  radius($number) {
+    border-radius: $number;
+    -webkit-border-radius: $number;
+    -moz-border-radius: $number;
+    -ms-border-radius: $number;
+    -o-border-radius: $number;
+}
 @mixin SeeAllBtn {
     @include HandleButton;
     margin-top: 0;
@@ -95,7 +101,7 @@
     flex-wrap: nowrap;
     height: 300px;
     padding-bottom: 10px;
-    
+
      &::-webkit-scrollbar {
          height: 3px;
      }
