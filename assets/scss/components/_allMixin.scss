@@ -93,3 +93,27 @@
 @mixin SeeAllBtnHover {
     outline-color: $small-text-color;
 }
+
+@mixin slidder {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    display: flex;
+    flex-wrap: nowrap;
+    height: 300px;
+    padding-bottom: 10px;
+
+     &::-webkit-scrollbar {
+         height: 3px;
+     }
+
+     &::-webkit-scrollbar-track {
+         background-color: $secondary-color;
+     }
+
+     &::-webkit-scrollbar-thumb {
+         background: $default-text-color;
+        //  &:hover {
+        //      height: 10px;
+        //  }
+     }
+}

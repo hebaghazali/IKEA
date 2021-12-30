@@ -93,11 +93,11 @@
               <li class="breadcrumb-item" aria-current="page"><a class='bc-breadcrumb__link' href="#">beds</a></li>
             </ol>
         </nav>
-    </div>
+      </div>
 
-    <div style="margin: 1.875rem 0;">
-      <h3>Children beds</h3>
-    </div>
+      <div style="margin: 1.875rem 0">
+        <h3>Children beds</h3>
+      </div>
 
     <section class='col-12 col-md-7 col-lg-7'>
       <p class='description '>     
@@ -105,101 +105,206 @@
       </p>
     </section>
 
-    <div class="row sticky-top filter-row ">
-      <div class="col-12 col-md-7 col-lg-7 "> 
-        <button type="button" class="btn btn-light filter-btn">compare</button>
+      <div class="row sticky-top filter-row">
+        <div class="col-12 col-md-7 col-lg-7">
+          <button type="button" class="btn btn-light filter-btn">
+            compare
+          </button>
 
-        <!-- drop down Button -->
-        <button type="button" class="btn btn-light filter-btn " id="dropdownMenuLink" data-bs-toggle="dropdown">
-          sort <i class="fas fa-chevron-down"></i>
-        </button>
+          <!-- drop down Button -->
+          <button
+            type="button"
+            class="btn btn-light filter-btn"
+            id="dropdownMenuLink"
+            data-bs-toggle="dropdown"
+          >
+            sort <i class="fas fa-chevron-down"></i>
+          </button>
 
-         <!-- drop down List -->
-        <ul class="dropdown-menu mt-2" style="width: 250px;" aria-labelledby="dropdownMenuLink">
-          <li class="dropdown-item d-flex flex-row align-items-center justify-content-between" >
+          <!-- drop down List -->
+          <ul
+            class="dropdown-menu mt-2"
+            style="width: 250px"
+            aria-labelledby="dropdownMenuLink"
+          >
+            <li
+              class="
+                dropdown-item
+                d-flex
+                flex-row
+                align-items-center
+                justify-content-between
+              "
+            >
               <label class="form-check-label" for="bestmatch-radio">
                 Best match
               </label>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="sort-group" id="bestmatch-radio">
-              </div>            
-          </li>
-          <li class="dropdown-item d-flex flex-row align-items-center justify-content-between" >
-            <label class="form-check-label" for="lowToHigh-radio">
-              Price: low to high
-            </label>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="sort-group" id="lowToHigh-radio">
-            </div>            
-          </li>
-          <li class="dropdown-item d-flex flex-row align-items-center justify-content-between" >
-            <label class="form-check-label" for="highToLowRadio">
-              Price: high to low
-            </label>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="sort-group" id="highToLowRadio">
-            </div>            
-          </li>
-        </ul>
-
-
-        <!-- drop down Button -->
-        <button type="button" class="btn btn-light filter-btn " id="dropdownMenuLink" data-bs-toggle="dropdown">
-          color <i class="fas fa-chevron-down"></i>
-        </button>
-
-         <!-- drop down List -->
-        <ul class="dropdown-menu mt-2" style="width: 250px;" aria-labelledby="dropdownMenuLink">
-         
-        </ul>
-
-
-        <button type="button" class="btn btn-light filter-btn" id="dropdownMenuLink" data-bs-toggle="dropdown">price <i class="fas fa-chevron-down"></i></button>
-        <!-- drop down List -->
-        <ul class="dropdown-menu mt-2" style="width: 250px;" aria-labelledby="dropdownMenuLink">
-          <li class="dropdown-item d-flex flex-row align-items-center justify-content-between" >
-              <label class="form-check-label" for="">
-                EGP 100-500
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="sort-group"
+                  id="bestmatch-radio"
+                />
+              </div>
+            </li>
+            <li
+              class="
+                dropdown-item
+                d-flex
+                flex-row
+                align-items-center
+                justify-content-between
+              "
+            >
+              <label class="form-check-label" for="lowToHigh-radio">
+                Price: low to high
               </label>
               <div class="form-check">
-                <input  class="form-check-input" type="checkbox" value="" id="">
-              </div>            
-          </li>
-          <li class="dropdown-item d-flex flex-row align-items-center justify-content-between" >
-            <label class="form-check-label" for="">
-              EGP 500-1000
-            </label>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value=""  id="">
-            </div>            
-          </li>
-          <li class="dropdown-item d-flex flex-row align-items-center justify-content-between" >
-            <label class="form-check-label" for="">
-              EGP 1000-1500
-            </label>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value=""  id="">
-            </div>            
-          </li>
-        </ul>
-        <button type="button" class="btn btn-light filter-btn">size <i class="fas fa-chevron-down"></i></button>
-        <button type="button" class="btn btn-light filter-btn">All filters <i class="fas fa-filter"></i></button>
-      </div>
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="sort-group"
+                  id="lowToHigh-radio"
+                />
+              </div>
+            </li>
+            <li
+              class="
+                dropdown-item
+                d-flex
+                flex-row
+                align-items-center
+                justify-content-between
+              "
+            >
+              <label class="form-check-label" for="highToLowRadio">
+                Price: high to low
+              </label>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="sort-group"
+                  id="highToLowRadio"
+                />
+              </div>
+            </li>
+          </ul>
 
-      <div class="col-5  "> 
-        <div class="float-lg-end float-md-end"> 
-          <p class="d-inline-flex">2 items</p>
-          <div class="btn-group me-2" role="group" aria-label="First group">
-            <button type="button" class="btn btn-outline-secondary">Product</button>
-            <button type="button" class="btn btn-outline-secondary">Room</button>
+          <!-- drop down Button -->
+          <button
+            type="button"
+            class="btn btn-light filter-btn"
+            id="dropdownMenuLink"
+            data-bs-toggle="dropdown"
+          >
+            color <i class="fas fa-chevron-down"></i>
+          </button>
+
+          <!-- drop down List -->
+          <ul
+            class="dropdown-menu mt-2"
+            style="width: 250px"
+            aria-labelledby="dropdownMenuLink"
+          ></ul>
+
+          <button
+            type="button"
+            class="btn btn-light filter-btn"
+            id="dropdownMenuLink"
+            data-bs-toggle="dropdown"
+          >
+            price <i class="fas fa-chevron-down"></i>
+          </button>
+          <!-- drop down List -->
+          <ul
+            class="dropdown-menu mt-2"
+            style="width: 250px"
+            aria-labelledby="dropdownMenuLink"
+          >
+            <li
+              class="
+                dropdown-item
+                d-flex
+                flex-row
+                align-items-center
+                justify-content-between
+              "
+            >
+              <label class="form-check-label" for=""> EGP 100-500 </label>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  id=""
+                />
+              </div>
+            </li>
+            <li
+              class="
+                dropdown-item
+                d-flex
+                flex-row
+                align-items-center
+                justify-content-between
+              "
+            >
+              <label class="form-check-label" for=""> EGP 500-1000 </label>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  id=""
+                />
+              </div>
+            </li>
+            <li
+              class="
+                dropdown-item
+                d-flex
+                flex-row
+                align-items-center
+                justify-content-between
+              "
+            >
+              <label class="form-check-label" for=""> EGP 1000-1500 </label>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  id=""
+                />
+              </div>
+            </li>
+          </ul>
+          <button type="button" class="btn btn-light filter-btn">
+            size <i class="fas fa-chevron-down"></i>
+          </button>
+          <button type="button" class="btn btn-light filter-btn">
+            All filters <i class="fas fa-filter"></i>
+          </button>
+        </div>
+
+        <div class="col-5">
+          <div class="float-lg-end float-md-end">
+            <p class="d-inline-flex">2 items</p>
+            <div class="btn-group me-2" role="group" aria-label="First group">
+              <button type="button" class="btn btn-outline-secondary">
+                Product
+              </button>
+              <button type="button" class="btn btn-outline-secondary">
+                Room
+              </button>
+            </div>
           </div>
         </div>
       </div>
 
-    </div>
-
-
-    <div style="height: 1000px; background-color: aliceblue;"></div>
+      <div style="height: 1000px; background-color: aliceblue"></div>
     </div>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"

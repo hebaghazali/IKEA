@@ -1,7 +1,8 @@
 .category-card {
     border: none;
     text-decoration: none;
-    color: $default-text-color;
+    color: $small-text-color;
+    font-size: $small-text-size;
     img{
         border-radius: 0%;
         -webkit-border-radius: 0%;
@@ -58,8 +59,9 @@
 }
 
 .step-card {
-    color: $small-text-color;
     border: none;
+    color: $small-text-color;
+    font-size: $small-text-size;
     .step-body {
         text-align: center;
         background-color: $secondary-color;
@@ -71,6 +73,8 @@
 
         .step-title {
             color: $default-text-color;
+            font-size: $small-text-size;
+            font-weight: $title-font-weight;
         }
 
         .step-link {
