@@ -3,7 +3,7 @@
 *::before {
   margin: 0;
   padding: 0;
-  box-sizing: inherit;
+  box-sizing: border-box;
 }
 
 a {
@@ -259,6 +259,7 @@ body {
   width: 92vw;
   left: auto;
   right: 2.5rem;
+  padding-left: 4rem;
 }
 .navbar > * {
   margin-left: 1.2rem;
