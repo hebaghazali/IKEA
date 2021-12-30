@@ -29,6 +29,10 @@
 }
 
 @media only screen and (max-width: 815px) {
+  .body-container {
+    margin-right: 1rem;
+  }
+
   .mt-nav {
     // margin-top: 10rem;
   }
@@ -44,7 +48,6 @@
 
 @media only screen and (max-width: 750px) {
   .body-container {
-    // width: 98vw;
     margin: auto;
   }
 }
