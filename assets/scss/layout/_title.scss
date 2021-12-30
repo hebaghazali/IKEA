@@ -5,5 +5,8 @@
 .small-text{
     font-size: $small-text-size;
     color:$small-text-color;
-    width: 70%;
+}
+.big-title{
+    font-size:$title-font-size*1.5;
+    font-weight: $title-font-weight;
 }
