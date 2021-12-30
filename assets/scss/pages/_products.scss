@@ -5,8 +5,16 @@
 }
 .filter-btn{
     @include radius(20px);
+    background-color: $secondary-color;
     i{
         margin-left: 10px
+    }
+    &:hover{
+        background-color: darken($secondary-color,5);
+    }
+    &:active{
+        background-color: $default-text-color;
+        color: $default-background-color;
     }
 }
 
