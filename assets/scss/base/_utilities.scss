@@ -8,6 +8,40 @@
   font-size: 1.2rem;
 }
 
+.mt-nav {
+  margin-top: 3.75rem;
+}
+
+.mt-nav-2 {
+  margin-top: 4.5rem;
+}
+
+.pt-nav {
+  padding-top: 3.8rem;
+}
+
+.ml-auto {
+  margin-left: auto !important;
+}
+
+.w-49 {
+  width: 49%;
+}
+
+@media only screen and (max-width: 815px) {
+  .mt-nav {
+    // margin-top: 10rem;
+  }
+
+  .mt-nav-2 {
+    margin-top: 10rem;
+  }
+
+  .pt-nav {
+    padding-top: 4.5rem;
+  }
+}
+
 @media only screen and (max-width: 750px) {
   .body-container {
     width: 98vw;

@@ -3,14 +3,17 @@
 }
 
 .navbar {
+  width: 92vw;
+  left: auto;
+  right: 2.5rem;
 
   &>* {
-    margin-left: 2rem;
+    margin-left: 1.2rem;
   }
 
   .navbar-brand {
     flex-basis: 8.33%;
-    margin-left: 0;
+    margin: 0;
     display: flex;
     justify-content: center;
 
@@ -39,7 +42,7 @@
 
   .navbar-collapse {
     flex-grow: 0;
-    flex-basis: 25%;
+    flex-basis: 26%;
   }
 
   .navbar-search {
@@ -95,8 +98,6 @@
 
 @media only screen and (max-width: 1200px) {
   .navbar {
-
-
     .navbar-icons {
       flex-basis: 16.67%;
 
@@ -109,9 +110,15 @@
 
 @media only screen and (max-width: 815px) {
   .navbar {
+    width: 95vw;
+    left: 0;
+    right: 0;
+    margin: auto;
+
     .navbar-search {
       order: 1;
       flex-basis: 100%;
+      margin: 0;
     }
 
     .navbar-icons {

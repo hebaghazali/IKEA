@@ -29,180 +29,63 @@
     <title>Shopping Bag</title>
   </head>
   <body>
-    <!-- Start login Page -->
-    <div class="fav-parent">
-      <div class="container">
-        <!-- Start header for this page -->
-        <div class="shopping-header ">
-          <h3>Shopping cart</h3>
-          <h6>3 items in shopping bag</h6>
-          <!-- Show price -->
-          <div class="shopping-total-price">
-            <h6>Total For This Order incl. VAT</h6>
-            <h4>EGP 900</h4>
-          </div>
-          <!-- Button for Checkout -->
-          <div class="shopping-total-price">
-            <h6></h6>
-            <button>Begin Checkout</button>
-          </div>
+    <div class="body-container">
+      <div class="header-messages"></div>
+      <div class="navbar navbar-expand-xl navbar-light fixed-top bg-white">
+        <a href="#" class="navbar-brand">
+          <img class="logo" src="./assets/images/ikea-logo.svg" alt="logo"
+        /></a>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Products</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Rooms</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Offers</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">What's new</a>
+            </li>
+          </ul>
         </div>
-        <!-- End header for this page -->
 
-        <!-- Left section -->
-        <section class="row shopping-page">
-          <section class="col-12 left-shopping-page">
-
-            <!------------------ Show First Item -------------->
-            <div class="shop-section">
-              <div class="shop-icon">
-                <!-- delete button -->
-                <div class="prod-box">
-                    <i class="fas fa-trash-alt"></i>
-                </div>
-                <!-- start option numbers -->
-                <div class="prod-box">
-                  <select>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                    <option value="11">1</option>
-                    <option value="12">12</option>
-                    <option value="13">13</option>
-                    <option value="14">14</option>
-                    <option value="15">15</option>
-                    <option value="16">16</option>
-                  </select>
-                </div>
-              </div>
-
-              <!-- Start Photos for shopping items -->
-              <div class="shopping-img">
-                <img src="./assets/images/cushion.webp" alt="Cushion" title="Cushion" />
-              </div>
-              <!-- End Photos for shopping items -->
-
-              <!-- Start Info for shopping items -->
-              <div class="shopping-info">
-                <h6>FEJKA</h6>
-                <p>Artificial potted plant with pot</p>
-                <h6>EGP 149</h6>
-                <p class="txt-info">
-                  in/outdoor Succulent, 6 cm 3 pack Article no: 505.197.64
-                </p>
-                <span> Subtotal: <bold>EGP 149</bold> </span>
-              </div>
-              <!-- End Info for shopping items -->
+        <div class="navbar-icons ml-auto">
+          <div class="location-container">
+            <i class="bi bi-shop"></i>
+            <div class="location-text">
+              <small>See opening hours and more</small>
+              <strong>Select store</strong>
             </div>
+          </div>
+          <i class="bi bi-person"></i>
+          <i class="bi bi-heart"></i>
+          <i class="bi bi-minecart-loaded"></i>
+        </div>
 
-            <!------------------ Show Second Item -------------->
-            <div class="shop-section">
-              <div class="shop-icon">
-                <!-- delete button -->
-                <div class="prod-box">
-                    <i class="fas fa-trash-alt"></i>
-                </div>
-                <!-- start option numbers -->
-                <div class="prod-box">
-                  <select>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                    <option value="11">1</option>
-                    <option value="12">12</option>
-                    <option value="13">13</option>
-                    <option value="14">14</option>
-                    <option value="15">15</option>
-                    <option value="16">16</option>
-                  </select>
-                </div>
-              </div>
+        <!-- Toggler -->
+        <button
+          class="navbar-toggler toggler"
+          id="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
 
-              <!-- Start Photos for shopping items -->
-              <div class="shopping-img">
-                <img src="./assets/images/cushion.webp" alt="Cushion" title="Cushion" />
-              </div>
-              <!-- End Photos for shopping items -->
-
-              <!-- Start Info for shopping items -->
-              <div class="shopping-info">
-                <h6>FEJKA</h6>
-                <p>Artificial potted plant with pot</p>
-                <h6>EGP 149</h6>
-                <p class="txt-info">
-                  in/outdoor Succulent, 6 cm 3 pack Article no: 505.197.64
-                </p>
-                <span> Subtotal: <bold>EGP 149</bold> </span>
-              </div>
-              <!-- End Info for shopping items -->
-            </div>
-
-            <!------------------ Show Third Item -------------->
-            <div class="shop-section">
-              <div class="shop-icon">
-                <!-- delete button -->
-                <div class="prod-box">
-                    <i class="fas fa-trash-alt"></i>
-                </div>
-                <!-- start option numbers -->
-                <div class="prod-box">
-                  <select>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                    <option value="11">1</option>
-                    <option value="12">12</option>
-                    <option value="13">13</option>
-                    <option value="14">14</option>
-                    <option value="15">15</option>
-                    <option value="16">16</option>
-                  </select>
-                </div>
-              </div>
-
-              <!-- Start Photos for shopping items -->
-              <div class="shopping-img">
-                <img src="./assets/images/cushion.webp" alt="Cushion" title="Cushion" />
-              </div>
-              <!-- End Photos for shopping items -->
-
-              <!-- Start Info for shopping items -->
-              <div class="shopping-info">
-                <h6>FEJKA</h6>
-                <p>Artificial potted plant with pot</p>
-                <h6>EGP 149</h6>
-                <p class="txt-info">
-                  in/outdoor Succulent, 6 cm 3 pack Article no: 505.197.64
-                </p>
-                <span> Subtotal: <bold>EGP 149</bold> </span>
-              </div>
-              <!-- End Info for shopping items -->
-            </div>
-          </section>
-
-          <!-- Start Last Section -->
-          <div class="last-sec">
+      <!-- Start login Page -->
+      <div class="fav-parent border-top pt-nav">
+        <div class="container">
+          <!-- Start header for this page -->
+          <div class="shopping-header">
+            <h3>Shopping cart</h3>
+            <h6>3 items in shopping bag</h6>
+            <!-- Show price -->
             <div class="shopping-total-price">
               <h6>Total For This Order incl. VAT</h6>
               <h4>EGP 900</h4>
@@ -212,20 +95,201 @@
               <h6></h6>
               <button>Begin Checkout</button>
             </div>
-            <hr>
-
-            <!-- Start Box for pay -->
-            <div class="pay-box">
-              <img src="./assets/images/visa.png" alt="visa" title="visa" />
-              <img src="./assets/images/mastercard.jpg" alt="mastercard" title="mastercard" />
-            </div>
-            <div class="txttxt">
-              <span>Secure purchases with SSL data</span>
-            </div>
           </div>
-          <!-- End Last Section -->
-          
-        </section>
+          <!-- End header for this page -->
+
+          <!-- Left section -->
+          <section class="row shopping-page">
+            <section class="col-12 left-shopping-page">
+              <!------------------ Show First Item -------------->
+              <div class="shop-section">
+                <div class="shop-icon">
+                  <!-- delete button -->
+                  <div class="prod-box">
+                    <i class="fas fa-trash-alt"></i>
+                  </div>
+                  <!-- start option numbers -->
+                  <div class="prod-box">
+                    <select>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="8">8</option>
+                      <option value="9">9</option>
+                      <option value="10">10</option>
+                      <option value="11">1</option>
+                      <option value="12">12</option>
+                      <option value="13">13</option>
+                      <option value="14">14</option>
+                      <option value="15">15</option>
+                      <option value="16">16</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- Start Photos for shopping items -->
+                <div class="shopping-img">
+                  <img
+                    src="./assets/images/cushion.webp"
+                    alt="Cushion"
+                    title="Cushion"
+                  />
+                </div>
+                <!-- End Photos for shopping items -->
+
+                <!-- Start Info for shopping items -->
+                <div class="shopping-info">
+                  <h6>FEJKA</h6>
+                  <p>Artificial potted plant with pot</p>
+                  <h6>EGP 149</h6>
+                  <p class="txt-info">
+                    in/outdoor Succulent, 6 cm 3 pack Article no: 505.197.64
+                  </p>
+                  <span> Subtotal: <bold>EGP 149</bold> </span>
+                </div>
+                <!-- End Info for shopping items -->
+              </div>
+
+              <!------------------ Show Second Item -------------->
+              <div class="shop-section">
+                <div class="shop-icon">
+                  <!-- delete button -->
+                  <div class="prod-box">
+                    <i class="fas fa-trash-alt"></i>
+                  </div>
+                  <!-- start option numbers -->
+                  <div class="prod-box">
+                    <select>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="8">8</option>
+                      <option value="9">9</option>
+                      <option value="10">10</option>
+                      <option value="11">1</option>
+                      <option value="12">12</option>
+                      <option value="13">13</option>
+                      <option value="14">14</option>
+                      <option value="15">15</option>
+                      <option value="16">16</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- Start Photos for shopping items -->
+                <div class="shopping-img">
+                  <img
+                    src="./assets/images/cushion.webp"
+                    alt="Cushion"
+                    title="Cushion"
+                  />
+                </div>
+                <!-- End Photos for shopping items -->
+
+                <!-- Start Info for shopping items -->
+                <div class="shopping-info">
+                  <h6>FEJKA</h6>
+                  <p>Artificial potted plant with pot</p>
+                  <h6>EGP 149</h6>
+                  <p class="txt-info">
+                    in/outdoor Succulent, 6 cm 3 pack Article no: 505.197.64
+                  </p>
+                  <span> Subtotal: <bold>EGP 149</bold> </span>
+                </div>
+                <!-- End Info for shopping items -->
+              </div>
+
+              <!------------------ Show Third Item -------------->
+              <div class="shop-section">
+                <div class="shop-icon">
+                  <!-- delete button -->
+                  <div class="prod-box">
+                    <i class="fas fa-trash-alt"></i>
+                  </div>
+                  <!-- start option numbers -->
+                  <div class="prod-box">
+                    <select>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="8">8</option>
+                      <option value="9">9</option>
+                      <option value="10">10</option>
+                      <option value="11">1</option>
+                      <option value="12">12</option>
+                      <option value="13">13</option>
+                      <option value="14">14</option>
+                      <option value="15">15</option>
+                      <option value="16">16</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- Start Photos for shopping items -->
+                <div class="shopping-img">
+                  <img
+                    src="./assets/images/cushion.webp"
+                    alt="Cushion"
+                    title="Cushion"
+                  />
+                </div>
+                <!-- End Photos for shopping items -->
+
+                <!-- Start Info for shopping items -->
+                <div class="shopping-info">
+                  <h6>FEJKA</h6>
+                  <p>Artificial potted plant with pot</p>
+                  <h6>EGP 149</h6>
+                  <p class="txt-info">
+                    in/outdoor Succulent, 6 cm 3 pack Article no: 505.197.64
+                  </p>
+                  <span> Subtotal: <bold>EGP 149</bold> </span>
+                </div>
+                <!-- End Info for shopping items -->
+              </div>
+            </section>
+
+            <!-- Start Last Section -->
+            <div class="last-sec">
+              <div class="shopping-total-price">
+                <h6>Total For This Order incl. VAT</h6>
+                <h4>EGP 900</h4>
+              </div>
+              <!-- Button for Checkout -->
+              <div class="shopping-total-price">
+                <h6></h6>
+                <button>Begin Checkout</button>
+              </div>
+              <hr />
+
+              <!-- Start Box for pay -->
+              <div class="pay-box">
+                <img src="./assets/images/visa.png" alt="visa" title="visa" />
+                <img
+                  src="./assets/images/mastercard.jpg"
+                  alt="mastercard"
+                  title="mastercard"
+                />
+              </div>
+              <div class="txttxt">
+                <span>Secure purchases with SSL data</span>
+              </div>
+            </div>
+            <!-- End Last Section -->
+          </section>
+        </div>
       </div>
     </div>
 

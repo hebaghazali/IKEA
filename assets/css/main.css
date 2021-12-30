@@ -8,7 +8,7 @@
 
 @font-face {
   font-family: "Noto Sans";
-  src: url("../../fonts/NotoSans/NotoSans-Regular.ttf");
+  src: url("../fonts/NotoSans/NotoSans-Regular.ttf");
 }
 body {
   font-family: "Noto Sans", sans-serif;
@@ -24,6 +24,35 @@ body {
   font-size: 1.2rem;
 }
 
+.mt-nav {
+  margin-top: 3.75rem;
+}
+
+.mt-nav-2 {
+  margin-top: 4.5rem;
+}
+
+.pt-nav {
+  padding-top: 3.8rem;
+}
+
+.ml-auto {
+  margin-left: auto !important;
+}
+
+.w-49 {
+  width: 49%;
+}
+
+@media only screen and (max-width: 815px) {
+  .mt-nav-2 {
+    margin-top: 10rem;
+  }
+
+  .pt-nav {
+    padding-top: 4.5rem;
+  }
+}
 @media only screen and (max-width: 750px) {
   .body-container {
     width: 98vw;
@@ -52,6 +81,13 @@ body {
   text-decoration: none;
   color: black;
 }
+.category-card img {
+  border-radius: 0%;
+  -webkit-border-radius: 0%;
+  -moz-border-radius: 0%;
+  -ms-border-radius: 0%;
+  -o-border-radius: 0%;
+}
 .category-card:hover {
   text-decoration: underline;
   color: black;
@@ -60,17 +96,30 @@ body {
   padding-left: 0px;
 }
 
+.row-card-holder {
+  margin: 10% 0%;
+}
 .row-card-holder .row-card {
-  font-family: "Noto Sans";
+  text-decoration: none;
+  -moz-text-decoration: none;
+  margin-top: 2%;
   font-size: 1.5rem;
+  font-weight: 900;
   display: flex;
   flex-direction: row;
 }
+.row-card-holder .row-card:hover {
+  text-decoration: underline;
+  -moz-text-decoration: underline;
+  text-decoration-color: #F5F5F5;
+  -moz-text-decoration-color: #F5F5F5;
+}
 .row-card-holder .row-card .card-right {
   padding: 20px;
-  background-color: burlywood;
+  background-color: #204b7e;
   display: flex;
   flex-direction: column;
+  color: #F5F5F5;
 }
 .row-card-holder .row-card .card-right .card-btn {
   border-radius: 50%;
@@ -106,16 +155,25 @@ body {
   color: #484848;
 }
 
+.sales-button img {
+  width: 100%;
+}
+
 .header-messages {
   min-height: 40px;
 }
 
+.navbar {
+  width: 92vw;
+  left: auto;
+  right: 2.5rem;
+}
 .navbar > * {
-  margin-left: 2rem;
+  margin-left: 1.2rem;
 }
 .navbar .navbar-brand {
   flex-basis: 8.33%;
-  margin-left: 0;
+  margin: 0;
   display: flex;
   justify-content: center;
 }
@@ -135,7 +193,7 @@ body {
 }
 .navbar .navbar-collapse {
   flex-grow: 0;
-  flex-basis: 25%;
+  flex-basis: 26%;
 }
 .navbar .navbar-search {
   padding: 1rem 3rem 1rem 2rem;
@@ -181,31 +239,54 @@ body {
   }
 }
 @media only screen and (max-width: 815px) {
+  .navbar {
+    width: 95vw;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
   .navbar .navbar-search {
     order: 1;
     flex-basis: 100%;
+    margin: 0;
   }
   .navbar .navbar-icons {
     flex-basis: 20%;
     margin-left: auto;
   }
 }
+.image-gallery {
+  margin: 8% 0%;
+}
+.image-gallery img {
+  max-width: 100%;
+  min-width: 100%;
+}
+.image-gallery .image-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.image-gallery .image-column .short-img {
+  height: 41%;
+}
+.image-gallery .image-column .long-img {
+  height: 55%;
+}
+.image-gallery .image-column img {
+  max-width: 100%;
+  min-width: 100%;
+}
+
 .head-title {
-  margin: 1.875rem 0rem 1.875rem 0.3rem;
   font-size: 1.5rem;
+  font-weight: 900;
 }
 
 .small-text {
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   color: #484848;
-  margin: -1.875rem 0.3rem 1.875rem;
   width: 70%;
-}
-
-.filter-row {
-  padding: 10px 0;
-  box-shadow: 5px 10px white;
-  background-color: white;
 }
 
 .filter-btn {
@@ -214,15 +295,6 @@ body {
   -moz-border-radius: 20px;
   -ms-border-radius: 20px;
   -o-border-radius: 20px;
-}
-.filter-btn i {
-  margin-left: 10px;
-}
-
-.description {
-  color: #757575;
-  line-height: 1.6em;
-  margin-top: 30px;
 }
 
 .log-parent {
@@ -473,4 +545,28 @@ body {
   text-align: center;
 }
 
+<<<<<<< HEAD
+=======
+.see-all-btn {
+  border-radius: 30px;
+  padding: 15px 50px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  margin-top: 70px;
+  margin-top: 0;
+  margin-bottom: 15px;
+  padding: 10px 15px;
+  outline: solid;
+  outline-width: 1px;
+  outline-color: #F5F5F5;
+  background-color: white;
+  font-size: 0.75rem;
+  font-weight: 900;
+}
+.see-all-btn:hover {
+  outline-color: #484848;
+}
+
+>>>>>>> 24cc40848f926d13941f31ab8c2276b89ae17f0c
 /*# sourceMappingURL=main.css.map */
