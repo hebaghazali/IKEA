@@ -289,12 +289,27 @@ body {
   width: 70%;
 }
 
+.filter-row {
+  padding: 10px 0;
+  box-shadow: 5px 10px white;
+  background-color: white;
+}
+
 .filter-btn {
   border-radius: 20px;
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
   -ms-border-radius: 20px;
   -o-border-radius: 20px;
+}
+.filter-btn i {
+  margin-left: 10px;
+}
+
+.description {
+  color: #757575;
+  line-height: 1.6em;
+  margin-top: 30px;
 }
 
 .log-parent {
@@ -545,8 +560,6 @@ body {
   text-align: center;
 }
 
-<<<<<<< HEAD
-=======
 .see-all-btn {
   border-radius: 30px;
   padding: 15px 50px;
@@ -568,5 +581,4 @@ body {
   outline-color: #484848;
 }
 
->>>>>>> 24cc40848f926d13941f31ab8c2276b89ae17f0c
 /*# sourceMappingURL=main.css.map */
