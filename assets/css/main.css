@@ -55,7 +55,6 @@ body {
 }
 @media only screen and (max-width: 750px) {
   .body-container {
-    width: 98vw;
     margin: auto;
   }
 }
@@ -78,7 +77,8 @@ body {
 .category-card {
   border: none;
   text-decoration: none;
-  color: black;
+  color: #484848;
+  font-size: 0.9rem;
 }
 .category-card img {
   border-radius: 0%;
@@ -133,8 +133,9 @@ body {
 }
 
 .step-card {
-  color: #484848;
   border: none;
+  color: #484848;
+  font-size: 0.9rem;
 }
 .step-card .step-body {
   text-align: center;
@@ -147,6 +148,8 @@ body {
 }
 .step-card .step-body .step-title {
   color: black;
+  font-size: 0.9rem;
+  font-weight: 900;
 }
 .step-card .step-body .step-link {
   text-decoration-color: #484848;
@@ -283,7 +286,7 @@ body {
 }
 
 .small-text {
-  font-size: 0.75rem;
+  font-size: 0.9rem;
   color: #484848;
   width: 70%;
 }
@@ -558,11 +561,81 @@ body {
   outline-width: 1px;
   outline-color: #F5F5F5;
   background-color: white;
-  font-size: 0.75rem;
+  font-size: 0.9rem;
   font-weight: 900;
 }
 .see-all-btn:hover {
   outline-color: #484848;
+}
+
+.images-cards-container {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  display: flex;
+  flex-wrap: nowrap;
+  height: 300px;
+  padding-bottom: 10px;
+}
+.images-cards-container::-webkit-scrollbar {
+  height: 3px;
+}
+.images-cards-container::-webkit-scrollbar-track {
+  background-color: #F5F5F5;
+}
+.images-cards-container::-webkit-scrollbar-thumb {
+  background: black;
+}
+.images-cards-container .image-card {
+  position: relative;
+  margin-right: 50px;
+}
+.images-cards-container .image-card img {
+  max-height: 100%;
+}
+
+.image-container {
+  position: relative;
+}
+.image-container .on-image-btn {
+  position: absolute;
+  border-radius: 50%;
+  -webkit-border-radius: 64px;
+  -moz-border-radius: 64px;
+  -ms-border-radius: 64px;
+  -o-border-radius: 64px;
+  background: white;
+  box-shadow: 0px 0px 0px 10px #0000002e;
+  width: 0.75rem;
+  height: 0.75rem;
+}
+.image-container .on-image-btn:hover {
+  box-shadow: 0px 0px 0px 8px #00000067;
+  width: 0.6rem;
+  height: 0.6rem;
+}
+.image-container .image1-position {
+  top: 15%;
+  right: 30%;
+}
+.image-container .image2-position {
+  top: 50%;
+  right: 75%;
+}
+.image-container .image3-position {
+  top: 70%;
+  right: 60%;
+}
+.image-container .image4-position {
+  top: 80%;
+  right: 25%;
+}
+.image-container .image5-position {
+  top: 60%;
+  right: 25%;
+}
+.image-container .image6-position {
+  top: 35%;
+  right: 18%;
 }
 
 /*# sourceMappingURL=main.css.map */
