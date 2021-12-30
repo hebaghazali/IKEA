@@ -18,6 +18,7 @@ body {
   width: 92vw;
   margin-left: auto;
   margin-right: 2.5rem;
+  padding-left: 4rem;
 }
 
 .bi {
@@ -45,6 +46,10 @@ body {
 }
 
 @media only screen and (max-width: 815px) {
+  .body-container {
+    padding-left: 0;
+  }
+
   .mt-nav-2 {
     margin-top: 10rem;
   }
@@ -96,32 +101,28 @@ body {
   padding-left: 0px;
 }
 
-.row-card-holder {
-  margin: 10% 0%;
-}
-.row-card-holder .row-card {
+.row-card {
   text-decoration: none;
   -moz-text-decoration: none;
-  margin-top: 2%;
   font-size: 1.5rem;
   font-weight: 900;
   display: flex;
   flex-direction: row;
 }
-.row-card-holder .row-card:hover {
+.row-card:hover {
   text-decoration: underline;
   -moz-text-decoration: underline;
   text-decoration-color: #F5F5F5;
   -moz-text-decoration-color: #F5F5F5;
 }
-.row-card-holder .row-card .card-right {
+.row-card .card-right {
   padding: 20px;
   background-color: #204b7e;
   display: flex;
   flex-direction: column;
   color: #F5F5F5;
 }
-.row-card-holder .row-card .card-right .card-btn {
+.row-card .card-right .card-btn {
   border-radius: 50%;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
@@ -603,10 +604,39 @@ body {
 }
 .images-cards-container .image-card {
   position: relative;
-  margin-right: 50px;
+  display: inline-flex;
 }
 .images-cards-container .image-card img {
+  margin: 0 auto;
   max-height: 100%;
+  max-width: 100%;
+}
+.images-cards-container .image-card .button-holder {
+  width: 100%;
+  position: absolute;
+  justify-content: center;
+  text-align: center;
+  bottom: 1.5rem;
+}
+.images-cards-container .image-card .button-holder button {
+  border-radius: 30px;
+  padding: 15px 50px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  margin-top: 70px;
+  margin-top: 0;
+  margin-bottom: 15px;
+  padding: 10px 15px;
+  outline: solid;
+  outline-width: 1px;
+  outline-color: #F5F5F5;
+  background-color: white;
+  font-size: 0.9rem;
+  font-weight: 900;
+}
+.images-cards-container .image-card .button-holder button:hover {
+  background-color: #F5F5F5;
 }
 
 .image-container {

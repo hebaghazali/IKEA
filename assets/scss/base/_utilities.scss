@@ -2,6 +2,7 @@
   width: 92vw;
   margin-left: auto;
   margin-right: 2.5rem;
+  padding-left: 4rem;
 }
 
 .bi {
@@ -29,6 +30,9 @@
 }
 
 @media only screen and (max-width: 815px) {
+  .body-container{
+    padding-left: 0;
+  }
   .mt-nav {
     // margin-top: 10rem;
   }

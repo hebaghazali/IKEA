@@ -5,13 +5,30 @@
         @include SeeAllBtnHover;
     }
 }
-.images-cards-container{
+.images-cards-container {
     @include slidder;
-    .image-card{
+
+    .image-card {
         position: relative;
-        margin-right: 50px;
-        img{
-            max-height:100%;
+        display: inline-flex;
+        img {
+            margin: 0 auto;
+            max-height: 100%;
+            max-width: 100%;
+        }
+        .button-holder {
+            width: 100%;
+            position: absolute;
+            justify-content: center;
+            text-align: center;
+            bottom: 1.5rem;
+
+            button {
+                @include SeeAllBtn;
+                &:hover{
+                    background-color: $secondary-color;
+                }
+            }
         }
     }
 }
