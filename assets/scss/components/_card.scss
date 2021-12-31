@@ -8,22 +8,22 @@
         overflow-x: hidden;
         height: fit-content;
     }
-    .category-card {
-        border: none;
-        text-decoration: none;
-        color: $small-text-color;
-        font-size: $small-text-size;
-        img{
-            @include radius(0px);
-        }
-        &:hover {
-            text-decoration: underline;
-            color: $default-text-color;
-        }
-    
-        .category-body {
-            padding-left: 0px;
-        }
+}
+.category-card {
+    border: none;
+    text-decoration: none;
+    color: $small-text-color;
+    font-size: $small-text-size;
+    img{
+        @include radius(0px);
+    }
+    &:hover {
+        text-decoration: underline;
+        color: $default-text-color;
+    }
+
+    .category-body {
+        padding-left: 0px;
     }
 }
 

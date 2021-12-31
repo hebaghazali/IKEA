@@ -135,24 +135,25 @@ body {
     height: fit-content;
   }
 }
-.categories-slidder .category-card {
+
+.category-card {
   border: none;
   text-decoration: none;
   color: #484848;
   font-size: 0.8rem;
 }
-.categories-slidder .category-card img {
+.category-card img {
   border-radius: 0px;
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
   -ms-border-radius: 0px;
   -o-border-radius: 0px;
 }
-.categories-slidder .category-card:hover {
+.category-card:hover {
   text-decoration: underline;
   color: #111;
 }
-.categories-slidder .category-card .category-body {
+.category-card .category-body {
   padding-left: 0px;
 }
 
@@ -1059,6 +1060,18 @@ footer .legal-links li {
 .image-container .image6-position {
   top: 35%;
   right: 18%;
+}
+
+.message-btn {
+  background-color: #407AB1;
+}
+
+.message-form input, .message-form select {
+  padding: 3%;
+}
+.message-form input:focus, .message-form select:focus {
+  border-color: #0058A3;
+  box-shadow: none;
 }
 
 /*# sourceMappingURL=main.css.map */
