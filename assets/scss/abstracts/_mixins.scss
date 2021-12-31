@@ -10,7 +10,13 @@
 
 @mixin HoverButton {
   @include HandleButton();
-  background-color: rgb(218, 216, 216);
+  background-color: #dad8d8;
+}
+
+@mixin borderHover {
+  &:hover {
+    border: 1px solid #868686;
+  }
 }
 
 @mixin HandleParagraph {

@@ -7,20 +7,24 @@
 }
 
 a {
-  color: black;
+  color: #111;
   text-decoration: none;
 }
 a:hover {
-  color: black;
+  color: #111;
   text-decoration: underline;
-  text-decoration-color: black;
-  -moz-text-decoration-color: black;
+  text-decoration-color: #111;
+  -moz-text-decoration-color: #111;
 }
 
 button {
   border: none;
   outline: none;
   background-color: transparent;
+}
+
+li {
+  list-style: none;
 }
 
 @font-face {
@@ -50,8 +54,12 @@ body {
   margin-top: 4.5rem;
 }
 
+.mt-nav-3 {
+  margin-top: 6rem;
+}
+
 .pt-nav {
-  padding-top: 3.8rem;
+  padding-top: 2rem;
 }
 
 .ml-auto {
@@ -113,7 +121,7 @@ body {
 }
 .category-card:hover {
   text-decoration: underline;
-  color: black;
+  color: #111;
 }
 .category-card .category-body {
   padding-left: 0px;
@@ -171,7 +179,7 @@ body {
   height: 1.875rem;
 }
 .step-card .step-body .step-title {
-  color: black;
+  color: #111;
   font-size: 0.8rem;
   font-weight: 900;
 }
@@ -333,7 +341,7 @@ body {
 }
 
 .header-messages {
-  min-height: 40px;
+  min-height: 2.5rem;
 }
 
 .navbar {
@@ -360,7 +368,7 @@ body {
   outline: none;
 }
 .navbar .navbar-nav .nav-item a {
-  color: black;
+  color: #111;
   font-size: 0.875rem;
   padding: 0 1rem;
   font-weight: 700;
@@ -475,10 +483,110 @@ body {
   font-weight: 900;
 }
 
+footer {
+  background-color: #F5F5F5;
+  padding: 5rem 4rem 0 11%;
+  margin-top: 5rem;
+}
+footer ul {
+  padding: 0;
+}
+footer ul p {
+  color: #111;
+  font-weight: 700;
+  line-height: 2.2rem;
+}
+footer ul li {
+  color: #484848;
+  margin-bottom: 0.75rem;
+  font-size: 0.875rem;
+}
+footer .social-media-links li {
+  padding-right: 3rem;
+}
+footer .social-media-links li a {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #DFDFDF;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+footer .social-media-links li a:hover {
+  border: 1px solid #868686;
+}
+footer .social-media-links li a i {
+  font-size: 1.4rem;
+  color: #484848;
+}
+footer .language-selector {
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+footer .language-selector .country-selector {
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+  border: 1px solid #DFDFDF;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+}
+footer .language-selector .country-selector:hover {
+  border: 1px solid #868686;
+}
+footer .language-selector .language-switch select {
+  font-weight: 700;
+  background-color: transparent;
+  border: 1px solid #DFDFDF;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+}
+footer .language-selector .language-switch select:hover {
+  border: 1px solid #868686;
+}
+footer .copyright p {
+  font-size: 0.8rem;
+}
+footer .legal-links {
+  font-size: 0.8rem;
+}
+footer .legal-links li {
+  padding-left: 1rem;
+}
+
+@media only screen and (max-width: 1200px) {
+  footer {
+    padding: 5rem 4% 0;
+  }
+}
+@media only screen and (max-width: 800px) {
+  footer .footer-social-languages {
+    flex-direction: column;
+  }
+  footer .footer-social-languages .country-selector {
+    margin-left: 0;
+  }
+  footer .footer-info {
+    flex-direction: column;
+  }
+  footer .footer-info li:first-child {
+    padding-left: 0;
+  }
+}
 .filter-row {
   padding: 10px 0;
-  box-shadow: 5px 10px white;
   background-color: white;
+  border-bottom: 1px solid #DFDFDF;
 }
 
 .filter-btn {
@@ -496,7 +604,7 @@ body {
   background-color: #e8e8e8;
 }
 .filter-btn:active {
-  background-color: black;
+  background-color: #111;
   color: white;
 }
 
@@ -506,9 +614,19 @@ body {
   margin-top: 30px;
 }
 
+.section-title {
+  margin: 1.875rem 0;
+}
+
 .prod-container {
   padding: 1rem 0.875rem;
-  border-top: 1px solid #DFDFDF;
+  border-bottom: 1px solid #DFDFDF;
+}
+.prod-container header {
+  opacity: 0;
+}
+.prod-container:hover header {
+  opacity: 1;
 }
 
 @media only screen and (max-width: 576px) {
@@ -827,7 +945,7 @@ body {
   background-color: #F5F5F5;
 }
 .images-cards-container::-webkit-scrollbar-thumb {
-  background: black;
+  background: #111;
 }
 .images-cards-container .image-card {
   position: relative;
