@@ -86,15 +86,17 @@
   padding: 10px 15px;
   outline: solid;
   outline-width: 1px;
-  outline-color: $secondary-color;
+  outline-color: $border-color;
   background-color: $default-background-color;
   font-size: $small-text-size;
   font-weight: $title-font-weight;
+  &:hover{
+    outline-color: $small-text-color;
+  }
 }
 
-@mixin SeeAllBtnHover {
-  outline-color: $small-text-color;
-}
+// @mixin SeeAllBtnHover {
+// }
 
 @mixin slidder {
   overflow-x: scroll;

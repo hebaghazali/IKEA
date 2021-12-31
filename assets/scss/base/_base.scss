@@ -9,6 +9,12 @@
 a {
   color: $default-text-color;
   text-decoration: none;
+  &:hover{
+    color: $default-text-color;
+    text-decoration: underline;
+    text-decoration-color: $default-text-color;
+    -moz-text-decoration-color: $default-text-color;
+  }
 }
 
 button {

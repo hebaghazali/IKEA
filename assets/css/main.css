@@ -10,6 +10,12 @@ a {
   color: black;
   text-decoration: none;
 }
+a:hover {
+  color: black;
+  text-decoration: underline;
+  text-decoration-color: black;
+  -moz-text-decoration-color: black;
+}
 
 button {
   border: none;
@@ -249,6 +255,81 @@ body {
 .image-container .image6-position {
   top: 35%;
   right: 18%;
+}
+
+.menu-btn {
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  position: fixed;
+}
+.menu-btn:hover {
+  background-color: #F5F5F5;
+}
+
+@media only screen and (max-width: 890px) {
+  .menu-bar {
+    width: 100vw;
+  }
+}
+@media screen and (min-width: 890px) {
+  .menu-bar {
+    width: 35vw;
+  }
+  .menu-bar .menu-body {
+    padding-left: 30%;
+    padding-right: 5%;
+  }
+}
+.menu-bar .menu-header {
+  justify-content: start;
+}
+.menu-bar .menu-header img {
+  margin-left: 30%;
+}
+.menu-bar .menu-body ul {
+  list-style-type: none;
+  line-height: 4rem;
+}
+.menu-bar .menu-body ul li {
+  font-size: 1.95rem;
+  font-weight: 900;
+}
+.menu-bar .menu-body .small-text-list {
+  list-style-type: none;
+  line-height: 2rem;
+}
+.menu-bar .menu-body .small-text-list li {
+  font-size: 0.8rem;
+  font-weight: 450;
+  color: #757575;
+}
+.menu-bar .menu-body .selector-btn {
+  border-radius: 30px;
+  padding: 15px 50px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  margin-top: 70px;
+  margin-top: 0;
+  margin-bottom: 15px;
+  padding: 10px 15px;
+  outline: solid;
+  outline-width: 1px;
+  outline-color: #DFDFDF;
+  background-color: white;
+  font-size: 0.8rem;
+  font-weight: 900;
+  padding: 2px 10px;
+}
+.menu-bar .menu-body .selector-btn:hover {
+  outline-color: #484848;
+}
+
+.other-content {
+  display: none;
 }
 
 .header-messages {
@@ -722,7 +803,7 @@ body {
   padding: 10px 15px;
   outline: solid;
   outline-width: 1px;
-  outline-color: #F5F5F5;
+  outline-color: #DFDFDF;
   background-color: white;
   font-size: 0.8rem;
   font-weight: 900;
@@ -776,10 +857,13 @@ body {
   padding: 10px 15px;
   outline: solid;
   outline-width: 1px;
-  outline-color: #F5F5F5;
+  outline-color: #DFDFDF;
   background-color: white;
   font-size: 0.8rem;
   font-weight: 900;
+}
+.images-cards-container .image-card .button-holder button:hover {
+  outline-color: #484848;
 }
 .images-cards-container .image-card .button-holder button:hover {
   background-color: #F5F5F5;

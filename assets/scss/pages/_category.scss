@@ -1,9 +1,5 @@
 .see-all-btn {
     @include SeeAllBtn;
-
-    &:hover {
-        @include SeeAllBtnHover;
-    }
 }
 
 .images-cards-container {
