@@ -391,8 +391,8 @@ body {
 
 .filter-row {
   padding: 10px 0;
-  box-shadow: 5px 10px white;
   background-color: white;
+  border-bottom: 1px solid #DFDFDF;
 }
 
 .filter-btn {
@@ -420,9 +420,19 @@ body {
   margin-top: 30px;
 }
 
+.section-title {
+  margin: 1.875rem 0;
+}
+
 .prod-container {
   padding: 1rem 0.875rem;
-  border-top: 1px solid #DFDFDF;
+  border-bottom: 1px solid #DFDFDF;
+}
+.prod-container header {
+  opacity: 0;
+}
+.prod-container:hover header {
+  opacity: 1;
 }
 
 @media only screen and (max-width: 576px) {
