@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+        integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous" />
+    <link rel="stylesheet" href="../assets/css/main.css" />
+    <link rel="shortcut icon" href="../assets/images/ikea-logo.png" />
+    <title>Stores</title>
+</head>
+
+<body>
+    <!--#region sidebar menu -->
+    <button class="menu-btn mx-2 my-4" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
+        aria-controls="offcanvasExample">
+        <i class="bi bi-list"></i>
+    </button>
+
+    <div class="offcanvas offcanvas-start menu-bar" tabindex="-1" id="offcanvasExample"
+        aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header menu-header">
+            <button type="button" class="menu-btn" data-bs-dismiss="offcanvas" onclick="{ShowMain()}"><i
+                    class="bi bi-x"></i></button>
+            <img src="https://www.ikea.com/eg/en/static/ikea-logo.f7d9229f806b59ec64cb.svg" />
+        </div>
+        <!-- main body -->
+        <div id="main-menu" class="offcanvas-body menu-body">
+            <ul>
+                <li onclick="{ShowDiv('p-content')}"><a href="#">Products</a></li>
+                <li onclick="{ShowDiv('r-content')}"><a href="#">Rooms</a></li>
+                <li onclick="{ShowDiv('o-content')}"><a href="#">Offers</a></li>
+                <li onclick="{ShowDiv('w-content')}"><a href="#">What's new</a></li>
+            </ul>
+            <ul class="small-text-list">
+                <li><a href="stores.html">Stores</a></li>
+                <li><a href="conactUs.html">Contact us</a></li>
+            </ul>
+            <div class="d-flex flex-row justify-content-around">
+                <select type="button" class="selector-btn">
+                    <i class="fas fa-chevron-down"></i>
+                    <option>English</option>
+                    <option>العربية</option>
+                </select>
+                <button class="selector-btn">
+                    <i class="bi bi-globe"></i>
+                    Change country
+                </button>
+            </div>
+        </div>
+
+        <!-- product body -->
+        <div id="p-content" class="offcanvas-body menu-body other-content">
+            <div class="d-flex flex-row">
+                <button class="position-sticky menu-btn" onclick="{ShowMain()}"><i
+                        class="bi bi-arrow-left-short"></i></button>
+                <span class="head-title">Products</span>
+            </div>
+            <ul class="small-text-list my-4">
+                <li><a href="category.html">Furniture</a></li>
+                <li><a href="#">Kitchen & appliances</a></li>
+                <li><a href="#">Beds & mattresses</a></li>
+                <li><a href="#">Storage & organisation</a></li>
+                <li><a href="#">Textiles</a></li>
+                <li><a href="#">Decoration</a></li>
+                <li><a href="#">Bathroom products</a></li>
+                <li><a href="#">Outdoor products</a></li>
+                <li><a href="#">Lighting</a></li>
+                <li><a href="#">Rugs, mats & flooring</a></li>
+                <li><a href="#">Baby & children</a></li>
+                <li><a href="#">More</a></li>
+            </ul>
+        </div>
+
+        <!-- Room body -->
+        <div id="r-content" class="offcanvas-body menu-body other-content">
+            <div class="d-flex flex-row">
+                <button class="position-sticky menu-btn" onclick="{ShowMain()}"><i
+                        class="bi bi-arrow-left-short"></i></button>
+                <span class="head-title">Rooms</span>
+            </div>
+            <div class="row mx-auto g-4 my-4">
+                <a class="card category-card col-3 col-md-5" href="#">
+                    <img src="https://www.ikea.com/images/an-enhet-washbasin-and-cabinet-and-open-shelving-with-a-roun-08edae8f788e473a9605e4b398900cb6.jpg?f=xxxs"
+                        class="card-img-top" alt="..." />
+                    <div class="card-body category-body">
+                        <p class="card-text">Bathroom</p>
+                    </div>
+                </a>
+                <a class="card category-card col-3 col-md-5" href="#">
+                    <img src="https://www.ikea.com/images/a-vadheim-upholstered-bed-with-vitkloever-bed-linen-stands-i-18d599765b42ee3396abb67b8a245606.jpg?f=xxxs"
+                        class="card-img-top" alt="..." />
+                    <div class="card-body category-body">
+                        <p class="card-text">Bedroom</p>
+                    </div>
+                </a>
+                <a class="card category-card col-3 col-md-5" href="#">
+                    <img src="https://www.ikea.com/images/a-tuffing-bunk-bed-in-a-childrens-room-with-a-football-and-t-57c6d97b0e97fa11316c8fea272a7f0d.jpg?f=xxxs"
+                        class="card-img-top" alt="..." />
+                    <div class="card-body category-body">
+                        <p class="card-text">Children's room</p>
+                    </div>
+                </a>
+                <a class="card category-card col-3 col-md-5" href="#">
+                    <img src="https://www.ikea.com/images/a-dining-area-by-a-window-with-a-large-dining-table-six-meta-46845de50b0ad73d0b9731140141b6e3.jpg?f=xxxs"
+                        class="card-img-top" alt="..." />
+                    <div class="card-body category-body">
+                        <p class="card-text">Dining</p>
+                    </div>
+                </a>
+                <a class="card category-card col-3 col-md-5" href="#">
+                    <img src="https://www.ikea.com/images/a-hallway-where-a-pinnig-coat-rack-and-shoe-bench-stand-agai-2dc4a103bc0ac4158557a90ebc0aadd3.jpg?f=xxxs"
+                        class="card-img-top" alt="..." />
+                    <div class="card-body category-body">
+                        <p class="card-text">Hallway</p>
+                    </div>
+                </a>
+                <a class="card category-card col-3 col-md-5" href="#">
+                    <img src="https://www.ikea.com/images/an-industrial-style-studio-at-home-with-high-ceilings-furnit-d6ba3f797a6cbed87478bad1d8dbd652.jpg?f=xxxs"
+                        class="card-img-top" alt="..." />
+                    <div class="card-body category-body">
+                        <p class="card-text">Home office</p>
+                    </div>
+                </a>
+                <a class="card category-card col-3 col-md-5" href="#">
+                    <img src="https://www.ikea.com/images/a-contemporary-and-decluttered-kitchen-with-bodarp-kitchen-f-0fd7f2c13233700c427237c449cc2982.jpg?f=xxxs"
+                        class="card-img-top" alt="..." />
+                    <div class="card-body category-body">
+                        <p class="card-text">Kitchen</p>
+                    </div>
+                </a>
+                <a class="card category-card col-3 col-md-5" href="#">
+                    <img src="https://www.ikea.com/images/an-aepplaryd-sofa-with-three-coffee-tables-in-front-on-a-blu-ad40b43a98816f1805e40c1d7ef6d681.jpg?f=xxxs"
+                        class="card-img-top" alt="..." />
+                    <div class="card-body category-body">
+                        <p class="card-text">Living room</p>
+                    </div>
+                </a>
+                <a class="card category-card col-3 col-md-5" href="#">
+                    <img src="https://www.ikea.com/images/a-small-balcony-with-a-wooden-table-and-chairs-artificial-gr-f6ba826dc19b000e2975955fd78e45a4.jpg?f=xxxs"
+                        class="card-img-top" alt="..." />
+                    <div class="card-body category-body">
+                        <p class="card-text">Garden & balcony</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- offers body -->
+        <div id="o-content" class="offcanvas-body menu-body other-content">
+            <div class="d-flex flex-row">
+                <button class="position-sticky menu-btn" onclick="{ShowMain()}"><i
+                        class="bi bi-arrow-left-short"></i></button>
+                <span class="head-title">Offers</span>
+            </div>
+            <ul class="small-text-list my-4">
+                <li><a href="#">New Lower Price</a></li>
+                <li><a href="#">Sale</a></li>
+            </ul>
+        </div>
+
+        <!-- what's new body -->
+        <div id="w-content" class="offcanvas-body menu-body other-content">
+            <div class="d-flex flex-row">
+                <button class="position-sticky menu-btn" onclick="{ShowMain()}"><i
+                        class="bi bi-arrow-left-short"></i></button>
+                <span class="head-title">Offers</span>
+            </div>
+            <ul class="small-text-list my-4">
+                <li><a href="#">New Products</a></li>
+                <li><a href="#">Stories</a></li>
+            </ul>
+        </div>
+
+    </div>
+    <!--#endregion -->
+
+    <div class="body-container">
+        <div class="header-messages"></div>
+        <div class="navbar navbar-expand-xl navbar-light fixed-top bg-white">
+            <a href="#" class="navbar-brand">
+                <img class="logo" src="../assets/images/ikea-logo.svg" alt="logo" /></a>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Rooms</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Offers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">What's new</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="navbar-search">
+                <div class="search-box">
+                    <i class="bi bi-search"></i>
+                    <input type="text" placeholder="What are you looking for?" />
+                    <i class="bi bi-camera"></i>
+                </div>
+            </div>
+            <div class="navbar-icons">
+                <div class="location-container">
+                    <i class="bi bi-shop"></i>
+                    <div class="location-text">
+                        <small>See opening hours and more</small>
+                        <strong>Select store</strong>
+                    </div>
+                </div>
+                <i class="bi bi-person"></i>
+                <i class="bi bi-heart"></i>
+                <i class="bi bi-minecart-loaded"></i>
+            </div>
+
+            <!-- Toggler -->
+            <button class="navbar-toggler toggler" id="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+
+        <!-- header -->
+        <div class="mt-nav-2 pt-nav border-top">
+            <div class="row big-title col-12 col-md-7 p-2">
+                Choose your nearest IKEA store
+            </div>
+        </div>
+        <div class="row small-text col-12 col-md-7 p-2">
+            Select your local IKEA store to see the location, opening hours, offers & events, services, and more.
+        </div>
+
+        <!-- locations accordian -->
+        <div class="accordion accordion-flush my-5" id="accordionFlushExample">
+            <div class="accordion-item p-4">
+              <h2 class="accordion-header" id="flush-headingOne">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                    IKEA Cairo store
+                </button>
+              </h2>
+              <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">
+                    <div class="row small-text col-12 col-md-7 p-2">
+                        We are glad that you have chosen our store. Here you will find all information about IKEA Cairo store and our local offer.</div>
+                    <img src="https://www.ikea.com/images/cairo-store-db07cb6826c51fb59f479c5ec2d140b1.jpg?f=xxxl" width="100%"/>
+                    <div class="row my-5 ">
+                        <iframe class="col-sm-6" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1727.1296683817493!2d31.4073508!3d30.0294169!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x38e6fd139b6eb6ee!2sIKEA%20-%20Cairo%20Festival%20City!5e0!3m2!1sen!2seg!4v1640968514950!5m2!1sen!2seg" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        <p class="small-text col-sm-6 col-lg-3">
+                            IKEA Cairo store, Cairo Festival City
+                            Ring Road, 5th settlement, P.O. Box 11835
+                            <br><br>
+                            <a href="https://www.google.com/maps/place/IKEA+-+Cairo+Festival+City/@30.0294169,31.4073508,18z/data=!4m5!3m4!1s0x0:0x38e6fd139b6eb6ee!8m2!3d30.0295603!4d31.4072651">Get direction</a>
+                            <br><br>
+                            <strong>Hotline: </strong>16576
+                            <br><br>
+                            <strong>Store, Bistro, and Swedish Food Market: </strong>
+                            <br><br>
+                            Saturday - Wednesday- 10:00 AM to 10:00 PM
+                            Thursday - Friday- 10:00 AM to 11:00 PM
+                            <br><br> <br>
+                            <strong>Restaurant,</strong>
+                            Saturday - Wednesday: 09:00 AM to 09:30 PM
+                            Thursday - Friday: 09:00 AM to 10:30 PM
+                        </p>                    
+                    </div>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item p-4">
+              <h2 class="accordion-header" id="flush-headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                    IKEA Mall of Arabia
+                </button>
+              </h2>
+              <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">
+                    <img src="https://www.ikea.com/images/78/d3/78d32779e9eaa63235feb1309e5ac8c7.jpg?f=xxxl" width="100%"/>
+                    <div class="row my-5 ">
+                        <iframe class="col-sm-6" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13819.94005468486!2d30.9749948!3d30.0085867!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x17a19fbdd41296cc!2sIKEA%20-%20Mall%20Of%20Arabia!5e0!3m2!1sen!2seg!4v1640969784395!5m2!1sen!2seg" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>                        <p class="small-text col-sm-6 col-lg-3">
+                            IKEA Mall of Arabia
+                            Mall of Arabia, Expansion phase Gate 17 - 6th of October City
+                            <br><br>
+                            <a href="https://www.google.com/maps/place/IKEA+-+Mall+Of+Arabia/@30.0085867,30.9749948,15z/data=!4m2!3m1!1s0x0:0x17a19fbdd41296cc?sa=X&ved=2ahUKEwiir4O8iLXvAhVEilwKHd3UDQYQ_BIwHnoECC4QBQ">Get direction</a>
+                            <br><br>
+                            <strong>Hotline: </strong>16576
+                            <br><br>
+                            <strong>Store, Bistro, and Swedish Food Market: </strong>
+                            <br><br>
+                            Saturday - Wednesday- 10:00 AM to 10:00 PM
+                            Thursday - Friday- 10:00 AM to 11:00 PM
+                            <br><br>
+                            <strong>Restaurant,</strong>
+                            Saturday - Wednesday: 09:00 AM to 09:30 PM
+                            Thursday - Friday: 09:00 AM to 10:30 PM
+                            <br><br>
+                            <strong>Exit café:</strong>
+                            Saturday - Wednesday: 09:00 AM to 09:30 PM
+                            Thursday - Friday: 09:00 AM to 10:30 PM
+                        </p>                    
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+    </div>
+    <footer class="footer">
+        <div class="row pb-5 mb-2">
+          <div class="col-3">
+            <ul>
+              <li>
+                <p>Useful links</p>
+              </li>
+              <li>
+                <a href="#">Catalogue and brochures</a>
+              </li>
+              <li><a href="#">IKEA shopping app</a></li>
+              <li><a href="#">Planning tools</a></li>
+              <li><a href="#">Stores</a></li>
+              <li><a href="#">IKEA food</a></li>
+              <li><a href="#">IKEA FAMILY</a></li>
+            </ul>
+          </div>
+          <div class="col-3">
+            <ul>
+              <li>
+                <p>Customer service</p>
+              </li>
+              <li><a href="#">About services</a></li>
+              <li><a href="#">About shopping</a></li>
+              <li><a href="#">Return policy</a></li>
+              <li><a href="#">Contact us</a></li>
+              <li><a href="#">FAQ</a></li>
+              <li><a href="#">Give us your feedback</a></li>
+            </ul>
+          </div>
+          <div class="col-3">
+            <ul>
+              <li>
+                <p>This is IKEA</p>
+              </li>
+              <li><a href="#">About IKEA</a></li>
+              <li><a href="#">Democratic design</a></li>
+              <li><a href="#">Sustainable everyday</a></li>
+              <li><a href="#">Community engagement</a></li>
+              <li><a href="#">Working at IKEA</a></li>
+            </ul>
+          </div>
+          <div class="col-3">
+            <ul>
+              <li>
+                <p>General information</p>
+              </li>
+              <li><a href="#">Newsroom</a></li>
+              <li><a href="#">Product recalls</a></li>
+              <li><a href="#">Product guides</a></li>
+            </ul>
+          </div>
+        </div>
+  
+        <div class="footer-social-languages d-flex justify-content-between pb-4 border-bottom">
+          <ul class="social-media-links d-flex">
+            <li>
+              <a href="#"><i class="fab fa-facebook"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fab fa-youtube"></i></a>
+            </li>
+          </ul>
+          <div class="language-selector d-flex align-items-center">
+            <div class="country-selector p-2">
+              <a href="#" class="country-btn d-flex align-items-center"
+                ><i class="bi bi-globe"></i>
+                <p class="px-2 m-0">Change country</p></a
+              >
+            </div>
+            <div class="language-switch">
+              <select name="language-switch" id="language-switch" class="p-2">
+                <option value="en">English</option>
+                <option value="ar">العربية</option>
+              </select>
+            </div>
+          </div>
+        </div>
+  
+        <div class="footer-info d-flex justify-content-between pb-3 pt-3 mt-4">
+          <div class="copyright mb-2">
+            <p>&copy; Inter IKEA Systems B.V 1999-2021</p>
+          </div>
+          <div class="legal-links">
+            <ul class="d-flex">
+              <li>
+                <a href="#">Privacy policy</a>
+              </li>
+              <li>
+                <a href="#">Cookie policy</a>
+              </li>
+              <li>
+                <a href="#">Terms and conditions</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </footer>
+  
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="../assets/js/menu.js"></script> 
+</body>
+
+</html>

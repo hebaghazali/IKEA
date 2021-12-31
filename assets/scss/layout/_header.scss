@@ -1,0 +1,136 @@
+.header-messages {
+  min-height: 2.5rem;
+}
+
+.navbar {
+  width: 92vw;
+  left: auto;
+  right: $body-margin-right;
+  padding-left: $body-padding-left;
+
+  &>* {
+    margin-left: 1.2rem;
+  }
+
+  .navbar-brand {
+    flex-basis: 8.33%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+
+    .logo {
+      padding: 1rem 0 1.75rem;
+    }
+  }
+
+  .toggler {
+    margin-left: 1rem;
+    border: none;
+    outline: none;
+  }
+
+  .navbar-nav {
+    .nav-item {
+      a {
+        color: $default-text-color;
+        font-size: .875rem;
+        padding: 0 1rem;
+        font-weight: 700;
+      }
+    }
+
+  }
+
+  .navbar-collapse {
+    flex-grow: 0;
+    flex-basis: 26%;
+  }
+
+  .navbar-search {
+    padding: 1rem 3rem 1rem 2rem;
+    background-color: #f5f5f5;
+    border-radius: 5rem;
+    align-items: center;
+    // flex-basis: 41.67%;
+    // width: 100%;
+    flex-grow: 1;
+
+    .search-box {
+      display: flex;
+      justify-content: flex-start;
+
+      input {
+        padding-inline-start: 1rem;
+        outline: none;
+        border: none;
+        background-color: inherit;
+        width: 100%;
+      }
+    }
+  }
+
+  .navbar-icons {
+    flex-basis: 25%;
+    display: flex;
+    justify-content: space-between;
+
+    .location-container {
+      display: flex;
+      align-items: flex-end;
+
+      &>* {
+        margin: 0 5px;
+      }
+
+      .bi-shop {
+        // self-align: flex-end;
+      }
+
+      .location-text {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+
+
+  }
+
+}
+
+@media only screen and (max-width: 1200px) {
+  .navbar {
+    .navbar-icons {
+      flex-basis: 16.67%;
+
+      .location-container {
+        display: none;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 815px) {
+  .navbar {
+    width: 95vw;
+    left: 0;
+    right: 0;
+    margin: auto;
+
+    .navbar-search {
+      order: 1;
+      flex-basis: 100%;
+      margin: 0;
+    }
+
+    .navbar-icons {
+      flex-basis: 20%;
+      // justify-content: flex-end;
+      margin-left: auto;
+      // margin-right: 1rem;
+
+      &>* {
+        // margin-left: 2px;
+      }
+    }
+  }
+}

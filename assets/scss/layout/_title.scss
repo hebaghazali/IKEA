@@ -1,10 +1,12 @@
 .head-title{
-    margin: 1.875rem 0rem 1.875rem 0.3rem;
     font-size: $title-font-size;
+    font-weight: $title-font-weight;
 }
 .small-text{
     font-size: $small-text-size;
     color:$small-text-color;
-    margin: -1.875rem 0.3rem 1.875rem;
-    width: 70%;
+}
+.big-title{
+    font-size:$title-font-size*1.5;
+    font-weight: $title-font-weight;
 }

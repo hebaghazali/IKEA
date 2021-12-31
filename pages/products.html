@@ -5,6 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-------------- Start Font Awesome link --------------->
+    <!-- Icons -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+      integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP"
+      crossorigin="anonymous"
+    />
+    <!------------ End Font-awesome links ------------>
+
     <!-- Bootstrap CSS -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
@@ -14,13 +24,667 @@
     />
 
     <link rel="stylesheet" href="../assets/css/main.css" />
+    <!-- link code for icon link in top of page -->
+    <link rel="shortcut icon" href="../assets/images/ikea-logo.png" />
     <title>Products</title>
   </head>
   <body>
     <!-- Bootstrap JS -->
-    <div>
-        
+    <div class="body-container overflow-hidden">
+      <div class="header-messages"></div>
+      <div class="navbar navbar-expand-xl navbar-light bg-white px-4">
+        <a href="../index.html" class="navbar-brand">
+          <img class="logo" src="../assets/images/ikea-logo.svg" alt="logo"
+        /></a>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Products</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./category.html">Rooms</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Offers</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">What's new</a>
+            </li>
+          </ul>
+        </div>
+        <div class="navbar-search">
+          <div class="search-box">
+            <i class="bi bi-search"></i>
+            <input type="text" placeholder="What are you looking for?" />
+            <i class="bi bi-camera"></i>
+          </div>
+        </div>
+        <div class="navbar-icons">
+          <div class="location-container">
+            <i class="bi bi-shop"></i>
+            <div class="location-text">
+              <small>See opening hours and more</small>
+              <strong>Select store</strong>
+            </div>
+          </div>
+          <i class="bi bi-person"></i>
+          <i class="bi bi-heart"></i>
+          <i class="bi bi-minecart-loaded"></i>
+        </div>
+
+        <!-- Toggler -->
+        <button
+          class="navbar-toggler toggler"
+          id="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+      <!-- end of nav bar -->
+
+      <div class="breadcrumb-container border-top">
+        <nav style="--bs-breadcrumb-divider: '>'" aria-label="breadcrumb">
+          <ol class="breadcrumb breadcrumb-list">
+            <li class="breadcrumb-item">
+              <a class="bc-breadcrumb__link" href="#">products</a>
+            </li>
+            <li class="breadcrumb-item" aria-current="page">
+              <a class="bc-breadcrumb__link" href="#">beds</a>
+            </li>
+          </ol>
+        </nav>
+      </div>
+
+      <div class="section-title">
+        <h3>Children beds</h3>
+      </div>
+
+      <section class="col-12 col-md-7 col-lg-7">
+        <p class="description">
+          We understand that growing kids have lots of needs. Like a quiet spot
+          to relax or a place to do their homework. That's why loft beds for
+          kids are a super-smart multi-tasking solution, helping you free up
+          space for a desk, sofa, wardrobe or pillow fort. Bring home a
+          children's loft bed today!
+        </p>
+      </section>
+
+      <div class="row sticky-top filter-row">
+        <div class="col-sm-12 col-md-9 col-lg-9">
+          <button type="button" class="btn btn-light filter-btn">
+            compare
+          </button>
+
+          <!-- drop down Button -->
+          <button
+            type="button"
+            class="btn btn-light filter-btn"
+            id="dropdownMenuLink"
+            data-bs-toggle="dropdown"
+          >
+            sort <i class="fas fa-chevron-down"></i>
+          </button>
+
+          <!-- drop down List -->
+          <ul
+            class="dropdown-menu mt-2"
+            style="width: 250px"
+            aria-labelledby="dropdownMenuLink"
+          >
+            <li
+              class="
+                dropdown-item
+                d-flex
+                flex-row
+                align-items-center
+                justify-content-between
+              "
+            >
+              <label class="form-check-label" for="bestmatch-radio">
+                Best match
+              </label>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="sort-group"
+                  id="bestmatch-radio"
+                />
+              </div>
+            </li>
+            <li
+              class="
+                dropdown-item
+                d-flex
+                flex-row
+                align-items-center
+                justify-content-between
+              "
+            >
+              <label class="form-check-label" for="lowToHigh-radio">
+                Price: low to high
+              </label>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="sort-group"
+                  id="lowToHigh-radio"
+                />
+              </div>
+            </li>
+            <li
+              class="
+                dropdown-item
+                d-flex
+                flex-row
+                align-items-center
+                justify-content-between
+              "
+            >
+              <label class="form-check-label" for="highToLowRadio">
+                Price: high to low
+              </label>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="sort-group"
+                  id="highToLowRadio"
+                />
+              </div>
+            </li>
+          </ul>
+
+          <!-- drop down Button -->
+          <button
+            type="button"
+            class="btn btn-light filter-btn"
+            id="dropdownMenuLink"
+            data-bs-toggle="dropdown"
+          >
+            color <i class="fas fa-chevron-down"></i>
+          </button>
+
+          <!-- drop down List -->
+          <ul
+            class="dropdown-menu mt-2"
+            style="width: 250px"
+            aria-labelledby="dropdownMenuLink"
+          ></ul>
+
+          <button
+            type="button"
+            class="btn btn-light filter-btn"
+            id="dropdownMenuLink"
+            data-bs-toggle="dropdown"
+          >
+            price <i class="fas fa-chevron-down"></i>
+          </button>
+          <!-- drop down List -->
+          <ul
+            class="dropdown-menu mt-2"
+            style="width: 250px"
+            aria-labelledby="dropdownMenuLink"
+          >
+            <li
+              class="
+                dropdown-item
+                d-flex
+                flex-row
+                align-items-center
+                justify-content-between
+              "
+            >
+              <label class="form-check-label" for=""> EGP 100-500 </label>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  id=""
+                />
+              </div>
+            </li>
+            <li
+              class="
+                dropdown-item
+                d-flex
+                flex-row
+                align-items-center
+                justify-content-between
+              "
+            >
+              <label class="form-check-label" for=""> EGP 500-1000 </label>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  id=""
+                />
+              </div>
+            </li>
+            <li
+              class="
+                dropdown-item
+                d-flex
+                flex-row
+                align-items-center
+                justify-content-between
+              "
+            >
+              <label class="form-check-label" for=""> EGP 1000-1500 </label>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  id=""
+                />
+              </div>
+            </li>
+          </ul>
+          <button type="button" class="btn btn-light filter-btn">
+            size <i class="fas fa-chevron-down"></i>
+          </button>
+          <button type="button" class="btn btn-light filter-btn">
+            All filters <i class="fas fa-filter"></i>
+          </button>
+        </div>
+
+        <div class="col-lg-3 col-md-3 col-12">
+          <div class="float-lg-end float-md-end">
+            <p class="d-inline-flex">2 items</p>
+            <div class="btn-group me-2" role="group" aria-label="First group">
+              <button type="button" class="btn btn-outline-secondary">
+                Product
+              </button>
+              <button type="button" class="btn btn-outline-secondary">
+                Room
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>   
+
+      <div class=' row '>
+        <!-- product -->
+        <div class="col-6 col-md-4 col-lg-3  prod-container">
+            <header class="d-flex align-items-center justify-content-between "  style="padding:  .625rem;"  > 
+              <div class="form-check" >
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  id=""
+                />
+                <small>Compare</small> 
+              </div>
+               
+              <i class="far fa-heart "></i>
+            </header>
+
+            <a class="card category-card col-12 " href="#">
+              <img
+                src="	https://www.ikea.com/eg/en/images/products/soederhamn-chaise-longue-samsta-orange__0802365_pe768432_s5.jpg?f=xxs"
+                class="card-img-top"
+                alt="sofa"
+              />
+            </a>
+            
+            <div class="mt-1 "">
+                <strong class='new'>New</strong>
+                <p class="card-text">                
+                  <a href='#'>vimle</a>
+                  <p>3-seats sofa</p>
+                  <strong >EGP 5,500</strong>
+                </p>
+            </div>
+
+            <div class="row">
+              <small class="col-12">more variants</small>
+              <a class="variant-container">
+                <img  class='variant-img' src="https://www.ikea.com/eg/en/images/products/vimle-3…saxemara-light-blue__0949435_pe799741_s5.jpg?f=xu" alt="3-seat sofa, blue"/>
+              </a>
+              <a class="variant-container">
+                <img  class='variant-img' src="https://www.ikea.com/eg/en/images/products/vimle-3…saxemara-light-blue__0949435_pe799741_s5.jpg?f=xu" alt="3-seat sofa, blue"/>
+              </a>
+              <a class="variant-container">
+                <img  class='variant-img' src="https://www.ikea.com/eg/en/images/products/vimle-3…saxemara-light-blue__0949435_pe799741_s5.jpg?f=xu" alt="3-seat sofa, blue"/>
+              </a>
+            </div>
+        </div>
+
+        <div class="col-6 col-md-4 col-lg-3  prod-container">
+          <header class="d-flex align-items-center justify-content-between "  style="padding:  .625rem;"  > 
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id=""
+              />
+              <small>Compare</small> 
+            </div>
+             
+            <i class="far fa-heart "></i>
+          </header>
+
+          <a class="card category-card col-12 " href="#">
+            <img
+              src="https://www.ikea.com/eg/en/images/products/vimle-3…axemara-light-blue__0949437_pe799723_s5.jpg?f=xxs"
+              class="card-img-top"
+              alt="sofa"
+            />
+          </a>
+          
+          <div class="mt-1 "">
+              <strong class='new'>New</strong>
+              <p class="card-text">                
+                <a href='#'>vimle</a>
+                <p>3-seats sofa</p>
+                <strong >EGP 5,500</strong>
+              </p>
+          </div>
+
+          <div class="row">
+            <small class="col-12">more variants</small>
+            <a class="variant-container">
+              <img  class='variant-img' src="https://www.ikea.com/eg/en/images/products/vimle-3…saxemara-light-blue__0949435_pe799741_s5.jpg?f=xu" alt="3-seat sofa, blue"/>
+            </a>
+            <a class="variant-container">
+              <img  class='variant-img' src="https://www.ikea.com/eg/en/images/products/vimle-3…saxemara-light-blue__0949435_pe799741_s5.jpg?f=xu" alt="3-seat sofa, blue"/>
+            </a>
+            <a class="variant-container">
+              <img  class='variant-img' src="https://www.ikea.com/eg/en/images/products/vimle-3…saxemara-light-blue__0949435_pe799741_s5.jpg?f=xu" alt="3-seat sofa, blue"/>
+            </a>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3  prod-container">
+          <header class="d-flex align-items-center justify-content-between "  style="padding:  .625rem;"  > 
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id=""
+              />
+              <small>Compare</small> 
+            </div>
+             
+            <i class="far fa-heart "></i>
+          </header>
+
+          <a class="card category-card col-12 " href="#">
+            <img
+              src="https://www.ikea.com/eg/en/images/products/vimle-3…axemara-light-blue__0949437_pe799723_s5.jpg?f=xxs"
+              class="card-img-top"
+              alt="sofa"
+            />
+          </a>
+          
+          <div class="mt-1 "">
+              <strong class='new'>New</strong>
+              <p class="card-text">                
+                <a href='#'>vimle</a>
+                <p>3-seats sofa</p>
+                <strong >EGP 6,500</strong>
+              </p>
+          </div>
+
+          <div class="row">
+            <small class="col-12">more variants</small>
+            <a class="variant-container">
+              <img  class='variant-img' src="https://www.ikea.com/eg/en/images/products/vimle-3…saxemara-light-blue__0949435_pe799741_s5.jpg?f=xu" alt="3-seat sofa, blue"/>
+            </a>
+            <a class="variant-container">
+              <img  class='variant-img' src="https://www.ikea.com/eg/en/images/products/vimle-3…saxemara-light-blue__0949435_pe799741_s5.jpg?f=xu" alt="3-seat sofa, blue"/>
+            </a>
+            <a class="variant-container">
+              <img  class='variant-img' src="https://www.ikea.com/eg/en/images/products/vimle-3…saxemara-light-blue__0949435_pe799741_s5.jpg?f=xu" alt="3-seat sofa, blue"/>
+            </a>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3  prod-container">
+          <header class="d-flex align-items-center justify-content-between "  style="padding:  .625rem;"  > 
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id=""
+              />
+              <small>Compare</small> 
+            </div>
+             
+            <i class="far fa-heart "></i>
+          </header>
+
+          <a class="card category-card col-12 " href="#">
+            <img
+              src="https://www.ikea.com/eg/en/images/products/vimle-3…axemara-light-blue__0949437_pe799723_s5.jpg?f=xxs"
+              class="card-img-top"
+              alt="sofa"
+            />
+          </a>
+          
+          <div class="mt-1 "">
+              <strong class='new'>New</strong>
+              <p class="card-text">                
+                <a href='#'>vimle</a>
+                <p>3-seats sofa</p>
+                <strong >EGP 5,500</strong>
+              </p>
+          </div>
+
+          <div class="row">
+            <small class="col-12">more variants</small>
+            <a class="variant-container">
+              <img  class='variant-img' src="https://www.ikea.com/eg/en/images/products/vimle-3…saxemara-light-blue__0949435_pe799741_s5.jpg?f=xu" alt="3-seat sofa, blue"/>
+            </a>
+            <a class="variant-container">
+              <img  class='variant-img' src="https://www.ikea.com/eg/en/images/products/vimle-3…saxemara-light-blue__0949435_pe799741_s5.jpg?f=xu" alt="3-seat sofa, blue"/>
+            </a>
+            <a class="variant-container">
+              <img  class='variant-img' src="https://www.ikea.com/eg/en/images/products/vimle-3…saxemara-light-blue__0949435_pe799741_s5.jpg?f=xu" alt="3-seat sofa, blue"/>
+            </a>
+          </div>
+      </div>
+      </div>
+
+      <div class="section-title">
+        <h3>Recommended for you</h3>
+      </div>
+      <!-- slider of products -->
+      <div class="images-cards-container">
+        <div class="image-card ">
+          <img src="https://www.ikea.com/images/a-hand-controlling-the-flow-of-water-from-an-arched-mixer-ta-7ab00d7ab5cbae1bc654fab0e4d0fdd7.jpg?f=xxs"/>
+          <div class="button-holder"><button>Water & energy</button></div>
+        </div>
+        <div class="image-card ">
+          <img src="https://www.ikea.com/images/a-beige-upholstered-bed-covered-in-white-bed-linen-with-a-ro-1000cebd78155c6e4692a6e2895e1217.jpg?f=xxs"/>
+          <div class="button-holder"><button>Materials</button></div>
+        </div>
+        <div class="image-card">
+          <img src="https://www.ikea.com/images/a-sheer-white-curtain-billowing-in-front-of-a-sunny-window-w-00318c01fb4b82f4a6b99a0f4f582cca.jpg?f=xxs"/>
+          <div class="button-holder"><button>Health</button></div>
+        </div>
+        <div class="image-card ">
+          <img src="https://www.ikea.com/images/a-white-countertop-with-a-person-chopping-green-vegetables-o-95f2de0ed6972bf6e3f564a9bdafd93e.jpg?f=xxs"/>
+          <div class="button-holder"><button>Food</button></div>        
+        </div>
+        <div class="image-card">
+          <img src="https://www.ikea.com/images/a-woman-in-a-sunny-room-with-a-bottle-of-cleaning-fluid-in-o-a8375bd30fe0294ea5e69c1d936585de.jpg?f=xxs"/>
+          <div class="button-holder"><button>Furniture</button></div>        
+        </div>
+      </div>
+
+      <div class="section-title">
+        <h3>Related Categories</h3>
+      </div>
+      <div class="row mx-auto g-3">
+        <a class="card category-card col-4 col-lg-4" href="#">
+          <img
+            src="https://www.ikea.com/global/assets/navigation/images/fabric-sofas-10661.jpeg?imwidth=400"
+            class="card-img-top"
+            alt="Fabric Sofa"
+          />
+          <div class="card-body category-body">
+            <p class="card-text">Fabric Sofa</p>
+          </div>
+        </a>
+
+        <a class="card category-card col-4 col-lg-4" href="#">
+          <img
+            src="https://www.ikea.com/global/assets/navigation/images/sofa-beds-10663.jpeg?imwidth=400"
+            class="card-img-top"
+            alt="Fabric Sofa"
+          />
+          <div class="card-body category-body">
+            <p class="card-text">Fabric Sofa</p>
+          </div>
+        </a>
+
+        <a class="card category-card col-4 col-lg-4" href="#">
+          <img
+            src="https://www.ikea.com/global/assets/navigation/images/modular-fabric-sofas-15358.jpeg?imwidth=500"
+            class="card-img-top"
+            alt="Fabric Sofa"
+          />
+          <div class="card-body category-body">
+            <p class="card-text">Fabric Sofa</p>
+          </div>
+        </a>
+
+        <a class="card category-card col-4 col-lg-4" href="#">
+          <img
+            src="https://www.ikea.com/global/assets/navigation/images/modular-leather-coated-fabric-sofas-16235.jpeg?imwidth=500"
+            class="card-img-top"
+            alt="Fabric Sofa"
+          />
+          <div class="card-body category-body">
+            <p class="card-text">Fabric Sofa</p>
+          </div>
+        </a>
+
+      </div>
     </div>
+
+    <!-- footer -->
+    <footer class="footer">
+      <div class="row pb-5 mb-2">
+        <div class="col-3">
+          <ul>
+            <li>
+              <p>Useful links</p>
+            </li>
+            <li>
+              <a href="#">Catalogue and brochures</a>
+            </li>
+            <li><a href="#">IKEA shopping app</a></li>
+            <li><a href="#">Planning tools</a></li>
+            <li><a href="#">Stores</a></li>
+            <li><a href="#">IKEA food</a></li>
+            <li><a href="#">IKEA FAMILY</a></li>
+          </ul>
+        </div>
+        <div class="col-3">
+          <ul>
+            <li>
+              <p>Customer service</p>
+            </li>
+            <li><a href="#">About services</a></li>
+            <li><a href="#">About shopping</a></li>
+            <li><a href="#">Return policy</a></li>
+            <li><a href="#">Contact us</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Give us your feedback</a></li>
+          </ul>
+        </div>
+        <div class="col-3">
+          <ul>
+            <li>
+              <p>This is IKEA</p>
+            </li>
+            <li><a href="#">About IKEA</a></li>
+            <li><a href="#">Democratic design</a></li>
+            <li><a href="#">Sustainable everyday</a></li>
+            <li><a href="#">Community engagement</a></li>
+            <li><a href="#">Working at IKEA</a></li>
+          </ul>
+        </div>
+        <div class="col-3">
+          <ul>
+            <li>
+              <p>General information</p>
+            </li>
+            <li><a href="#">Newsroom</a></li>
+            <li><a href="#">Product recalls</a></li>
+            <li><a href="#">Product guides</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div
+        class="
+          footer-social-languages
+          d-flex
+          justify-content-between
+          pb-4
+          border-bottom
+        "
+      >
+        <ul class="social-media-links d-flex">
+          <li>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+          </li>
+          <li>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </li>
+          <li>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </li>
+        </ul>
+        <div class="language-selector d-flex align-items-center">
+          <div class="country-selector p-2">
+            <a href="#" class="country-btn d-flex align-items-center"
+              ><i class="bi bi-globe"></i>
+              <p class="px-2 m-0">Change country</p></a
+            >
+          </div>
+          <div class="language-switch">
+            <select name="language-switch" id="language-switch" class="p-2">
+              <option value="en">English</option>
+              <option value="ar">العربية</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-info d-flex justify-content-between pb-3 pt-3 mt-4">
+        <div class="copyright mb-2">
+          <p>&copy; Inter IKEA Systems B.V 1999-2021</p>
+        </div>
+        <div class="legal-links">
+          <ul class="d-flex">
+            <li>
+              <a href="#">Privacy policy</a>
+            </li>
+            <li>
+              <a href="#">Cookie policy</a>
+            </li>
+            <li>
+              <a href="#">Terms and conditions</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </footer>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
