@@ -1,0 +1,227 @@
+@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@500;900&display=swap");
+body {
+  font-family: "Red Hat Display", sans-serif;
+}
+
+p {
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1.44rem;
+  color: #87879D;
+}
+
+section .right {
+  margin: 50px 0;
+  padding: 22px;
+  line-height: 2;
+}
+
+section .right .span, .heart {
+  margin-left: 15px;
+}
+
+section .right h4 {
+  font-weight: bold;
+}
+
+section .right-btn {
+  display: inline;
+}
+
+section .right .right-btn button {
+  margin: 30px 0;
+  font-size: 15px;
+  font-weight: bold;
+  background-color: #0058a3;
+  border-radius: 64px;
+  width: 65%;
+  height: 3.5rem;
+  border: 2px solid #0058a3;
+  color: white;
+}
+
+section .right .right-btn .heart {
+  border: 1px solid #dfdfdf;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 3.5rem;
+  width: 17%;
+  border-radius: 50%;
+}
+
+section .right .right-icon {
+  color: black;
+  font-size: 17px;
+  margin: 0 7px;
+}
+
+section .left-img {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+section .left-img img {
+  width: 50%;
+}
+
+section .left p {
+  color: #484848;
+  font-size: 1.25rem;
+  line-height: 1.6;
+  padding-bottom: 1.5rem;
+}
+
+section .left .out-span {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #484848;
+  line-height: 1.5;
+}
+
+section .left .in-span {
+  background-color: #111;
+  padding: 0.25rem 0.75rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.25;
+}
+
+section .left .pro-detail {
+  padding: 2.5rem 0;
+  align-items: center;
+  justify-content: center;
+}
+
+section .left .pro-detail span {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+section .left .pro-detail .fa-arrow-right {
+  float: right;
+  font-size: 25px;
+  line-height: normal;
+}
+
+#slide-one {
+  display: flex;
+  flex-wrap: nowrap;
+  margin-right: -0.625rem;
+  margin-left: -0.625rem;
+}
+
+#slide-one .card {
+  border: 0;
+  margin: 0 7px;
+  line-height: 1.42857;
+}
+
+#slide-one, #slide-two .card h4, h5 {
+  font-size: 0.875rem;
+  line-height: 1.42857;
+  font-weight: 700;
+}
+
+#slide-one .card p {
+  letter-spacing: 0;
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: #484848;
+}
+
+#slide-one, #slide-two .card .card-span {
+  font-weight: 700;
+  font-size: 1.375rem;
+}
+
+#slide-two {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+#slide-two .box {
+  display: flex;
+  width: 100%;
+  height: 500px;
+  margin: 10px auto;
+  justify-content: left;
+  overflow-x: auto;
+}
+
+#slide-two .box::-webkit-scrollbar {
+  visibility: hidden;
+}
+
+#slide-two .box .card {
+  border: 0;
+  margin: 0 7px;
+  line-height: 1.42857;
+  position: relative;
+  left: 0;
+  min-width: 250px;
+  margin: 0 7px;
+  padding: 10px;
+}
+
+#slide-two #slide-two-h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.45;
+  letter-spacing: -0.0042em;
+}
+
+#slide-two #slide-arrow-right {
+  position: absolute;
+  top: 200px;
+  right: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: white;
+  background-color: #302e2e;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 35px;
+}
+
+#slide-two #slide-arrow-left {
+  position: absolute;
+  top: 200px;
+  left: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: white;
+  background-color: #302e2e;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 35px;
+}
+
+#slide-two #crd-span {
+  display: flex;
+}
+
+#slide-two #card-btn {
+  margin: 5px 49px 0;
+  font-size: 22px;
+  font-weight: bold;
+  background-color: #0058a3;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  border: 2px solid #0058a3;
+  color: white;
+}
+
+/*# sourceMappingURL=main.css.map */
