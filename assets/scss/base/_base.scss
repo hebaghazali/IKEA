@@ -3,16 +3,24 @@
 *::before {
   margin: 0;
   padding: 0;
-  box-sizing: inherit;
+  box-sizing: border-box;
 }
 
 a {
   color: $default-text-color;
   text-decoration: none;
+
+  &:hover {
+    color: $default-text-color;
+  }
 }
 
 button {
   border: none;
   outline: none;
   background-color: transparent;
+}
+
+li {
+  list-style: none;
 }
