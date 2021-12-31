@@ -48,8 +48,14 @@ $txt-color: rgb(117, 117, 117);
             width: 100%;
         }
 
-        button:hover {
-            @include ShoppingButtonHover()
-        }
+
+        button:hover {@include ShoppingButtonHover()}
+
+        .input-sign-form { margin-top: 25px;}
+
+        .selct-form-sign { outline: none;}
+        
+        .selct-label-form-sign { margin-top: 30px;}
+
     }
 }
