@@ -4,7 +4,6 @@
 
 .images-cards-container {
     @include slidder;
-
     .image-card {
         position: relative;
         display: inline-flex;
