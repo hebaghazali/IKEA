@@ -1,0 +1,107 @@
+ $p-color:#484848;
+$span-font:1.5rem;
+$card-font:.875rem;
+$card-height:1.42857;
+$font-weight:700;
+
+@mixin theme($border:3px){
+    letter-spacing: 0;
+    font-weight: 400;
+    font-size: $card-font;
+    line-height: 1.5;
+    color: $p-color;
+    
+}
+
+@mixin card($border:3px) {
+    border: 0;margin:0 7px;line-height: $card-height;
+}
+
+
+
+// /////right///////////////////////////////////////
+
+.content .right{padding:22px;line-height: 2;}
+
+section .right .span{margin-left: 10px;}
+
+section .right h4{font-weight: bold;}
+
+
+
+section .right .right-btn .heart{
+                      border: 1px solid #dfdfdf;
+                      font-size: 20px;
+                
+                      justify-content: center;
+                      align-items: center;
+                      height: 3.5rem;
+                      width: 17%;
+                      border-radius:50% ;
+                      -webkit-border-radius:50% ;
+                      -moz-border-radius:50% ;
+                      -ms-border-radius:50% ;
+                      -o-border-radius:50% ;
+}
+
+
+section .right .right-icon{color: black;
+                            font-size: 17px;
+                            margin: 0 7px;}
+
+
+
+// //////left/////////////////////////////////////////////////////////////
+
+
+ .content .left #left-p{color: $p-color;
+                font-size: 1.25rem;
+                line-height: 1.6;
+                padding-bottom: 1.5rem;
+}   
+
+section .left .out-span{display: block;
+                        margin-bottom: 0.5rem;
+                        color: $p-color;
+                        line-height: 1.5;
+}
+           
+section .left .in-span{  
+                            background-color: #111;
+                            padding: 0.25rem 0.75rem;
+                            font-weight: 700;
+                            color: #fff;
+                            line-height: 1.25;
+}
+
+section .left .pro-detail{padding:2.5rem 0;align-items: center;justify-content: center;}
+
+section .left .pro-detail span{font-size: $span-font;font-weight: 700;}
+
+
+// //////////slide 1/////////////////////////////////////////////////////////////////
+
+.card{@include card()}
+
+// #slide-one >div {min-height: 300px;}
+
+#slide-one  h4,h5{font-size: $card-font;
+                    line-height: $card-height;
+                    font-weight: $font-weight;}
+
+#slide-one .card p{@include theme()}
+#slide-one .card .card-span{font-weight: $font-weight; font-size: 1.375rem;}
+
+
+// /////////slide 2//////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
