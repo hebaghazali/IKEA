@@ -802,7 +802,22 @@ footer .legal-links li {
   background-color: white;
   border-bottom: 1px solid #DFDFDF;
 }
+.filter-row .filter-right-side {
+  justify-content: flex-end;
+}
+.filter-row .filter-right-side .no-of-items {
+  font-size: 0.8rem;
+  color: #484848;
+  margin: 0;
+  padding-right: 1rem;
+}
 
+@media only screen and (max-width: 992px) {
+  .filter-row .filter-right-side {
+    justify-content: space-between;
+    padding-bottom: 0.8rem;
+  }
+}
 .filter-btn {
   border-radius: 20px;
   -webkit-border-radius: 20px;
