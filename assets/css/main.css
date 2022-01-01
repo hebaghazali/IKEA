@@ -154,7 +154,6 @@ body {
   overflow-y: hidden;
   display: flex;
   flex-wrap: nowrap;
-  height: 300px;
   padding-bottom: 10px;
 }
 .categories-slidder::-webkit-scrollbar {
