@@ -1,102 +1,122 @@
 .filter-row {
-    padding: 10px 0;
-    background-color: white;
-    border-bottom: 1px solid $border-color;
+  padding: 10px 0;
+  background-color: white;
+  border-bottom: 1px solid $border-color;
+
+  .filter-right-side {
+    justify-content: flex-end;
+
+    .no-of-items {
+      font-size: $small-text-size;
+      color: $small-text-color;
+      margin: 0;
+      padding-right: 1rem;
+    }
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .filter-row {
+    .filter-right-side {
+      justify-content: space-between;
+      padding-bottom: 0.8rem;
+    }
+  }
 }
 
 .filter-btn {
-    @include radius(20px);
-    background-color: $secondary-color;
-    font-size: .75rem;
-    font-weight: 700;
-    padding: .6rem 1rem;
-    min-width: fit-content;
+  @include radius(20px);
+  background-color: $secondary-color;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.6rem 1rem;
+  min-width: fit-content;
 
-    i {
-        margin-left: 10px
-    }
+  i {
+    margin-left: 10px;
+  }
 
-    &:hover {
-        background-color: darken($secondary-color, 5);
-    }
+  &:hover {
+    background-color: darken($secondary-color, 5);
+  }
 
-    &:active {
-        background-color: $default-text-color;
-        color: $default-background-color;
-    }
+  &:active {
+    background-color: $default-text-color;
+    color: $default-background-color;
+  }
 }
 
 .description {
-    @include HandleParagraph();
+  @include HandleParagraph();
 }
 
 .section-title {
-    margin: 1.875rem 0
+  margin: 1.875rem 0;
 }
 
 .prod-container {
-    padding: 1rem 0.875rem;
-    border-bottom: 1px solid $border-color;
+  padding: 1rem 0.875rem;
+  border-bottom: 1px solid $border-color;
 
-    header {
-        opacity: 0;
-    }
+  header {
+    opacity: 0;
+  }
 
-    &:hover header {
-        opacity: 1;
-    }
+  &:hover header {
+    opacity: 1;
+  }
 }
 
 @media only screen and (max-width: 576px) {
-    .prod-container {
-        padding: 1rem 0.875rem;
-        border: 1px solid $border-color;
-    }
+  .prod-container {
+    padding: 1rem 0.875rem;
+    border: 1px solid $border-color;
+  }
 }
 
 .new {
-    color: $orange;
+  color: $orange;
 }
 
 .variant-container {
-    width: 2.5rem;
-    height: 2.5rem;
-    padding: 0;
-    margin-left: 0.25rem;
-    cursor: pointer;
-    margin-bottom: 0.25rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  margin-left: 0.25rem;
+  cursor: pointer;
+  margin-bottom: 0.25rem;
 
-    &:hover {
-        border: 1px solid $small-text-color;
-    }
+  &:hover {
+    border: 1px solid $small-text-color;
+  }
 }
 
 .variant-img {
-    width: 2.375rem;
-    max-width: 2.375rem;
-    max-height: 2.375rem;
+  width: 2.375rem;
+  max-width: 2.375rem;
+  max-height: 2.375rem;
 }
 
 .offcanvas-footer {
-    padding: 1rem 1rem;
-    border-top: 1px solid #dee2e6;
+  padding: 1rem 1rem;
+  border-top: 1px solid #dee2e6;
 
-    .clear-btn {
-        border: 1px solid #dee2e6;
+  .clear-btn {
+    border: 1px solid #dee2e6;
 
-        &:hover {
-            border: 1px solid $default-text-color;
-        }
+    &:hover {
+      border: 1px solid $default-text-color;
     }
+  }
 
-    .view-btn {
-        background-color: $default-text-color;
-        color: $default-background-color;
+  .view-btn {
+    background-color: $default-text-color;
+    color: $default-background-color;
 
-        &:hover {
-            background-color: lighten($default-text-color, 10);
-        }
+    &:hover {
+      background-color: lighten($default-text-color, 10);
     }
+// <<<<<<< HEAD
 }
 
 
@@ -109,7 +129,8 @@
       transform: translateY(-50%);
       padding: .5rem .8rem;
       cursor: pointer;
-          &.right-chevron    
+                &.right-chevron    
+   
 {
         right: 0;
       }
@@ -293,6 +314,7 @@
 
 
 
+}
 
-
-
+// ===
+// >>>>>>> 78701f4457878335095dd23bc5b3f44ed3ab21ff
