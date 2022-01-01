@@ -657,6 +657,24 @@ footer .legal-links li {
   max-height: 2.375rem;
 }
 
+.offcanvas-footer {
+  padding: 1rem 1rem;
+  border-top: 1px solid #dee2e6;
+}
+.offcanvas-footer .clear-btn {
+  border: 1px solid #dee2e6;
+}
+.offcanvas-footer .clear-btn:hover {
+  border: 1px solid #111;
+}
+.offcanvas-footer .view-btn {
+  background-color: #111;
+  color: white;
+}
+.offcanvas-footer .view-btn:hover {
+  background-color: #2b2b2b;
+}
+
 .log-parent {
   margin-top: 140px;
 }
