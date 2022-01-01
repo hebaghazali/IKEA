@@ -2,20 +2,29 @@
     @include SeeAllBtn;
 }
 
-.carousel-edit {
-    &>button{
-        z-index: 55555;
-    }
+.images-cards-container {
+    @include slidder;
     .image-card {
         position: relative;
+        display: inline-flex;
+        width: 40%;
+        margin-right: 2%;
+
+        img {
+            min-width: 100%;
+
+        }
+
         .button-holder {
-            width:95%;
+            width: 100%;
             position: absolute;
             justify-content: center;
             text-align: center;
             bottom: 1.5rem;
-            &>button {
+
+            button {
                 @include SeeAllBtn;
+
                 &:hover {
                     background-color: $secondary-color;
                 }
