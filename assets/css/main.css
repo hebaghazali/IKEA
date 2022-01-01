@@ -1432,4 +1432,29 @@ footer .legal-links li {
   box-shadow: none;
 }
 
+.logout {
+  text-decoration: underline;
+  text-decoration-color: #111;
+  -moz-text-decoration-color: #111;
+}
+.logout:hover {
+  color: #111;
+}
+
+.tab {
+  border-bottom: 2px solid #DFDFDF;
+  color: #484848;
+  flex-shrink: 0;
+  padding: 0 0.9375rem 0.9375rem 0;
+  text-align: left;
+}
+.tab:hover {
+  border-bottom: 2px solid #c6c6c6;
+  color: #111;
+}
+
+.selected {
+  border-bottom: 2px solid #0f58a1;
+}
+
 /*# sourceMappingURL=main.css.map */
