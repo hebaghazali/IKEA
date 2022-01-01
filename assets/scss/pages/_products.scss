@@ -1,83 +1,100 @@
 .filter-row {
     padding: 10px 0;
     background-color: white;
-    border-bottom:1px solid $border-color ;
+    border-bottom: 1px solid $border-color;
 }
-.filter-btn{
+
+.filter-btn {
     @include radius(20px);
     background-color: $secondary-color;
-    i{
+    font-size: .75rem;
+    font-weight: 700;
+    padding: .6rem 1rem;
+    min-width: fit-content;
+
+    i {
         margin-left: 10px
     }
-    &:hover{
-        background-color: darken($secondary-color,5);
+
+    &:hover {
+        background-color: darken($secondary-color, 5);
     }
-    &:active{
+
+    &:active {
         background-color: $default-text-color;
         color: $default-background-color;
     }
 }
 
-.description{ @include HandleParagraph() ;}
+.description {
+    @include HandleParagraph();
+}
 
-.section-title{
+.section-title {
     margin: 1.875rem 0
 }
 
-.prod-container{
+.prod-container {
     padding: 1rem 0.875rem;
-    border-bottom:1px solid $border-color ;  
-    header{
+    border-bottom: 1px solid $border-color;
+
+    header {
         opacity: 0;
     }
+
     &:hover header {
         opacity: 1;
-      }
+    }
 }
 
 @media only screen and (max-width: 576px) {
-    .prod-container{
+    .prod-container {
         padding: 1rem 0.875rem;
-        border:1px solid $border-color ;  
+        border: 1px solid $border-color;
     }
-  }
-.new{
+}
+
+.new {
     color: $orange;
 }
-.variant-container{
+
+.variant-container {
     width: 2.5rem;
     height: 2.5rem;
     padding: 0;
     margin-left: 0.25rem;
     cursor: pointer;
     margin-bottom: 0.25rem;
-    &:hover{
+
+    &:hover {
         border: 1px solid $small-text-color;
     }
 }
-.variant-img{
+
+.variant-img {
     width: 2.375rem;
     max-width: 2.375rem;
     max-height: 2.375rem;
 }
 
-.offcanvas-footer{
+.offcanvas-footer {
     padding: 1rem 1rem;
     border-top: 1px solid #dee2e6;
 
-    .clear-btn{
-        border:1px solid #dee2e6 ;
-        &:hover{
-            border:1px solid $default-text-color ;
+    .clear-btn {
+        border: 1px solid #dee2e6;
+
+        &:hover {
+            border: 1px solid $default-text-color;
         }
     }
 
-    .view-btn{
-        background-color: $default-text-color ;
+    .view-btn {
+        background-color: $default-text-color;
         color: $default-background-color;
-        &:hover{
-            background-color: lighten($default-text-color,10) ;
+
+        &:hover {
+            background-color: lighten($default-text-color, 10);
         }
     }
-    
 }

@@ -35,6 +35,17 @@ body {
   font-family: "Noto Sans", sans-serif;
 }
 
+.h2-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 4rem 0;
+}
+.h2-title-card {
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin: 2rem 0;
+}
+
 .body-container {
   width: 92vw;
   margin-left: auto;
@@ -66,6 +77,10 @@ body {
   margin-left: auto !important;
 }
 
+.ml-0 {
+  margin-left: 0 !important;
+}
+
 .w-49 {
   width: 49%;
 }
@@ -89,6 +104,33 @@ body {
     margin: auto;
   }
 }
+.dark-btn {
+  background-color: #000;
+  color: #fff;
+  padding: 0.5rem 1.5rem;
+  font-weight: 700;
+  font-size: 0.8rem;
+  border-radius: 2rem;
+  -webkit-border-radius: 2rem;
+  -moz-border-radius: 2rem;
+  -ms-border-radius: 2rem;
+  -o-border-radius: 2rem;
+}
+
+.default-btn {
+  height: 2.5rem;
+  padding: 0 1.5rem;
+  border: 1px solid #dfdfdf;
+  font-size: 0.8rem;
+  font-weight: 800;
+  min-width: fit-content;
+  border-radius: 4rem;
+  -webkit-border-radius: 4rem;
+  -moz-border-radius: 4rem;
+  -ms-border-radius: 4rem;
+  -o-border-radius: 4rem;
+}
+
 .breadcrumb-container {
   margin-bottom: 3rem;
 }
@@ -230,19 +272,6 @@ body {
 .teaser-info-container h2 {
   font-weight: 800;
   font-size: 1.5rem;
-}
-
-.teaser-btn {
-  height: 2.5rem;
-  padding: 0 1.5rem;
-  border: 1px solid #dfdfdf;
-  font-size: 0.8rem;
-  font-weight: 800;
-  border-radius: 4rem;
-  -webkit-border-radius: 4rem;
-  -moz-border-radius: 4rem;
-  -ms-border-radius: 4rem;
-  -o-border-radius: 4rem;
 }
 
 .image-container {
@@ -613,6 +642,160 @@ footer .legal-links li {
     padding-left: 0;
   }
 }
+.carousel {
+  position: relative;
+}
+.carousel > button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0.5rem 0.8rem;
+  cursor: pointer;
+}
+.carousel > button.right-chevron {
+  right: 0;
+}
+.carousel > button .fas {
+  font-size: 1.6rem;
+}
+
+.carousel-body {
+  overflow-x: auto;
+  padding-bottom: 2.5rem;
+}
+.carousel-body::-webkit-scrollbar {
+  height: 4px;
+}
+.carousel-body::-webkit-scrollbar-track {
+  background-color: #F5F5F5;
+}
+.carousel-body::-webkit-scrollbar-thumb {
+  background: #111;
+}
+.carousel-body img {
+  width: 100%;
+}
+.carousel-body .description-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #ffd930;
+  padding: 2rem;
+}
+.carousel-body .description-container.red-bg {
+  background-color: #cc0009;
+  color: #fff;
+}
+.carousel-body .description-container.light-brown-bg {
+  background-color: #a98c5b;
+}
+.carousel-body .description-container.brown-bg {
+  background-color: #b5775a;
+}
+.carousel-body .description-container.dark-brown-bg {
+  background-color: #604201;
+  color: #fff;
+}
+.carousel-body .description-container.dark-orange-bg {
+  background-color: #c95007;
+  color: #fff;
+}
+.carousel-body .description-container.dark-green-bg {
+  background-color: #4a6836;
+  color: #fff;
+}
+.carousel-body .description-container.dark-blue-bg {
+  background-color: #4a6497;
+  color: #fff;
+}
+.carousel-body .description-container.blue-bg {
+  background-color: #1052bc;
+  color: #fff;
+}
+.carousel-body .description-container .description-body {
+  min-height: 13rem;
+}
+.carousel-body .description-container .description-body h3 {
+  line-height: 2.5rem;
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+.carousel-body .description-container button {
+  width: 3.5rem;
+  height: 3.5rem;
+  background-color: #000;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+.carousel-body .description-container button i {
+  color: #fff;
+  font-size: 1.2rem;
+}
+.carousel-body .description-container button.white-btn {
+  background-color: #fff;
+}
+.carousel-body .description-container button.white-btn i {
+  color: #000;
+}
+.carousel-body .product-highlight {
+  color: #ed022a;
+}
+.carousel-body .product-header, .carousel-body .product-highlight {
+  font-weight: 700;
+  font-size: 0.875rem;
+  margin: 0;
+}
+.carousel-body .product-description {
+  font-size: 0.875rem;
+  color: #484848;
+  margin: 0;
+}
+.carousel-body .price .line-through {
+  text-decoration: line-through;
+}
+.carousel-body .more-options {
+  color: #484848;
+  font-size: 0.875rem;
+}
+
+.more-ikea .description-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.more-ikea .description-container .description-body {
+  margin-top: 10%;
+  min-height: 10rem;
+}
+.more-ikea .description-container .description-body h3 {
+  font-size: 1rem;
+  font-weight: 900;
+}
+.more-ikea .description-container .description-body p {
+  font-size: 0.875rem;
+}
+.more-ikea .description-container button {
+  width: 35%;
+}
+
+.more-ideas-gallery {
+  height: 340rem;
+}
+
+.welcome-ikea {
+  font-size: 0.8rem;
+  color: #484848;
+  width: 60%;
+}
+
+@media only screen and (max-width: 992px) {
+  .teaser .carousel-body {
+    overflow-x: auto !important;
+  }
+}
 .filter-row {
   padding: 10px 0;
   background-color: white;
@@ -626,6 +809,10 @@ footer .legal-links li {
   -ms-border-radius: 20px;
   -o-border-radius: 20px;
   background-color: #F5F5F5;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.6rem 1rem;
+  min-width: fit-content;
 }
 .filter-btn i {
   margin-left: 10px;
