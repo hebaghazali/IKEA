@@ -89,7 +89,6 @@ body {
   .body-container {
     margin-right: 1rem;
     padding-left: 0;
-    width: 90vw;
   }
 
   .mt-nav-2 {
@@ -485,7 +484,6 @@ body {
     left: 0;
     right: 0;
     margin: auto;
-    padding: 0 1rem;
   }
   .navbar .navbar-search {
     order: 1;
@@ -1190,20 +1188,40 @@ footer .legal-links li {
   outline-color: #484848;
 }
 
-.carousel-edit > button {
-  z-index: 55555;
+.images-cards-container {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  display: flex;
+  flex-wrap: nowrap;
+  height: 300px;
+  padding-bottom: 10px;
 }
-.carousel-edit .image-card {
+.images-cards-container::-webkit-scrollbar {
+  height: 3px;
+}
+.images-cards-container::-webkit-scrollbar-track {
+  background-color: #F5F5F5;
+}
+.images-cards-container::-webkit-scrollbar-thumb {
+  background: #111;
+}
+.images-cards-container .image-card {
   position: relative;
+  display: inline-flex;
+  width: 40%;
+  margin-right: 2%;
 }
-.carousel-edit .image-card .button-holder {
-  width: 95%;
+.images-cards-container .image-card img {
+  min-width: 100%;
+}
+.images-cards-container .image-card .button-holder {
+  width: 100%;
   position: absolute;
   justify-content: center;
   text-align: center;
   bottom: 1.5rem;
 }
-.carousel-edit .image-card .button-holder > button {
+.images-cards-container .image-card .button-holder button {
   border-radius: 30px;
   padding: 15px 50px;
   border: none;
@@ -1220,10 +1238,10 @@ footer .legal-links li {
   font-size: 0.8rem;
   font-weight: 900;
 }
-.carousel-edit .image-card .button-holder > button:hover {
+.images-cards-container .image-card .button-holder button:hover {
   outline-color: #484848;
 }
-.carousel-edit .image-card .button-holder > button:hover {
+.images-cards-container .image-card .button-holder button:hover {
   background-color: #F5F5F5;
 }
 

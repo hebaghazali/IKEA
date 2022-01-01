@@ -9,8 +9,7 @@
 a {
   color: $default-text-color;
   text-decoration: none;
-
-  &:hover {
+  &:hover{
     color: $default-text-color;
     text-decoration: underline;
     text-decoration-color: $default-text-color;
