@@ -214,23 +214,23 @@
     <div class="body-container">
       <div class="header-messages"></div>
       <div class="navbar navbar-expand-xl navbar-light fixed-top bg-white">
-        <a href="#" class="navbar-brand">
+        <a href="../index.html" class="navbar-brand">
           <img class="logo" src="../assets/images/ikea-logo.svg" alt="logo"
         /></a>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" href="#">Products</a>
+              <a class="nav-link active" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample">Products</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Rooms</a>
+              <a class="nav-link" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample">Rooms</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Offers</a>
+              <a class="nav-link" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample">Offers</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">What's new</a>
+              <a class="nav-link" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample">What's new</a>
             </li>
           </ul>
         </div>
@@ -650,32 +650,303 @@
         </a>
       </div>
 
-      <!-- Slidder static -->
+      <!-- Slidder-->
       <div>
-        <h4 class="head-title my-5">Quick guides to a more sustainable home</h4>
-        <div class="images-cards-container">
-        <div class="image-card ">
-          <img src="https://www.ikea.com/images/a-hand-controlling-the-flow-of-water-from-an-arched-mixer-ta-7ab00d7ab5cbae1bc654fab0e4d0fdd7.jpg?f=xxs"/>
-          <div class="button-holder"><button><a href="./guide.html">Water & energy</a></button></div>
+      <h4 class="head-title my-5">Quick guides to a more sustainable home</h4>
+      <div class="carousel carousel-edit">
+        <button class="dark-btn left-chevron">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <div class="carousel-body p-0 pb-2 mb-5">
+          <div class="row flex-nowrap">
+            <div class="col-6 col-lg-3 image-card">
+              <img src="https://www.ikea.com/images/a-hand-controlling-the-flow-of-water-from-an-arched-mixer-ta-7ab00d7ab5cbae1bc654fab0e4d0fdd7.jpg?f=xxs"/>
+              <div class="button-holder"><button><a href="./guide.html">Water & energy</a></button></div>                 
+            </div>
+            <div class="col-6 col-lg-3 image-card">
+              <img src="https://www.ikea.com/images/a-beige-upholstered-bed-covered-in-white-bed-linen-with-a-ro-1000cebd78155c6e4692a6e2895e1217.jpg?f=xxs"/>
+              <div class="button-holder"><button><a href="./guide.html">Materials</a></button></div>                 
+            </div>
+            <div class="col-6 col-lg-3 image-card">
+              <img src="https://www.ikea.com/images/a-sheer-white-curtain-billowing-in-front-of-a-sunny-window-w-00318c01fb4b82f4a6b99a0f4f582cca.jpg?f=xxs"/>
+              <div class="button-holder"><button><a href="./guide.html">Health</a></button></div>                 
+            </div>
+            <div class="col-6 col-lg-3 image-card">
+              <img src="https://www.ikea.com/images/a-white-countertop-with-a-person-chopping-green-vegetables-o-95f2de0ed6972bf6e3f564a9bdafd93e.jpg?f=xxs"/>
+              <div class="button-holder"><button><a href="./guide.html">Food</a></button></div>                 
+            </div>
+            <div class="col-6 col-lg-3 image-card">
+              <img src="https://www.ikea.com/images/a-woman-in-a-sunny-room-with-a-bottle-of-cleaning-fluid-in-o-a8375bd30fe0294ea5e69c1d936585de.jpg?f=xxs"/>
+              <div class="button-holder"><button><a href="./guide.html">Furniture</a></button></div>                 
+            </div>
+          </div>
         </div>
-        <div class="image-card ">
-          <img src="https://www.ikea.com/images/a-beige-upholstered-bed-covered-in-white-bed-linen-with-a-ro-1000cebd78155c6e4692a6e2895e1217.jpg?f=xxs"/>
-          <div class="button-holder"><button>Materials</button></div>
-        </div>
-        <div class="image-card">
-          <img src="https://www.ikea.com/images/a-sheer-white-curtain-billowing-in-front-of-a-sunny-window-w-00318c01fb4b82f4a6b99a0f4f582cca.jpg?f=xxs"/>
-          <div class="button-holder"><button>Health</button></div>
-        </div>
-        <div class="image-card ">
-          <img src="https://www.ikea.com/images/a-white-countertop-with-a-person-chopping-green-vegetables-o-95f2de0ed6972bf6e3f564a9bdafd93e.jpg?f=xxs"/>
-          <div class="button-holder"><button>Food</button></div>        
-        </div>
-        <div class="image-card">
-          <img src="https://www.ikea.com/images/a-woman-in-a-sunny-room-with-a-bottle-of-cleaning-fluid-in-o-a8375bd30fe0294ea5e69c1d936585de.jpg?f=xxs"/>
-          <div class="button-holder"><button>Furniture</button></div>        
-        </div>
+        <button class="dark-btn right-chevron">
+          <i class="fas fa-chevron-right"></i>
+        </button>
       </div>
       </div>
+
+      <!-- Products slidder -->
+      <div>
+        <h4 class="head-title mt-5">Popular products</h4>
+        <div class="carousel mt-5 pt-5">
+          <button class="dark-btn left-chevron">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <div class="carousel-body p-0 pb-2 mb-5">
+            <div class="row flex-nowrap">
+              <div class="col-6 col-lg-3">
+                <img
+                  class="w-100"
+                  src="https://www.ikea.com/eg/en/images/products/nissafors-trolley-black__0672522_pe716744_s5.jpg?f=xl"
+                  alt=""
+                />
+                <p class="product-highlight">Limited time offer</p>
+                <p class="product-header">NISSAFORS</p>
+                <p class="product-description">Trolley</p>
+                <div class="price">
+                  <div class="line-through"><sup>EGP 1,295</sup></div>
+                  <div class="original-price">
+                    <sup>EGP</sup>
+                    <span>
+                      <strong> 995 </strong>
+                    </span>
+                  </div>
+                </div>
+                <p class="more-options">More options</p>
+              </div>
+              <div class="col-6 col-lg-3">
+                <img
+                  class="w-100"
+                  src="https://www.ikea.com/eg/en/images/products/klubbsporre-ergonomic-pillow-multi-position__0792296_pe764700_s5.jpg?f=xl"
+                  alt=""
+                />
+                <p class="product-highlight">Limited time offer</p>
+                <p class="product-header">KLUBBSPORRE</p>
+                <p class="product-description">
+                  Ergonomic pillow, multi position
+                </p>
+                <div class="price">
+                  <div class="line-through"><sup>EGP 1,499</sup></div>
+                  <div class="original-price">
+                    <sup>EGP</sup>
+                    <span>
+                      <strong> 1,299 </strong>
+                    </span>
+                  </div>
+                </div>
+                <p class="more-options">More options</p>
+              </div>
+              <div class="col-6 col-lg-3">
+                <img
+                  class="w-100"
+                  src="https://www.ikea.com/eg/en/images/products/koppang-chest-of-3-drawers-white__0651169_pe706781_s5.jpg?f=xl"
+                  alt=""
+                />
+                <p class="product-highlight">Limited time offer</p>
+                <p class="product-header">KOPPANG</p>
+                <p class="product-description">Chest of 3 drawers</p>
+                <div class="price">
+                  <div class="line-through"><sup>EGP 2,495</sup></div>
+                  <div class="original-price">
+                    <sup>EGP</sup>
+                    <span>
+                      <strong> 1,995 </strong>
+                    </span>
+                  </div>
+                </div>
+                <p class="more-options">More options</p>
+              </div>
+              <div class="col-6 col-lg-3">
+                <img
+                  class="w-100"
+                  src="https://www.ikea.com/eg/en/images/products/vardagen-saucepan-with-lid-enamelled-steel__0710325_pe727469_s5.jpg?f=xl"
+                  alt=""
+                />
+                <p class="product-highlight">Limited time offer</p>
+                <p class="product-header">VARDAGEN</p>
+                <p class="product-description">Saucepan with lid</p>
+                <div class="price">
+                  <div class="line-through"><sup>EGP 599</sup></div>
+                  <div class="original-price">
+                    <sup>EGP</sup>
+                    <span>
+                      <strong> 499 </strong>
+                    </span>
+                  </div>
+                </div>
+                <p class="more-options">More options</p>
+              </div>
+              <div class="col-6 col-lg-3">
+                <img
+                  class="w-100"
+                  src="https://www.ikea.com/eg/en/images/products/busunge-chest-of-2-drawers-light-pink__0626807_pe692992_s5.jpg?f=xl"
+                  alt=""
+                />
+                <p class="product-highlight">Limited time offer</p>
+                <p class="product-header">BUSUNGE</p>
+                <p class="product-description">Chest of 2 drawers</p>
+                <div class="price">
+                  <div class="line-through"><sup>EGP 1,295</sup></div>
+                  <div class="original-price">
+                    <sup>EGP</sup>
+                    <span>
+                      <strong> 995</strong>
+                    </span>
+                  </div>
+                </div>
+                <p class="more-options">More options</p>
+              </div>
+              <div class="col-6 col-lg-3">
+                <img
+                  class="w-100"
+                  src="https://www.ikea.com/eg/en/images/products/fixa-screwdriver-drill-li-ion__0711977_pe728604_s5.jpg?f=xl"
+                  alt=""
+                />
+                <p class="product-highlight">Limited time offer</p>
+                <p class="product-header">FIXA</p>
+                <p class="product-description">Screwdriver/drill, li-ion</p>
+                <div class="price">
+                  <div class="line-through"><sup>EGP 1,999</sup></div>
+                  <div class="original-price">
+                    <sup>EGP</sup>
+                    <span>
+                      <strong> 1,699</strong>
+                    </span>
+                  </div>
+                </div>
+                <p class="more-options">More options</p>
+              </div>
+              <div class="col-6 col-lg-3">
+                <img
+                  class="w-100"
+                  src="https://www.ikea.com/eg/en/images/products/hemnes-dressing-table-with-mirror-white__0627085_pe693165_s5.jpg?f=xl"
+                  alt=""
+                />
+                <p class="product-highlight">Limited time offer</p>
+                <p class="product-header">HEMNES</p>
+                <p class="product-description">Dressing table with mirror</p>
+                <div class="price">
+                  <div class="line-through"><sup>EGP 5,995</sup></div>
+                  <div class="original-price">
+                    <sup>EGP</sup>
+                    <span>
+                      <strong> 5,495</strong>
+                    </span>
+                  </div>
+                </div>
+                <p class="more-options">More options</p>
+              </div>
+              <div class="col-6 col-lg-3">
+                <img
+                  class="w-100"
+                  src="https://www.ikea.com/eg/en/images/products/paerlband-tealight-holder__0985134_pe816514_s5.jpg?f=xl"
+                  alt=""
+                />
+                <p class="product-highlight">Limited time offer</p>
+                <p class="product-header">PÄRLBAND</p>
+                <p class="product-description">Tealight holder</p>
+                <div class="price">
+                  <div class="line-through"><sup>EGP 229</sup></div>
+                  <div class="original-price">
+                    <sup>EGP</sup>
+                    <span>
+                      <strong> 179</strong>
+                    </span>
+                  </div>
+                </div>
+                <p class="more-options">More options</p>
+              </div>
+              <div class="col-6 col-lg-3">
+                <img
+                  class="w-100"
+                  src="https://www.ikea.com/eg/en/images/products/nordviken-chair-black__0714202_pe729964_s5.jpg?f=xl"
+                  alt=""
+                />
+                <p class="product-highlight">Limited time offer</p>
+                <p class="product-header">NORDVIKEN</p>
+                <p class="product-description">Chair</p>
+                <div class="price">
+                  <div class="line-through"><sup>EGP 1,795</sup></div>
+                  <div class="original-price">
+                    <sup>EGP</sup>
+                    <span>
+                      <strong> 1,495</strong>
+                    </span>
+                  </div>
+                </div>
+                <p class="more-options">More options</p>
+              </div>
+              <div class="col-6 col-lg-3">
+                <img
+                  class="w-100"
+                  src="https://www.ikea.com/eg/en/images/products/rinnig-plate-holder__0712690_pe728975_s5.jpg?f=xl"
+                  alt=""
+                />
+                <p class="product-highlight">Limited time offer</p>
+                <p class="product-header">RINNIG</p>
+                <p class="product-description">Plate holder</p>
+                <div class="price">
+                  <div class="line-through"><sup>EGP 129</sup></div>
+                  <div class="original-price">
+                    <sup>EGP</sup>
+                    <span>
+                      <strong> 99</strong>
+                    </span>
+                  </div>
+                </div>
+                <p class="more-options">More options</p>
+              </div>
+              <div class="col-6 col-lg-3">
+                <img
+                  class="w-100"
+                  src="https://www.ikea.com/eg/en/images/products/sunnersta-rail-with-4-hooks-and-2-containers-white__0832809_pe777827_s5.jpg?f=xl"
+                  alt=""
+                />
+                <p class="product-header">SUNNERSTA</p>
+                <p class="product-description">
+                  Rail with 4 hooks and 2 containers
+                </p>
+                <div class="price">
+                  <div class="original-price">
+                    <sup>EGP</sup>
+                    <span>
+                      <strong> 2,500</strong>
+                    </span>
+                  </div>
+                </div>
+                <p class="more-options">More options</p>
+              </div>
+              <div class="col-6 col-lg-3">
+                <img
+                  class="w-100"
+                  src="https://www.ikea.com/eg/en/images/products/odger-chair-green__0817921_pe774174_s5.jpg?f=xl"
+                  alt=""
+                />
+                <p class="product-highlight">Limited time offer</p>
+                <p class="product-header">ODGER</p>
+                <p class="product-description">Chair</p>
+                <div class="price">
+                  <div class="line-through"><sup>EGP 1,795</sup></div>
+                  <div class="original-price">
+                    <sup>EGP</sup>
+                    <span>
+                      <strong> 995</strong>
+                    </span>
+                  </div>
+                </div>
+                <p class="more-options">More options</p>
+              </div>
+            </div>
+          </div>
+          <button class="dark-btn right-chevron">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+  
+      </div>
+
     </div>
 
     <footer class="footer">
@@ -781,6 +1052,8 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <script src="../assets/js/menu.js"></script>   
+    <script src="../assets/js/menu.js"></script>
+    <script src="../assets/js/main.js"></script>
+   
 </body>
 </html>

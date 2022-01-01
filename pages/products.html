@@ -217,7 +217,7 @@
       <!-- Body -->
    <div class="body-container">
       <div class="header-messages"></div>
-      <div class="navbar navbar-expand-xl navbar-light bg-white px-4 ">
+      <div class="navbar navbar-expand-xl navbar-light bg-white px-4 fixed-top">
         <a href="../index.html" class="navbar-brand">
           <img class="logo" src="../assets/images/ikea-logo.svg" alt="logo"
         /></a>
@@ -270,318 +270,276 @@
         </button>
       </div>
       <!-- end of nav bar -->
+      <div class="border-top mt-nav-3 pt-nav pb-5">
+        <div class="breadcrumb-container">
+          <nav style="--bs-breadcrumb-divider: '>'" aria-label="breadcrumb">
+            <ol class="breadcrumb breadcrumb-list">
+              <li class="breadcrumb-item">
+                <a class="bc-breadcrumb__link" href="#">products</a>
+              </li>
+              <li class="breadcrumb-item" aria-current="page">
+                <a class="bc-breadcrumb__link" href="#">beds</a>
+              </li>
+            </ol>
+          </nav>
+        </div>
 
-      <div class="breadcrumb-container border-top">
-        <nav style="--bs-breadcrumb-divider: '>'" aria-label="breadcrumb">
-          <ol class="breadcrumb breadcrumb-list">
-            <li class="breadcrumb-item">
-              <a class="bc-breadcrumb__link" href="#">products</a>
-            </li>
-            <li class="breadcrumb-item" aria-current="page">
-              <a class="bc-breadcrumb__link" href="#">beds</a>
-            </li>
-          </ol>
-        </nav>
-      </div>
+        <div class="section-title">
+          <h3>Children beds</h3>
+        </div>
 
-      <div class="section-title">
-        <h3>Children beds</h3>
-      </div>
+        <section class="col-12 col-md-7 col-lg-7">
+          <p class="description">
+            We understand that growing kids have lots of needs. Like a quiet spot
+            to relax or a place to do their homework. That's why loft beds for
+            kids are a super-smart multi-tasking solution, helping you free up
+            space for a desk, sofa, wardrobe or pillow fort. Bring home a
+            children's loft bed today!
+          </p>
+        </section>
 
-      <section class="col-12 col-md-7 col-lg-7">
-        <p class="description">
-          We understand that growing kids have lots of needs. Like a quiet spot
-          to relax or a place to do their homework. That's why loft beds for
-          kids are a super-smart multi-tasking solution, helping you free up
-          space for a desk, sofa, wardrobe or pillow fort. Bring home a
-          children's loft bed today!
-        </p>
-      </section>
+        <div class="row sticky-top filter-row">
+          <div class="col-12 col-lg-8 d-flex flex-nowrap overflow-auto py-3 my-2">
+            <button type="button" class="btn btn-light filter-btn">
+              compare
+            </button>
 
-      <div class="row sticky-top filter-row">
-        <div class="col-sm-12 col-md-9 col-lg-9">
-          <button type="button" class="btn btn-light filter-btn">
-            compare
-          </button>
-
-          <!-- drop down Button -->
-          <button
-            type="button"
-            class="btn btn-light filter-btn"
-            id="dropdownMenuLink"
-            data-bs-toggle="dropdown"
-          >
-            sort <i class="fas fa-chevron-down"></i>
-          </button>
-
-          <!-- drop down List -->
-          <ul
-            class="dropdown-menu mt-2"
-            style="width: 250px"
-            aria-labelledby="dropdownMenuLink"
-          >
-            <li
-              class="
-                dropdown-item
-                d-flex
-                flex-row
-                align-items-center
-                justify-content-between
-              "
+            <!-- drop down Button -->
+            <button
+              type="button"
+              class="btn btn-light filter-btn"
+              id="dropdownMenuLink"
+              data-bs-toggle="dropdown"
             >
-              <label class="form-check-label" for="bestmatch-radio">
-                Best match
-              </label>
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="sort-group"
-                  id="bestmatch-radio"
-                />
-              </div>
-            </li>
-            <li
-              class="
-                dropdown-item
-                d-flex
-                flex-row
-                align-items-center
-                justify-content-between
-              "
+              sort <i class="fas fa-chevron-down"></i>
+            </button>
+
+            <!-- drop down List -->
+            <ul
+              class="dropdown-menu mt-2"
+              style="width: 250px"
+              aria-labelledby="dropdownMenuLink"
             >
-              <label class="form-check-label" for="lowToHigh-radio">
-                Price: low to high
-              </label>
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="sort-group"
-                  id="lowToHigh-radio"
-                />
-              </div>
-            </li>
-            <li
-              class="
-                dropdown-item
-                d-flex
-                flex-row
-                align-items-center
-                justify-content-between
-              "
-            >
-              <label class="form-check-label" for="highToLowRadio">
-                Price: high to low
-              </label>
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="sort-group"
-                  id="highToLowRadio"
-                />
-              </div>
-            </li>
-          </ul>
-
-          <!-- drop down Button -->
-          <button
-            type="button"
-            class="btn btn-light filter-btn"
-            id="dropdownMenuLink"
-            data-bs-toggle="dropdown"
-          >
-            color <i class="fas fa-chevron-down"></i>
-          </button>
-
-          <!-- drop down List -->
-          <ul
-            class="dropdown-menu mt-2"
-            style="width: 250px"
-            aria-labelledby="dropdownMenuLink"
-          ></ul>
-
-          <button
-            type="button"
-            class="btn btn-light filter-btn"
-            id="dropdownMenuLink"
-            data-bs-toggle="dropdown"
-          >
-            price <i class="fas fa-chevron-down"></i>
-          </button>
-          <!-- drop down List -->
-          <ul
-            class="dropdown-menu mt-2"
-            style="width: 250px"
-            aria-labelledby="dropdownMenuLink"
-          >
-            <li
-              class="
-                dropdown-item
-                d-flex
-                flex-row
-                align-items-center
-                justify-content-between
-              "
-            >
-              <label class="form-check-label" for=""> EGP 100-500 </label>
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id=""
-                />
-              </div>
-            </li>
-            <li
-              class="
-                dropdown-item
-                d-flex
-                flex-row
-                align-items-center
-                justify-content-between
-              "
-            >
-              <label class="form-check-label" for=""> EGP 500-1000 </label>
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id=""
-                />
-              </div>
-            </li>
-            <li
-              class="
-                dropdown-item
-                d-flex
-                flex-row
-                align-items-center
-                justify-content-between
-              "
-            >
-              <label class="form-check-label" for=""> EGP 1000-1500 </label>
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id=""
-                />
-              </div>
-            </li>
-          </ul>
-          <button type="button" class="btn btn-light filter-btn">
-            size <i class="fas fa-chevron-down"></i>
-          </button>
-          <button type="button" class="btn btn-light filter-btn" data-bs-toggle="offcanvas" href="#filter-menue">
-            All filters <i class="fas fa-filter"></i>
-          </button>
-
-          <!-- filter menue -->
-          <div class="offcanvas offcanvas-end  " tabindex="-1" id="filter-menue" aria-labelledby="filter-menueLabel">
-            <div class="offcanvas-header border">
-              <h5 class="offcanvas-title m-auto" id="filter-menue-Label">filters and sort</h5>
-              <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-
-            
-            <div class="offcanvas-body">
-              <div class="accordion accordion-flush" id="accordionFlushExample">
-                <div class="accordion-item ">
-                    <button class="accordion-button fw-bold" style=" background-color: white ; color: black;" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                      Sort
-                    </button>
-                    <div id="flush-collapseOne" class="accordion-collapse collapse " aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                      <ul class=" w-100 px-3 ">
-                        <li class=" d-flex justify-content-between  my-2">
-                          <label class="form-check-label" for="bestmatch-radio">
-                            Best match
-                          </label>
-                          <div class="form-check">
-                            <input
-                              class="form-check-input"
-                              type="radio"
-                              name="sort-filter"
-                              id="bestmatch-radio"
-                            />
-                          </div>
-                        </li>
-
-                        <li class=" d-flex justify-content-between  my-2">
-                          <label class="form-check-label" for="bestmatch-radio">
-                            Name
-                          </label>
-                          <div class="form-check">
-                            <input
-                              class="form-check-input"
-                              type="radio"
-                              name="sort-filter"
-                              id="bestmatch-radio"
-                            />
-                          </div>
-                        </li>
-                      </ul>
-                    </div>
+              <li
+                class="
+                  dropdown-item
+                  d-flex
+                  flex-row
+                  align-items-center
+                  justify-content-between
+                "
+              >
+                <label class="form-check-label" for="bestmatch-radio">
+                  Best match
+                </label>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="sort-group"
+                    id="bestmatch-radio"
+                  />
                 </div>
-                <div class="accordion-item ">
-                  <button class="accordion-button fw-bold " style="background-color: white; color: black;" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                    Size
-                  </button>
-                  <div id="flush-collapseTwo" class="accordion-collapse collapse " aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-                    <ul class=" w-100 px-3 ">
-                      <li class=" d-flex  justify-content-between my-2">
-                        <label class="form-check-label" for="">
-                          160 cm * 200 cm
-                        </label>
-                        <div>
-                          <label class="form-check-label small-text mx-2" for="">
-                           30
-                          </label>   
-                          <input
-                            class="form-check-input"
-                            type="checkbox"
-                            id=""
-                          />
-                        </div>
-                      </li>
+              </li>
+              <li
+                class="
+                  dropdown-item
+                  d-flex
+                  flex-row
+                  align-items-center
+                  justify-content-between
+                "
+              >
+                <label class="form-check-label" for="lowToHigh-radio">
+                  Price: low to high
+                </label>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="sort-group"
+                    id="lowToHigh-radio"
+                  />
+                </div>
+              </li>
+              <li
+                class="
+                  dropdown-item
+                  d-flex
+                  flex-row
+                  align-items-center
+                  justify-content-between
+                "
+              >
+                <label class="form-check-label" for="highToLowRadio">
+                  Price: high to low
+                </label>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="sort-group"
+                    id="highToLowRadio"
+                  />
+                </div>
+              </li>
+            </ul>
 
-                      <li class=" d-flex  justify-content-between my-2">
-                        <label class="form-check-label" for="">
-                          180 cm * 200 cm
-                        </label>
-                        <div>
-                          <label class="form-check-label small-text mx-2" for="">
-                            40
-                          </label>   
-                          <input
-                            class="form-check-input"
-                            type="checkbox"
-                            name=""
-                            id=""
-                          />
-                        </div>
-                      </li>
-                    </ul>
+            <!-- drop down Button -->
+            <button
+              type="button"
+              class="btn btn-light filter-btn"
+              id="dropdownMenuLink"
+              data-bs-toggle="dropdown"
+            >
+              color <i class="fas fa-chevron-down"></i>
+            </button>
+
+            <!-- drop down List -->
+            <ul
+              class="dropdown-menu mt-2"
+              style="width: 250px"
+              aria-labelledby="dropdownMenuLink"
+            ></ul>
+
+            <button
+              type="button"
+              class="btn btn-light filter-btn"
+              id="dropdownMenuLink"
+              data-bs-toggle="dropdown"
+            >
+              price <i class="fas fa-chevron-down"></i>
+            </button>
+            <!-- drop down List -->
+            <ul
+              class="dropdown-menu mt-2"
+              style="width: 250px"
+              aria-labelledby="dropdownMenuLink"
+            >
+              <li
+                class="
+                  dropdown-item
+                  d-flex
+                  flex-row
+                  align-items-center
+                  justify-content-between
+                "
+              >
+                <label class="form-check-label" for=""> EGP 100-500 </label>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id=""
+                  />
+                </div>
+              </li>
+              <li
+                class="
+                  dropdown-item
+                  d-flex
+                  flex-row
+                  align-items-center
+                  justify-content-between
+                "
+              >
+                <label class="form-check-label" for=""> EGP 500-1000 </label>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id=""
+                  />
+                </div>
+              </li>
+              <li
+                class="
+                  dropdown-item
+                  d-flex
+                  flex-row
+                  align-items-center
+                  justify-content-between
+                "
+              >
+                <label class="form-check-label" for=""> EGP 1000-1500 </label>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id=""
+                  />
+                </div>
+              </li>
+            </ul>
+            <button type="button" class="btn btn-light filter-btn">
+              size <i class="fas fa-chevron-down"></i>
+            </button>
+            <button type="button" class="btn btn-light filter-btn" data-bs-toggle="offcanvas" href="#filter-menue">
+              All filters <i class="fas fa-filter"></i>
+            </button>
+
+            <!-- filter menue -->
+            <div class="offcanvas offcanvas-end  " tabindex="-1" id="filter-menue" aria-labelledby="filter-menueLabel">
+              <div class="offcanvas-header border">
+                <h5 class="offcanvas-title m-auto" id="filter-menue-Label">filters and sort</h5>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+              </div>
+
+              
+              <div class="offcanvas-body">
+                <div class="accordion accordion-flush" id="accordionFlushExample">
+                  <div class="accordion-item ">
+                      <button class="accordion-button fw-bold" style=" background-color: white ; color: black;" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                        Sort
+                      </button>
+                      <div id="flush-collapseOne" class="accordion-collapse collapse " aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                        <ul class=" w-100 px-3 ">
+                          <li class=" d-flex justify-content-between  my-2">
+                            <label class="form-check-label" for="bestmatch-radio">
+                              Best match
+                            </label>
+                            <div class="form-check">
+                              <input
+                                class="form-check-input"
+                                type="radio"
+                                name="sort-filter"
+                                id="bestmatch-radio"
+                              />
+                            </div>
+                          </li>
+
+                          <li class=" d-flex justify-content-between  my-2">
+                            <label class="form-check-label" for="bestmatch-radio">
+                              Name
+                            </label>
+                            <div class="form-check">
+                              <input
+                                class="form-check-input"
+                                type="radio"
+                                name="sort-filter"
+                                id="bestmatch-radio"
+                              />
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
                   </div>
-                </div>
-                <div class="accordion-item">
-                    <button class="accordion-button fw-bold " style="background-color: white; color: black;" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                      Price
+                  <div class="accordion-item ">
+                    <button class="accordion-button fw-bold " style="background-color: white; color: black;" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                      Size
                     </button>
-                  
-                    <div id="flush-collapseThree" class="accordion-collapse collapse " aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                    <div id="flush-collapseTwo" class="accordion-collapse collapse " aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
                       <ul class=" w-100 px-3 ">
                         <li class=" d-flex  justify-content-between my-2">
                           <label class="form-check-label" for="">
-                            EGP 0 - 1,999
+                            160 cm * 200 cm
                           </label>
                           <div>
                             <label class="form-check-label small-text mx-2" for="">
-                             30
+                            30
                             </label>   
                             <input
                               class="form-check-input"
@@ -590,10 +548,94 @@
                             />
                           </div>
                         </li>
-  
-                        <li class=" d-flex  justify-content-between ">
+
+                        <li class=" d-flex  justify-content-between my-2">
                           <label class="form-check-label" for="">
-                            EGP 1,999 - 4,000
+                            180 cm * 200 cm
+                          </label>
+                          <div>
+                            <label class="form-check-label small-text mx-2" for="">
+                              40
+                            </label>   
+                            <input
+                              class="form-check-input"
+                              type="checkbox"
+                              name=""
+                              id=""
+                            />
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                      <button class="accordion-button fw-bold " style="background-color: white; color: black;" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                        Price
+                      </button>
+                    
+                      <div id="flush-collapseThree" class="accordion-collapse collapse " aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                        <ul class=" w-100 px-3 ">
+                          <li class=" d-flex  justify-content-between my-2">
+                            <label class="form-check-label" for="">
+                              EGP 0 - 1,999
+                            </label>
+                            <div>
+                              <label class="form-check-label small-text mx-2" for="">
+                              30
+                              </label>   
+                              <input
+                                class="form-check-input"
+                                type="checkbox"
+                                id=""
+                              />
+                            </div>
+                          </li>
+    
+                          <li class=" d-flex  justify-content-between ">
+                            <label class="form-check-label" for="">
+                              EGP 1,999 - 4,000
+                            </label>
+                            <div>
+                              <label class="form-check-label small-text mx-2" for="">
+                                40
+                              </label>   
+                              <input
+                                class="form-check-input"
+                                type="checkbox"
+                                name=""
+                                id=""
+                              />
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                  </div>
+                  <div class="accordion-item">
+                    <button class="accordion-button fw-bold" style="background-color: white; border:0 ; color: black;" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-color" aria-expanded="false" aria-controls="flush-collapseThree">
+                      Color
+                    </button>
+                  
+                    <div id="collapse-color" class="accordion-collapse collapse " aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                      <ul class=" w-100 px-3 " >
+                        <li class=" d-flex justify-content-between my-2">
+                          <label class="form-check-label" for="">
+                            red
+                          </label>
+                          <div>
+                            <label class="form-check-label small-text mx-2" for="">
+                            30
+                            </label>   
+                            <input
+                              class="form-check-input"
+                              type="checkbox"
+                              id=""
+                            />
+                          </div>
+                        </li>
+
+                        <li class=" d-flex justify-content-between my-2">
+                          <label class="form-check-label" for="">
+                            blue
                           </label>
                           <div>
                             <label class="form-check-label small-text mx-2" for="">
@@ -610,85 +652,86 @@
                       </ul>
                     </div>
                 </div>
-                <div class="accordion-item">
-                  <button class="accordion-button fw-bold" style="background-color: white; border:0 ; color: black;" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-color" aria-expanded="false" aria-controls="flush-collapseThree">
-                    Color
-                  </button>
+                </div>
+              </div>
+
+              <!-- filter menu footer -->
+              <div class="offcanvas-footer text-center ">
+                <button class="rounded-pill py-1 col-5 clear-btn">
+                  Clear all
+                </button>
+                <button class="border rounded-pill py-1 col-5 text-light view-btn">
+                  View
+                  <span>6</span>
+                </button>
+              </div>
+              
+            </div>
+          </div>
+
+          <div class="col-12 col-lg-4 d-flex filter-right-side align-items-center">
+              <p class="d-inline-flex no-of-items">2 items</p>
+              <div class="btn-group me-2" role="group" aria-label="First group">
+                <button type="button" class="btn btn-outline-secondary">
+                  Product
+                </button>
+                <button type="button" class="btn btn-outline-secondary">
+                  Room
+                </button>
+            </div>
+          </div>
+        </div>   
+
+        <div class= "row">
+          <!-- product -->
+          <div class="col-6 col-md-4 col-lg-3 prod-container">
+              <header class="d-flex align-items-center justify-content-between"  style="padding:  .625rem;"  > 
+                <div class="form-check" >
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id=""
+                  />
+                  <small>Compare</small> 
+                </div>
                 
-                  <div id="collapse-color" class="accordion-collapse collapse " aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-                    <ul class=" w-100 px-3 " >
-                      <li class=" d-flex justify-content-between my-2">
-                        <label class="form-check-label" for="">
-                          red
-                        </label>
-                        <div>
-                          <label class="form-check-label small-text mx-2" for="">
-                           30
-                          </label>   
-                          <input
-                            class="form-check-input"
-                            type="checkbox"
-                            id=""
-                          />
-                        </div>
-                      </li>
+                <i class="far fa-heart "></i>
+              </header>
 
-                      <li class=" d-flex justify-content-between my-2">
-                        <label class="form-check-label" for="">
-                          blue
-                        </label>
-                        <div>
-                          <label class="form-check-label small-text mx-2" for="">
-                            40
-                          </label>   
-                          <input
-                            class="form-check-input"
-                            type="checkbox"
-                            name=""
-                            id=""
-                          />
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
+              <a class="card category-card col-12 " href="#">
+                <img
+                  src="	https://www.ikea.com/eg/en/images/products/soederhamn-chaise-longue-samsta-orange__0802365_pe768432_s5.jpg?f=xxs"
+                  class="card-img-top"
+                  alt="sofa"
+                />
+              </a>
+              
+              <div class="mt-1">
+                  <strong class="new">New</strong>
+                  <p class="card-text">                
+                    <a href="#">vimle</a>
+                    <p>3-seats sofa</p>
+                    <strong >EGP 5,500</strong>
+                  </p>
               </div>
+
+              <div class="row">
+                <small class="col-12">more variants</small>
+                <a class="variant-container">
+                  <img  class='variant-img' src="https://www.ikea.com/eg/en/images/products/vimle-3…saxemara-light-blue__0949435_pe799741_s5.jpg?f=xu" alt="3-seat sofa, blue"/>
+                </a>
+                <a class="variant-container">
+                  <img  class='variant-img' src="https://www.ikea.com/eg/en/images/products/vimle-3…saxemara-light-blue__0949435_pe799741_s5.jpg?f=xu" alt="3-seat sofa, blue"/>
+                </a>
+                <a class="variant-container">
+                  <img  class='variant-img' src="https://www.ikea.com/eg/en/images/products/vimle-3…saxemara-light-blue__0949435_pe799741_s5.jpg?f=xu" alt="3-seat sofa, blue"/>
+                </a>
               </div>
-            </div>
-
-            <!-- filter menu footer -->
-            <div class="offcanvas-footer text-center ">
-              <button class="rounded-pill py-1 col-5 clear-btn">
-                Clear all
-              </button>
-              <button class="border rounded-pill py-1 col-5 text-light view-btn">
-                View
-                <span>6</span>
-              </button>
-            </div>
-            
           </div>
-        </div>
-
-        <div class="col-lg-3 col-md-3 col-12">
-          <div class="float-lg-end float-md-end">
-            <p class="d-inline-flex">2 items</p>
-            <div class="btn-group me-2" role="group" aria-label="First group">
-              <button type="button" class="btn btn-outline-secondary">
-                Product
-              </button>
-              <button type="button" class="btn btn-outline-secondary">
-                Room
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>   
-
-      <div class=' row '>
-        <!-- product -->
-        <div class="col-6 col-md-4 col-lg-3  prod-container">
+          <div class="col-6 col-md-4 col-lg-3  prod-container">
             <header class="d-flex align-items-center justify-content-between "  style="padding:  .625rem;"  > 
-              <div class="form-check" >
+              <div class="form-check">
                 <input
                   class="form-check-input"
                   type="checkbox"
@@ -697,22 +740,22 @@
                 />
                 <small>Compare</small> 
               </div>
-               
+              
               <i class="far fa-heart "></i>
             </header>
 
             <a class="card category-card col-12 " href="#">
               <img
-                src="	https://www.ikea.com/eg/en/images/products/soederhamn-chaise-longue-samsta-orange__0802365_pe768432_s5.jpg?f=xxs"
+                src="https://www.ikea.com/eg/en/images/products/vimle-3…axemara-light-blue__0949437_pe799723_s5.jpg?f=xxs"
                 class="card-img-top"
                 alt="sofa"
               />
             </a>
             
-            <div class="mt-1 "">
-                <strong class='new'>New</strong>
+            <div class="mt-1">
+                <strong class="new">New</strong>
                 <p class="card-text">                
-                  <a href='#'>vimle</a>
+                  <a href="#">vimle</a>
                   <p>3-seats sofa</p>
                   <strong >EGP 5,500</strong>
                 </p>
@@ -721,462 +764,416 @@
             <div class="row">
               <small class="col-12">more variants</small>
               <a class="variant-container">
-                <img  class='variant-img' src="https://www.ikea.com/eg/en/images/products/vimle-3…saxemara-light-blue__0949435_pe799741_s5.jpg?f=xu" alt="3-seat sofa, blue"/>
+                <img class="variant-img" src="https://www.ikea.com/eg/en/images/products/vimle-3…saxemara-light-blue__0949435_pe799741_s5.jpg?f=xu" alt="3-seat sofa, blue"/>
               </a>
               <a class="variant-container">
-                <img  class='variant-img' src="https://www.ikea.com/eg/en/images/products/vimle-3…saxemara-light-blue__0949435_pe799741_s5.jpg?f=xu" alt="3-seat sofa, blue"/>
+                <img class="variant-img" src="https://www.ikea.com/eg/en/images/products/vimle-3…saxemara-light-blue__0949435_pe799741_s5.jpg?f=xu" alt="3-seat sofa, blue"/>
               </a>
               <a class="variant-container">
-                <img  class='variant-img' src="https://www.ikea.com/eg/en/images/products/vimle-3…saxemara-light-blue__0949435_pe799741_s5.jpg?f=xu" alt="3-seat sofa, blue"/>
+                <img class="variant-img" src="https://www.ikea.com/eg/en/images/products/vimle-3…saxemara-light-blue__0949435_pe799741_s5.jpg?f=xu" alt="3-seat sofa, blue"/>
               </a>
             </div>
+          </div>
+          <div class="col-6 col-md-4 col-lg-3  prod-container">
+            <header class="d-flex align-items-center justify-content-between "  style="padding:  .625rem;"  > 
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  id=""
+                />
+                <small>Compare</small> 
+              </div>
+              
+              <i class="far fa-heart "></i>
+            </header>
+
+            <a class="card category-card col-12 " href="#">
+              <img
+                src="https://www.ikea.com/eg/en/images/products/vimle-3…axemara-light-blue__0949437_pe799723_s5.jpg?f=xxs"
+                class="card-img-top"
+                alt="sofa"
+              />
+            </a>
+            
+            <div class="mt-1">
+                <strong class="new">New</strong>
+                <p class="card-text">                
+                  <a href="#">vimle</a>
+                  <p>3-seats sofa</p>
+                  <strong >EGP 6,500</strong>
+                </p>
+            </div>
+
+            <div class="row">
+              <small class="col-12">more variants</small>
+              <a class="variant-container">
+                <img class="variant-img" src="https://www.ikea.com/eg/en/images/products/vimle-3…saxemara-light-blue__0949435_pe799741_s5.jpg?f=xu" alt="3-seat sofa, blue"/>
+              </a>
+              <a class="variant-container">
+                <img class="variant-img" src="https://www.ikea.com/eg/en/images/products/vimle-3…saxemara-light-blue__0949435_pe799741_s5.jpg?f=xu" alt="3-seat sofa, blue"/>
+              </a>
+              <a class="variant-container">
+                <img class="variant-img" src="https://www.ikea.com/eg/en/images/products/vimle-3…saxemara-light-blue__0949435_pe799741_s5.jpg?f=xu" alt="3-seat sofa, blue"/>
+              </a>
+            </div>
+          </div>
+          <div class="col-6 col-md-4 col-lg-3  prod-container">
+            <header class="d-flex align-items-center justify-content-between "  style="padding:  .625rem;"  > 
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  id=""
+                />
+                <small>Compare</small> 
+              </div>
+              
+              <i class="far fa-heart "></i>
+            </header>
+
+            <a class="card category-card col-12 " href="#">
+              <img
+                src="https://www.ikea.com/eg/en/images/products/vimle-3…axemara-light-blue__0949437_pe799723_s5.jpg?f=xxs"
+                class="card-img-top"
+                alt="sofa"
+              />
+            </a>
+            
+            <div class="mt-1">
+                <strong class="new">New</strong>
+                <p class="card-text">                
+                  <a href="#">vimle</a>
+                  <p>3-seats sofa</p>
+                  <strong >EGP 5,500</strong>
+                </p>
+            </div>
+
+            <div class="row">
+              <small class="col-12">more variants</small>
+              <a class="variant-container">
+                <img class="variant-img" src="https://www.ikea.com/eg/en/images/products/vimle-3…saxemara-light-blue__0949435_pe799741_s5.jpg?f=xu" alt="3-seat sofa, blue"/>
+              </a>
+              <a class="variant-container">
+                <img class="variant-img" src="https://www.ikea.com/eg/en/images/products/vimle-3…saxemara-light-blue__0949435_pe799741_s5.jpg?f=xu" alt="3-seat sofa, blue"/>
+              </a>
+              <a class="variant-container">
+                <img class="variant-img" src="https://www.ikea.com/eg/en/images/products/vimle-3…saxemara-light-blue__0949435_pe799741_s5.jpg?f=xu" alt="3-seat sofa, blue"/>
+              </a>
+            </div>
+        
+         </div>
         </div>
 
-        <div class="col-6 col-md-4 col-lg-3  prod-container">
-          <header class="d-flex align-items-center justify-content-between "  style="padding:  .625rem;"  > 
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                value=""
-                id=""
-              />
-              <small>Compare</small> 
-            </div>
-             
-            <i class="far fa-heart "></i>
-          </header>
+        <div class="section-title">
+          <h3>Recommended for you</h3>
+        </div>
 
-          <a class="card category-card col-12 " href="#">
+        <!-- slider of products -->
+        <div class="carousel">
+          <button class="dark-btn left-chevron">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <div class="carousel-body p-0 pb-2 mb-5">
+            <div class="row flex-nowrap">
+              <div class="col-6 col-lg-3">
+                <img
+                  class="w-100"
+                  src="https://www.ikea.com/eg/en/images/products/idanaes-open-wardrobe-white__0898869_pe782672_s5.jpg?f=xl"
+                  alt=""
+                />
+                <p class="product-highlight">Limited time offer</p>
+                <p class="product-header">IDANÄS</p>
+                <p class="product-description">Open wardrobe</p>
+                <div class="price">
+                  <div class="line-through"><sup>EGP 4,495</sup></div>
+                  <div class="original-price">
+                    <sup>EGP</sup>
+                    <span>
+                      <strong> 2,995 </strong>
+                    </span>
+                  </div>
+                </div>
+                <p class="more-options">More options</p>
+              </div>
+              <div class="col-6 col-lg-3">
+                <img
+                  class="w-100"
+                  src="https://www.ikea.com/eg/en/images/products/finbraeken-duvet-cover-and-pillowcase-floral-patterned__0932932_pe791687_s5.jpg?f=xl"
+                  alt=""
+                />
+                <p class="product-highlight">Limited time offer</p>
+                <p class="product-header">FINBRÄKEN</p>
+                <p class="product-description">Duvet cover and pillowcase</p>
+                <div class="price">
+                  <div class="line-through"><sup>EGP 999</sup></div>
+                  <div class="original-price">
+                    <sup>EGP</sup>
+                    <span>
+                      <strong> 299 </strong>
+                    </span>
+                  </div>
+                </div>
+                <p class="more-options">More options</p>
+              </div>
+              <div class="col-6 col-lg-3">
+                <img
+                  class="w-100"
+                  src="https://www.ikea.com/eg/en/images/products/milsbo-glass-door-cabinet-white__0914355_pe783961_s5.jpg?f=xl"
+                  alt=""
+                />
+                <p class="product-highlight">Limited time offer</p>
+                <p class="product-header">MILSBO</p>
+                <p class="product-description">Glass-door cabinet</p>
+                <div class="price">
+                  <div class="line-through"><sup>EGP 4,995</sup></div>
+                  <div class="original-price">
+                    <sup>EGP</sup>
+                    <span>
+                      <strong> 3,495 </strong>
+                    </span>
+                  </div>
+                </div>
+                <p class="more-options">More options</p>
+              </div>
+              <div class="col-6 col-lg-3">
+                <img
+                  class="w-100"
+                  src="https://www.ikea.com/eg/en/images/products/pruta-food-container-transparent-blue__0916190_pe785021_s5.jpg?f=xl"
+                  alt=""
+                />
+                <p class="product-highlight">Limited time offer</p>
+                <p class="product-header">PRUTA</p>
+                <p class="product-description">Food container</p>
+                <div class="price">
+                  <div class="line-through"><sup>EGP 19/3 pack</sup></div>
+                  <div class="original-price">
+                    <sup>EGP</sup>
+                    <span>
+                      <strong> 12 <sub>/3 pack</sub> </strong>
+                    </span>
+                  </div>
+                </div>
+                <p class="more-options">More options</p>
+              </div>
+              <div class="col-6 col-lg-3">
+                <img
+                  class="w-100"
+                  src="https://www.ikea.com/eg/en/images/products/risatorp-trolley-white__0736868_pe740789_s5.jpg?f=xl"
+                  alt=""
+                />
+                <p class="product-highlight">Limited time offer</p>
+                <p class="product-header">RISATORP</p>
+                <p class="product-description">Trolley</p>
+                <div class="price">
+                  <div class="line-through"><sup>EGP 1,995</sup></div>
+                  <div class="original-price">
+                    <sup>EGP</sup>
+                    <span>
+                      <strong> 1,495</strong>
+                    </span>
+                  </div>
+                </div>
+                <p class="more-options">More options</p>
+              </div>
+              <div class="col-6 col-lg-3">
+                <img
+                  class="w-100"
+                  src="https://www.ikea.com/eg/en/images/products/fatalig-vase-cat-off-white__0990315_pe818847_s5.jpg?f=xl"
+                  alt=""
+                />
+                <p class="product-highlight">Limited time offer</p>
+                <p class="product-header">FÅTALIG</p>
+                <p class="product-description">Vase</p>
+                <div class="price">
+                  <div class="line-through"><sup>EGP 149</sup></div>
+                  <div class="original-price">
+                    <sup>EGP</sup>
+                    <span>
+                      <strong> 99</strong>
+                    </span>
+                  </div>
+                </div>
+                <p class="more-options">More options</p>
+              </div>
+              <div class="col-6 col-lg-3">
+                <img
+                  class="w-100"
+                  src="https://www.ikea.com/eg/en/images/products/vedbo-armchair-gunnared-dark-grey__0512767_pe638683_s5.jpg?f=xl"
+                  alt=""
+                />
+                <p class="product-highlight">Limited time offer</p>
+                <p class="product-header">VEDBO</p>
+                <p class="product-description">Armchair</p>
+                <div class="price">
+                  <div class="line-through"><sup>EGP 4,995</sup></div>
+                  <div class="original-price">
+                    <sup>EGP</sup>
+                    <span>
+                      <strong> 3,495</strong>
+                    </span>
+                  </div>
+                </div>
+                <p class="more-options">More options</p>
+              </div>
+              <div class="col-6 col-lg-3">
+                <img
+                  class="w-100"
+                  src="https://www.ikea.com/eg/en/images/products/levla-wall-organiser-dark-brown__1012716_pe828987_s5.jpg?f=xl"
+                  alt=""
+                />
+                <p class="product-highlight">Limited time offer</p>
+                <p class="product-header">LEVLA</p>
+                <p class="product-description">Wall organiser</p>
+                <div class="price">
+                  <div class="line-through"><sup>EGP 229</sup></div>
+                  <div class="original-price">
+                    <sup>EGP</sup>
+                    <span>
+                      <strong> 129</strong>
+                    </span>
+                  </div>
+                </div>
+                <p class="more-options">More options</p>
+              </div>
+              <div class="col-6 col-lg-3">
+                <img
+                  class="w-100"
+                  src="https://www.ikea.com/eg/en/images/products/tustna-mattress-pad-white__0636884_pe698073_s5.jpg?f=xl"
+                  alt=""
+                />
+                <p class="product-highlight">Limited time offer</p>
+                <p class="product-header">TUSTNA</p>
+                <p class="product-description">Mattress pad</p>
+                <div class="price">
+                  <div class="line-through"><sup>EGP 4,495</sup></div>
+                  <div class="original-price">
+                    <sup>EGP</sup>
+                    <span>
+                      <strong> 1,995</strong>
+                    </span>
+                  </div>
+                </div>
+                <p class="more-options">More options</p>
+              </div>
+              <div class="col-6 col-lg-3">
+                <img
+                  class="w-100"
+                  src="https://www.ikea.com/eg/en/images/products/ebbemala-table-lamp-brass-colour__0718163_pe731455_s5.jpg?f=xl"
+                  alt=""
+                />
+                <p class="product-highlight">Limited time offer</p>
+                <p class="product-header">EBBEMÅLA</p>
+                <p class="product-description">Table lamp</p>
+                <div class="price">
+                  <div class="line-through"><sup>EGP 1,199</sup></div>
+                  <div class="original-price">
+                    <sup>EGP</sup>
+                    <span>
+                      <strong> 899</strong>
+                    </span>
+                  </div>
+                </div>
+                <p class="more-options">More options</p>
+              </div>
+              <div class="col-6 col-lg-3">
+                <img
+                  class="w-100"
+                  src="https://www.ikea.com/eg/en/images/products/smastad-pull-out-storage-unit-white__0913321_pe783458_s5.jpg?f=xl"
+                  alt=""
+                />
+                <p class="product-highlight">Limited time offer</p>
+                <p class="product-header">SMÅSTAD</p>
+                <p class="product-description">Pull-out storage unit</p>
+                <div class="price">
+                  <div class="line-through"><sup>EGP 4,000</sup></div>
+                  <div class="original-price">
+                    <sup>EGP</sup>
+                    <span>
+                      <strong> 2,500</strong>
+                    </span>
+                  </div>
+                </div>
+                <p class="more-options">More options</p>
+              </div>
+              <div class="col-6 col-lg-3">
+                <img
+                  class="w-100"
+                  src="https://www.ikea.com/eg/en/images/products/voerda-filleting-knife-black__0710390_pe727518_s5.jpg?f=xl"
+                  alt=""
+                />
+                <p class="product-highlight">Limited time offer</p>
+                <p class="product-header">VÖRDA</p>
+                <p class="product-description">Filleting knife</p>
+                <div class="price">
+                  <div class="line-through"><sup>EGP 229</sup></div>
+                  <div class="original-price">
+                    <sup>EGP</sup>
+                    <span>
+                      <strong> 129</strong>
+                    </span>
+                  </div>
+                </div>
+                <p class="more-options">More options</p>
+              </div>
+            </div>
+          </div>
+          <button class="dark-btn right-chevron">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+
+        <div class="section-title">
+          <h3>Related Categories</h3>
+        </div>
+        <div class="row mx-auto g-3">
+          <a class="card category-card col-4 col-lg-4" href="#">
             <img
-              src="https://www.ikea.com/eg/en/images/products/vimle-3…axemara-light-blue__0949437_pe799723_s5.jpg?f=xxs"
+              src="https://www.ikea.com/global/assets/navigation/images/fabric-sofas-10661.jpeg?imwidth=400"
               class="card-img-top"
-              alt="sofa"
+              alt="Fabric Sofa"
             />
-          </a>
-          
-          <div class="mt-1 "">
-              <strong class='new'>New</strong>
-              <p class="card-text">                
-                <a href='#'>vimle</a>
-                <p>3-seats sofa</p>
-                <strong >EGP 5,500</strong>
-              </p>
-          </div>
-
-          <div class="row">
-            <small class="col-12">more variants</small>
-            <a class="variant-container">
-              <img  class='variant-img' src="https://www.ikea.com/eg/en/images/products/vimle-3…saxemara-light-blue__0949435_pe799741_s5.jpg?f=xu" alt="3-seat sofa, blue"/>
-            </a>
-            <a class="variant-container">
-              <img  class='variant-img' src="https://www.ikea.com/eg/en/images/products/vimle-3…saxemara-light-blue__0949435_pe799741_s5.jpg?f=xu" alt="3-seat sofa, blue"/>
-            </a>
-            <a class="variant-container">
-              <img  class='variant-img' src="https://www.ikea.com/eg/en/images/products/vimle-3…saxemara-light-blue__0949435_pe799741_s5.jpg?f=xu" alt="3-seat sofa, blue"/>
-            </a>
-          </div>
-        </div>
-        <div class="col-6 col-md-4 col-lg-3  prod-container">
-          <header class="d-flex align-items-center justify-content-between "  style="padding:  .625rem;"  > 
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                value=""
-                id=""
-              />
-              <small>Compare</small> 
+            <div class="card-body category-body">
+              <p class="card-text">Fabric Sofa</p>
             </div>
-             
-            <i class="far fa-heart "></i>
-          </header>
+          </a>
 
-          <a class="card category-card col-12 " href="#">
+          <a class="card category-card col-4 col-lg-4" href="#">
             <img
-              src="https://www.ikea.com/eg/en/images/products/vimle-3…axemara-light-blue__0949437_pe799723_s5.jpg?f=xxs"
+              src="https://www.ikea.com/global/assets/navigation/images/sofa-beds-10663.jpeg?imwidth=400"
               class="card-img-top"
-              alt="sofa"
+              alt="Fabric Sofa"
             />
-          </a>
-          
-          <div class="mt-1 "">
-              <strong class='new'>New</strong>
-              <p class="card-text">                
-                <a href='#'>vimle</a>
-                <p>3-seats sofa</p>
-                <strong >EGP 6,500</strong>
-              </p>
-          </div>
-
-          <div class="row">
-            <small class="col-12">more variants</small>
-            <a class="variant-container">
-              <img  class='variant-img' src="https://www.ikea.com/eg/en/images/products/vimle-3…saxemara-light-blue__0949435_pe799741_s5.jpg?f=xu" alt="3-seat sofa, blue"/>
-            </a>
-            <a class="variant-container">
-              <img  class='variant-img' src="https://www.ikea.com/eg/en/images/products/vimle-3…saxemara-light-blue__0949435_pe799741_s5.jpg?f=xu" alt="3-seat sofa, blue"/>
-            </a>
-            <a class="variant-container">
-              <img  class='variant-img' src="https://www.ikea.com/eg/en/images/products/vimle-3…saxemara-light-blue__0949435_pe799741_s5.jpg?f=xu" alt="3-seat sofa, blue"/>
-            </a>
-          </div>
-        </div>
-        <div class="col-6 col-md-4 col-lg-3  prod-container">
-          <header class="d-flex align-items-center justify-content-between "  style="padding:  .625rem;"  > 
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                value=""
-                id=""
-              />
-              <small>Compare</small> 
+            <div class="card-body category-body">
+              <p class="card-text">Fabric Sofa</p>
             </div>
-             
-            <i class="far fa-heart "></i>
-          </header>
+          </a>
 
-          <a class="card category-card col-12 " href="#">
+          <a class="card category-card col-4 col-lg-4" href="#">
             <img
-              src="https://www.ikea.com/eg/en/images/products/vimle-3…axemara-light-blue__0949437_pe799723_s5.jpg?f=xxs"
+              src="https://www.ikea.com/global/assets/navigation/images/modular-fabric-sofas-15358.jpeg?imwidth=500"
               class="card-img-top"
-              alt="sofa"
+              alt="Fabric Sofa"
             />
+            <div class="card-body category-body">
+              <p class="card-text">Fabric Sofa</p>
+            </div>
           </a>
-          
-          <div class="mt-1 "">
-              <strong class='new'>New</strong>
-              <p class="card-text">                
-                <a href='#'>vimle</a>
-                <p>3-seats sofa</p>
-                <strong >EGP 5,500</strong>
-              </p>
-          </div>
 
-          <div class="row">
-            <small class="col-12">more variants</small>
-            <a class="variant-container">
-              <img  class='variant-img' src="https://www.ikea.com/eg/en/images/products/vimle-3…saxemara-light-blue__0949435_pe799741_s5.jpg?f=xu" alt="3-seat sofa, blue"/>
-            </a>
-            <a class="variant-container">
-              <img  class='variant-img' src="https://www.ikea.com/eg/en/images/products/vimle-3…saxemara-light-blue__0949435_pe799741_s5.jpg?f=xu" alt="3-seat sofa, blue"/>
-            </a>
-            <a class="variant-container">
-              <img  class='variant-img' src="https://www.ikea.com/eg/en/images/products/vimle-3…saxemara-light-blue__0949435_pe799741_s5.jpg?f=xu" alt="3-seat sofa, blue"/>
-            </a>
-          </div>
-      </div>
-      </div>
+          <a class="card category-card col-4 col-lg-4" href="#">
+            <img
+              src="https://www.ikea.com/global/assets/navigation/images/modular-leather-coated-fabric-sofas-16235.jpeg?imwidth=500"
+              class="card-img-top"
+              alt="Fabric Sofa"
+            />
+            <div class="card-body category-body">
+              <p class="card-text">Fabric Sofa</p>
+            </div>
+          </a>
 
-      <div class="section-title">
-        <h3>Recommended for you</h3>
-      </div>
-
-
-
-      <!-- slider of products -->
-      <div class="carousel">
-        <button class="dark-btn left-chevron">
-          <i class="fas fa-chevron-left"></i>
-        </button>
-        <div class="carousel-body p-0 pb-2 mb-5">
-          <div class="row flex-nowrap">
-            <div class="col-6 col-lg-3">
-              <img
-                class="w-100"
-                src="https://www.ikea.com/eg/en/images/products/idanaes-open-wardrobe-white__0898869_pe782672_s5.jpg?f=xl"
-                alt=""
-              />
-              <p class="product-highlight">Limited time offer</p>
-              <p class="product-header">IDANÄS</p>
-              <p class="product-description">Open wardrobe</p>
-              <div class="price">
-                <div class="line-through"><sup>EGP 4,495</sup></div>
-                <div class="original-price">
-                  <sup>EGP</sup>
-                  <span>
-                    <strong> 2,995 </strong>
-                  </span>
-                </div>
-              </div>
-              <p class="more-options">More options</p>
-            </div>
-            <div class="col-6 col-lg-3">
-              <img
-                class="w-100"
-                src="https://www.ikea.com/eg/en/images/products/finbraeken-duvet-cover-and-pillowcase-floral-patterned__0932932_pe791687_s5.jpg?f=xl"
-                alt=""
-              />
-              <p class="product-highlight">Limited time offer</p>
-              <p class="product-header">FINBRÄKEN</p>
-              <p class="product-description">Duvet cover and pillowcase</p>
-              <div class="price">
-                <div class="line-through"><sup>EGP 999</sup></div>
-                <div class="original-price">
-                  <sup>EGP</sup>
-                  <span>
-                    <strong> 299 </strong>
-                  </span>
-                </div>
-              </div>
-              <p class="more-options">More options</p>
-            </div>
-            <div class="col-6 col-lg-3">
-              <img
-                class="w-100"
-                src="https://www.ikea.com/eg/en/images/products/milsbo-glass-door-cabinet-white__0914355_pe783961_s5.jpg?f=xl"
-                alt=""
-              />
-              <p class="product-highlight">Limited time offer</p>
-              <p class="product-header">MILSBO</p>
-              <p class="product-description">Glass-door cabinet</p>
-              <div class="price">
-                <div class="line-through"><sup>EGP 4,995</sup></div>
-                <div class="original-price">
-                  <sup>EGP</sup>
-                  <span>
-                    <strong> 3,495 </strong>
-                  </span>
-                </div>
-              </div>
-              <p class="more-options">More options</p>
-            </div>
-            <div class="col-6 col-lg-3">
-              <img
-                class="w-100"
-                src="https://www.ikea.com/eg/en/images/products/pruta-food-container-transparent-blue__0916190_pe785021_s5.jpg?f=xl"
-                alt=""
-              />
-              <p class="product-highlight">Limited time offer</p>
-              <p class="product-header">PRUTA</p>
-              <p class="product-description">Food container</p>
-              <div class="price">
-                <div class="line-through"><sup>EGP 19/3 pack</sup></div>
-                <div class="original-price">
-                  <sup>EGP</sup>
-                  <span>
-                    <strong> 12 <sub>/3 pack</sub> </strong>
-                  </span>
-                </div>
-              </div>
-              <p class="more-options">More options</p>
-            </div>
-            <div class="col-6 col-lg-3">
-              <img
-                class="w-100"
-                src="https://www.ikea.com/eg/en/images/products/risatorp-trolley-white__0736868_pe740789_s5.jpg?f=xl"
-                alt=""
-              />
-              <p class="product-highlight">Limited time offer</p>
-              <p class="product-header">RISATORP</p>
-              <p class="product-description">Trolley</p>
-              <div class="price">
-                <div class="line-through"><sup>EGP 1,995</sup></div>
-                <div class="original-price">
-                  <sup>EGP</sup>
-                  <span>
-                    <strong> 1,495</strong>
-                  </span>
-                </div>
-              </div>
-              <p class="more-options">More options</p>
-            </div>
-            <div class="col-6 col-lg-3">
-              <img
-                class="w-100"
-                src="https://www.ikea.com/eg/en/images/products/fatalig-vase-cat-off-white__0990315_pe818847_s5.jpg?f=xl"
-                alt=""
-              />
-              <p class="product-highlight">Limited time offer</p>
-              <p class="product-header">FÅTALIG</p>
-              <p class="product-description">Vase</p>
-              <div class="price">
-                <div class="line-through"><sup>EGP 149</sup></div>
-                <div class="original-price">
-                  <sup>EGP</sup>
-                  <span>
-                    <strong> 99</strong>
-                  </span>
-                </div>
-              </div>
-              <p class="more-options">More options</p>
-            </div>
-            <div class="col-6 col-lg-3">
-              <img
-                class="w-100"
-                src="https://www.ikea.com/eg/en/images/products/vedbo-armchair-gunnared-dark-grey__0512767_pe638683_s5.jpg?f=xl"
-                alt=""
-              />
-              <p class="product-highlight">Limited time offer</p>
-              <p class="product-header">VEDBO</p>
-              <p class="product-description">Armchair</p>
-              <div class="price">
-                <div class="line-through"><sup>EGP 4,995</sup></div>
-                <div class="original-price">
-                  <sup>EGP</sup>
-                  <span>
-                    <strong> 3,495</strong>
-                  </span>
-                </div>
-              </div>
-              <p class="more-options">More options</p>
-            </div>
-            <div class="col-6 col-lg-3">
-              <img
-                class="w-100"
-                src="https://www.ikea.com/eg/en/images/products/levla-wall-organiser-dark-brown__1012716_pe828987_s5.jpg?f=xl"
-                alt=""
-              />
-              <p class="product-highlight">Limited time offer</p>
-              <p class="product-header">LEVLA</p>
-              <p class="product-description">Wall organiser</p>
-              <div class="price">
-                <div class="line-through"><sup>EGP 229</sup></div>
-                <div class="original-price">
-                  <sup>EGP</sup>
-                  <span>
-                    <strong> 129</strong>
-                  </span>
-                </div>
-              </div>
-              <p class="more-options">More options</p>
-            </div>
-            <div class="col-6 col-lg-3">
-              <img
-                class="w-100"
-                src="https://www.ikea.com/eg/en/images/products/tustna-mattress-pad-white__0636884_pe698073_s5.jpg?f=xl"
-                alt=""
-              />
-              <p class="product-highlight">Limited time offer</p>
-              <p class="product-header">TUSTNA</p>
-              <p class="product-description">Mattress pad</p>
-              <div class="price">
-                <div class="line-through"><sup>EGP 4,495</sup></div>
-                <div class="original-price">
-                  <sup>EGP</sup>
-                  <span>
-                    <strong> 1,995</strong>
-                  </span>
-                </div>
-              </div>
-              <p class="more-options">More options</p>
-            </div>
-            <div class="col-6 col-lg-3">
-              <img
-                class="w-100"
-                src="https://www.ikea.com/eg/en/images/products/ebbemala-table-lamp-brass-colour__0718163_pe731455_s5.jpg?f=xl"
-                alt=""
-              />
-              <p class="product-highlight">Limited time offer</p>
-              <p class="product-header">EBBEMÅLA</p>
-              <p class="product-description">Table lamp</p>
-              <div class="price">
-                <div class="line-through"><sup>EGP 1,199</sup></div>
-                <div class="original-price">
-                  <sup>EGP</sup>
-                  <span>
-                    <strong> 899</strong>
-                  </span>
-                </div>
-              </div>
-              <p class="more-options">More options</p>
-            </div>
-            <div class="col-6 col-lg-3">
-              <img
-                class="w-100"
-                src="https://www.ikea.com/eg/en/images/products/smastad-pull-out-storage-unit-white__0913321_pe783458_s5.jpg?f=xl"
-                alt=""
-              />
-              <p class="product-highlight">Limited time offer</p>
-              <p class="product-header">SMÅSTAD</p>
-              <p class="product-description">Pull-out storage unit</p>
-              <div class="price">
-                <div class="line-through"><sup>EGP 4,000</sup></div>
-                <div class="original-price">
-                  <sup>EGP</sup>
-                  <span>
-                    <strong> 2,500</strong>
-                  </span>
-                </div>
-              </div>
-              <p class="more-options">More options</p>
-            </div>
-            <div class="col-6 col-lg-3">
-              <img
-                class="w-100"
-                src="https://www.ikea.com/eg/en/images/products/voerda-filleting-knife-black__0710390_pe727518_s5.jpg?f=xl"
-                alt=""
-              />
-              <p class="product-highlight">Limited time offer</p>
-              <p class="product-header">VÖRDA</p>
-              <p class="product-description">Filleting knife</p>
-              <div class="price">
-                <div class="line-through"><sup>EGP 229</sup></div>
-                <div class="original-price">
-                  <sup>EGP</sup>
-                  <span>
-                    <strong> 129</strong>
-                  </span>
-                </div>
-              </div>
-              <p class="more-options">More options</p>
-            </div>
-          </div>
         </div>
-        <button class="dark-btn right-chevron">
-          <i class="fas fa-chevron-right"></i>
-        </button>
-      </div>
-
-      <div class="section-title">
-        <h3>Related Categories</h3>
-      </div>
-      <div class="row mx-auto g-3">
-        <a class="card category-card col-4 col-lg-4" href="#">
-          <img
-            src="https://www.ikea.com/global/assets/navigation/images/fabric-sofas-10661.jpeg?imwidth=400"
-            class="card-img-top"
-            alt="Fabric Sofa"
-          />
-          <div class="card-body category-body">
-            <p class="card-text">Fabric Sofa</p>
-          </div>
-        </a>
-
-        <a class="card category-card col-4 col-lg-4" href="#">
-          <img
-            src="https://www.ikea.com/global/assets/navigation/images/sofa-beds-10663.jpeg?imwidth=400"
-            class="card-img-top"
-            alt="Fabric Sofa"
-          />
-          <div class="card-body category-body">
-            <p class="card-text">Fabric Sofa</p>
-          </div>
-        </a>
-
-        <a class="card category-card col-4 col-lg-4" href="#">
-          <img
-            src="https://www.ikea.com/global/assets/navigation/images/modular-fabric-sofas-15358.jpeg?imwidth=500"
-            class="card-img-top"
-            alt="Fabric Sofa"
-          />
-          <div class="card-body category-body">
-            <p class="card-text">Fabric Sofa</p>
-          </div>
-        </a>
-
-        <a class="card category-card col-4 col-lg-4" href="#">
-          <img
-            src="https://www.ikea.com/global/assets/navigation/images/modular-leather-coated-fabric-sofas-16235.jpeg?imwidth=500"
-            class="card-img-top"
-            alt="Fabric Sofa"
-          />
-          <div class="card-body category-body">
-            <p class="card-text">Fabric Sofa</p>
-          </div>
-        </a>
-
       </div>
     </div>
 

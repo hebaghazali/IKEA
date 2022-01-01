@@ -100,16 +100,11 @@
     outline-color: $small-text-color;
   }
 }
-
-// @mixin SeeAllBtnHover {
-// }
-
 @mixin slidder {
   overflow-x: scroll;
   overflow-y: hidden;
   display: flex;
   flex-wrap: nowrap;
-  height: 300px;
   padding-bottom: 10px;
 
   &::-webkit-scrollbar {
