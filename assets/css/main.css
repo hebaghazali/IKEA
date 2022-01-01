@@ -89,6 +89,7 @@ body {
   .body-container {
     margin-right: 1rem;
     padding-left: 0;
+    width: 90vw;
   }
 
   .mt-nav-2 {
@@ -485,6 +486,7 @@ body {
     left: 0;
     right: 0;
     margin: auto;
+    padding: 0 1rem;
   }
   .navbar .navbar-search {
     order: 1;
