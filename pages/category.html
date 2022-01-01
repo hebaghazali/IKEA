@@ -16,11 +16,11 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css"
     />
     <link
-    rel="stylesheet"
-    href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
-    integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP"
-    crossorigin="anonymous"
-  />
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+      integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="../assets/css/main.css" />
     <link rel="shortcut icon" href="../assets/images/ikea-logo.png" />
     <title>Furniture</title>
@@ -28,188 +28,215 @@
 
   <body>
     <!--#region sidebar menu -->
-        <button class="menu-btn mx-2 my-4" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-          <i class="bi bi-list"></i>
-      </button>
-  
-      <div class="offcanvas offcanvas-start menu-bar" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    <button
+      class="menu-btn mx-2 my-4"
+      type="button"
+      data-bs-toggle="offcanvas"
+      data-bs-target="#offcanvasExample"
+      aria-controls="offcanvasExample"
+    >
+      <i class="bi bi-list"></i>
+    </button>
+
+    <div
+      class="offcanvas offcanvas-start menu-bar"
+      tabindex="-1"
+      id="offcanvasExample"
+      aria-labelledby="offcanvasExampleLabel"
+    >
       <div class="offcanvas-header menu-header">
-          <button type="button" class="menu-btn" data-bs-dismiss="offcanvas" onclick="{ShowMain()}"><i class="bi bi-x"></i></button>
-          <img src="https://www.ikea.com/eg/en/static/ikea-logo.f7d9229f806b59ec64cb.svg"/>
+        <button
+          type="button"
+          class="menu-btn"
+          data-bs-dismiss="offcanvas"
+          onclick="{ShowMain()}"
+        >
+          <i class="bi bi-x"></i>
+        </button>
+        <img
+          src="https://www.ikea.com/eg/en/static/ikea-logo.f7d9229f806b59ec64cb.svg"
+        />
       </div>
       <!-- main body -->
       <div id="main-menu" class="offcanvas-body menu-body">
-          <ul>
-              <li onclick="{ShowDiv('p-content')}"><a href="#">Products</a></li>
-              <li onclick="{ShowDiv('r-content')}"><a href="#">Rooms</a></li>
-              <li onclick="{ShowDiv('o-content')}"><a href="#">Offers</a></li>
-              <li onclick="{ShowDiv('w-content')}"><a href="#">What's new</a></li>
-          </ul>
-          <ul class="small-text-list">
-              <li><a href="stores.html">Stores</a></li>
-              <li><a href="conactUs.html">Contact us</a></li>                
-          </ul>
-          <div class="d-flex flex-row justify-content-around">
-              <select type="button" class="selector-btn">
-              <i class="fas fa-chevron-down"></i>
-              <option>English</option>
-              <option>العربية</option>
-              </select>
-              <button class="selector-btn">
-                  <i class="bi bi-globe"></i>
-                  Change country
-              </button>
-          </div>
-      </div>
-  
-      <!-- product body -->
-      <div id="p-content" class="offcanvas-body menu-body other-content">
-          <div class="d-flex flex-row">
-              <button class="position-sticky menu-btn" onclick="{ShowMain()}"><i class="bi bi-arrow-left-short"></i></button>
-              <span class="head-title">Products</span>
-          </div>
-          <ul class="small-text-list my-4">
-              <li><a href="category.html">Furniture</a></li>
-              <li><a href="category.html">Kitchen & appliances</a></li>
-              <li><a href="category.html">Beds & mattresses</a></li>
-              <li><a href="category.html">Storage & organisation</a></li>
-              <li><a href="category.html">Textiles</a></li>
-              <li><a href="category.html">Decoration</a></li>                
-              <li><a href="category.html">Bathroom products</a></li>                
-              <li><a href="category.html">Outdoor products</a></li>                
-              <li><a href="category.html">Lighting</a></li>                
-              <li><a href="category.html">Rugs, mats & flooring</a></li>                
-              <li><a href="category.html">Baby & children</a></li>
-              <li><a href="category.html">More</a></li>                            
-          </ul>
-      </div>
-  
-      <!-- Room body -->
-      <div id="r-content" class="offcanvas-body menu-body other-content">
-          <div class="d-flex flex-row">
-              <button class="position-sticky menu-btn" onclick="{ShowMain()}"><i class="bi bi-arrow-left-short"></i></button>
-              <span class="head-title">Rooms</span>
-          </div>
-          <div class="row mx-auto g-4 my-4">
-              <a class="card category-card col-3 col-md-5" href="category.html">
-                  <img
-                  src="https://www.ikea.com/images/an-enhet-washbasin-and-cabinet-and-open-shelving-with-a-roun-08edae8f788e473a9605e4b398900cb6.jpg?f=xxxs"
-                  class="card-img-top"
-                  alt="..."
-                  />
-                  <div class="card-body category-body">
-                  <p class="card-text">Bathroom</p>
-                  </div>
-              </a>
-              <a class="card category-card col-3 col-md-5" href="category.html">
-                  <img
-                  src="https://www.ikea.com/images/a-vadheim-upholstered-bed-with-vitkloever-bed-linen-stands-i-18d599765b42ee3396abb67b8a245606.jpg?f=xxxs"
-                  class="card-img-top"
-                  alt="..."
-                  />
-                  <div class="card-body category-body">
-                  <p class="card-text">Bedroom</p>
-                  </div>
-              </a>
-              <a class="card category-card col-3 col-md-5" href="category.html">
-                  <img
-                  src="https://www.ikea.com/images/a-tuffing-bunk-bed-in-a-childrens-room-with-a-football-and-t-57c6d97b0e97fa11316c8fea272a7f0d.jpg?f=xxxs"
-                  class="card-img-top"
-                  alt="..."
-                  />
-                  <div class="card-body category-body">
-                  <p class="card-text">Children's room</p>
-                  </div>
-              </a>
-              <a class="card category-card col-3 col-md-5" href="category.html">
-                  <img
-                  src="https://www.ikea.com/images/a-dining-area-by-a-window-with-a-large-dining-table-six-meta-46845de50b0ad73d0b9731140141b6e3.jpg?f=xxxs"
-                  class="card-img-top"
-                  alt="..."
-                  />
-                  <div class="card-body category-body">
-                  <p class="card-text">Dining</p>
-                  </div>
-              </a>
-              <a class="card category-card col-3 col-md-5" href="category.html">
-                  <img
-                      src="https://www.ikea.com/images/a-hallway-where-a-pinnig-coat-rack-and-shoe-bench-stand-agai-2dc4a103bc0ac4158557a90ebc0aadd3.jpg?f=xxxs"
-                      class="card-img-top"
-                      alt="..."
-                  />
-                  <div class="card-body category-body">
-                      <p class="card-text">Hallway</p>
-                  </div>
-                  </a>
-                  <a class="card category-card col-3 col-md-5" href="category.html">
-                  <img
-                      src="https://www.ikea.com/images/an-industrial-style-studio-at-home-with-high-ceilings-furnit-d6ba3f797a6cbed87478bad1d8dbd652.jpg?f=xxxs"
-                      class="card-img-top"
-                      alt="..."
-                  />
-                  <div class="card-body category-body">
-                      <p class="card-text">Home office</p>
-                  </div>
-                  </a>
-                  <a class="card category-card col-3 col-md-5" href="category.html">
-                  <img
-                      src="https://www.ikea.com/images/a-contemporary-and-decluttered-kitchen-with-bodarp-kitchen-f-0fd7f2c13233700c427237c449cc2982.jpg?f=xxxs"
-                      class="card-img-top"
-                      alt="..."
-                  />
-                  <div class="card-body category-body">
-                      <p class="card-text">Kitchen</p>
-                  </div>
-                  </a>
-                  <a class="card category-card col-3 col-md-5" href="category.html">
-                  <img
-                      src="https://www.ikea.com/images/an-aepplaryd-sofa-with-three-coffee-tables-in-front-on-a-blu-ad40b43a98816f1805e40c1d7ef6d681.jpg?f=xxxs"
-                      class="card-img-top"
-                      alt="..."
-                  />
-                  <div class="card-body category-body">
-                      <p class="card-text">Living room</p>
-                  </div>
-                  </a>
-                  <a class="card category-card col-3 col-md-5" href="category.html">
-                  <img
-                      src="https://www.ikea.com/images/a-small-balcony-with-a-wooden-table-and-chairs-artificial-gr-f6ba826dc19b000e2975955fd78e45a4.jpg?f=xxxs"
-                      class="card-img-top"
-                      alt="..."
-                  />
-                  <div class="card-body category-body">
-                      <p class="card-text">Garden & balcony</p>
-                  </div>
-                  </a>
-          </div>
-      </div>
-  
-      <!-- offers body -->
-      <div id="o-content" class="offcanvas-body menu-body other-content">
-          <div class="d-flex flex-row">
-              <button class="position-sticky menu-btn" onclick="{ShowMain()}"><i class="bi bi-arrow-left-short"></i></button>
-              <span class="head-title">Offers</span>
-          </div>
-          <ul class="small-text-list my-4">
-              <li><a href="#">New Lower Price</a></li>
-              <li><a href="#">Sale</a></li>                          
-          </ul>
-      </div>
-  
-      <!-- what's new body -->
-      <div id="w-content" class="offcanvas-body menu-body other-content">
-          <div class="d-flex flex-row">
-              <button class="position-sticky menu-btn" onclick="{ShowMain()}"><i class="bi bi-arrow-left-short"></i></button>
-              <span class="head-title">Offers</span>
-          </div>
-          <ul class="small-text-list my-4">
-              <li><a href="#">New Products</a></li>
-              <li><a href="#">Stories</a></li>                          
-          </ul>
+        <ul>
+          <li onclick="{ShowDiv('p-content')}"><a href="#">Products</a></li>
+          <li onclick="{ShowDiv('r-content')}"><a href="#">Rooms</a></li>
+          <li onclick="{ShowDiv('o-content')}"><a href="#">Offers</a></li>
+          <li onclick="{ShowDiv('w-content')}"><a href="#">What's new</a></li>
+        </ul>
+        <ul class="small-text-list">
+          <li><a href="stores.html">Stores</a></li>
+          <li><a href="conactUs.html">Contact us</a></li>
+        </ul>
+        <div class="d-flex flex-row justify-content-around">
+          <select type="button" class="selector-btn">
+            <i class="fas fa-chevron-down"></i>
+            <option>English</option>
+            <option>العربية</option>
+          </select>
+          <button class="selector-btn">
+            <i class="bi bi-globe"></i>
+            Change country
+          </button>
+        </div>
       </div>
 
+      <!-- product body -->
+      <div id="p-content" class="offcanvas-body menu-body other-content">
+        <div class="d-flex flex-row">
+          <button class="position-sticky menu-btn" onclick="{ShowMain()}">
+            <i class="bi bi-arrow-left-short"></i>
+          </button>
+          <span class="head-title">Products</span>
+        </div>
+        <ul class="small-text-list my-4">
+          <li><a href="category.html">Furniture</a></li>
+          <li><a href="category.html">Kitchen & appliances</a></li>
+          <li><a href="category.html">Beds & mattresses</a></li>
+          <li><a href="category.html">Storage & organisation</a></li>
+          <li><a href="category.html">Textiles</a></li>
+          <li><a href="category.html">Decoration</a></li>
+          <li><a href="category.html">Bathroom products</a></li>
+          <li><a href="category.html">Outdoor products</a></li>
+          <li><a href="category.html">Lighting</a></li>
+          <li><a href="category.html">Rugs, mats & flooring</a></li>
+          <li><a href="category.html">Baby & children</a></li>
+          <li><a href="category.html">More</a></li>
+        </ul>
       </div>
-      <!--#endregion -->
+
+      <!-- Room body -->
+      <div id="r-content" class="offcanvas-body menu-body other-content">
+        <div class="d-flex flex-row">
+          <button class="position-sticky menu-btn" onclick="{ShowMain()}">
+            <i class="bi bi-arrow-left-short"></i>
+          </button>
+          <span class="head-title">Rooms</span>
+        </div>
+        <div class="row mx-auto g-4 my-4">
+          <a class="card category-card col-3 col-md-5" href="category.html">
+            <img
+              src="https://www.ikea.com/images/an-enhet-washbasin-and-cabinet-and-open-shelving-with-a-roun-08edae8f788e473a9605e4b398900cb6.jpg?f=xxxs"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body category-body">
+              <p class="card-text">Bathroom</p>
+            </div>
+          </a>
+          <a class="card category-card col-3 col-md-5" href="category.html">
+            <img
+              src="https://www.ikea.com/images/a-vadheim-upholstered-bed-with-vitkloever-bed-linen-stands-i-18d599765b42ee3396abb67b8a245606.jpg?f=xxxs"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body category-body">
+              <p class="card-text">Bedroom</p>
+            </div>
+          </a>
+          <a class="card category-card col-3 col-md-5" href="category.html">
+            <img
+              src="https://www.ikea.com/images/a-tuffing-bunk-bed-in-a-childrens-room-with-a-football-and-t-57c6d97b0e97fa11316c8fea272a7f0d.jpg?f=xxxs"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body category-body">
+              <p class="card-text">Children's room</p>
+            </div>
+          </a>
+          <a class="card category-card col-3 col-md-5" href="category.html">
+            <img
+              src="https://www.ikea.com/images/a-dining-area-by-a-window-with-a-large-dining-table-six-meta-46845de50b0ad73d0b9731140141b6e3.jpg?f=xxxs"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body category-body">
+              <p class="card-text">Dining</p>
+            </div>
+          </a>
+          <a class="card category-card col-3 col-md-5" href="category.html">
+            <img
+              src="https://www.ikea.com/images/a-hallway-where-a-pinnig-coat-rack-and-shoe-bench-stand-agai-2dc4a103bc0ac4158557a90ebc0aadd3.jpg?f=xxxs"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body category-body">
+              <p class="card-text">Hallway</p>
+            </div>
+          </a>
+          <a class="card category-card col-3 col-md-5" href="category.html">
+            <img
+              src="https://www.ikea.com/images/an-industrial-style-studio-at-home-with-high-ceilings-furnit-d6ba3f797a6cbed87478bad1d8dbd652.jpg?f=xxxs"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body category-body">
+              <p class="card-text">Home office</p>
+            </div>
+          </a>
+          <a class="card category-card col-3 col-md-5" href="category.html">
+            <img
+              src="https://www.ikea.com/images/a-contemporary-and-decluttered-kitchen-with-bodarp-kitchen-f-0fd7f2c13233700c427237c449cc2982.jpg?f=xxxs"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body category-body">
+              <p class="card-text">Kitchen</p>
+            </div>
+          </a>
+          <a class="card category-card col-3 col-md-5" href="category.html">
+            <img
+              src="https://www.ikea.com/images/an-aepplaryd-sofa-with-three-coffee-tables-in-front-on-a-blu-ad40b43a98816f1805e40c1d7ef6d681.jpg?f=xxxs"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body category-body">
+              <p class="card-text">Living room</p>
+            </div>
+          </a>
+          <a class="card category-card col-3 col-md-5" href="category.html">
+            <img
+              src="https://www.ikea.com/images/a-small-balcony-with-a-wooden-table-and-chairs-artificial-gr-f6ba826dc19b000e2975955fd78e45a4.jpg?f=xxxs"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body category-body">
+              <p class="card-text">Garden & balcony</p>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- offers body -->
+      <div id="o-content" class="offcanvas-body menu-body other-content">
+        <div class="d-flex flex-row">
+          <button class="position-sticky menu-btn" onclick="{ShowMain()}">
+            <i class="bi bi-arrow-left-short"></i>
+          </button>
+          <span class="head-title">Offers</span>
+        </div>
+        <ul class="small-text-list my-4">
+          <li><a href="#">New Lower Price</a></li>
+          <li><a href="#">Sale</a></li>
+        </ul>
+      </div>
+
+      <!-- what's new body -->
+      <div id="w-content" class="offcanvas-body menu-body other-content">
+        <div class="d-flex flex-row">
+          <button class="position-sticky menu-btn" onclick="{ShowMain()}">
+            <i class="bi bi-arrow-left-short"></i>
+          </button>
+          <span class="head-title">Offers</span>
+        </div>
+        <ul class="small-text-list my-4">
+          <li><a href="#">New Products</a></li>
+          <li><a href="#">Stories</a></li>
+        </ul>
+      </div>
+    </div>
+    <!--#endregion -->
 
     <div class="body-container">
       <div class="header-messages"></div>
@@ -218,19 +245,39 @@
           <img class="logo" src="../assets/images/ikea-logo.svg" alt="logo"
         /></a>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample">Products</a>
+              <a
+                class="nav-link active"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasExample"
+                >Products</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample">Rooms</a>
+              <a
+                class="nav-link"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasExample"
+                >Rooms</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample">Offers</a>
+              <a
+                class="nav-link"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasExample"
+                >Offers</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample">What's new</a>
+              <a
+                class="nav-link"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasExample"
+                >What's new</a
+              >
             </li>
           </ul>
         </div>
@@ -241,25 +288,27 @@
             <i class="bi bi-camera"></i>
           </div>
         </div>
-        <div class="navbar-icons">
-          <div class="location-container">
-            <i class="bi bi-shop"></i>
-            <div class="location-text">
-              <small>See opening hours and more</small>
-              <strong>Select store</strong>
-            </div>
+        <div class="location-container">
+          <i class="bi bi-shop"></i>
+          <div class="location-text">
+            <small>See opening hours and more</small>
+            <strong>Select store</strong>
           </div>
+        </div>
+        <div class="navbar-icons">
           <a href="../Log-in.html"><i class="bi bi-person"></i></a>
           <a href="../favourite.html"><i class="bi bi-heart"></i></a>
-          <a href="../shoppingBag.html"><i class="bi bi-minecart-loaded"></i></a>
+          <a href="../shoppingBag.html"
+            ><i class="bi bi-minecart-loaded"></i
+          ></a>
         </div>
 
         <!-- Toggler -->
         <button
           class="navbar-toggler toggler"
           id="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasExample"
           aria-label="Toggle navigation"
         >
           <span class="navbar-toggler-icon"></span>
@@ -279,7 +328,7 @@
           </ol>
         </nav>
       </div>
-      
+
       <!-- Categories cards -->
       <div>
         <h4 class="head-title">Furniture</h4>
@@ -489,7 +538,9 @@
 
       <!-- Cards with text right -->
       <div>
-        <h4 class="head-title my-5">Fun desks to keep your creativity flowing</h4>
+        <h4 class="head-title my-5">
+          Fun desks to keep your creativity flowing
+        </h4>
         <a class="row card row-card g-0" href="#">
           <img
             class="col-12 col-sm-6 col-md-8"
@@ -633,7 +684,9 @@
 
       <!-- Card with text right -->
       <div>
-        <h4 class="head-title  my-5">A chair that's up for the job, no matter what it is</h4>
+        <h4 class="head-title my-5">
+          A chair that's up for the job, no matter what it is
+        </h4>
         <a class="row card row-card g-0" href="#">
           <img
             class="col-12 col-sm-6 col-md-8"
@@ -641,7 +694,10 @@
             class="card-img-top"
             alt="..."
           />
-          <div class="col-12 col-sm-6 col-md-4 card-body card-right" style="background-color: #263242;">
+          <div
+            class="col-12 col-sm-6 col-md-4 card-body card-right"
+            style="background-color: #263242"
+          >
             <h4 class="card-text head-title">One chair to do it all</h4>
             <button class="card-btn">
               <i class="bi bi-arrow-right"></i>
@@ -652,39 +708,59 @@
 
       <!-- Slidder-->
       <div>
-      <h4 class="head-title my-5">Quick guides to a more sustainable home</h4>
-      <div class="carousel carousel-edit">
-        <button class="dark-btn left-chevron">
-          <i class="fas fa-chevron-left"></i>
-        </button>
-        <div class="carousel-body p-0 pb-2 mb-5">
-          <div class="row flex-nowrap">
-            <div class="col-6 col-lg-3 image-card">
-              <img src="https://www.ikea.com/images/a-hand-controlling-the-flow-of-water-from-an-arched-mixer-ta-7ab00d7ab5cbae1bc654fab0e4d0fdd7.jpg?f=xxs"/>
-              <div class="button-holder"><button><a href="./guide.html">Water & energy</a></button></div>                 
-            </div>
-            <div class="col-6 col-lg-3 image-card">
-              <img src="https://www.ikea.com/images/a-beige-upholstered-bed-covered-in-white-bed-linen-with-a-ro-1000cebd78155c6e4692a6e2895e1217.jpg?f=xxs"/>
-              <div class="button-holder"><button><a href="./guide.html">Materials</a></button></div>                 
-            </div>
-            <div class="col-6 col-lg-3 image-card">
-              <img src="https://www.ikea.com/images/a-sheer-white-curtain-billowing-in-front-of-a-sunny-window-w-00318c01fb4b82f4a6b99a0f4f582cca.jpg?f=xxs"/>
-              <div class="button-holder"><button><a href="./guide.html">Health</a></button></div>                 
-            </div>
-            <div class="col-6 col-lg-3 image-card">
-              <img src="https://www.ikea.com/images/a-white-countertop-with-a-person-chopping-green-vegetables-o-95f2de0ed6972bf6e3f564a9bdafd93e.jpg?f=xxs"/>
-              <div class="button-holder"><button><a href="./guide.html">Food</a></button></div>                 
-            </div>
-            <div class="col-6 col-lg-3 image-card">
-              <img src="https://www.ikea.com/images/a-woman-in-a-sunny-room-with-a-bottle-of-cleaning-fluid-in-o-a8375bd30fe0294ea5e69c1d936585de.jpg?f=xxs"/>
-              <div class="button-holder"><button><a href="./guide.html">Furniture</a></button></div>                 
+        <h4 class="head-title my-5">Quick guides to a more sustainable home</h4>
+        <div class="carousel carousel-edit">
+          <button class="dark-btn left-chevron">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <div class="carousel-body p-0 pb-2 mb-5">
+            <div class="row flex-nowrap">
+              <div class="col-6 col-lg-3 image-card">
+                <img
+                  src="https://www.ikea.com/images/a-hand-controlling-the-flow-of-water-from-an-arched-mixer-ta-7ab00d7ab5cbae1bc654fab0e4d0fdd7.jpg?f=xxs"
+                />
+                <div class="button-holder">
+                  <button><a href="./guide.html">Water & energy</a></button>
+                </div>
+              </div>
+              <div class="col-6 col-lg-3 image-card">
+                <img
+                  src="https://www.ikea.com/images/a-beige-upholstered-bed-covered-in-white-bed-linen-with-a-ro-1000cebd78155c6e4692a6e2895e1217.jpg?f=xxs"
+                />
+                <div class="button-holder">
+                  <button><a href="./guide.html">Materials</a></button>
+                </div>
+              </div>
+              <div class="col-6 col-lg-3 image-card">
+                <img
+                  src="https://www.ikea.com/images/a-sheer-white-curtain-billowing-in-front-of-a-sunny-window-w-00318c01fb4b82f4a6b99a0f4f582cca.jpg?f=xxs"
+                />
+                <div class="button-holder">
+                  <button><a href="./guide.html">Health</a></button>
+                </div>
+              </div>
+              <div class="col-6 col-lg-3 image-card">
+                <img
+                  src="https://www.ikea.com/images/a-white-countertop-with-a-person-chopping-green-vegetables-o-95f2de0ed6972bf6e3f564a9bdafd93e.jpg?f=xxs"
+                />
+                <div class="button-holder">
+                  <button><a href="./guide.html">Food</a></button>
+                </div>
+              </div>
+              <div class="col-6 col-lg-3 image-card">
+                <img
+                  src="https://www.ikea.com/images/a-woman-in-a-sunny-room-with-a-bottle-of-cleaning-fluid-in-o-a8375bd30fe0294ea5e69c1d936585de.jpg?f=xxs"
+                />
+                <div class="button-holder">
+                  <button><a href="./guide.html">Furniture</a></button>
+                </div>
+              </div>
             </div>
           </div>
+          <button class="dark-btn right-chevron">
+            <i class="fas fa-chevron-right"></i>
+          </button>
         </div>
-        <button class="dark-btn right-chevron">
-          <i class="fas fa-chevron-right"></i>
-        </button>
-      </div>
       </div>
 
       <!-- Products slidder -->
@@ -944,9 +1020,7 @@
             <i class="fas fa-chevron-right"></i>
           </button>
         </div>
-  
       </div>
-
     </div>
 
     <footer class="footer">
@@ -1003,7 +1077,15 @@
         </div>
       </div>
 
-      <div class="footer-social-languages d-flex justify-content-between pb-4 border-bottom">
+      <div
+        class="
+          footer-social-languages
+          d-flex
+          justify-content-between
+          pb-4
+          border-bottom
+        "
+      >
         <ul class="social-media-links d-flex">
           <li>
             <a href="#"><i class="fab fa-facebook"></i></a>
@@ -1051,9 +1133,12 @@
       </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
     <script src="../assets/js/menu.js"></script>
     <script src="../assets/js/main.js"></script>
-   
-</body>
+  </body>
 </html>
