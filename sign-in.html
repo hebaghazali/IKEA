@@ -33,7 +33,7 @@
           <!-- Right Section -->
           <section class="col-md-5 col-12 login-form">
             <div class="form-floating mb-3 input-log">
-              <form class="row g-3 needs-validation" novalidate>
+              <form class="row g-3 needs-validation" novalidate onsubmit="signUp(event)">
                 <div class="input-box">
                   <input
                     type="text"
@@ -90,7 +90,7 @@
                   <input
                     type="text"
                     class="form-control input-sign-form"
-                    id="validationCustom05"
+                    id="email"
                     placeholder="Email(UserName)"
                     required
                   />
@@ -100,9 +100,9 @@
                 </div>
                 <div>
                   <input
-                    type="text"
+                    type="password"
                     class="form-control input-sign-form"
-                    id="validationCustom05"
+                    id="password"
                     required
                     placeholder="Password"
                   />
@@ -139,5 +139,6 @@
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     ></script>
+    <script src='./assets/js/SignUp/signUp.js' type="module"></script>
   </body>
 </html>
