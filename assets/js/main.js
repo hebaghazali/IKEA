@@ -1,3 +1,12 @@
+// Cloud Storage
+
+import { downloadImages } from './storage/storage.js';
+
+downloadImages();
+
+//////////////////////////////////////////////////////////
+
+// Carousel
 var carousels = document.querySelectorAll('.carousel');
 
 carousels.forEach(carousel => {
