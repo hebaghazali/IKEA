@@ -1159,4 +1159,10 @@ footer .legal-links li {
   box-shadow: none;
 }
 
+#slider-items li a {
+  cursor: pointer ;
+  color: #000 ;
+}
+
+#slider-items li a:hover {text-decoration: underline;}
 /*# sourceMappingURL=main.css.map */
