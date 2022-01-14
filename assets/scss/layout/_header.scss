@@ -8,7 +8,7 @@
   right: $body-margin-right;
   padding-left: $body-padding-left;
 
-  &>* {
+  & > * {
     margin-left: 1.2rem;
   }
 
@@ -33,12 +33,11 @@
     .nav-item {
       a {
         color: $default-text-color;
-        font-size: .875rem;
+        font-size: 0.875rem;
         padding: 0 1rem;
         font-weight: 700;
       }
     }
-
   }
 
   .navbar-collapse {
@@ -69,52 +68,65 @@
     }
   }
 
-  .navbar-icons {
-    flex-basis: 25%;
+  .location-container {
     display: flex;
-    justify-content: space-between;
+    align-items: flex-end;
+    margin-left: auto;
 
-    .location-container {
-      display: flex;
-      align-items: flex-end;
-
-      &>* {
-        margin: 0 5px;
-      }
-
-      .bi-shop {
-        // self-align: flex-end;
-      }
-
-      .location-text {
-        display: flex;
-        flex-direction: column;
-      }
+    & > * {
+      margin: 0 5px;
     }
 
-
+    .location-text {
+      display: flex;
+      flex-direction: column;
+    }
   }
 
+  .navbar-icons {
+    flex-basis: 8%;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 1rem;
+  }
 }
 
 @media only screen and (max-width: 1200px) {
+  .resp-hide {
+    display: none;
+  }
+
   .navbar {
+    .location-container {
+      order: 1;
+      flex-basis: 100%;
+      padding-top: 1rem;
+
+      .location-text {
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        width: 100%;
+
+        & > * {
+          padding-right: 1rem;
+        }
+      }
+    }
+
     .navbar-icons {
       flex-basis: 16.67%;
-
-      .location-container {
-        display: none;
-      }
+      margin-left: auto;
     }
   }
 }
 
 @media only screen and (max-width: 815px) {
   .navbar {
-    width: 95vw;
+    width: 90vw;
     left: 0;
     right: 0;
     margin: auto;
+    padding-left: 0;
 
     .navbar-search {
       order: 1;
@@ -124,13 +136,7 @@
 
     .navbar-icons {
       flex-basis: 20%;
-      // justify-content: flex-end;
       margin-left: auto;
-      // margin-right: 1rem;
-
-      &>* {
-        // margin-left: 2px;
-      }
     }
   }
 }

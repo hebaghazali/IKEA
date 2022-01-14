@@ -1,0 +1,25 @@
+.logout{
+    text-decoration: underline;
+    text-decoration-color: $default-text-color;
+    -moz-text-decoration-color: $default-text-color;
+    &:hover{
+       color: $default-text-color;
+    }
+}
+
+.tab{
+    border-bottom: 2px solid $border-color;
+    color: #484848;
+    flex-shrink: 0;
+    padding: 0 0.9375rem 0.9375rem 0;
+    text-align: left;
+    &:hover{
+        border-bottom: 2px solid darken($border-color,10);
+        color: $default-text-color;
+    }
+}
+
+.selected{
+    border-bottom: 2px solid $blue;
+}
+  
