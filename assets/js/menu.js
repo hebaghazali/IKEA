@@ -21,6 +21,7 @@ const fireStore = getFirestore(app);
 var menu = document.getElementById("main-menu");
 var offCanva = document.getElementById("offcanvasExample");
 var content;
+var Cat_ID= "M2601fIIjtQ9r7L5QfnJ";
 
 async function getCategories() {
   let prCatListEl = document.getElementById("products-list");
@@ -38,8 +39,32 @@ async function getCategories() {
 
 window.setSession = setSession;
 function setSession(element) {
-    sessionStorage.setItem("subCategory",element.id)  
+    sessionStorage.setItem("ProductCategories",element.id)  
 }
+
+// ////////////////////////////////////////
+
+
+
+
+window.setCatSession = setCatSession;
+function setCatSession() {
+    sessionStorage.setItem("subCategory",Cat_ID)  
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 window.ShowDiv = ShowDiv;
 function ShowDiv(id) {
