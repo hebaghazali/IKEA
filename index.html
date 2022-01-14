@@ -60,7 +60,7 @@
       <!-- main body -->
       <div id="main-menu" class="offcanvas-body menu-body">
         <ul>
-          <li onclick="{ShowDiv('p-content')}"><a href="#">Products</a></li>
+          <li onclick="ShowDiv('p-content')"><a href="#">Products</a></li>
           <li onclick="{ShowDiv('r-content')}"><a href="#">Rooms</a></li>
           <li onclick="{ShowDiv('o-content')}"><a href="#">Offers</a></li>
           <li onclick="{ShowDiv('w-content')}"><a href="#">What's new</a></li>
@@ -90,19 +90,7 @@
           </button>
           <span class="head-title">Products</span>
         </div>
-        <ul class="small-text-list my-4">
-          <li><a href="./pages/category.html">Furniture</a></li>
-          <li><a href="./pages/category.html">Kitchen & appliances</a></li>
-          <li><a href="./pages/category.html">Beds & mattresses</a></li>
-          <li><a href="./pages/category.html">Storage & organisation</a></li>
-          <li><a href="./pages/category.html">Textiles</a></li>
-          <li><a href="./pages/category.html">Decoration</a></li>
-          <li><a href="./pages/category.html">Bathroom products</a></li>
-          <li><a href="./pages/category.html">Outdoor products</a></li>
-          <li><a href="./pages/category.html">Lighting</a></li>
-          <li><a href="./pages/category.html">Rugs, mats & flooring</a></li>
-          <li><a href="./pages/category.html">Baby & children</a></li>
-          <li><a href="./pages/category.html">More</a></li>
+        <ul class="small-text-list my-4" id='products-list'>
         </ul>
       </div>
 
@@ -1914,6 +1902,6 @@
     ></script>
 
     <script src="assets/js/main.js" type="module"></script>
-    <script src="./assets/js/menu.js"></script>
+    <script src="./assets/js/menu.js" type="module"></script>
   </body>
 </html>
