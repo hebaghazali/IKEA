@@ -33,80 +33,113 @@
           <!-- Right Section -->
           <section class="col-md-5 col-12 login-form">
             <div class="form-floating mb-3 input-log">
-              <form class="row g-3 needs-validation" novalidate onsubmit="signUp(event)">
+              <form class="row g-3 needs-validation" novalidate onsubmit="signUp(event)" >
                 <div class="input-box">
                   <input
+                    for="validationCustom01"
                     type="text"
                     class="form-control input-sign-form"
-                    id="validationCustom01"
+                    id="firstname"
                     placeholder="First Name"
+                    onkeyup="validateInput(event)"
                     required
+                    pattern="[A-Za-z]{3,}"
                   />
-                  <div class="valid-feedback">Looks good!</div>
+                  <!-- <div class="invalid-feedback">First name should be more than 2 characters!</div> -->
+                  <div id="firstname-feedback" style="font-size: 0.8rem;"></div>
                 </div>
                 <div class="input-box">
                   <input
+                    for="validationCustom02"
                     type="text"
                     class="form-control input-sign-form"
-                    id="validationCustom02"
+                    id="lastname"
                     placeholder="Last name"
+                    onkeyup="validateInput(event)"
                     required
+                    pattern="[A-Za-z]{3,}"
                   />
-                  <div class="valid-feedback">Looks good!</div>
+                  <div id="lastname-feedback" style="font-size: 0.8rem;"></div>
+                  <!-- <div class="invalid-feedback">Last name should be more than 2 characters!</div> -->
                 </div>
                 <div class="input-box">
-                  <div class="input-group has-validation">
+                  <div class="input-group">
                     <input
+                      for="validationCustom03"
                       type="text"
                       class="form-control input-sign-form"
-                      id="validationCustom01"
+                      id="phone"
                       placeholder="EG(+20)"
+                      onkeyup="validateInput(event)"
+                      required
+                      pattern="^(01)(0|1|5|2)[0-9]{8}$"
                     />
-                    <div class="valid-feedback">Looks good!</div>
+                    <!-- <div class="invalid-feedback">You should enter a valid mobile number</div> -->
+                    <div id="phone-feedback" style="font-size: 0.8rem;"></div>
                   </div>
                 </div>
-
+                <div class="input-box">
+                  <div class="input-group">
+                    <input
+                      for="validationCustom03"
+                      type="text"
+                      class="form-control input-sign-form"
+                      id="address"
+                      placeholder="Address"
+                      onkeyup="validateInput(event)"
+                      required
+                      pattern="^[\w]{1,}$"
+                    />
+                    <!-- <div class="invalid-feedback">You should enter your address</div> -->
+                    <div id="address-feedback" style="font-size: 0.8rem;"></div>
+                  </div>
+                </div>
                 <div>
-                  <label
+                  <!-- <label
                     for="validationCustom04"
                     class="form-label selct-label-form-sign"
                     >Prefered Store</label
-                  >
+                  > -->
                   <select
                     class="form-select selct-form-sign"
                     id="validationCustom04"
-                    required
                   >
                     <option selected disabled value="">
                       IKEA Cairo Mall Of Arabia
                     </option>
                     <option>IKEA CFC</option>
                   </select>
-                  <div class="invalid-feedback">
+                  <!-- <div class="invalid-feedback">
                     Please select a valid Store.
-                  </div>
+                  </div> -->
                 </div>
                 <div>
                   <input
+                  for="validationCustom04"
                     type="text"
                     class="form-control input-sign-form"
                     id="email"
                     placeholder="Email(UserName)"
+                    onkeyup="validateInput(event)"
                     required
-                  />
-                  <div class="invalid-feedback">
-                    Your email(Username) is required
+                    pattern="^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$"
+                    />
+                    <!-- <div class="invalid-feedback">You should enter a valid email</div> -->
+                    <div id="email-feedback" style="font-size: 0.8rem;"></div>
                   </div>
-                </div>
                 <div>
                   <input
+                    for="validationCustom05"
                     type="password"
                     class="form-control input-sign-form"
                     id="password"
-                    required
                     placeholder="Password"
+                    onkeyup="validateInput(event)"
+                    required
+                    pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[&#*@_])[a-zA-Z0-9-&#*@_]{8,}$"
                   />
-                  <div class="invalid-feedback">Your Password is required</div>
+                  <!-- <div class="invalid-feedback">Password morethan 8 characters is required that contains an upper case, a lower case, a special character & a number</div> -->
+                  <div id="password-feedback" style="font-size: 0.8rem;"></div>
                 </div>
 
                 <!-- <div>
@@ -139,6 +172,27 @@
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     ></script>
+    <script>
+      (function () {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+          .forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+              if (!form.checkValidity()) {
+                event.preventDefault()
+                event.stopPropagation()
+              }
+
+              form.classList.add('was-validated')
+            }, false)
+          })
+      })()
+    </script>
     <script src='./assets/js/SignUp/signUp.js' type="module"></script>
   </body>
 </html>
