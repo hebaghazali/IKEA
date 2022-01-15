@@ -94,19 +94,14 @@
           </button>
           <span class="head-title">Products</span>
         </div>
-        <ul class="small-text-list my-4">
-          <li><a href="category.html">Furniture</a></li>
-          <li><a href="category.html">Kitchen & appliances</a></li>
-          <li><a href="category.html">Beds & mattresses</a></li>
-          <li><a href="category.html">Storage & organisation</a></li>
-          <li><a href="category.html">Textiles</a></li>
-          <li><a href="category.html">Decoration</a></li>
-          <li><a href="category.html">Bathroom products</a></li>
-          <li><a href="category.html">Outdoor products</a></li>
-          <li><a href="category.html">Lighting</a></li>
-          <li><a href="category.html">Rugs, mats & flooring</a></li>
-          <li><a href="category.html">Baby & children</a></li>
-          <li><a href="category.html">More</a></li>
+        <ul class="small-text-list my-4" id='products-list'>
+          <li class="text-center">
+            <div class="loadingio-spinner-ball-u6x6jkb8i1s ">
+              <div class="ldio-evnxwkwzfho">
+              <div></div>
+              </div>
+            </div>
+          </li>
         </ul>
       </div>
 
@@ -331,8 +326,7 @@
               </li>
             </ol>
           </nav>
-        </div>
-
+        </div> 
         <div class="section-title">
           <h3>Children beds</h3>
         </div>
@@ -787,10 +781,13 @@
 
         <div class="row" id="show-proDetail">
           <!-- product -->
-          <div class="text-center pt-3 d-none" id="noData">
-            <strong>oops no data !</strong>
-          </div>
-
+          <div class="text-center">
+            <div class="loadingio-spinner-ball-u6x6jkb8i1s ">
+              <div class="ldio-evnxwkwzfho">
+              <div></div>
+              </div>
+            </div>
+           </div>
           <script type="module">
             // Import the functions you need from the SDKs you need
             import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.2/firebase-app.js";
@@ -838,7 +835,11 @@
             onSnapshot(q, (snapshot) => {
               var div = document.querySelector("#show-proDetail");
               div.innerHTML = "";
-              snapshot.forEach((doc) => {
+              snapshot.size==0?
+              div.innerHTML =`<div class="text-center py-5" id="noData">
+                                <h4>oops no data :(</h4>
+                              </div>`
+              :snapshot.forEach((doc) => {
                 ShowData(doc);
               });
             });

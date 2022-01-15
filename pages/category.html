@@ -323,6 +323,13 @@
 
         <h4 class="head-title">Furniture</h4>
         <div class="row mx-auto g-3 categories-slidder" id="subSliderItems" >
+          <div class="text-center">
+            <div class="loadingio-spinner-ball-u6x6jkb8i1s ">
+              <div class="ldio-evnxwkwzfho">
+              <div></div>
+              </div>
+            </div>
+           </div>
 
  <script type="module">
             // Import the functions you need from the SDKs you need
@@ -368,7 +375,11 @@
             onSnapshot(q, (snapshot) => {
             var div = document.querySelector(".categories-slidder");
             div.innerHTML = "";
-            snapshot.forEach((doc) => {
+            snapshot.size==0?
+            div.innerHTML =`<div class="text-center py-5" id="noData">
+                              <h4>oops no data :(</h4>
+                            </div>`
+            :snapshot.forEach((doc) => {
               ShowData(doc);
             });
           });

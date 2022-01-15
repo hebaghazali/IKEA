@@ -26,9 +26,8 @@ var Cat_ID= "M2601fIIjtQ9r7L5QfnJ";
 async function getCategories() {
   let prCatListEl = document.getElementById("products-list");
 
-  prCatListEl.innerHTML = "";
   var allCategories = await getDocs(collection(fireStore, "ProductCategories"));
-
+  prCatListEl.innerHTML = "";
   allCategories.docs.forEach((element) => {
     console.log(element.id, element.data().Name);
     prCatListEl.innerHTML += 
