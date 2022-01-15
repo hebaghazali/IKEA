@@ -359,12 +359,16 @@
           const firestore = getFirestore(app);
     
           //listen on any change
-          //onSnapshot(collection(firestore,'collName'),callback)
-          onSnapshot(collection(firestore, "subCategory"), (snapshot) => {
+          const prodCateg=sessionStorage.getItem('ProductCategories');
+          
+          //query for filtering query(collection, where( "attr","operator","value"))
+          const q = query(collection(firestore, "subCategory"), 
+          where("ProductCategory", "==", `${prodCateg}`));
+          // onSnapshot( q,callback)
+            onSnapshot(q, (snapshot) => {
             var div = document.querySelector(".categories-slidder");
             div.innerHTML = "";
             snapshot.forEach((doc) => {
-              // console.log(`${doc.id} => ${doc.data().Name}`);
               ShowData(doc);
             });
           });
@@ -396,14 +400,14 @@
             // console.log(showImg);
         }
           function ShowData(product) {
-            var Cat_ID= "M2601fIIjtQ9r7L5QfnJ";
+            var Cat_ID= product.id;
             var productData = product.data();
             // console.log(productData);
             var div = document.querySelector(".categories-slidder");
             var row = `
     
-               <a class="card category-card col-4 col-lg-2" href="./products.html"
-               id=${Cat_ID} onclick="setCatSession()"
+               <a href="./products.html" class="card category-card col-4 col-lg-2" 
+               id=${Cat_ID} onclick="setSession('subCategory',this)"
                 >
     
                  <img
@@ -1045,6 +1049,5 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="../assets/js/menu.js" type="module"></script>   
-    <!-- <script src="../assets/js/sliderItem.js" type="module"></script> -->
   </body>
 </html>

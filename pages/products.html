@@ -32,210 +32,257 @@
     <!-- Bootstrap JS -->
 
     <!--#region sidebar menu -->
-    <button class="menu-btn resp-hide mx-2 my-4" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+    <button
+      class="menu-btn resp-hide mx-2 my-4"
+      type="button"
+      data-bs-toggle="offcanvas"
+      data-bs-target="#offcanvasExample"
+      aria-controls="offcanvasExample"
+    >
       <i class="bi bi-list"></i>
-  </button>
+    </button>
 
-  <div class="offcanvas offcanvas-start menu-bar" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-  <div class="offcanvas-header menu-header">
-      <button type="button" class="menu-btn" data-bs-dismiss="offcanvas" onclick="{ShowMain()}"><i class="bi bi-x"></i></button>
-      <img src="https://www.ikea.com/eg/en/static/ikea-logo.f7d9229f806b59ec64cb.svg"/>
-  </div>
-  <!-- main body -->
-  <div id="main-menu" class="offcanvas-body menu-body">
-      <ul>
+    <div
+      class="offcanvas offcanvas-start menu-bar"
+      tabindex="-1"
+      id="offcanvasExample"
+      aria-labelledby="offcanvasExampleLabel"
+    >
+      <div class="offcanvas-header menu-header">
+        <button
+          type="button"
+          class="menu-btn"
+          data-bs-dismiss="offcanvas"
+          onclick="{ShowMain()}"
+        >
+          <i class="bi bi-x"></i>
+        </button>
+        <img
+          src="https://www.ikea.com/eg/en/static/ikea-logo.f7d9229f806b59ec64cb.svg"
+        />
+      </div>
+      <!-- main body -->
+      <div id="main-menu" class="offcanvas-body menu-body">
+        <ul>
           <li onclick="{ShowDiv('p-content')}"><a href="#">Products</a></li>
           <li onclick="{ShowDiv('r-content')}"><a href="#">Rooms</a></li>
           <li onclick="{ShowDiv('o-content')}"><a href="#">Offers</a></li>
           <li onclick="{ShowDiv('w-content')}"><a href="#">What's new</a></li>
-      </ul>
-      <ul class="small-text-list">
+        </ul>
+        <ul class="small-text-list">
           <li><a href="stores.html">Stores</a></li>
-          <li><a href="conactUs.html">Contact us</a></li>                
-      </ul>
-      <div class="d-flex flex-row justify-content-around">
+          <li><a href="conactUs.html">Contact us</a></li>
+        </ul>
+        <div class="d-flex flex-row justify-content-around">
           <select type="button" class="selector-btn">
-          <i class="fas fa-chevron-down"></i>
-          <option>English</option>
-          <option>العربية</option>
+            <i class="fas fa-chevron-down"></i>
+            <option>English</option>
+            <option>العربية</option>
           </select>
           <button class="selector-btn">
-              <i class="bi bi-globe"></i>
-              Change country
+            <i class="bi bi-globe"></i>
+            Change country
           </button>
+        </div>
       </div>
-  </div>
 
-  <!-- product body -->
-  <div id="p-content" class="offcanvas-body menu-body other-content">
-      <div class="d-flex flex-row">
-          <button class="position-sticky menu-btn" onclick="{ShowMain()}"><i class="bi bi-arrow-left-short"></i></button>
+      <!-- product body -->
+      <div id="p-content" class="offcanvas-body menu-body other-content">
+        <div class="d-flex flex-row">
+          <button class="position-sticky menu-btn" onclick="{ShowMain()}">
+            <i class="bi bi-arrow-left-short"></i>
+          </button>
           <span class="head-title">Products</span>
-      </div>
-      <ul class="small-text-list my-4">
+        </div>
+        <ul class="small-text-list my-4">
           <li><a href="category.html">Furniture</a></li>
           <li><a href="category.html">Kitchen & appliances</a></li>
           <li><a href="category.html">Beds & mattresses</a></li>
           <li><a href="category.html">Storage & organisation</a></li>
           <li><a href="category.html">Textiles</a></li>
-          <li><a href="category.html">Decoration</a></li>                
-          <li><a href="category.html">Bathroom products</a></li>                
-          <li><a href="category.html">Outdoor products</a></li>                
-          <li><a href="category.html">Lighting</a></li>                
-          <li><a href="category.html">Rugs, mats & flooring</a></li>                
+          <li><a href="category.html">Decoration</a></li>
+          <li><a href="category.html">Bathroom products</a></li>
+          <li><a href="category.html">Outdoor products</a></li>
+          <li><a href="category.html">Lighting</a></li>
+          <li><a href="category.html">Rugs, mats & flooring</a></li>
           <li><a href="category.html">Baby & children</a></li>
-          <li><a href="category.html">More</a></li>                            
-      </ul>
-  </div>
-
-  <!-- Room body -->
-  <div id="r-content" class="offcanvas-body menu-body other-content">
-      <div class="d-flex flex-row">
-          <button class="position-sticky menu-btn" onclick="{ShowMain()}"><i class="bi bi-arrow-left-short"></i></button>
-          <span class="head-title">Rooms</span>
+          <li><a href="category.html">More</a></li>
+        </ul>
       </div>
-      <div class="row mx-auto g-4 my-4">
+
+      <!-- Room body -->
+      <div id="r-content" class="offcanvas-body menu-body other-content">
+        <div class="d-flex flex-row">
+          <button class="position-sticky menu-btn" onclick="{ShowMain()}">
+            <i class="bi bi-arrow-left-short"></i>
+          </button>
+          <span class="head-title">Rooms</span>
+        </div>
+        <div class="row mx-auto g-4 my-4">
           <a class="card category-card col-3 col-md-5" href="category.html">
-              <img
+            <img
               src="https://www.ikea.com/images/an-enhet-washbasin-and-cabinet-and-open-shelving-with-a-roun-08edae8f788e473a9605e4b398900cb6.jpg?f=xxxs"
               class="card-img-top"
               alt="..."
-              />
-              <div class="card-body category-body">
+            />
+            <div class="card-body category-body">
               <p class="card-text">Bathroom</p>
-              </div>
+            </div>
           </a>
           <a class="card category-card col-3 col-md-5" href="category.html">
-              <img
+            <img
               src="https://www.ikea.com/images/a-vadheim-upholstered-bed-with-vitkloever-bed-linen-stands-i-18d599765b42ee3396abb67b8a245606.jpg?f=xxxs"
               class="card-img-top"
               alt="..."
-              />
-              <div class="card-body category-body">
+            />
+            <div class="card-body category-body">
               <p class="card-text">Bedroom</p>
-              </div>
+            </div>
           </a>
           <a class="card category-card col-3 col-md-5" href="category.html">
-              <img
+            <img
               src="https://www.ikea.com/images/a-tuffing-bunk-bed-in-a-childrens-room-with-a-football-and-t-57c6d97b0e97fa11316c8fea272a7f0d.jpg?f=xxxs"
               class="card-img-top"
               alt="..."
-              />
-              <div class="card-body category-body">
+            />
+            <div class="card-body category-body">
               <p class="card-text">Children's room</p>
-              </div>
+            </div>
           </a>
           <a class="card category-card col-3 col-md-5" href="category.html">
-              <img
+            <img
               src="https://www.ikea.com/images/a-dining-area-by-a-window-with-a-large-dining-table-six-meta-46845de50b0ad73d0b9731140141b6e3.jpg?f=xxxs"
               class="card-img-top"
               alt="..."
-              />
-              <div class="card-body category-body">
+            />
+            <div class="card-body category-body">
               <p class="card-text">Dining</p>
-              </div>
+            </div>
           </a>
           <a class="card category-card col-3 col-md-5" href="category.html">
-              <img
-                  src="https://www.ikea.com/images/a-hallway-where-a-pinnig-coat-rack-and-shoe-bench-stand-agai-2dc4a103bc0ac4158557a90ebc0aadd3.jpg?f=xxxs"
-                  class="card-img-top"
-                  alt="..."
-              />
-              <div class="card-body category-body">
-                  <p class="card-text">Hallway</p>
-              </div>
-              </a>
-              <a class="card category-card col-3 col-md-5" href="category.html">
-              <img
-                  src="https://www.ikea.com/images/an-industrial-style-studio-at-home-with-high-ceilings-furnit-d6ba3f797a6cbed87478bad1d8dbd652.jpg?f=xxxs"
-                  class="card-img-top"
-                  alt="..."
-              />
-              <div class="card-body category-body">
-                  <p class="card-text">Home office</p>
-              </div>
-              </a>
-              <a class="card category-card col-3 col-md-5" href="category.html">
-              <img
-                  src="https://www.ikea.com/images/a-contemporary-and-decluttered-kitchen-with-bodarp-kitchen-f-0fd7f2c13233700c427237c449cc2982.jpg?f=xxxs"
-                  class="card-img-top"
-                  alt="..."
-              />
-              <div class="card-body category-body">
-                  <p class="card-text">Kitchen</p>
-              </div>
-              </a>
-              <a class="card category-card col-3 col-md-5" href="category.html">
-              <img
-                  src="https://www.ikea.com/images/an-aepplaryd-sofa-with-three-coffee-tables-in-front-on-a-blu-ad40b43a98816f1805e40c1d7ef6d681.jpg?f=xxxs"
-                  class="card-img-top"
-                  alt="..."
-              />
-              <div class="card-body category-body">
-                  <p class="card-text">Living room</p>
-              </div>
-              </a>
-              <a class="card category-card col-3 col-md-5" href="category.html">
-              <img
-                  src="https://www.ikea.com/images/a-small-balcony-with-a-wooden-table-and-chairs-artificial-gr-f6ba826dc19b000e2975955fd78e45a4.jpg?f=xxxs"
-                  class="card-img-top"
-                  alt="..."
-              />
-              <div class="card-body category-body">
-                  <p class="card-text">Garden & balcony</p>
-              </div>
-              </a>
+            <img
+              src="https://www.ikea.com/images/a-hallway-where-a-pinnig-coat-rack-and-shoe-bench-stand-agai-2dc4a103bc0ac4158557a90ebc0aadd3.jpg?f=xxxs"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body category-body">
+              <p class="card-text">Hallway</p>
+            </div>
+          </a>
+          <a class="card category-card col-3 col-md-5" href="category.html">
+            <img
+              src="https://www.ikea.com/images/an-industrial-style-studio-at-home-with-high-ceilings-furnit-d6ba3f797a6cbed87478bad1d8dbd652.jpg?f=xxxs"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body category-body">
+              <p class="card-text">Home office</p>
+            </div>
+          </a>
+          <a class="card category-card col-3 col-md-5" href="category.html">
+            <img
+              src="https://www.ikea.com/images/a-contemporary-and-decluttered-kitchen-with-bodarp-kitchen-f-0fd7f2c13233700c427237c449cc2982.jpg?f=xxxs"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body category-body">
+              <p class="card-text">Kitchen</p>
+            </div>
+          </a>
+          <a class="card category-card col-3 col-md-5" href="category.html">
+            <img
+              src="https://www.ikea.com/images/an-aepplaryd-sofa-with-three-coffee-tables-in-front-on-a-blu-ad40b43a98816f1805e40c1d7ef6d681.jpg?f=xxxs"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body category-body">
+              <p class="card-text">Living room</p>
+            </div>
+          </a>
+          <a class="card category-card col-3 col-md-5" href="category.html">
+            <img
+              src="https://www.ikea.com/images/a-small-balcony-with-a-wooden-table-and-chairs-artificial-gr-f6ba826dc19b000e2975955fd78e45a4.jpg?f=xxxs"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body category-body">
+              <p class="card-text">Garden & balcony</p>
+            </div>
+          </a>
+        </div>
       </div>
-  </div>
 
-  <!-- offers body -->
-  <div id="o-content" class="offcanvas-body menu-body other-content">
-      <div class="d-flex flex-row">
-          <button class="position-sticky menu-btn" onclick="{ShowMain()}"><i class="bi bi-arrow-left-short"></i></button>
+      <!-- offers body -->
+      <div id="o-content" class="offcanvas-body menu-body other-content">
+        <div class="d-flex flex-row">
+          <button class="position-sticky menu-btn" onclick="{ShowMain()}">
+            <i class="bi bi-arrow-left-short"></i>
+          </button>
           <span class="head-title">Offers</span>
-      </div>
-      <ul class="small-text-list my-4">
+        </div>
+        <ul class="small-text-list my-4">
           <li><a href="#">New Lower Price</a></li>
-          <li><a href="#">Sale</a></li>                          
-      </ul>
-  </div>
-
-  <!-- what's new body -->
-  <div id="w-content" class="offcanvas-body menu-body other-content">
-      <div class="d-flex flex-row">
-          <button class="position-sticky menu-btn" onclick="{ShowMain()}"><i class="bi bi-arrow-left-short"></i></button>
-          <span class="head-title">Offers</span>
+          <li><a href="#">Sale</a></li>
+        </ul>
       </div>
-      <ul class="small-text-list my-4">
+
+      <!-- what's new body -->
+      <div id="w-content" class="offcanvas-body menu-body other-content">
+        <div class="d-flex flex-row">
+          <button class="position-sticky menu-btn" onclick="{ShowMain()}">
+            <i class="bi bi-arrow-left-short"></i>
+          </button>
+          <span class="head-title">Offers</span>
+        </div>
+        <ul class="small-text-list my-4">
           <li><a href="#">New Products</a></li>
-          <li><a href="#">Stories</a></li>                          
-      </ul>
-  </div>
+          <li><a href="#">Stories</a></li>
+        </ul>
+      </div>
+    </div>
+    <!--#endregion -->
 
-  </div>
-  <!--#endregion -->
-
-<div class="body-container">
+    <div class="body-container">
       <div class="header-messages"></div>
       <div class="navbar navbar-expand-xl navbar-light bg-white px-4 fixed-top">
         <a href="../index.html" class="navbar-brand">
           <img class="logo" src="../assets/images/ikea-logo.svg" alt="logo"
         /></a>
 
-        <div class="collapse navbar-collapse" >
+        <div class="collapse navbar-collapse">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample">Products</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample">Rooms</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample">Offers</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample">What's new</a>
-          </li>
+              <a
+                class="nav-link active"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasExample"
+                >Products</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasExample"
+                >Rooms</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasExample"
+                >Offers</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasExample"
+                >What's new</a
+              >
+            </li>
           </ul>
         </div>
         <div class="navbar-search">
@@ -251,13 +298,13 @@
             <small>See opening hours and more</small>
             <strong>Select store</strong>
           </div>
-
         </div>
         <div class="navbar-icons">
-
           <a href="../Log-in.html"><i class="bi bi-person"></i></a>
           <a href="../favourite.html"><i class="bi bi-heart"></i></a>
-          <a href="../shoppingBag.html"><i class="bi bi-minecart-loaded"></i></a>
+          <a href="../shoppingBag.html"
+            ><i class="bi bi-minecart-loaded"></i
+          ></a>
         </div>
 
         <!-- Toggler -->
@@ -265,7 +312,7 @@
           class="navbar-toggler toggler"
           id="button"
           data-bs-toggle="offcanvas"
-           data-bs-target="#offcanvasExample"
+          data-bs-target="#offcanvasExample"
           aria-label="Toggle navigation"
         >
           <span class="navbar-toggler-icon"></span>
@@ -292,16 +339,18 @@
 
         <section class="col-12 col-md-7 col-lg-7">
           <p class="description">
-            We understand that growing kids have lots of needs. Like a quiet spot
-            to relax or a place to do their homework. That's why loft beds for
-            kids are a super-smart multi-tasking solution, helping you free up
-            space for a desk, sofa, wardrobe or pillow fort. Bring home a
+            We understand that growing kids have lots of needs. Like a quiet
+            spot to relax or a place to do their homework. That's why loft beds
+            for kids are a super-smart multi-tasking solution, helping you free
+            up space for a desk, sofa, wardrobe or pillow fort. Bring home a
             children's loft bed today!
           </p>
         </section>
 
         <div class="row sticky-top filter-row">
-          <div class="col-12 col-lg-8 d-flex flex-nowrap overflow-auto py-3 my-2">
+          <div
+            class="col-12 col-lg-8 d-flex flex-nowrap overflow-auto py-3 my-2"
+          >
             <button type="button" class="btn btn-light filter-btn">
               compare
             </button>
@@ -323,13 +372,7 @@
               aria-labelledby="dropdownMenuLink"
             >
               <li
-                class="
-                  dropdown-item
-                  d-flex
-                  flex-row
-                  align-items-center
-                  justify-content-between
-                "
+                class="dropdown-item d-flex flex-row align-items-center justify-content-between"
               >
                 <label class="form-check-label" for="bestmatch-radio">
                   Best match
@@ -344,13 +387,7 @@
                 </div>
               </li>
               <li
-                class="
-                  dropdown-item
-                  d-flex
-                  flex-row
-                  align-items-center
-                  justify-content-between
-                "
+                class="dropdown-item d-flex flex-row align-items-center justify-content-between"
               >
                 <label class="form-check-label" for="lowToHigh-radio">
                   Price: low to high
@@ -365,13 +402,7 @@
                 </div>
               </li>
               <li
-                class="
-                  dropdown-item
-                  d-flex
-                  flex-row
-                  align-items-center
-                  justify-content-between
-                "
+                class="dropdown-item d-flex flex-row align-items-center justify-content-between"
               >
                 <label class="form-check-label" for="highToLowRadio">
                   Price: high to low
@@ -419,13 +450,7 @@
               aria-labelledby="dropdownMenuLink"
             >
               <li
-                class="
-                  dropdown-item
-                  d-flex
-                  flex-row
-                  align-items-center
-                  justify-content-between
-                "
+                class="dropdown-item d-flex flex-row align-items-center justify-content-between"
               >
                 <label class="form-check-label" for=""> EGP 100-500 </label>
                 <div class="form-check">
@@ -438,13 +463,7 @@
                 </div>
               </li>
               <li
-                class="
-                  dropdown-item
-                  d-flex
-                  flex-row
-                  align-items-center
-                  justify-content-between
-                "
+                class="dropdown-item d-flex flex-row align-items-center justify-content-between"
               >
                 <label class="form-check-label" for=""> EGP 500-1000 </label>
                 <div class="form-check">
@@ -457,13 +476,7 @@
                 </div>
               </li>
               <li
-                class="
-                  dropdown-item
-                  d-flex
-                  flex-row
-                  align-items-center
-                  justify-content-between
-                "
+                class="dropdown-item d-flex flex-row align-items-center justify-content-between"
               >
                 <label class="form-check-label" for=""> EGP 1000-1500 </label>
                 <div class="form-check">
@@ -479,70 +492,118 @@
             <button type="button" class="btn btn-light filter-btn">
               size <i class="fas fa-chevron-down"></i>
             </button>
-            <button type="button" class="btn btn-light filter-btn" data-bs-toggle="offcanvas" href="#filter-menue">
+            <button
+              type="button"
+              class="btn btn-light filter-btn"
+              data-bs-toggle="offcanvas"
+              href="#filter-menue"
+            >
               All filters <i class="fas fa-filter"></i>
             </button>
 
             <!-- filter menue -->
-            <div class="offcanvas offcanvas-end  " tabindex="-1" id="filter-menue" aria-labelledby="filter-menueLabel">
+            <div
+              class="offcanvas offcanvas-end"
+              tabindex="-1"
+              id="filter-menue"
+              aria-labelledby="filter-menueLabel"
+            >
               <div class="offcanvas-header border">
-                <h5 class="offcanvas-title m-auto" id="filter-menue-Label">filters and sort</h5>
-                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                <h5 class="offcanvas-title m-auto" id="filter-menue-Label">
+                  filters and sort
+                </h5>
+                <button
+                  type="button"
+                  class="btn-close text-reset"
+                  data-bs-dismiss="offcanvas"
+                  aria-label="Close"
+                ></button>
               </div>
 
-              
               <div class="offcanvas-body">
-                <div class="accordion accordion-flush" id="accordionFlushExample">
-                  <div class="accordion-item ">
-                      <button class="accordion-button fw-bold" style=" background-color: white ; color: black;" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                        Sort
-                      </button>
-                      <div id="flush-collapseOne" class="accordion-collapse collapse " aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                        <ul class=" w-100 px-3 ">
-                          <li class=" d-flex justify-content-between  my-2">
-                            <label class="form-check-label" for="bestmatch-radio">
-                              Best match
-                            </label>
-                            <div class="form-check">
-                              <input
-                                class="form-check-input"
-                                type="radio"
-                                name="sort-filter"
-                                id="bestmatch-radio"
-                              />
-                            </div>
-                          </li>
+                <div
+                  class="accordion accordion-flush"
+                  id="accordionFlushExample"
+                >
+                  <div class="accordion-item">
+                    <button
+                      class="accordion-button fw-bold"
+                      style="background-color: white; color: black"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#flush-collapseOne"
+                      aria-expanded="false"
+                      aria-controls="flush-collapseOne"
+                    >
+                      Sort
+                    </button>
+                    <div
+                      id="flush-collapseOne"
+                      class="accordion-collapse collapse"
+                      aria-labelledby="flush-headingOne"
+                      data-bs-parent="#accordionFlushExample"
+                    >
+                      <ul class="w-100 px-3">
+                        <li class="d-flex justify-content-between my-2">
+                          <label class="form-check-label" for="bestmatch-radio">
+                            Best match
+                          </label>
+                          <div class="form-check">
+                            <input
+                              class="form-check-input"
+                              type="radio"
+                              name="sort-filter"
+                              id="bestmatch-radio"
+                            />
+                          </div>
+                        </li>
 
-                          <li class=" d-flex justify-content-between  my-2">
-                            <label class="form-check-label" for="bestmatch-radio">
-                              Name
-                            </label>
-                            <div class="form-check">
-                              <input
-                                class="form-check-input"
-                                type="radio"
-                                name="sort-filter"
-                                id="bestmatch-radio"
-                              />
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
+                        <li class="d-flex justify-content-between my-2">
+                          <label class="form-check-label" for="bestmatch-radio">
+                            Name
+                          </label>
+                          <div class="form-check">
+                            <input
+                              class="form-check-input"
+                              type="radio"
+                              name="sort-filter"
+                              id="bestmatch-radio"
+                            />
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
                   </div>
-                  <div class="accordion-item ">
-                    <button class="accordion-button fw-bold " style="background-color: white; color: black;" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                  <div class="accordion-item">
+                    <button
+                      class="accordion-button fw-bold"
+                      style="background-color: white; color: black"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#flush-collapseTwo"
+                      aria-expanded="false"
+                      aria-controls="flush-collapseTwo"
+                    >
                       Size
                     </button>
-                    <div id="flush-collapseTwo" class="accordion-collapse collapse " aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-                      <ul class=" w-100 px-3 ">
-                        <li class=" d-flex  justify-content-between my-2">
+                    <div
+                      id="flush-collapseTwo"
+                      class="accordion-collapse collapse"
+                      aria-labelledby="flush-headingTwo"
+                      data-bs-parent="#accordionFlushExample"
+                    >
+                      <ul class="w-100 px-3">
+                        <li class="d-flex justify-content-between my-2">
                           <label class="form-check-label" for="">
                             160 cm * 200 cm
                           </label>
                           <div>
-                            <label class="form-check-label small-text mx-2" for="">
-                            30
-                            </label>   
+                            <label
+                              class="form-check-label small-text mx-2"
+                              for=""
+                            >
+                              30
+                            </label>
                             <input
                               class="form-check-input"
                               type="checkbox"
@@ -551,14 +612,17 @@
                           </div>
                         </li>
 
-                        <li class=" d-flex  justify-content-between my-2">
+                        <li class="d-flex justify-content-between my-2">
                           <label class="form-check-label" for="">
                             180 cm * 200 cm
                           </label>
                           <div>
-                            <label class="form-check-label small-text mx-2" for="">
+                            <label
+                              class="form-check-label small-text mx-2"
+                              for=""
+                            >
                               40
-                            </label>   
+                            </label>
                             <input
                               class="form-check-input"
                               type="checkbox"
@@ -571,62 +635,36 @@
                     </div>
                   </div>
                   <div class="accordion-item">
-                      <button class="accordion-button fw-bold " style="background-color: white; color: black;" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                        Price
-                      </button>
-                    
-                      <div id="flush-collapseThree" class="accordion-collapse collapse " aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-                        <ul class=" w-100 px-3 ">
-                          <li class=" d-flex  justify-content-between my-2">
-                            <label class="form-check-label" for="">
-                              EGP 0 - 1,999
-                            </label>
-                            <div>
-                              <label class="form-check-label small-text mx-2" for="">
-                              30
-                              </label>   
-                              <input
-                                class="form-check-input"
-                                type="checkbox"
-                                id=""
-                              />
-                            </div>
-                          </li>
-    
-                          <li class=" d-flex  justify-content-between ">
-                            <label class="form-check-label" for="">
-                              EGP 1,999 - 4,000
-                            </label>
-                            <div>
-                              <label class="form-check-label small-text mx-2" for="">
-                                40
-                              </label>   
-                              <input
-                                class="form-check-input"
-                                type="checkbox"
-                                name=""
-                                id=""
-                              />
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
-                  </div>
-                  <div class="accordion-item">
-                    <button class="accordion-button fw-bold" style="background-color: white; border:0 ; color: black;" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-color" aria-expanded="false" aria-controls="flush-collapseThree">
-                      Color
+                    <button
+                      class="accordion-button fw-bold"
+                      style="background-color: white; color: black"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#flush-collapseThree"
+                      aria-expanded="false"
+                      aria-controls="flush-collapseThree"
+                    >
+                      Price
                     </button>
-                  
-                    <div id="collapse-color" class="accordion-collapse collapse " aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-                      <ul class=" w-100 px-3 " >
-                        <li class=" d-flex justify-content-between my-2">
+
+                    <div
+                      id="flush-collapseThree"
+                      class="accordion-collapse collapse"
+                      aria-labelledby="flush-headingThree"
+                      data-bs-parent="#accordionFlushExample"
+                    >
+                      <ul class="w-100 px-3">
+                        <li class="d-flex justify-content-between my-2">
                           <label class="form-check-label" for="">
-                            red
+                            EGP 0 - 1,999
                           </label>
                           <div>
-                            <label class="form-check-label small-text mx-2" for="">
-                            30
-                            </label>   
+                            <label
+                              class="form-check-label small-text mx-2"
+                              for=""
+                            >
+                              30
+                            </label>
                             <input
                               class="form-check-input"
                               type="checkbox"
@@ -635,14 +673,17 @@
                           </div>
                         </li>
 
-                        <li class=" d-flex justify-content-between my-2">
+                        <li class="d-flex justify-content-between">
                           <label class="form-check-label" for="">
-                            blue
+                            EGP 1,999 - 4,000
                           </label>
                           <div>
-                            <label class="form-check-label small-text mx-2" for="">
+                            <label
+                              class="form-check-label small-text mx-2"
+                              for=""
+                            >
                               40
-                            </label>   
+                            </label>
                             <input
                               class="form-check-input"
                               type="checkbox"
@@ -653,94 +694,159 @@
                         </li>
                       </ul>
                     </div>
-                </div>
+                  </div>
+                  <div class="accordion-item">
+                    <button
+                      class="accordion-button fw-bold"
+                      style="background-color: white; border: 0; color: black"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapse-color"
+                      aria-expanded="false"
+                      aria-controls="flush-collapseThree"
+                    >
+                      Color
+                    </button>
+
+                    <div
+                      id="collapse-color"
+                      class="accordion-collapse collapse"
+                      aria-labelledby="flush-headingThree"
+                      data-bs-parent="#accordionFlushExample"
+                    >
+                      <ul class="w-100 px-3">
+                        <li class="d-flex justify-content-between my-2">
+                          <label class="form-check-label" for=""> red </label>
+                          <div>
+                            <label
+                              class="form-check-label small-text mx-2"
+                              for=""
+                            >
+                              30
+                            </label>
+                            <input
+                              class="form-check-input"
+                              type="checkbox"
+                              id=""
+                            />
+                          </div>
+                        </li>
+
+                        <li class="d-flex justify-content-between my-2">
+                          <label class="form-check-label" for=""> blue </label>
+                          <div>
+                            <label
+                              class="form-check-label small-text mx-2"
+                              for=""
+                            >
+                              40
+                            </label>
+                            <input
+                              class="form-check-input"
+                              type="checkbox"
+                              name=""
+                              id=""
+                            />
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
                 </div>
               </div>
 
               <!-- filter menu footer -->
-              <div class="offcanvas-footer text-center ">
+              <div class="offcanvas-footer text-center">
                 <button class="rounded-pill py-1 col-5 clear-btn">
                   Clear all
                 </button>
-                <button class="border rounded-pill py-1 col-5 text-light view-btn">
+                <button
+                  class="border rounded-pill py-1 col-5 text-light view-btn"
+                >
                   View
                   <span>6</span>
                 </button>
               </div>
-              
             </div>
           </div>
 
-          <div class="col-12 col-lg-4 d-flex filter-right-side align-items-center">
-              <p class="d-inline-flex no-of-items">2 items</p>
-              <div class="btn-group me-2" role="group" aria-label="First group">
-                <button type="button" class="btn btn-outline-secondary">
-                  Product
-                </button>
-                <button type="button" class="btn btn-outline-secondary">
-                  Room
-                </button>
+          <div
+            class="col-12 col-lg-4 d-flex filter-right-side align-items-center"
+          >
+            <p class="d-inline-flex no-of-items">2 items</p>
+            <div class="btn-group me-2" role="group" aria-label="First group">
+              <button type="button" class="btn btn-outline-secondary">
+                Product
+              </button>
+              <button type="button" class="btn btn-outline-secondary">
+                Room
+              </button>
             </div>
           </div>
-        </div>   
-<!-- /////////////////////////////////////////////////////////////// -->
+        </div>
 
-        
-<div class= "row" id="show-proDetail">
-      
-  <!-- product -->
+        <div class="row" id="show-proDetail">
+          <!-- product -->
+          <div class="text-center pt-3 d-none" id="noData">
+            <strong>oops no data !</strong>
+          </div>
 
-<script type="module">
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.2/firebase-app.js";
-import {
-getFirestore,
-addDoc,
-collection,
-onSnapshot,
-getDoc,
-doc,
-updateDoc,
-deleteDoc,
-query,
-where,
-getDocs,
-orderBy,
-} from "https://www.gstatic.com/firebasejs/9.6.2/firebase-firestore.js";
+          <script type="module">
+            // Import the functions you need from the SDKs you need
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.2/firebase-app.js";
+            import {
+              getFirestore,
+              addDoc,
+              collection,
+              onSnapshot,
+              getDoc,
+              doc,
+              updateDoc,
+              deleteDoc,
+              query,
+              where,
+              getDocs,
+              orderBy,
+            } from "https://www.gstatic.com/firebasejs/9.6.2/firebase-firestore.js";
 
-// Your web app's Firebase configuration
-const firebaseConfig = {
-apiKey: "AIzaSyBvz1el-WaDgUU36xlWeIEj2G9iyI0ewW4",
-authDomain: "ikea-8dc72.firebaseapp.com",
-projectId: "ikea-8dc72",
-storageBucket: "ikea-8dc72.appspot.com",
-messagingSenderId: "293717792182",
-appId: "1:293717792182:web:f170e2edfe2370c9769d17",
-};
+            // Your web app's Firebase configuration
+            const firebaseConfig = {
+              apiKey: "AIzaSyBvz1el-WaDgUU36xlWeIEj2G9iyI0ewW4",
+              authDomain: "ikea-8dc72.firebaseapp.com",
+              projectId: "ikea-8dc72",
+              storageBucket: "ikea-8dc72.appspot.com",
+              messagingSenderId: "293717792182",
+              appId: "1:293717792182:web:f170e2edfe2370c9769d17",
+            };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
 
-// reference to firestore
-const firestore = getFirestore(app);
+            // reference to firestore
+            const firestore = getFirestore(app);
 
-//listen on any change
-//onSnapshot(collection(firestore,'collName'),callback)
-onSnapshot(collection(firestore, "Products"), (snapshot) => {
-var div = document.querySelector("#show-proDetail");
-div.innerHTML = "";
-snapshot.forEach((doc) => {
-  // console.log(`${doc.id} => ${doc.data().Name}`);
-  ShowData(doc);
-});
-});
+            //listen on any change
+            const subCateg = sessionStorage.getItem("subCategory");
 
+            //query for filtering query(collection, where( "attr","operator","value"))
+            const q = query(
+              collection(firestore, "Products"),
+              where("SubCategory", "==", `${subCateg}`)
+            );
 
-function ShowData(product) {
-var productData = product.data();
-// console.log(productData);
-var div = document.querySelector("#show-proDetail");
-var para = `
+            // onSnapshot( q,callback)
+            onSnapshot(q, (snapshot) => {
+              var div = document.querySelector("#show-proDetail");
+              div.innerHTML = "";
+              snapshot.forEach((doc) => {
+                ShowData(doc);
+              });
+            });
+
+            function ShowData(product) {
+              var productData = product.data();
+              var div = document.querySelector("#show-proDetail");
+              var para = `
 <div class="col-6 col-md-4 col-lg-3 prod-container">
 <header class="d-flex align-items-center justify-content-between"  style="padding:  .625rem;"  > 
   <div class="form-check" >
@@ -790,13 +896,12 @@ var para = `
 </div>
     `;
 
-div.innerHTML += para;
-}
-      </script>
+              div.innerHTML += para;
+            }
+          </script>
+        </div>
 
-</div>
-
-<!-- ///////////////////////////////////////////////////////////////// -->
+        <!-- ///////////////////////////////////////////////////////////////// -->
         <div class="section-title">
           <h3>Recommended for you</h3>
         </div>
@@ -1102,7 +1207,6 @@ div.innerHTML += para;
               <p class="card-text">Fabric Sofa</p>
             </div>
           </a>
-
         </div>
       </div>
     </div>
@@ -1163,13 +1267,7 @@ div.innerHTML += para;
       </div>
 
       <div
-        class="
-          footer-social-languages
-          d-flex
-          justify-content-between
-          pb-4
-          border-bottom
-        "
+        class="footer-social-languages d-flex justify-content-between pb-4 border-bottom"
       >
         <ul class="social-media-links d-flex">
           <li>
@@ -1222,6 +1320,6 @@ div.innerHTML += para;
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     ></script>
-    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/menu.js" type="module"></script>
   </body>
 </html>

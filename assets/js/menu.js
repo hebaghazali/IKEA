@@ -32,39 +32,16 @@ async function getCategories() {
   allCategories.docs.forEach((element) => {
     console.log(element.id, element.data().Name);
     prCatListEl.innerHTML += 
-    `<li><a href="./pages/category.html" id=${element.id} onclick="setSession(this)">
+    `<li><a href="./pages/category.html"  id=${element.id} onclick="setSession('ProductCategories',this)">
       ${element.data().Name} </a></li>`;
   });
 }
 
 window.setSession = setSession;
-function setSession(element) {
-    sessionStorage.setItem("ProductCategories",element.id)  
+function setSession(key,element) {
+    sessionStorage.setItem(key,element.id); 
+    console.log(key,element.id);   
 }
-
-// ////////////////////////////////////////
-
-
-
-
-window.setCatSession = setCatSession;
-function setCatSession() {
-    sessionStorage.setItem("subCategory",Cat_ID)  
-    
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 window.ShowDiv = ShowDiv;
 function ShowDiv(id) {
