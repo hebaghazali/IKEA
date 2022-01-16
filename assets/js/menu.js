@@ -21,7 +21,6 @@ const fireStore = getFirestore(app);
 var menu = document.getElementById("main-menu");
 var offCanva = document.getElementById("offcanvasExample");
 var content;
-var Cat_ID= "M2601fIIjtQ9r7L5QfnJ";
 
 async function getCategories() {
   let prCatListEl = document.getElementById("products-list");
@@ -29,17 +28,18 @@ async function getCategories() {
   var allCategories = await getDocs(collection(fireStore, "ProductCategories"));
   prCatListEl.innerHTML = "";
   allCategories.docs.forEach((element) => {
-    console.log(element.id, element.data().Name);
+    let {Name} = element.data();
     prCatListEl.innerHTML += 
-    `<li><a href="./pages/category.html"  id=${element.id} onclick="setSession('ProductCategories',this)">
-      ${element.data().Name} </a></li>`;
+    `<li><a href="./pages/category.html"  id=${element.id} name=${Name}
+    onclick="setSession('ProductCategory',this)">
+      ${Name} </a></li>`;
   });
 }
 
 window.setSession = setSession;
 function setSession(key,element) {
-    sessionStorage.setItem(key,element.id); 
-    console.log(key,element.id);   
+  sessionStorage.setItem(key,element.id); 
+  sessionStorage.setItem(`${key}Name`,element.name); 
 }
 
 window.ShowDiv = ShowDiv;
