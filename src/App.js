@@ -1,9 +1,18 @@
 import React from 'react';
 
+import { Route, Switch, Redirect } from 'react-router-dom';
+
+import Navbar from './components/navbar/navbar';
+import Home from './components/home.jsx';
+
 function App() {
   return (
     <>
-      <h1>IKEA React App</h1>
+      <Navbar />
+      <Switch>
+        <Route path='/home' component={Home} />
+        <Redirect from='/' exact to='/home' />
+      </Switch>
     </>
   );
 }

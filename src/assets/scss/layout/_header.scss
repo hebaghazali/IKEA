@@ -31,11 +31,12 @@
 
   .navbar-nav {
     .nav-item {
-      a {
+      p {
         color: $default-text-color;
         font-size: 0.875rem;
         padding: 0 1rem;
         font-weight: 700;
+        cursor: pointer;
       }
     }
   }
