@@ -1,9 +1,11 @@
+@import '../abstracts/mixins'  ;
+
 // var 
 $txt-color: rgb(117, 117, 117);
 
 // Left Section
 .log-parent {
-    margin-top: 140px;
+    margin-top: 260px;
 
     .login-heading {
 
