@@ -9,12 +9,14 @@ import Footer from './components/footer/footer';
 function App() {
   return (
     <>
-      <Navbar />
+      <div className='body-container'>
+        <Navbar />
 
-      <Switch>
-        <Route path='/home' component={Home} />
-        <Redirect from='/' exact to='/home' />
-      </Switch>
+        <Switch>
+          <Route path='/home' component={Home} />
+          <Redirect from='/' exact to='/home' />
+        </Switch>
+      </div>
 
       <Footer />
     </>
