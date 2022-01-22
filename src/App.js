@@ -10,6 +10,7 @@ import Products from './pages/products/products';
 function App() {
   return (
     <>
+    <div className='body-container'>
       <Navbar />
 
       <Switch>
@@ -18,6 +19,7 @@ function App() {
         <Route path='/products' component={Products} />
 
       </Switch>
+      </div>
 
       <Footer />
     </>
