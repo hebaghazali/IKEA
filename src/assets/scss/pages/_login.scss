@@ -39,7 +39,7 @@ $txt-color: rgb(117, 117, 117);
             font-size: 16px;
         }
 
-        .input-log input {
+        .input-log .input-sign-form {
             @include HandleInput();
         }
 
@@ -49,7 +49,6 @@ $txt-color: rgb(117, 117, 117);
             color: white;
             width: 100%;
         }
-
 
         button:hover {@include ShoppingButtonHover()}
 

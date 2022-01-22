@@ -1,8 +1,10 @@
-import React from 'react'
+import React  from 'react'
 import '../../assets/scss/pages/_login.scss'
 import { Link } from 'react-router-dom'
+import SharedLogComp from '../SharedLogCom/ShahredLogCom'
 
 function LogIn () {
+
   return (
     <>
         <div class="log-parent">
@@ -19,16 +21,7 @@ function LogIn () {
           <section class="col-md-2 col-12 center-sec"></section>
           {/* <!-- Right Section --> */}
           <section class="col-md-5 col-12 login-form">
-            <div class="form-floating mb-3 input-log">
-              <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" />
-              <label for="floatingInput">Email (UserName)</label>
-            </div>
-            <div class="form-floating input-log">
-              <input type="password" class="form-control sec-inp" id="floatingPassword" placeholder="Password" />
-              <label for="floatingPassword">Password</label>
-              <a href="#">Forget your Password?</a>
-            </div>
-            <button class="login-creation">Login</button>
+            <SharedLogComp />
           </section>
         </section>
       </div>
