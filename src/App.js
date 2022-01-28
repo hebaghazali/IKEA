@@ -12,10 +12,12 @@ function App() {
       <div className='body-container'>
         <Navbar />
 
-        <Switch>
-          <Route path='/home' component={Home} />
-          <Redirect from='/' exact to='/home' />
-        </Switch>
+        <div className='mt-nav'>
+          <Switch>
+            <Route path='/home' component={Home} />
+            <Redirect from='/' exact to='/home' />
+          </Switch>
+        </div>
       </div>
 
       <Footer />
