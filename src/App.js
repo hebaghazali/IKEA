@@ -6,18 +6,24 @@ import Navbar from './components/navbar/navbar';
 import Home from './components/home.jsx';
 import Footer from './components/footer/footer';
 import Menu from './components/menu/menu';
+import SubCategory from './pages/subCategory';
+import StoresPage from './pages/storeLocation';
 
 function App() {
   return (
     <>
-    <Menu />
-      <Navbar />
-      
-      <Switch>
-        <Route path='/home' component={Home} />
-        <Redirect from='/' exact to='/home' />
-      </Switch>
-
+      <Menu />
+      <div className='body-container'>
+        <Navbar />
+        <div className='mt-nav-2 pt-nav border-top'>
+          <Switch>
+            <Route path='/home' component={Home} />
+            <Route path='/category/:type/:name/:id' component={SubCategory} />
+            <Route path='/stores' component={StoresPage}/>
+            <Redirect from='/' exact to='/home' />
+          </Switch>
+        </div>
+      </div>
       <Footer />
     </>
   );

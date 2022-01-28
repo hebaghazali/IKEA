@@ -46,7 +46,7 @@ const MenuRoomList = (props) => {
             <Link
               key={room.id}
               className='card category-card col-3 col-md-5'
-              to={`/category/${room.id}`}
+              to={`/category/room/${room.data().Name}/${room.id}`}
             >
               <img src='' className='card-img-top' alt='...' />
               <div className='card-body category-body'>

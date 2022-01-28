@@ -1,7 +1,7 @@
 const OpenMenuBtn = ()=>{
     return(
         <button
-        className="menu-btn resp-hide mx-2 my-4"
+        className="menu-btn resp-hide mx-2"
         type="button"
         data-bs-toggle="offcanvas"
         data-bs-target="#offcanvasExample"

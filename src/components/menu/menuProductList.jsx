@@ -47,7 +47,7 @@ const MenuProductList = (props) => {
               {categories.map((category) => {
                 return (
                   <li key={category.id}>
-                    <Link to={`category/${category.id}`}>{category.data().Name}</Link>
+                    <Link to={`category/product/${category.data().Name}/${category.id}`}>{category.data().Name}</Link>
                   </li>
                 );
               })}

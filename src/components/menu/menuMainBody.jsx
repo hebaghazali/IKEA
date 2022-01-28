@@ -56,7 +56,6 @@ const MenuMainBody = () => {
           </ul>
           <div className='d-flex flex-row justify-content-around'>
             <select type='button' className='selector-btn'>
-              <i className='fas fa-chevron-down'></i>
               <option>English</option>
               <option>العربية</option>
             </select>
