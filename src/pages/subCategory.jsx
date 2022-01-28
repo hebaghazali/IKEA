@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom';
 import SubCategoryCard from '../components/cards/subcategoryCard';
+import TextRightCard from '../components/cards/textRightCard';
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.2/firebase-app.js';
 import {
   getFirestore,
@@ -9,6 +10,7 @@ import {
   getDocs,
 } from 'https://www.gstatic.com/firebasejs/9.6.2/firebase-firestore.js';
 import { useEffect, useState } from 'react';
+import StepsCard from '../components/cards/stepsCard';
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: 'AIzaSyBvz1el-WaDgUU36xlWeIEj2G9iyI0ewW4',
@@ -52,7 +54,7 @@ const SubCategory = (props) => {
     } else if (params.type === 'room') {
       getSubCategories('RoomCategory');
     }
-  },[]);
+  });
   return (
     <>
       {
@@ -68,6 +70,8 @@ const SubCategory = (props) => {
               );
             })}
           </div>
+          <TextRightCard></TextRightCard>
+          <StepsCard></StepsCard>
         </div>
       }
     </>

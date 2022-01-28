@@ -3,9 +3,6 @@ import { Link } from 'react-router-dom';
 const SubCategoryCard = (props) => {
   return (
     <>
-    {
-      console.log(props.element.data())
-    }
       {!props.element && (
         <div className='text-center py-5' id='noData'>
           <h4>oops no data :(</h4>
