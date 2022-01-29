@@ -16,9 +16,8 @@ function App() {
   return (
    
     <Provider store={store}>
-      <div className='body-container'>
       <Menu />
-
+      <div className='body-container'>
         <Navbar />
         <div className='mt-nav-2 pt-nav border-top'>
           <Switch>
