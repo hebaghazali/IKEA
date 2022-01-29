@@ -1,17 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addToFav, removeFromFav } from '../../../store/actions/favourits';
+
 import ProductPrice from './productPrice';
 import ProductVariant from './productVariant';
+import { addToCart } from './../../../store/actions/cartProducts';
 
-const ProductCard = ({showOptions}) => {
-  const productData = {
-    Price: 1000,
-    Name: 'name',
-    Material: 'material',
-    SalePrice: 500,
-    Width: 30,
-    Length: 100,
-  };
+const ProductCard = ({ showOptions, pId,productData }) => {
+  // const productData = {
+  //   Price: 1000,
+  //   Name: 'name',
+  //   Material: 'material',
+  //   SalePrice: 500,
+  //   Width: 30,
+  //   Length: 100,
+  // };
   const { Name, Material, Price, SalePrice, Width, Length } = productData;
+
+  const { favourits } = useSelector((state) => state.favourits);
+  const { cartProducts } = useSelector((state) => state.cartProducts);
+  
+  let found = favourits?.find((i) => i.id === pId);
+  let foundInCart = cartProducts?.find((i) => i.id === pId);
+
+  const [isFavourite, setIsFavourite] = useState(found ? true : false);
+  const [inCart, setInCart] = useState(foundInCart ? true : false);
+
+  const dispatch = useDispatch();
+  const toggleFavourite = () => {
+    dispatch(
+      isFavourite ? removeFromFav(pId) : addToFav({ id: pId, productData })
+    );
+    setIsFavourite(!isFavourite);
+  };
+
+  const addCart = () => {
+    dispatch(addToCart({ id: pId, productData }));
+    setInCart(true);
+  };
+
   return (
     <>
       <div className='col-6 col-md-4 col-lg-3 prod-container'>
@@ -25,7 +52,13 @@ const ProductCard = ({showOptions}) => {
             <small>Compare</small> */}
           </div>
 
+<<<<<<< HEAD
           <i className='far fa-heart '></i>
+=======
+          <button onClick={toggleFavourite}>
+            <i className={isFavourite ? 'fas fa-heart' : 'far fa-heart'}></i>
+          </button>
+>>>>>>> f5759d275308ae0564c5cf61ea5f32559c91e35b
         </header>
 
         <a className='card category-card col-12 ' href='../productsA.html'>
@@ -47,6 +80,7 @@ const ProductCard = ({showOptions}) => {
           <p>{Width && `${Width} * ${Length} cm`}</p>
           <ProductPrice Price={Price} SalePrice={SalePrice} />
 
+<<<<<<< HEAD
           {!showOptions && <p className='more-options'>More options</p>}
           <button className='card-icon'>
             <i className='fas fa-cart-plus'></i>
@@ -59,6 +93,26 @@ const ProductCard = ({showOptions}) => {
           <ProductVariant />
           <ProductVariant />
         </div>}
+=======
+          {!showOptions && !inCart && (
+            <p className='more-options'>More options</p>
+          )}
+          {!inCart && (
+            <button className='card-icon' onClick={addCart}>
+              <i className='fas fa-cart-plus'></i>
+            </button>
+          )}
+        </div>
+
+        {showOptions && (
+          <div className='row mt-3'>
+            <small className='col-12'>more variants</small>
+            <ProductVariant />
+            <ProductVariant />
+            <ProductVariant />
+          </div>
+        )}
+>>>>>>> f5759d275308ae0564c5cf61ea5f32559c91e35b
       </div>
     </>
   );

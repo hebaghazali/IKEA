@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-const SubCategoryCard = (props) => {
+const SubCategoryCard = props => {
   return (
     <>
       {!props.element && (
@@ -12,6 +12,7 @@ const SubCategoryCard = (props) => {
         to='/'
         className='card category-card col-4 col-lg-2'
         name={props.element.data().Name}
+        // name={props.element.Name}
       >
         <img
           src='https://www.ikea.com/global/assets/navigation/images/gaming-furniture-55002.jpeg?imwidth=300'
@@ -21,6 +22,7 @@ const SubCategoryCard = (props) => {
 
         <div className='card-body category-body'>
           <p className='card-text'>{props.element.data().Name}</p>
+          {/* <p className='card-text'>{props.element.Name}</p> */}
         </div>
       </Link>
     </>
