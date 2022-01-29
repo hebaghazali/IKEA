@@ -6,7 +6,7 @@ import ProductPrice from './productPrice';
 import ProductVariant from './productVariant';
 import { addToCart } from './../../../store/actions/cartProducts';
 
-const ProductCard = ({ showOptions, pId,productData }) => {
+const ProductCard = ({ showOptions, pId, productData }) => {
   // const productData = {
   //   Price: 1000,
   //   Name: 'name',
@@ -17,11 +17,11 @@ const ProductCard = ({ showOptions, pId,productData }) => {
   // };
   const { Name, Material, Price, SalePrice, Width, Length } = productData;
 
-  const { favourits } = useSelector((state) => state.favourits);
-  const { cartProducts } = useSelector((state) => state.cartProducts);
-  
-  let found = favourits?.find((i) => i.id === pId);
-  let foundInCart = cartProducts?.find((i) => i.id === pId);
+  const { favourits } = useSelector(state => state.favourits);
+  const { cartProducts } = useSelector(state => state.cartProducts);
+
+  let found = favourits?.find(i => i.id === pId);
+  let foundInCart = cartProducts?.find(i => i.id === pId);
 
   const [isFavourite, setIsFavourite] = useState(found ? true : false);
   const [inCart, setInCart] = useState(foundInCart ? true : false);
@@ -52,13 +52,9 @@ const ProductCard = ({ showOptions, pId,productData }) => {
             <small>Compare</small> */}
           </div>
 
-<<<<<<< HEAD
-          <i className='far fa-heart '></i>
-=======
           <button onClick={toggleFavourite}>
             <i className={isFavourite ? 'fas fa-heart' : 'far fa-heart'}></i>
           </button>
->>>>>>> f5759d275308ae0564c5cf61ea5f32559c91e35b
         </header>
 
         <a className='card category-card col-12 ' href='../productsA.html'>
@@ -80,20 +76,6 @@ const ProductCard = ({ showOptions, pId,productData }) => {
           <p>{Width && `${Width} * ${Length} cm`}</p>
           <ProductPrice Price={Price} SalePrice={SalePrice} />
 
-<<<<<<< HEAD
-          {!showOptions && <p className='more-options'>More options</p>}
-          <button className='card-icon'>
-            <i className='fas fa-cart-plus'></i>
-          </button>
-        </div>
-
-      { showOptions && <div className='row mt-3'>
-          <small className='col-12'>more variants</small>
-          <ProductVariant />
-          <ProductVariant />
-          <ProductVariant />
-        </div>}
-=======
           {!showOptions && !inCart && (
             <p className='more-options'>More options</p>
           )}
@@ -112,7 +94,6 @@ const ProductCard = ({ showOptions, pId,productData }) => {
             <ProductVariant />
           </div>
         )}
->>>>>>> f5759d275308ae0564c5cf61ea5f32559c91e35b
       </div>
     </>
   );
