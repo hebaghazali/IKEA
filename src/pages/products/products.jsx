@@ -102,7 +102,7 @@ const Products = () => {
   ];
 
   useEffect(async () => {
-    getCollection("Products",["SubCategory", "==", `JBgtm4km2eLpPxLuK7cB`])
+    // getCollection("Products",["SubCategory", "==", `JBgtm4km2eLpPxLuK7cB`])
     getCollection('Products')
       .then((res) => {
         console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>:', res);
