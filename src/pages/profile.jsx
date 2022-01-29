@@ -8,9 +8,9 @@ const Profile = () => {
           <div className='row big-title col-12 col-md-7 pt-2' id='username'>
             Hello{' '}
           </div>
-          <div className='row pt-2'>
+          <div className='d-flex pt-2'>
             Need to change account?
-            <button className='logout col-1'>
+            <button className='logout'>
               Log out
             </button>
           </div>
