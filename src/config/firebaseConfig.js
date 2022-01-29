@@ -11,6 +11,17 @@ const firebaseConfig = {
   appId: '1:293717792182:web:f170e2edfe2370c9769d17',
 };
 
+//test 
+
+// const firebaseConfig = {
+//   apiKey: "AIzaSyDPXka0wfchj1QecSLRkaIWY3sE1vjV6OY",
+//   authDomain: "ikea-test-f2270.firebaseapp.com",
+//   projectId: "ikea-test-f2270",
+//   storageBucket: "ikea-test-f2270.appspot.com",
+//   messagingSenderId: "38030959738",
+//   appId: "1:38030959738:web:9b7cb5c03cd58765b787c3"
+// };
+
 export const app = initializeApp(firebaseConfig);
 
 export  const fireStore = getFirestore(app);  
