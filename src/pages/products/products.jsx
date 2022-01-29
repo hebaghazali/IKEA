@@ -102,7 +102,7 @@ const Products = () => {
   ];
 
   useEffect(async () => {
-    getCollection("Products",["SubCategory", "==", `PH6KZW35bbvGRBdbQ8pe`])
+    getCollection("Products",["SubCategory", "==", `JBgtm4km2eLpPxLuK7cB`])
     getCollection('Products')
       .then((res) => {
         console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>:', res);
@@ -111,7 +111,7 @@ const Products = () => {
       .catch((err) => console.log('error :', err));
   }, []);
   return (
-    <div className='border-top mt-nav-3 pt-nav container'>
+    <div>
       <Breadcrumb />
 
       <SectionTitle title='Children beds' />
@@ -184,11 +184,11 @@ const Products = () => {
       </div>
 
       <SectionTitle title='Related categories' />
-      <div className='row mx-auto g-3 categories-slidder'>
+      {/* <div className='row mx-auto g-3 categories-slidder'>
         {subCategories.map((subcategory) => {
           return <SubCategoryCard element={subcategory} key={subcategory.id} />;
         })}
-      </div>
+      </div> */}
     </div>
   );
 };

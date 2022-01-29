@@ -1,4 +1,4 @@
-import { collection, where, getDocs, query } from 'firebase/firestore';
+import { collection, where, getDocs, query ,addDoc} from 'firebase/firestore';
 import { fireStore } from '../config/firebaseConfig';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeLoader } from './../store/actions/loader';
@@ -19,3 +19,9 @@ export const getCollection = async (collName, condition = undefined) => {
 
   return results.docs;
 };
+
+export const addData=(data)=>{
+  addDoc(collection(fireStore,'Products'),data).then(()=>{
+    console.log("done");
+  });
+}
