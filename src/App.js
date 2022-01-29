@@ -14,17 +14,15 @@ import store from './store/store';
 
 function App() {
   return (
-   
     <Provider store={store}>
-      <div className='body-container'>
       <Menu />
-
+      <div className='body-container'>
         <Navbar />
         <div className='mt-nav-2 pt-nav border-top'>
           <Switch>
             <Route path='/home' component={Home} />
             <Route path='/category/:type/:name/:id' component={SubCategory} />
-            <Route path='/stores' component={StoresPage}/>
+            <Route path='/stores' component={StoresPage} />
             <Route path='/products' component={Products} />
             <Redirect from='/' exact to='/home' />
           </Switch>
@@ -32,8 +30,7 @@ function App() {
       </div>
       <Footer />
     </Provider>
-  )}
-      
-
+  );
+}
 
 export default App;

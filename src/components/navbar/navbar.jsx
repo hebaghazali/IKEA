@@ -9,7 +9,7 @@ import { NavLink } from 'react-router-dom';
 const Navbar = () => {
   return (
     <>
-      <div className='navbar navbar-expand-xl navbar-light fixed-top bg-white pt-4'>
+      <div className='navbar navbar-expand-xl pt-4'>
         <NavLink to='/home' className='navbar-brand'>
           <img className='logo' src='./images/ikea-logo.svg' alt='logo' />
         </NavLink>

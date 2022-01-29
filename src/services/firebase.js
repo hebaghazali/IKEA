@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { changeLoader } from './../store/actions/loader';
 import store from './../store/store';
 
-
 export const getCollection = async (collName, condition = undefined) => {
   //dispatch loading
   store.dispatch(changeLoader(true));
