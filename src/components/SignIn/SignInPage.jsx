@@ -8,15 +8,18 @@ import SharedLogComp from '../SharedLogCom/ShahredLogCom';
 function SignIn() {
   const [users, setUser] = useState({
     Name: '',
+    Phone: ','
   });
 
   const [errors, setError] = useState({
     NameErr: null,
+    PhoneErr: null,
   });
 
   // Function to hadndle change in any input and write into it
   const handleChangeInInput = (e) => {
     const regName = /^\w[a-zA-Z]{3,}/;
+    const regPhoneNum = /^01[0125][0-9]{8}$/
 
     // Validate Name Input
     setUser({
@@ -35,6 +38,20 @@ function SignIn() {
         setError({
           ...errors,
           NameErr: "Name is not Allowed don't make space at start",
+        });
+      }
+    }
+
+    else if(e.target.name == 'Phone') {
+      if (regPhoneNum.test(e.target.value)) {
+        setError({
+          ...errors,
+          PhoneErr: '',
+        });
+      } else {
+        setError({
+          ...errors,
+          PhoneErr: "Inavalid phone number",
         });
       }
     }
@@ -95,8 +112,11 @@ function SignIn() {
                         id='validationCustom01'
                         name='Phone'
                         placeholder='EG(+20)'
+                        onChange={(e) => {
+                        handleChangeInInput(e);
+                      }}
                       />
-                      <div class='valid-feedback'>Looks good!</div>
+                      <small className='text-danger'>{errors.PhoneErr}</small>
                     </div>
                   </div>
 
