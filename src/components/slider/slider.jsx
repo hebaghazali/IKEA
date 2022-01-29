@@ -75,7 +75,7 @@ const Slider = () => {
   ];
 
   return (
-    <div className='teaser border-top pt-2'>
+    <div className='teaser border-top pt-2 pb-5 mb-5'>
       <h2 className='h2-title'>Now in IKEA Egypt</h2>
       <div className='carousel-body'>
         <div className='row flex-nowrap'>
