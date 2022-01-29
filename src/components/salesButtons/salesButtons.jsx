@@ -15,9 +15,16 @@ const SalesButtons = () => {
   ];
 
   return (
-    <div class='sales-buttons d-flex justify-content-between border-bottom pb-5'>
+    <div className='sales-buttons d-flex justify-content-between border-bottom pb-5'>
       {salesBtns.map(btn => {
-        return <img src={btn.imgURL} alt={btn.imgAlt} class='w-49' />;
+        return (
+          <img
+            key={salesBtns.indexOf(btn)}
+            src={btn.imgURL}
+            alt={btn.imgAlt}
+            className='w-49'
+          />
+        );
       })}
     </div>
   );

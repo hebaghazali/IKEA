@@ -2,9 +2,9 @@ import React from 'react';
 import ImageCard from './imageCard';
 import ImageColumn from './imageColumn';
 
-const ImageGallery = () => {
+const ImageGallery2 = () => {
   const images = [
-    'https://www.ikea.com/images/49/b4/49b4ae9edac2dacb67929ff5ececd994.jpg?f=xl',
+    'https://www.ikea.com/ext/ingkadam/m/37ba9b3082f51730/original/PH180658.jpg?f=xxxl',
     [
       {
         id: 11,
@@ -59,4 +59,4 @@ const ImageGallery = () => {
   );
 };
 
-export default ImageGallery;
+export default ImageGallery2;
