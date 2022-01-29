@@ -14,7 +14,7 @@ const StoresPage = () => {
         className='accordion accordion-flush my-5'
         id='accordionFlushExample'
       >
-          <LocationAccordion></LocationAccordion>
+          <LocationAccordion/>
       </div>
     </>
   );
