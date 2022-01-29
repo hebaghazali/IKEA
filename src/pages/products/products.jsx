@@ -4,7 +4,7 @@ import FilterDropList from './../../components/filterDropList/FilterDropList';
 import ProductRoomBtn from './productRoomBtn';
 import Loader from './../../components/loader';
 import { useEffect, useState } from 'react';
-// import { getCollection } from '../../services/firebase';
+import { getCollection } from '../../services/firebase';
 import ProductCard from '../../components/cards/productCard/productCard';
 import SectionTitle from './sectionTitle';
 import SubCategoryCard from './../../components/cards/subcategoryCard';
@@ -102,13 +102,13 @@ const Products = () => {
   ];
 
   useEffect(async () => {
-    // getCollection("Products",["SubCategory", "==", `PH6KZW35bbvGRBdbQ8pe`])
-    // getCollection('Products')
-    //   .then((res) => {
-    //     console.log('>:', res);
-    //     setProducts(res);
-    //   })
-    //   .catch((err) => console.log('error :', err));
+    getCollection("Products",["SubCategory", "==", `PH6KZW35bbvGRBdbQ8pe`])
+    getCollection('Products')
+      .then((res) => {
+        console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>:', res);
+        setProducts(res);
+      })
+      .catch((err) => console.log('error :', err));
   }, []);
   return (
     <div className='border-top mt-nav-3 pt-nav container'>
@@ -177,10 +177,10 @@ const Products = () => {
       <div className='row' id='show-proDetail'>
         <Loader />
 
-        {/* {products?.map(i => <ProductCard key={index} productData={i.data()} showOptions />)} */}
-        {[1, 2, 3, 4,5,6,7].map((i, index) => (
+        {products?.map(i => <ProductCard key={i.id} productData={i.data()} pId={i.id} showOptions />)}
+        {/* {[1, 2, 3, 4,5,6,7].map((i, index) => (
           <ProductCard key={index} showOptions pId={i} />
-        ))}
+        ))} */}
       </div>
 
       <SectionTitle title='Related categories' />

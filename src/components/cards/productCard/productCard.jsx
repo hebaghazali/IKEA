@@ -6,15 +6,15 @@ import ProductPrice from './productPrice';
 import ProductVariant from './productVariant';
 import { addToCart } from './../../../store/actions/cartProducts';
 
-const ProductCard = ({ showOptions, pId }) => {
-  const productData = {
-    Price: 1000,
-    Name: 'name',
-    Material: 'material',
-    SalePrice: 500,
-    Width: 30,
-    Length: 100,
-  };
+const ProductCard = ({ showOptions, pId,productData }) => {
+  // const productData = {
+  //   Price: 1000,
+  //   Name: 'name',
+  //   Material: 'material',
+  //   SalePrice: 500,
+  //   Width: 30,
+  //   Length: 100,
+  // };
   const { Name, Material, Price, SalePrice, Width, Length } = productData;
 
   const { favourits } = useSelector((state) => state.favourits);

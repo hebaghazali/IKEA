@@ -1,5 +1,5 @@
 const initial = {
-  loader: true,
+  loader: false,
 };
 
 export default function loaderReducer(state = initial, action) {
