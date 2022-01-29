@@ -6,7 +6,7 @@ import ProductPrice from './productPrice';
 import ProductVariant from './productVariant';
 import { addToCart } from './../../../store/actions/cartProducts';
 
-const ProductCard = ({ showOptions, pId, productData }) => {
+const ProductCard = ({ showOptions, pId,productData }) => {
   // const productData = {
   //   Price: 1000,
   //   Name: 'name',
@@ -17,11 +17,11 @@ const ProductCard = ({ showOptions, pId, productData }) => {
   // };
   const { Name, Material, Price, SalePrice, Width, Length } = productData;
 
-  const { favourits } = useSelector(state => state.favourits);
-  const { cartProducts } = useSelector(state => state.cartProducts);
-
-  let found = favourits?.find(i => i.id === pId);
-  let foundInCart = cartProducts?.find(i => i.id === pId);
+  const { favourits } = useSelector((state) => state.favourits);
+  const { cartProducts } = useSelector((state) => state.cartProducts);
+  
+  let found = favourits?.find((i) => i.id === pId);
+  let foundInCart = cartProducts?.find((i) => i.id === pId);
 
   const [isFavourite, setIsFavourite] = useState(found ? true : false);
   const [inCart, setInCart] = useState(foundInCart ? true : false);

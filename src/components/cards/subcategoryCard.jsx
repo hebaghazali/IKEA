@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-const SubCategoryCard = props => {
+const SubCategoryCard = (props) => {
   return (
     <>
       {!props.element && (
