@@ -5,16 +5,21 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import Navbar from './components/navbar/navbar';
 import Home from './components/home.jsx';
 import Footer from './components/footer/footer';
+import Products from './pages/products/products';
 import Menu from './components/menu/menu';
 import SubCategory from './pages/subCategory';
 import StoresPage from './pages/storeLocation';
 import Profile from './pages/profile';
+import { Provider } from 'react-redux';
+import store from './store/store';
 
 function App() {
   return (
-    <>
-      <Menu />
+   
+    <Provider store={store}>
       <div className='body-container'>
+      <Menu />
+
         <Navbar />
         <div className='mt-nav-2 pt-nav border-top'>
           <Switch>
@@ -22,13 +27,15 @@ function App() {
             <Route path='/category/:type/:name/:id' component={SubCategory} />
             <Route path='/stores' component={StoresPage}/>
             <Route path='/profile' component={Profile}/>
+            <Route path='/products' component={Products} />
             <Redirect from='/' exact to='/home' />
           </Switch>
         </div>
       </div>
       <Footer />
-    </>
-  );
-}
+    </Provider>
+  )}
+      
+
 
 export default App;
