@@ -6,6 +6,9 @@ import Loader from './../../components/loader';
 import { useEffect, useState } from 'react';
 // import { getCollection } from '../../services/firebase';
 import ProductCard from '../../components/cards/productCard/productCard';
+import SectionTitle from './sectionTitle';
+import SubCategoryCard from './../../components/cards/subcategoryCard';
+import { useSelector } from 'react-redux';
 
 const Products = () => {
   const [products, setProducts] = useState(null);
@@ -72,7 +75,7 @@ const Products = () => {
       id: 'size1',
     },
     {
-      label:'120 cm * 90 cm',
+      label: '120 cm * 90 cm',
       id: 'size2',
     },
     {
@@ -88,9 +91,20 @@ const Products = () => {
       id: 'size5',
     },
   ];
+
+  const subCategories = [
+    { Name: 'Beds' },
+    { Name: 'tables' },
+    { Name: 'kitchen' },
+    { Name: 'Beds' },
+    { Name: 'tables' },
+    { Name: 'kitchen' },
+  ];
+  useSelector((state) => console.log(state));
+  // console.log(loader);
+
   useEffect(async () => {
     // getCollection("Products",["SubCategory", "==", `PH6KZW35bbvGRBdbQ8pe`])
-
     // getCollection('Products')
     //   .then((res) => {
     //     console.log('>:', res);
@@ -102,9 +116,7 @@ const Products = () => {
     <div className='border-top mt-nav-3 pt-nav container'>
       <Breadcrumb />
 
-      <div className='section-title'>
-        <h3 id='sub-title'>Children beds</h3>
-      </div>
+      <SectionTitle title='Children beds' />
 
       <section className='col-12 col-md-7 col-lg-7'>
         <p className='description'>
@@ -137,7 +149,7 @@ const Products = () => {
             id='price-filter'
             title='price'
             icon='fas fa-chevron-down'
-          />        
+          />
           <FilterDropList
             listName='price-group'
             checkType='checkbox'
@@ -168,8 +180,16 @@ const Products = () => {
         <Loader />
 
         {/* {products?.map(i => <ProductCard key={index} productData={i.data()} showOptions />)} */}
-        {[1,2,3,1,2,3,4].map((i, index) => <ProductCard key={index} showOptions  />)}
+        {[1, 2, 3, 1, 2, 3, 4].map((i, index) => (
+          <ProductCard key={index} showOptions />
+        ))}
+      </div>
 
+      <SectionTitle title='Related categories' />
+      <div className='row mx-auto g-3 categories-slidder'>
+        {subCategories.map((subcategory) => {
+          return <SubCategoryCard element={subcategory} key={subcategory.id} />;
+        })}
       </div>
     </div>
   );

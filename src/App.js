@@ -6,10 +6,12 @@ import Navbar from './components/navbar/navbar';
 import Home from './components/home.jsx';
 import Footer from './components/footer/footer';
 import Products from './pages/products/products';
+import { Provider } from 'react-redux';
+import store from './store/store';
 
 function App() {
   return (
-    <>
+    <Provider store={store}>
     <div className='body-container'>
       <Navbar />
 
@@ -22,7 +24,7 @@ function App() {
       </div>
 
       <Footer />
-    </>
+    </Provider>
   );
 }
 
