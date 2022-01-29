@@ -10,8 +10,8 @@ const MenuBar = () => {
         id='offcanvasExample'
         aria-labelledby='offcanvasExampleLabel'
       >
-        <MenuHeader></MenuHeader>
-        <MenuMainBody></MenuMainBody>
+        <MenuHeader/>
+        <MenuMainBody/>
       </div>
     </>
   );

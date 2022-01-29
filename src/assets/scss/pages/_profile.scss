@@ -22,4 +22,41 @@
 .selected{
     border-bottom: 2px solid $blue;
 }
-  
+
+.floating-input-holder{
+    font-size: 1rem;
+    padding-bottom: 0px;
+    // height: 5px;
+    .edit-input{
+        border:none;
+        border-radius: 0%;
+        border-bottom: solid;
+        border-color: black;
+        border-width: 1px;
+        -webkit-border-radius: 0%;
+        -moz-border-radius: 0%;
+        -ms-border-radius: 0%;
+        -o-border-radius: 0%;
+        &:focus{
+            border-color: #0058A3;
+            box-shadow: none;
+        }
+    }
+}
+
+.cancel-change-btn{
+    background-color: #f5f5f5;
+    border: none;
+    height: 3rem;
+    margin-bottom:20px;
+    &:hover{
+        background-color: #dfdfdf;
+    }
+}
+.save-change-btn{
+    border: none;
+    height: 3rem;
+    &:hover{
+        background-color: #333333;
+    }
+}

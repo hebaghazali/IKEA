@@ -8,6 +8,7 @@ import Footer from './components/footer/footer';
 import Menu from './components/menu/menu';
 import SubCategory from './pages/subCategory';
 import StoresPage from './pages/storeLocation';
+import Profile from './pages/profile';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <Route path='/home' component={Home} />
             <Route path='/category/:type/:name/:id' component={SubCategory} />
             <Route path='/stores' component={StoresPage}/>
+            <Route path='/profile' component={Profile}/>
             <Redirect from='/' exact to='/home' />
           </Switch>
         </div>
