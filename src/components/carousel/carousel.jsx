@@ -174,7 +174,7 @@ const Carousel = () => {
           <div className='row flex-nowrap'>
             {products.map(product => {
               return (
-                <div className='col-6 col-lg-3'>
+                <div className='col-6 col-lg-3' key={products.indexOf(product)}>
                   <img className='w-100' src={product.imageURL} alt='' />
                   <p className='product-highlight'>{product.highlight}</p>
                   <p className='product-header'>{product.header}</p>

@@ -80,7 +80,7 @@ const Slider = () => {
       <div className='carousel-body'>
         <div className='row flex-nowrap'>
           {cards.map(card => (
-            <SliderCard card={card} />
+            <SliderCard card={card} key={cards.indexOf(card)} />
           ))}
         </div>
       </div>
