@@ -9,12 +9,15 @@ const GoodToKnowCards = () => {
 
   return (
     <>
-      <div class='mt-5'>
-        <h2 class='h2-title mb-5'>Good to know!</h2>
-        <div class='row g-4'>
+      <div className='mt-5'>
+        <h2 className='h2-title mb-5'>Good to know!</h2>
+        <div className='row g-4'>
           {images.map(imageURL => (
-            <div class='col-12 col-md-6 col-lg-4'>
-              <img class='w-100' src={imageURL} alt='' />
+            <div
+              className='col-12 col-md-6 col-lg-4'
+              key={images.indexOf(imageURL)}
+            >
+              <img className='w-100' src={imageURL} alt='' />
             </div>
           ))}
         </div>
