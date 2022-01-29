@@ -1,7 +1,7 @@
 import React from 'react';
 
 const GoodToKnowColumns = () => {
-  return (  );
-}
- 
+  return <></>;
+};
+
 export default GoodToKnowColumns;
