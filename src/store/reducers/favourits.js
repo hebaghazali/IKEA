@@ -13,7 +13,7 @@ export default function favReducer(state = initialState, action) {
     case 'REMOVE-FROM-FAV':
       return {
         ...state,
-        favourits: state.favourits.filter((i) => i !== action.payload),
+        favourits: state.favourits.filter((i) => i.id !== action.payload),
       };
     default:
       return state;

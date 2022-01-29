@@ -1,6 +1,6 @@
 export const addToCart = (data) => {
   return {
-    type: 'ADD-TO-Cart',
+    type: 'ADD-TO-CART',
     payload: data,
   };
 };

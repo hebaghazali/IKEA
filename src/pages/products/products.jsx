@@ -100,8 +100,6 @@ const Products = () => {
     { Name: 'tables' },
     { Name: 'kitchen' },
   ];
-  useSelector((state) => console.log(state));
-  // console.log(loader);
 
   useEffect(async () => {
     // getCollection("Products",["SubCategory", "==", `PH6KZW35bbvGRBdbQ8pe`])
@@ -180,8 +178,8 @@ const Products = () => {
         <Loader />
 
         {/* {products?.map(i => <ProductCard key={index} productData={i.data()} showOptions />)} */}
-        {[1, 2, 3, 1, 2, 3, 4].map((i, index) => (
-          <ProductCard key={index} showOptions />
+        {[1, 2, 3, 4,5,6,7].map((i, index) => (
+          <ProductCard key={index} showOptions pId={i} />
         ))}
       </div>
 
