@@ -9,7 +9,7 @@ const SubCategoryCard = (props) => {
         </div>
       )}
       <Link
-        to='/'
+        to={`/category/product/${props.params.name }/${props.params.id }/${props.element.data().Name}/${props.element.id}`}
         className='card category-card col-4 col-lg-2'
         name={props.element.data().Name}
         // name={props.element.Name}

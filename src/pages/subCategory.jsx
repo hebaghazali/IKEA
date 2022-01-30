@@ -46,7 +46,7 @@ const SubCategory = (props) => {
     //   where(field, 'array-contains', `${params.id}`)
     // );
     getCollection('subCategory',[field, 'array-contains', `${params.id}`]).then((allSubCategories) => {
-      setSubCategories(allSubCategories.docs);
+      setSubCategories(allSubCategories);
     });
   };
   useEffect(() => {
@@ -67,6 +67,7 @@ const SubCategory = (props) => {
                 <SubCategoryCard
                   element={subcategory}
                   key={subcategory.id}
+                  params={params}
                 />
               );
             })}

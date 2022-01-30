@@ -26,7 +26,7 @@ const MenuProductList = (props) => {
   useEffect(() => {
     getCollection('ProductCategories').then(
       (allCategories) => {
-        setCategories(allCategories.docs);
+        setCategories(allCategories);
       }
     );
   }, []);
