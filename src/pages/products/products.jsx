@@ -10,8 +10,10 @@ import SectionTitle from './sectionTitle';
 import SubCategoryCard from './../../components/cards/subcategoryCard';
 import { useSelector } from 'react-redux';
 
-const Products = () => {
+const Products = ({ match }) => {
   const [products, setProducts] = useState(null);
+  const [subCategories, setSubCategories] = useState(null);
+
   const sortStates = [
     {
       label: 'Newest',
@@ -92,27 +94,32 @@ const Products = () => {
     },
   ];
 
-  const subCategories = [
-    { Name: 'Beds' },
-    { Name: 'tables' },
-    { Name: 'kitchen' },
-    { Name: 'Beds' },
-    { Name: 'tables' },
-    { Name: 'kitchen' },
-  ];
+  const getSubCategories = () => {
+    getCollection('subCategory', [
+      match.params.type === 'product' ? 'ProductCategory' : 'RoomCategory',
+      'array-contains',
+      `${match.params.id}`,
+    ]).then((allSubCategories) => {
+      setSubCategories(allSubCategories);
+    });
+  };
 
-  useEffect(async () => {
-    // getCollection("Products",["SubCategory", "==", `JBgtm4km2eLpPxLuK7cB`])
-    getCollection('Products')
+  const getProducts = () => {
+    getCollection('Products', ['SubCategory', '==', match.params.subId])
       .then((res) => {
-        console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>:', res);
         setProducts(res);
       })
       .catch((err) => console.log('error :', err));
+  };
+
+  useEffect(async () => {
+    getProducts();
+    getSubCategories();
   }, []);
+  
   return (
-    <div>
-      <Breadcrumb />
+    <div className='mt-nav-2 pt-nav border-top'>
+      <Breadcrumb params={match.params} />
 
       <SectionTitle title='Children beds' />
 
@@ -177,18 +184,29 @@ const Products = () => {
       <div className='row' id='show-proDetail'>
         <Loader />
 
-        {products?.map(i => <ProductCard key={i.id} productData={i.data()} pId={i.id} showOptions />)}
-        {/* {[1, 2, 3, 4,5,6,7].map((i, index) => (
-          <ProductCard key={index} showOptions pId={i} />
-        ))} */}
+        {products?.map((i) => (
+          <ProductCard
+            key={i.id}
+            productData={i.data()}
+            pId={i.id}
+            showOptions
+          />
+        ))}
       </div>
 
       <SectionTitle title='Related categories' />
-      {/* <div className='row mx-auto g-3 categories-slidder'>
-        {subCategories.map((subcategory) => {
-          return <SubCategoryCard element={subcategory} key={subcategory.id} />;
-        })}
-      </div> */}
+      <div className='row mx-auto g-3 categories-slidder'>
+        {subCategories &&
+          subCategories.map((subcategory) => {
+            return (
+              <SubCategoryCard
+                element={subcategory}
+                key={subcategory.id}
+                params={match.params}
+              />
+            );
+          })}
+      </div>
     </div>
   );
 };

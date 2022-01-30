@@ -1,18 +1,20 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const Breadcrumb = () => {
+const Breadcrumb = ({params}) => {
+  const {type,name,subName}=params
     return (
         <div className="breadcrumb-container">
           <nav aria-label="breadcrumb" >
             <ol className="breadcrumb breadcrumb-list">
               <li className="breadcrumb-item">
-                <a className="bc-breadcrumb__link" href="#">products</a>
+                <Link className="bc-breadcrumb__link" to='./'>{type}</Link>
               </li>
               <li className="breadcrumb-item" aria-current="page">
-                <a className="bc-breadcrumb__link" href="#" id='catg-b-crumb'>furniture</a>
+                <Link className="bc-breadcrumb__link" to='./' id='catg-b-crumb'>{name}</Link>
               </li>
               <li className="breadcrumb-item" aria-current="page">
-                <a className="bc-breadcrumb__link" href="#" id='sub-b-crumb'>bed</a>
+                <Link className="bc-breadcrumb__link" to='./' id='sub-b-crumb'>{subName}</Link>
               </li>
             </ol>
           </nav>
