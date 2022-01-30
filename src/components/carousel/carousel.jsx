@@ -160,30 +160,30 @@ const Carousel = () => {
 
   return (
     <>
-      <div class='carousel'>
+      <div className='carousel'>
         <button
-          class={`dark-btn left-chevron`}
+          className={`dark-btn left-chevron`}
           onClick={() => {
             scrollCarousel('negative');
           }}
         >
-          <i class={`fas fa-chevron-left`}></i>
+          <i className={`fas fa-chevron-left`}></i>
         </button>
 
-        <div class='carousel-body p-0 pb-2 mb-5' ref={carouselBody}>
-          <div class='row flex-nowrap'>
+        <div className='carousel-body p-0 pb-2 mb-5' ref={carouselBody}>
+          <div className='row flex-nowrap'>
             {products.map(product => {
               return (
-                <div class='col-6 col-lg-3'>
-                  <img class='w-100' src={product.imageURL} alt='' />
-                  <p class='product-highlight'>{product.highlight}</p>
-                  <p class='product-header'>{product.header}</p>
-                  <p class='product-description'>{product.description}</p>
-                  <div class='price'>
-                    <div class='line-through'>
+                <div className='col-6 col-lg-3' key={products.indexOf(product)}>
+                  <img className='w-100' src={product.imageURL} alt='' />
+                  <p className='product-highlight'>{product.highlight}</p>
+                  <p className='product-header'>{product.header}</p>
+                  <p className='product-description'>{product.description}</p>
+                  <div className='price'>
+                    <div className='line-through'>
                       <sup>{product.lineThroughPrice}</sup>
                     </div>
-                    <div class='original-price'>
+                    <div className='original-price'>
                       <sup>{product.originalPrice.currency}</sup>
                       <span>
                         <strong>
@@ -199,7 +199,7 @@ const Carousel = () => {
                       </span>
                     </div>
                   </div>
-                  <p class='more-options'>More options</p>
+                  <p className='more-options'>More options</p>
                 </div>
               );
             })}
@@ -207,12 +207,12 @@ const Carousel = () => {
         </div>
 
         <button
-          class={`dark-btn right-chevron`}
+          className={`dark-btn right-chevron`}
           onClick={() => {
             scrollCarousel('positive');
           }}
         >
-          <i class={`fas fa-chevron-right`}></i>
+          <i className={`fas fa-chevron-right`}></i>
         </button>
       </div>
     </>
