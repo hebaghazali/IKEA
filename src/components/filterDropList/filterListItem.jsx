@@ -6,7 +6,7 @@ const FilterListItem = ({ id, label, listName, checkType }) => {
       className='dropdown-item d-flex flex-row align-items-center justify-content-between'
       onClick={() => console.log(id)}
     >
-      <label className='form-check-label' htmlFor={id}>
+      <label className='form-check-label bg-danger w-100' htmlFor={id}>
         {label}
       </label>
       <div className='form-check'>
