@@ -1,14 +1,13 @@
 import Breadcrumb from '../../components/breadCrumb/breadCrumb';
 import FilterButton from './../../components/filterButton/filterButton';
 import FilterDropList from './../../components/filterDropList/FilterDropList';
+import SubCategoryCard from './../../components/cards/subcategoryCard';
+import ProductCard from '../../components/cards/productCard/productCard';
 import ProductRoomBtn from './productRoomBtn';
 import Loader from './../../components/loader';
 import { useEffect, useState } from 'react';
 import { getCollection, filterProducts } from '../../services/firebase';
-import ProductCard from '../../components/cards/productCard/productCard';
 import SectionTitle from './sectionTitle';
-import SubCategoryCard from './../../components/cards/subcategoryCard';
-import { useSelector } from 'react-redux';
 
 const Products = ({ match, location }) => {
   //props.location.statet.subobj
@@ -101,26 +100,26 @@ const Products = ({ match, location }) => {
       type === 'product' ? 'ProductCategory' : 'RoomCategory',
       'array-contains',
       `${id}`,
-    ]).then((allSubCategories) => {
+    ]).then(allSubCategories => {
       setSubCategories(allSubCategories);
     });
   };
 
   const getProducts = () => {
     getCollection('Products', ['SubCategory', '==', subCatId])
-      .then((res) => {
+      .then(res => {
         setProducts(res);
       })
-      .catch((err) => console.log('error :', err));
+      .catch(err => console.log('error :', err));
   };
 
   const filterProds = () => {
     filterProducts('Products', ['Material', '==', ''], ['Color', '==', 'gray'])
-      .then((res) => {
+      .then(res => {
         console.log('products', products);
         setProducts(res);
       })
-      .catch((err) => console.log('error :', err));
+      .catch(err => console.log('error :', err));
   };
 
   useEffect(async () => {
@@ -198,7 +197,7 @@ const Products = ({ match, location }) => {
       <div className='row' id='show-proDetail'>
         <Loader />
 
-        {products?.map((i) => (
+        {products?.map(i => (
           <ProductCard
             key={i.id}
             productData={i.data()}
@@ -211,7 +210,7 @@ const Products = ({ match, location }) => {
       <SectionTitle title='Related categories' />
       <div className='row mx-auto g-3 categories-slidder'>
         {subCategories &&
-          subCategories.map((subcategory) => {
+          subCategories.map(subcategory => {
             return (
               <SubCategoryCard
                 element={subcategory}

@@ -1,4 +1,6 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import CarouselCard from './carouselCard';
+import { getCollection } from './../../services/firebase';
 
 const Carousel = () => {
   const products = [
@@ -149,6 +151,18 @@ const Carousel = () => {
     },
   ];
 
+  // const [products, setProducts] = useState([]);
+
+  // useEffect(() => {
+  //   // getCollection('Products', ['SubCategory', '==', `PH6KZW35bbvGRBdbQ8pe`]);
+  //   getCollection('Products')
+  //     .then(res => {
+  //       console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>:', res);
+  //       setProducts(res);
+  //     })
+  //     .catch(err => console.log('error :', err));
+  // }, []);
+
   const carouselBody = useRef(null);
 
   const scrollCarousel = sign => {
@@ -172,37 +186,7 @@ const Carousel = () => {
 
         <div className='carousel-body p-0 pb-2 mb-5' ref={carouselBody}>
           <div className='row flex-nowrap'>
-            {products.map(product => {
-              return (
-                <div className='col-6 col-lg-3' key={products.indexOf(product)}>
-                  <img className='w-100' src={product.imageURL} alt='' />
-                  <p className='product-highlight'>{product.highlight}</p>
-                  <p className='product-header'>{product.header}</p>
-                  <p className='product-description'>{product.description}</p>
-                  <div className='price'>
-                    <div className='line-through'>
-                      <sup>{product.lineThroughPrice}</sup>
-                    </div>
-                    <div className='original-price'>
-                      <sup>{product.originalPrice.currency}</sup>
-                      <span>
-                        <strong>
-                          {product.originalPrice.price ? (
-                            product.originalPrice.price
-                          ) : (
-                            <>
-                              {product.originalPrice.packs}
-                              <sub>/{product.originalPrice.perPack}</sub>
-                            </>
-                          )}
-                        </strong>
-                      </span>
-                    </div>
-                  </div>
-                  <p className='more-options'>More options</p>
-                </div>
-              );
-            })}
+            <CarouselCard products={products} />
           </div>
         </div>
 
