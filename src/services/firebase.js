@@ -25,3 +25,23 @@ export const addData=(data)=>{
     console.log("done");
   });
 }
+
+export const filterProducts = async (collName, condition = undefined , secondCond) => {
+  //dispatch loading
+  store.dispatch(changeLoader(true));
+
+  const q = condition
+    ? query(collection(fireStore, collName), where(...condition))
+    : collection(fireStore, collName);
+  const mixedQ=query(collection(fireStore, collName), where(...condition),where(...secondCond))
+  let results = await getDocs(mixedQ);
+  store.dispatch(changeLoader(false));
+
+  //dispatch finish loading
+
+  return results.docs;
+};
+
+export const sortCollection=async(sortQuery,collection='Products')=>{
+
+}

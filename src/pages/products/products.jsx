@@ -4,13 +4,15 @@ import FilterDropList from './../../components/filterDropList/FilterDropList';
 import ProductRoomBtn from './productRoomBtn';
 import Loader from './../../components/loader';
 import { useEffect, useState } from 'react';
-import { getCollection } from '../../services/firebase';
+import { getCollection, filterProducts } from '../../services/firebase';
 import ProductCard from '../../components/cards/productCard/productCard';
 import SectionTitle from './sectionTitle';
 import SubCategoryCard from './../../components/cards/subcategoryCard';
 import { useSelector } from 'react-redux';
 
-const Products = ({ match }) => {
+const Products = ({ match, location }) => {
+  //props.location.statet.subobj
+  let { type, name, id, subCatName, subCatId } = location?.state;
   const [products, setProducts] = useState(null);
   const [subCategories, setSubCategories] = useState(null);
 
@@ -96,30 +98,41 @@ const Products = ({ match }) => {
 
   const getSubCategories = () => {
     getCollection('subCategory', [
-      match.params.type === 'product' ? 'ProductCategory' : 'RoomCategory',
+      type === 'product' ? 'ProductCategory' : 'RoomCategory',
       'array-contains',
-      `${match.params.id}`,
+      `${id}`,
     ]).then((allSubCategories) => {
       setSubCategories(allSubCategories);
     });
   };
 
   const getProducts = () => {
-    getCollection('Products', ['SubCategory', '==', match.params.subId])
+    getCollection('Products', ['SubCategory', '==', subCatId])
       .then((res) => {
         setProducts(res);
       })
       .catch((err) => console.log('error :', err));
   };
 
+  const filterProds = () => {
+    filterProducts('Products', ['Material', '==', ''], ['Color', '==', 'gray'])
+      .then((res) => {
+        console.log('products', products);
+        setProducts(res);
+      })
+      .catch((err) => console.log('error :', err));
+  };
+
   useEffect(async () => {
+    console.log('>>>>>>>>>>>', location.state);
+    // filterProds();
     getProducts();
     getSubCategories();
   }, []);
-  
+
   return (
     <div className='mt-nav-2 pt-nav border-top'>
-      <Breadcrumb params={match.params} />
+      <Breadcrumb state={location.state} />
 
       <SectionTitle title='Children beds' />
 
@@ -176,6 +189,7 @@ const Products = ({ match }) => {
           />
 
           <FilterButton title='allFilters' icon='fas fa-filter' noDrop />
+          <div>{products?.length}</div>
         </div>
 
         <ProductRoomBtn />

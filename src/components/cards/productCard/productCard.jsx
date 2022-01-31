@@ -6,6 +6,7 @@ import ProductPrice from './productPrice';
 import ProductVariant from './productVariant';
 import { addToCart } from './../../../store/actions/cartProducts';
 import { addData } from '../../../services/firebase';
+import { Link } from 'react-router-dom';
 
 const ProductCard = ({ showOptions, pId, productData }) => {
   // const productData2 = {
@@ -69,16 +70,16 @@ const ProductCard = ({ showOptions, pId, productData }) => {
           </button>
         </header>
 
-        <a className='card category-card col-12 ' href='../productsA.html'>
+        <Link className='card category-card col-12 ' to=''>
           <img
-            // src='https://www.ikea.com/eg/en/images/products/soederhamn-chaise-longue-samsta-orange__0802365_pe768432_s5.jpg?f=xxs'
-            src={Images[isHovering ? 1 : 0]}
+            src='https://www.ikea.com/eg/en/images/products/soederhamn-chaise-longue-samsta-orange__0802365_pe768432_s5.jpg?f=xxs'
+            // src={Images[isHovering ? 1 : 0]}
             className='card-img-top'
             alt={Name}
             onMouseOver={() => setIsHovering(true)}
             onMouseLeave={() => setIsHovering(false)}
           />
-        </a>
+        </Link>
 
         <div className='mt-1 position-relative'>
           {/*TODO: if created recently  */}

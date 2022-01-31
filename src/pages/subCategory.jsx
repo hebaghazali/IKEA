@@ -47,7 +47,7 @@ const SubCategory = (props) => {
     // );
     getCollection('subCategory',[field, 'array-contains', `${params.id}`]).then((allSubCategories) => {
       setSubCategories(allSubCategories);
-    });
+    }).catch((err) => console.log('error :', err));
   };
   useEffect(() => {
     if (params.type === 'product') {

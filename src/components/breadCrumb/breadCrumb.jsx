@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Breadcrumb = ({params}) => {
-  const {type,name,subName}=params
+const Breadcrumb = ({state}) => {
+  const {type,name,subCatName}=state
     return (
         <div className="breadcrumb-container">
           <nav aria-label="breadcrumb" >
@@ -14,7 +14,7 @@ const Breadcrumb = ({params}) => {
                 <Link className="bc-breadcrumb__link" to='./' id='catg-b-crumb'>{name}</Link>
               </li>
               <li className="breadcrumb-item" aria-current="page">
-                <Link className="bc-breadcrumb__link" to='./' id='sub-b-crumb'>{subName}</Link>
+                <Link className="bc-breadcrumb__link" to='./' id='sub-b-crumb'>{subCatName}</Link>
               </li>
             </ol>
           </nav>

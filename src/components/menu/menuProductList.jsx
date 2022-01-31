@@ -28,7 +28,8 @@ const MenuProductList = (props) => {
       (allCategories) => {
         setCategories(allCategories);
       }
-    );
+    ).catch((err) => console.log('error :', err));
+    ;
   }, []);
   return (
     <>
