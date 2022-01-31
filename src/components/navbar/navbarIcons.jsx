@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
 const NavbarIcons = () => {
-  const { cartProducts,favourits } = useSelector((state) => state);
+  const { cartProducts, favourits } = useSelector(state => state);
 
   return (
     <>
@@ -11,12 +11,15 @@ const NavbarIcons = () => {
         <NavLink to='/login'>
           <i className='bi bi-person'></i>
         </NavLink>
-        <NavLink to='/favorite'>
-          <i className='bi bi-heart'>{favourits.favourits.length}</i>
+        <NavLink to='/favorite' style={{ position: 'relative' }}>
+          <i className='bi bi-heart'></i>
+          <span className='badge-yellow'>{favourits.favourits.length}</span>
         </NavLink>
-        <NavLink to='/shoppingcart'>
-          <i className='bi bi-minecart-loaded'>{cartProducts.cartProducts.length}</i>
-          
+        <NavLink to='/shoppingcart' style={{ position: 'relative' }}>
+          <i className='bi bi-minecart-loaded'></i>
+          <span className='badge-yellow'>
+            {cartProducts.cartProducts.length}
+          </span>
         </NavLink>
       </div>
     </>

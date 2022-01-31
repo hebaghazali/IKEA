@@ -4,14 +4,18 @@ import FilterDropList from './../../components/filterDropList/FilterDropList';
 import ProductRoomBtn from './productRoomBtn';
 import Loader from './../../components/loader';
 import { useEffect, useState } from 'react';
-import { getCollection } from '../../services/firebase';
+import { getCollection, filterProducts } from '../../services/firebase';
 import ProductCard from '../../components/cards/productCard/productCard';
 import SectionTitle from './sectionTitle';
 import SubCategoryCard from './../../components/cards/subcategoryCard';
 import { useSelector } from 'react-redux';
 
-const Products = () => {
+const Products = ({ match, location }) => {
+  //props.location.statet.subobj
+  let { type, name, id, subCatName, subCatId } = location?.state;
   const [products, setProducts] = useState(null);
+  const [subCategories, setSubCategories] = useState(null);
+
   const sortStates = [
     {
       label: 'Newest',
@@ -92,27 +96,43 @@ const Products = () => {
     },
   ];
 
-  const subCategories = [
-    { Name: 'Beds' },
-    { Name: 'tables' },
-    { Name: 'kitchen' },
-    { Name: 'Beds' },
-    { Name: 'tables' },
-    { Name: 'kitchen' },
-  ];
+  const getSubCategories = () => {
+    getCollection('subCategory', [
+      type === 'product' ? 'ProductCategory' : 'RoomCategory',
+      'array-contains',
+      `${id}`,
+    ]).then((allSubCategories) => {
+      setSubCategories(allSubCategories);
+    });
+  };
 
-  useEffect(async () => {
-    getCollection("Products",["SubCategory", "==", `PH6KZW35bbvGRBdbQ8pe`])
-    getCollection('Products')
+  const getProducts = () => {
+    getCollection('Products', ['SubCategory', '==', subCatId])
       .then((res) => {
-        console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>:', res);
         setProducts(res);
       })
       .catch((err) => console.log('error :', err));
+  };
+
+  const filterProds = () => {
+    filterProducts('Products', ['Material', '==', ''], ['Color', '==', 'gray'])
+      .then((res) => {
+        console.log('products', products);
+        setProducts(res);
+      })
+      .catch((err) => console.log('error :', err));
+  };
+
+  useEffect(async () => {
+    console.log('>>>>>>>>>>>', location.state);
+    // filterProds();
+    getProducts();
+    getSubCategories();
   }, []);
+
   return (
-    <div className='border-top mt-nav-3 pt-nav container'>
-      <Breadcrumb />
+    <div className='mt-nav-2 pt-nav border-top'>
+      <Breadcrumb state={location.state} />
 
       <SectionTitle title='Children beds' />
 
@@ -169,6 +189,7 @@ const Products = () => {
           />
 
           <FilterButton title='allFilters' icon='fas fa-filter' noDrop />
+          <div>{products?.length}</div>
         </div>
 
         <ProductRoomBtn />
@@ -177,17 +198,28 @@ const Products = () => {
       <div className='row' id='show-proDetail'>
         <Loader />
 
-        {products?.map(i => <ProductCard key={i.id} productData={i.data()} pId={i.id} showOptions />)}
-        {/* {[1, 2, 3, 4,5,6,7].map((i, index) => (
-          <ProductCard key={index} showOptions pId={i} />
-        ))} */}
+        {products?.map((i) => (
+          <ProductCard
+            key={i.id}
+            productData={i.data()}
+            pId={i.id}
+            showOptions
+          />
+        ))}
       </div>
 
       <SectionTitle title='Related categories' />
       <div className='row mx-auto g-3 categories-slidder'>
-        {subCategories.map((subcategory) => {
-          return <SubCategoryCard element={subcategory} key={subcategory.id} />;
-        })}
+        {subCategories &&
+          subCategories.map((subcategory) => {
+            return (
+              <SubCategoryCard
+                element={subcategory}
+                key={subcategory.id}
+                params={match.params}
+              />
+            );
+          })}
       </div>
     </div>
   );

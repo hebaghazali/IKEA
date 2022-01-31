@@ -16,28 +16,27 @@ import ShoppingCart from './pages/shoppingCart';
 
 function App() {
   return (
-   
     <Provider store={store}>
-      <div className='body-container'>
       <Menu />
-
+      <div className='body-container'>
         <Navbar />
         <div className='mt-nav-2 pt-nav border-top'>
           <Switch>
             <Route path='/home' component={Home} />
-            <Route path='/category/:type/:name/:id' component={SubCategory} />
+            <Route path='/category/:type/:name/:id' exact component={SubCategory} />
             <Route path='/stores' component={StoresPage}/>
             <Route path='/profile' component={Profile}/>
             <Route path='/products' component={Products} />
             <Route path='/shoppingcart' component={ShoppingCart}/>
+            <Route path='/category/products' exact component={Products} />
+            {/* <Route path='/category/:type/:name/:id/:subName/:subId' exact component={Products} /> */}
             <Redirect from='/' exact to='/home' />
           </Switch>
         </div>
       </div>
       <Footer />
     </Provider>
-  )}
-      
-
+  );
+}
 
 export default App;

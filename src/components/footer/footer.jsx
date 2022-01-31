@@ -5,9 +5,9 @@ import FooterSocialLanguages from './footerSocialLanguages';
 const Footer = () => {
   return (
     <>
-      <footer class='footer'>
-        <div class='row pb-5 mb-2'>
-          <div class='col-3'>
+      <footer className='footer'>
+        <div className='row pb-5 mb-2'>
+          <div className='col-3'>
             <ul>
               <li>
                 <p>Useful links</p>
@@ -32,7 +32,7 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-          <div class='col-3'>
+          <div className='col-3'>
             <ul>
               <li>
                 <p>Customer service</p>
@@ -57,7 +57,7 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-          <div class='col-3'>
+          <div className='col-3'>
             <ul>
               <li>
                 <p>This is IKEA</p>
@@ -79,7 +79,7 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-          <div class='col-3'>
+          <div className='col-3'>
             <ul>
               <li>
                 <p>General information</p>
