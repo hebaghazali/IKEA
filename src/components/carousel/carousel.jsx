@@ -1,6 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import CarouselCard from './carouselCard';
-import { getCollection } from './../../services/firebase';
 
 const Carousel = () => {
   const products = [
@@ -150,18 +149,6 @@ const Carousel = () => {
       },
     },
   ];
-
-  // const [products, setProducts] = useState([]);
-
-  // useEffect(() => {
-  //   // getCollection('Products', ['SubCategory', '==', `PH6KZW35bbvGRBdbQ8pe`]);
-  //   getCollection('Products')
-  //     .then(res => {
-  //       console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>:', res);
-  //       setProducts(res);
-  //     })
-  //     .catch(err => console.log('error :', err));
-  // }, []);
 
   const carouselBody = useRef(null);
 
