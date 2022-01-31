@@ -1,6 +1,8 @@
 import ProfileTab from "../components/profile/profileTabs";
+import { useSelector } from 'react-redux';
 
 const Profile = () => {
+    const user= useSelector((state)=>state.user)
   return (
     <>
       <div className='mt-nav-2 pt-nav border-top'>

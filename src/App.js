@@ -12,6 +12,7 @@ import StoresPage from './pages/storeLocation';
 import Profile from './pages/profile';
 import { Provider } from 'react-redux';
 import store from './store/store';
+import ShoppingCart from './pages/shoppingCart';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
             <Route path='/stores' component={StoresPage}/>
             <Route path='/profile' component={Profile}/>
             <Route path='/products' component={Products} />
+            <Route path='/shoppingcart' component={ShoppingCart}/>
             <Redirect from='/' exact to='/home' />
           </Switch>
         </div>

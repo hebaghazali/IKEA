@@ -14,7 +14,7 @@ const NavbarIcons = () => {
         <NavLink to='/favorite'>
           <i className='bi bi-heart'>{favourits.favourits.length}</i>
         </NavLink>
-        <NavLink to='/shopping-bag'>
+        <NavLink to='/shoppingcart'>
           <i className='bi bi-minecart-loaded'>{cartProducts.cartProducts.length}</i>
           
         </NavLink>
