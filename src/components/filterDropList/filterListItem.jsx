@@ -1,10 +1,10 @@
 import React from 'react';
 
-const FilterListItem = ({ id, label, listName, checkType }) => {
+const FilterListItem = ({ id, label, listName, checkType, clickHandler }) => {
   return (
     <div
       className='dropdown-item d-flex flex-row align-items-center justify-content-between'
-      onClick={() => console.log(id)}
+      onClick={() => clickHandler(id)}
     >
       <label className='form-check-label' htmlFor={id}>
         {label}

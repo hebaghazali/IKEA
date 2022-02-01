@@ -12,12 +12,12 @@ const RightSide = () => {
                     <b>2,500</b>
                   </span>
                 </div>
-                <p>
+                <div>
                 Bedroom furniture, set of 5, light beige<pre>
 
                 </pre>
                 <span >Mattress and bedlinen are sold separately.</span>
-                </p>
+                </div>
 
                 <div id="right-btn ">
                   <button className="col-7 mb-3 btn btn-primary rounded-pill">Add to bag </button>

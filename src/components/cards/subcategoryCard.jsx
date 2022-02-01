@@ -9,7 +9,18 @@ const SubCategoryCard = (props) => {
         </div>
       )}
       <Link
-        to='/'
+        to={{
+          pathname: "/category/products",
+          state: {
+            type: props.params.type,//products or rooms
+            name: props.params.name,//category name
+            id: props.params.id,//category Id
+            subCatName:props.element.data().Name,
+            subCatId:props.element.id,
+            subObj:props.element.data()
+          }
+        }}
+        // to={`/category/product/${props.params.name }/${props.params.id }/${props.element.data().Name}/${props.element.id}`}
         className='card category-card col-4 col-lg-2'
         name={props.element.data().Name}
         // name={props.element.Name}

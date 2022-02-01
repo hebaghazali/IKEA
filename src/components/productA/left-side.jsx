@@ -1,32 +1,20 @@
 import React from "react";
 import Carouselone from "./carouselOne";
 
-const LeftSide = () => {
+const LeftSide = (props) => {
+  const{Images}=props.prod.productData;
+  // console.log(":::",Images);
   return (
     <>
       <div className="col-12 col-md-8 left mt-5">
         <div className="top-imgs ">
-          <img
-            src="https://www.ikea.com/eg/en/images/products/gursken-bedroom-furniture-set-of-5-light-beige__0939777_pe794666_s5.jpg?f=m"
+          {Images?.map((image,index)=><img
+            src={image}
             width="48%"
-            alt=""
-          />
-          <img
-            src="https://www.ikea.com/eg/en/images/products/gursken-bedroom-furniture-set-of-5-light-beige__0970603_pe811129_s5.jpg?f=xs"
-            width="48%"
-            alt=""
-          />
-          <img
-            src="https://www.ikea.com/eg/en/images/products/gursken-bedroom-furniture-set-of-5-light-beige__0939784_pe794701_s5.jpg?f=xs"
-            width="48%"
-            alt=""
-          />
-          <img
-            src="https://www.ikea.com/eg/en/images/products/gursken-bedroom-furniture-set-of-5-light-beige__0946539_pe798134_s5.jpg?f=xs"
-            width="48%"
-            alt=""
-          />
-        </div>
+            alt="product image"
+            key={index}
+          />)}
+         </div>
 
         <Carouselone />
 
@@ -64,7 +52,7 @@ const LeftSide = () => {
 
           <div
             className="offcanvas offcanvas-end"
-            tabindex="-1"
+            tabIndex="-1"
             id="offcanvasRight"
             aria-labelledby="offcanvasRightLabel"
           >
@@ -79,14 +67,14 @@ const LeftSide = () => {
             </div>
 
             <div className="offcanvas-body">
-              <p>
+              <div>
                 A simple, firm foam mattress for use every night.
                 <br></br>
                 Fits LYCKSELE sofa-bed.<br></br>
                 <p>Designer</p>
                 <br></br>
                 IKEA of Sweden
-              </p>
+              </div>
               <span className="out-span">
                 Article number<pre></pre>
                 <span className="in-span">001.020.65</span>
@@ -111,7 +99,7 @@ const LeftSide = () => {
 
           <div
             className="offcanvas offcanvas-end"
-            tabindex="-1"
+            tabIndex="-1"
             id="offcanvasRight"
             aria-labelledby="offcanvasRightLabel"
           >

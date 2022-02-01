@@ -1,27 +1,28 @@
 import { useParams } from 'react-router-dom';
 import SubCategoryCard from '../components/cards/subcategoryCard';
 import TextRightCard from '../components/cards/textRightCard';
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.2/firebase-app.js';
-import {
-  getFirestore,
-  collection,
-  query,
-  where,
-  getDocs,
-} from 'https://www.gstatic.com/firebasejs/9.6.2/firebase-firestore.js';
+// import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.2/firebase-app.js';
+// import {
+//   getFirestore,
+//   collection,
+//   query,
+//   where,
+//   getDocs,
+// } from 'https://www.gstatic.com/firebasejs/9.6.2/firebase-firestore.js';
 import { useEffect, useState } from 'react';
 import StepsCard from '../components/cards/stepsCard';
+import { getCollection } from '../services/firebase';
 // Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: 'AIzaSyBvz1el-WaDgUU36xlWeIEj2G9iyI0ewW4',
-  authDomain: 'ikea-8dc72.firebaseapp.com',
-  projectId: 'ikea-8dc72',
-  storageBucket: 'ikea-8dc72.appspot.com',
-  messagingSenderId: '293717792182',
-  appId: '1:293717792182:web:f170e2edfe2370c9769d17',
-};
-const app = initializeApp(firebaseConfig);
-const firestore = getFirestore(app);
+// const firebaseConfig = {
+//   apiKey: 'AIzaSyBvz1el-WaDgUU36xlWeIEj2G9iyI0ewW4',
+//   authDomain: 'ikea-8dc72.firebaseapp.com',
+//   projectId: 'ikea-8dc72',
+//   storageBucket: 'ikea-8dc72.appspot.com',
+//   messagingSenderId: '293717792182',
+//   appId: '1:293717792182:web:f170e2edfe2370c9769d17',
+// };
+// const app = initializeApp(firebaseConfig);
+// const firestore = getFirestore(app);
 
 // onSnapshot(q, snapshot => {
 // var div = document.querySelector('.categories-slidder');
@@ -40,13 +41,13 @@ const SubCategory = (props) => {
   const [subCategories, setSubCategories] = useState([]);
 
   const getSubCategories = (field) => {
-    const q = query(
-      collection(firestore, 'subCategory'),
-      where(field, 'array-contains', `${params.id}`)
-    );
-    getDocs(q).then((allSubCategories) => {
-      setSubCategories(allSubCategories.docs);
-    });
+    // const q = query(
+    //   collection(firestore, 'subCategory'),
+    //   where(field, 'array-contains', `${params.id}`)
+    // );
+    getCollection('subCategory',[field, 'array-contains', `${params.id}`]).then((allSubCategories) => {
+      setSubCategories(allSubCategories);
+    }).catch((err) => console.log('error :', err));
   };
   useEffect(() => {
     if (params.type === 'product') {
@@ -66,12 +67,13 @@ const SubCategory = (props) => {
                 <SubCategoryCard
                   element={subcategory}
                   key={subcategory.id}
-                ></SubCategoryCard>
+                  params={params}
+                />
               );
             })}
           </div>
-          <TextRightCard></TextRightCard>
-          <StepsCard></StepsCard>
+          <TextRightCard/>
+          <StepsCard/>
         </div>
       }
     </>

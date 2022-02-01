@@ -9,9 +9,11 @@ import Products from './pages/products/products';
 import Menu from './components/menu/menu';
 import SubCategory from './pages/subCategory';
 import StoresPage from './pages/storeLocation';
+import Profile from './pages/profile';
 import { Provider } from 'react-redux';
 import store from './store/store';
 import ProductA from './components/productA/productA';
+import Testpage from './pages/TestPage';
 
 function App() {
   return (
@@ -25,8 +27,13 @@ function App() {
             <Route path='/home' component={Home} />
             <Route path='/category/:type/:name/:id' component={SubCategory} />
             <Route path='/stores' component={StoresPage} />
-            <Route path='/products' component={Products} />
             <Route path='/proA' component={ProductA} />
+            <Route path='/category/:type/:name/:id' exact component={SubCategory} />
+            <Route path='/stores' component={StoresPage}/>
+            <Route path='/profile' component={Profile}/>
+            <Route path='/category/products' exact component={Products} />
+            {/* <Route path='/category/:type/:name/:id/:subName/:subId' exact component={Products} /> */}
+            <Route path="/products/:pId" exact component={ProductA} />
             <Redirect from='/' exact to='/home' />
           </Switch>
         </div>

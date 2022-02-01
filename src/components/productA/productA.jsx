@@ -4,14 +4,15 @@ import Carousel from "../carousel/carousel";
 import LeftSide from "./left-side";
 import RightSide from "./right-side";
 
-const ProductA = () => {
+const ProductA = (props) => {
+  console.log(props.location.state.prod);
+    const{prod}=props.location.state
   return (
-    <>
       <>
         <>
           <div className="container">
             <div className="row">
-              <LeftSide />
+              <LeftSide prod={prod}/>
               
               <RightSide />
 
@@ -50,7 +51,6 @@ const ProductA = () => {
           </div>
         </section>
       </>
-    </>
   );
 };
 
