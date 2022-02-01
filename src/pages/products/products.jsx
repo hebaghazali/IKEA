@@ -4,49 +4,59 @@ import FilterDropList from './../../components/filterDropList/FilterDropList';
 import ProductRoomBtn from './productRoomBtn';
 import Loader from './../../components/loader';
 import { useEffect, useState } from 'react';
-import { getCollection, filterProducts } from '../../services/firebase';
+import {
+  getCollection,
+  filterCollection,
+  sortCollection,
+} from '../../services/firebase';
 import ProductCard from '../../components/cards/productCard/productCard';
 import SectionTitle from './sectionTitle';
 import SubCategoryCard from './../../components/cards/subcategoryCard';
 import { useSelector } from 'react-redux';
+import EmptyData from '../../components/emptyData';
 
 const Products = ({ match, location }) => {
   //props.location.statet.subobj
-  let { type, name, id, subCatName, subCatId } = location?.state;
+  let { type, name, id, subCatName, subCatId, subObj } = location?.state;
   const [products, setProducts] = useState(null);
   const [subCategories, setSubCategories] = useState(null);
+  const { loader } = useSelector((state) => state.loader);
 
   const sortStates = [
     {
       label: 'Newest',
-      id: 'newest-radio',
+      id: 'CreatedAt',
     },
     {
       label: 'Price: low to high',
-      id: 'lowToHigh-radio',
+      id: 'Price',
     },
     {
       label: 'Price: high to low',
-      id: 'highToLowRadio',
+      id: 'DPrice',
     },
     {
       label: 'Name',
-      id: 'name-radio',
+      id: 'Name',
     },
   ];
 
   const colorsStates = [
     {
       label: 'black',
-      id: 'blackR',
+      id: 'black',
     },
     {
       label: 'brown',
-      id: 'brown-r',
+      id: 'brown',
     },
     {
       label: 'white',
-      id: 'whiteR',
+      id: 'white',
+    },
+    {
+      label: 'Gray',
+      id: 'gray',
     },
   ];
 
@@ -96,12 +106,35 @@ const Products = ({ match, location }) => {
     },
   ];
 
+  const materialStates = [
+    {
+      label: 'Wood',
+      id: 'wood',
+    },
+    {
+      label: 'Steel',
+      id: 'steel',
+    },
+    {
+      label: 'Upholstered',
+      id: 'Upholstered',
+    },
+    {
+      label: 'Cotton',
+      id: 'cotton',
+    },
+  ];
+
   const getSubCategories = () => {
-    getCollection('subCategory', [
-      type === 'product' ? 'ProductCategory' : 'RoomCategory',
-      'array-contains',
-      `${id}`,
-    ]).then((allSubCategories) => {
+    filterCollection(
+      'subCategory',
+      [
+        type === 'product' ? 'ProductCategory' : 'RoomCategory',
+        'array-contains',
+        `${id}`,
+      ],
+      ['Name', '!=', `${subCatName}`]
+    ).then((allSubCategories) => {
       setSubCategories(allSubCategories);
     });
   };
@@ -114,8 +147,8 @@ const Products = ({ match, location }) => {
       .catch((err) => console.log('error :', err));
   };
 
-  const filterProds = () => {
-    filterProducts('Products', ['Material', '==', ''], ['Color', '==', 'gray'])
+  const filterProds = (key, value) => {
+    filterCollection('Products', ['SubCategory', '==', subCatId],  [key, '==', value] )
       .then((res) => {
         console.log('products', products);
         setProducts(res);
@@ -123,9 +156,23 @@ const Products = ({ match, location }) => {
       .catch((err) => console.log('error :', err));
   };
 
+  const sortProducts = (sortProp) => {
+    let order = 'asc';
+    if (sortProp[0] == 'D') { //DPrice for descinding
+      order = 'desc';
+      sortProp = sortProp.substring(1);
+    }
+
+    sortCollection(['SubCategory', '==', subCatId], sortProp, order)
+      .then((res) => {
+        console.log('products', res);
+        setProducts(res);
+      })
+      .catch((err) => console.log('error :', err));
+  };
+
   useEffect(async () => {
     console.log('>>>>>>>>>>>', location.state);
-    // filterProds();
     getProducts();
     getSubCategories();
   }, []);
@@ -134,16 +181,10 @@ const Products = ({ match, location }) => {
     <div className='mt-nav-2 pt-nav border-top'>
       <Breadcrumb state={location.state} />
 
-      <SectionTitle title='Children beds' />
+      <SectionTitle title={subCatName} />
 
       <section className='col-12 col-md-7 col-lg-7'>
-        <p className='description'>
-          We understand that growing kids have lots of needs. Like a quiet spot
-          to relax or a place to do their homework. That's why loft beds for
-          kids are a super-smart multi-tasking solution, helping you free up
-          space for a desk, sofa, wardrobe or pillow fort. Bring home a
-          children's loft bed today!
-        </p>
+        <p className='description'>{subObj?.Descripton}</p>
       </section>
 
       <div className='row sticky-top filter-row'>
@@ -154,6 +195,7 @@ const Products = ({ match, location }) => {
             listName='sort-group'
             checkType='radio'
             items={sortStates}
+            clickHandler={sortProducts}
           />
 
           <FilterButton title='color' icon='fas fa-chevron-down' />
@@ -161,6 +203,7 @@ const Products = ({ match, location }) => {
             listName='colors-group'
             checkType='radio'
             items={colorsStates}
+            clickHandler={(color) => filterProds('Color', color)}
           />
 
           <FilterButton
@@ -181,22 +224,23 @@ const Products = ({ match, location }) => {
             items={sizesStates}
           />
 
-          <FilterButton title='material' icon='fas fa-chevron-down' noDrop />
+          <FilterButton title='material' icon='fas fa-chevron-down' />
           <FilterDropList
             listName='material-group'
             checkType='radio'
-            items={[]}
+            items={materialStates}
+            clickHandler={(material) => filterProds('Material', material)}
           />
 
           <FilterButton title='allFilters' icon='fas fa-filter' noDrop />
-          <div>{products?.length}</div>
         </div>
 
-        <ProductRoomBtn />
+        <ProductRoomBtn totalItems={products?.length} />
       </div>
 
       <div className='row' id='show-proDetail'>
         <Loader />
+        {!loader && !products?.length &&<EmptyData/>}
 
         {products?.map((i) => (
           <ProductCard
@@ -209,6 +253,7 @@ const Products = ({ match, location }) => {
       </div>
 
       <SectionTitle title='Related categories' />
+      <Loader />
       <div className='row mx-auto g-3 categories-slidder'>
         {subCategories &&
           subCategories.map((subcategory) => {

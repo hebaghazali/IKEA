@@ -12,6 +12,7 @@ import StoresPage from './pages/storeLocation';
 import Profile from './pages/profile';
 import { Provider } from 'react-redux';
 import store from './store/store';
+import Testpage from './pages/TestPage';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
             <Route path='/profile' component={Profile}/>
             <Route path='/category/products' exact component={Products} />
             {/* <Route path='/category/:type/:name/:id/:subName/:subId' exact component={Products} /> */}
+            <Route path="/products/:pId" exact component={Testpage} />
             <Redirect from='/' exact to='/home' />
           </Switch>
         </div>

@@ -1,4 +1,11 @@
-import { collection, where, getDocs, query ,addDoc} from 'firebase/firestore';
+import {
+  collection,
+  where,
+  orderBy,
+  getDocs,
+  query,
+  addDoc,
+} from 'firebase/firestore';
 import { fireStore } from '../config/firebaseConfig';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeLoader } from './../store/actions/loader';
@@ -20,28 +27,48 @@ export const getCollection = async (collName, condition = undefined) => {
   return results.docs;
 };
 
-export const addData=(data)=>{
-  addDoc(collection(fireStore,'Products'),data).then(()=>{
-    console.log("done");
+export const addData = (data) => {
+  addDoc(collection(fireStore, 'Products'), data).then(() => {
+    console.log('done');
   });
-}
+};
 
-export const filterProducts = async (collName, condition = undefined , secondCond) => {
+export const filterCollection = async (
+  collName,
+  condition = undefined,
+  secondCond
+) => {
   //dispatch loading
   store.dispatch(changeLoader(true));
 
-  const q = condition
-    ? query(collection(fireStore, collName), where(...condition))
-    : collection(fireStore, collName);
-  const mixedQ=query(collection(fireStore, collName), where(...condition),where(...secondCond))
+  const mixedQ = query(
+    collection(fireStore, collName),
+    where(...condition),
+    where(...secondCond)
+  );
   let results = await getDocs(mixedQ);
-  store.dispatch(changeLoader(false));
 
   //dispatch finish loading
+  store.dispatch(changeLoader(false));
 
   return results.docs;
 };
 
-export const sortCollection=async(sortQuery,collection='Products')=>{
+export const sortCollection = async (condition, sortProp, order) => {
+  store.dispatch(changeLoader(true));
 
-}
+  const sortQ = query(
+    collection(fireStore, 'Products'),
+    where(...condition),
+    orderBy(sortProp, order)
+  );
+
+  //dispatch loading
+
+  let results = await getDocs(sortQ);
+
+  //dispatch finish loading
+  store.dispatch(changeLoader(false));
+
+  return results.docs;
+};
