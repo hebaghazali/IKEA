@@ -1,0 +1,147 @@
+.header-messages {
+  min-height: 2.5rem;
+}
+
+.navbar {
+  width: 92vw;
+  left: auto;
+  right: $body-margin-right;
+  padding-left: $body-padding-left;
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  z-index: 2;
+
+  & > * {
+    margin-left: 1.2rem;
+  }
+
+  .navbar-brand {
+    flex-basis: 8.33%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+
+    .logo {
+      padding: 1rem 0 1.75rem;
+    }
+  }
+
+  .toggler {
+    margin-left: 1rem;
+    border: none;
+    outline: none;
+  }
+
+  .navbar-nav {
+    .nav-item {
+      p {
+        color: $default-text-color;
+        font-size: 0.875rem;
+        padding: 0 1rem;
+        font-weight: 700;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .navbar-collapse {
+    flex-grow: 0;
+    flex-basis: 26%;
+  }
+
+  .navbar-search {
+    padding: 1rem 3rem 1rem 2rem;
+    background-color: #f5f5f5;
+    border-radius: 5rem;
+    align-items: center;
+    // flex-basis: 41.67%;
+    // width: 100%;
+    flex-grow: 1;
+
+    .search-box {
+      display: flex;
+      justify-content: flex-start;
+
+      input {
+        padding-inline-start: 1rem;
+        outline: none;
+        border: none;
+        background-color: inherit;
+        width: 100%;
+      }
+    }
+  }
+
+  .location-container {
+    display: flex;
+    align-items: flex-end;
+    margin-left: auto;
+
+    & > * {
+      margin: 0 5px;
+    }
+
+    .location-text {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  .navbar-icons {
+    flex-basis: 8%;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 1rem;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .resp-hide {
+    display: none;
+  }
+
+  .navbar {
+    .location-container {
+      order: 1;
+      flex-basis: 100%;
+      padding-top: 1rem;
+
+      .location-text {
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        width: 100%;
+
+        & > * {
+          padding-right: 1rem;
+        }
+      }
+    }
+
+    .navbar-icons {
+      flex-basis: 16.67%;
+      margin-left: auto;
+    }
+  }
+}
+
+@media only screen and (max-width: 815px) {
+  .navbar {
+    width: 90vw;
+    left: 0;
+    right: 0;
+    margin: auto;
+    padding-left: 0;
+
+    .navbar-search {
+      order: 1;
+      flex-basis: 100%;
+      margin: 0;
+    }
+
+    .navbar-icons {
+      flex-basis: 20%;
+      margin-left: auto;
+    }
+  }
+}
