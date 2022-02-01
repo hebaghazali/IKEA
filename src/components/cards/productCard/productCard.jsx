@@ -48,7 +48,7 @@ const ProductCard = ({ showOptions, pId, productData }) => {
   };
 
   const addCart = () => {
-    dispatch(addToCart({ id: pId, productData }));
+    dispatch(addToCart({ id: pId, productData, PurchasedAmount:1}));
     setInCart(true);
   };
 

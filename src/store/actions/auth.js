@@ -1,6 +1,6 @@
-export function changeUser(status) {
+export function changeUser(data) {
   return {
     type: 'SET_USER',
-    payload: status,
+    payload: data,
   };
 }

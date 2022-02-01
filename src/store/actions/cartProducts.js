@@ -11,3 +11,10 @@ export const removeFromCart = (data) => {
     payload: data,
   };
 };
+
+export const setCartItemAmount = (data)=>{
+  return{
+    type: 'SET-AMOUNT',
+    payload:data
+  }
+}

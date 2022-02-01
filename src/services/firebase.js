@@ -1,14 +1,18 @@
 import {
   collection,
   where,
-  orderBy,
   getDocs,
   query,
   addDoc,
+  updateDoc,
+  doc,
+  getDoc,
+  orderBy,
 } from 'firebase/firestore';
 import { fireStore } from '../config/firebaseConfig';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeLoader } from './../store/actions/loader';
+import { changeUser } from './../store/actions/auth';
 import store from './../store/store';
 
 export const getCollection = async (collName, condition = undefined) => {
@@ -27,7 +31,7 @@ export const getCollection = async (collName, condition = undefined) => {
   return results.docs;
 };
 
-export const addData = (data) => {
+export const addData = data => {
   addDoc(collection(fireStore, 'Products'), data).then(() => {
     console.log('done');
   });
@@ -71,4 +75,22 @@ export const sortCollection = async (condition, sortProp, order) => {
   store.dispatch(changeLoader(false));
 
   return results.docs;
+};
+
+export const updateData = async (collName, ID, data) => {
+  await updateDoc(doc(fireStore, collName, ID), data).then(() => {
+    console.log('done');
+  });
+};
+
+export const getDocumentByID = (collName, ID) => {
+  getDoc(doc(fireStore, collName, ID)).then(res => {
+    return res.data();
+  });
+};
+
+export const updateUserStorageByID = ID => {
+  getDoc(doc(fireStore, 'users', ID)).then(res => {
+    store.dispatch(changeUser({ id: ID, user: res.data() }));
+  });
 };

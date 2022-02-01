@@ -1,4 +1,24 @@
+import { useSelector } from "react-redux";
+import { updateData } from "../../../services/firebase";
+import { updateUserStorageByID } from '../../../services/firebase';
+
 const EditPersonalInfo = (props) => {
+  const user=useSelector((state)=>state.user.user);
+  const id=useSelector((state)=>state.user.id);
+
+  var userInfo={
+    FirstName:user.FirstName,
+    LastName:user.LastName,
+    BirthDate:user.BirthDate,
+    Gender:user.Gender
+  }
+
+  const updateUser = ()=>{
+    updateData('users',id,userInfo).then(()=>{
+      updateUserStorageByID(id);
+    })
+    props.changeSelection(0);
+  }
   return (
     <section className='col-12 col-lg-6'>
       <div className='form-floating mb-3 p-0 floating-input-holder'>
@@ -7,6 +27,10 @@ const EditPersonalInfo = (props) => {
           className='form-control edit-input'
           id='floatingInput'
           placeholder=''
+          defaultValue={user.FirstName}
+          onChange={
+            (e)=>{userInfo.FirstName=e.target.value}
+          }
         />
         <label htmlFor='floatingInput'>First name</label>
       </div>
@@ -16,6 +40,10 @@ const EditPersonalInfo = (props) => {
           className='form-control edit-input'
           id='floatingInput'
           placeholder=''
+          defaultValue={user.LastName}
+          onChange={
+            (e)=>{userInfo.LastName=e.target.value}
+          }
         />
         <label htmlFor='floatingInput'>Last name</label>
       </div>
@@ -25,14 +53,22 @@ const EditPersonalInfo = (props) => {
           className='form-control edit-input'
           id='floatingInput'
           placeholder='DD-MM_YYYY'
+          defaultValue={user.BirthDate}
+          onChange={
+            (e)=>{userInfo.BirthDate=e.target.value}
+          }
         />
         <label htmlFor='floatingInput'>Birthdate (Optional)</label>
       </div>
-      <div class='form-floating floating-input-holder col-9'>
+      <div className='form-floating floating-input-holder col-9'>
         <select
-          class='form-select edit-input'
+          className='form-select edit-input'
           id='floatingSelect'
           aria-label='Floating label select example'
+          defaultValue={user.Gender}
+          onChange={
+            (e)=>{userInfo.Gender=e.target.value}
+          }
         >
           <option></option>
           <option value='1'>Male</option>
@@ -50,7 +86,7 @@ const EditPersonalInfo = (props) => {
       >
         Cancel
       </button>
-      <button className='dark-btn save-change-btn col-12'>Save changes</button>
+      <button className='dark-btn save-change-btn col-12' onClick={()=>updateUser()}>Save changes</button>
     </section>
   );
 };
