@@ -2,13 +2,13 @@ import React from 'react';
 import { useState } from 'react';
 import '../../assets/scss/pages/_login.scss';
 import { Link } from 'react-router-dom';
-import SharedLog from '../SharedLogCom/ShahredLogCom';
-
+import LogIn from '../LogIn/LogIn';
+import SharedLogComp from '../SharedLogCom/ShahredLogCom';
 
 function SignIn() {
   const [users, setUser] = useState({
     Name: '',
-    Phone: '',
+    Phone: ','
   });
 
   const [errors, setError] = useState({
@@ -59,11 +59,11 @@ function SignIn() {
 
   return (
     <>
-      <div className='log-parent'>
-        <div className='container'>
+      <div class='log-parent'>
+        <div class='container'>
           {/* <!-- Left section --> */}
-          <section className='row left-box-log'>
-            <section className='col-md-5 col-12 login-heading'>
+          <section class='row left-box-log'>
+            <section class='col-md-5 col-12 login-heading'>
               <h3>Create an IKEA Profile</h3>
               <p>
                 Already have an account? <Link to='./login'> Login</Link>{' '}
@@ -71,15 +71,15 @@ function SignIn() {
             </section>
 
             {/* <!-- Center Section --> */}
-            <section className='col-md-2 col-12 center-sec'></section>
+            <section class='col-md-2 col-12 center-sec'></section>
             {/* <!-- Right Section --> */}
-            <section className='col-md-5 col-12 login-form'>
-              <div className='form-floating mb-3 input-log'>
-                <form className='row g-3 needs-validation' noValidate>
-                  <div className='input-box'>
+            <section class='col-md-5 col-12 login-form'>
+              <div class='form-floating mb-3 input-log'>
+                <form class='row g-3 needs-validation' novalidate>
+                  <div class='input-box'>
                     <input
                       type='text'
-                      className='form-control input-sign-form'
+                      class='form-control input-sign-form'
                       id='validationCustom01'
                       name='Name'
                       placeholder='First Name'
@@ -90,10 +90,10 @@ function SignIn() {
                     />
                     <small className='text-danger'>{errors.NameErr}</small>
                   </div>
-                  <div className='input-box'>
+                  <div class='input-box'>
                     <input
                       type='text'
-                      className='form-control input-sign-form'
+                      class='form-control input-sign-form'
                       id='validationCustom02'
                       name='Name'
                       placeholder='Last name'
@@ -104,11 +104,11 @@ function SignIn() {
                     />
                     <small className='text-danger'>{errors.NameErr}</small>
                   </div>
-                  <div className='input-box'>
-                    <div className='input-group has-validation'>
+                  <div class='input-box'>
+                    <div class='input-group has-validation'>
                       <input
                         type='text'
-                        className='form-control input-sign-form'
+                        class='form-control input-sign-form'
                         id='validationCustom01'
                         name='Phone'
                         placeholder='EG(+20)'
@@ -122,35 +122,35 @@ function SignIn() {
 
                   <div>
                     <label
-                      htmlFor='validationCustom04'
-                      className='form-label selct-label-form-sign'
+                      for='validationCustom04'
+                      class='form-label selct-label-form-sign'
                     >
                       Prefered Store
                     </label>
                     <select
-                      className='form-select selct-form-sign'
+                      class='form-select selct-form-sign'
                       id='validationCustom04'
                       required
                     >
-                      <option value=''>
+                      <option selected disabled value=''>
                         IKEA Cairo Mall Of Arabia
                       </option>
                       <option>IKEA CFC</option>
                     </select>
-                    <div className='invalid-feedback'>
+                    <div class='invalid-feedback'>
                       Please select a valid Store.
                     </div>
                   </div>
 
-                  <SharedLog />
+                  <SharedLogComp />
 
                   <div>
-                    <input type='checkbox' className='check-sign-form' /> I have
+                    <input type='checkbox' class='check-sign-form' /> I have
                     read and understood the <Link to=''>Privacy policy.</Link>
                   </div>
 
-                  <div className='col-12'>
-                    <button className='btn btn-primary' type='submit'>
+                  <div class='col-12'>
+                    <button class='btn btn-primary' type='submit'>
                       Create Profile
                     </button>
                   </div>

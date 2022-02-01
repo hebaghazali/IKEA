@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import '../../assets/scss/pages/_login.scss';
+import {auth} from '../../config/firebaseConfig'
+import Hello from '../Hello';
 
-function SharedLog() {
+function SharedLogComp() {
   const [users, setUser] = useState({
     Email: '',
     Password: '',
@@ -11,6 +13,9 @@ function SharedLog() {
     EmailErr: null,
     PasswordErr: null,
   });
+
+  const [Email, setEmail] = useState('')
+  const [Password, setPassword] = useState('')
 
   // Function to hadndle change in any input and write into it
   const handleChangeInInput = (e) => {
@@ -57,9 +62,57 @@ function SharedLog() {
     }
   };
 
+  // const handleLogIn =() => {
+  //   clearError()
+  //   auth
+  //   .logInWithEmailAndPassword(Email, Password)
+  //   // .catch((err) => {
+  //   //   switch(err.code)
+  //   //   {
+  //   //     case "auth/invalid-email":
+  //   //     case "auth/user-disabled":
+  //   //     case "auth/user-not-found":
+  //   //       setError({EmailErr: err.message})
+  //   //       break
+
+  //   //     case "auth/wrong-password":
+  //   //       setError({PasswordErr: err.message})
+  //   //       break
+  //   //   }
+  //   // })
+  // }
+
+  // const authListner = () => {
+  //   auth
+  //   .onAuthStateChanged((users) => {
+  //     if(users)
+  //     {
+  //       clearInputs()
+  //       setUser(users)
+  //     }
+  //     else
+  //     {
+  //       setUser("")
+  //     }
+  //   })
+  // }
+
+  // const clearError = () => {
+  //   setEmail('')
+  //   setPassword('')
+  // }
+
+  // const clearInputs = () => {
+  //   setUser({Email:'', Password:''})
+  // }
+
+  // useEffect(() => {
+  //   authListner()
+  // }, [])
+
   return (
     <>
-      <div className='form-floating mb-3 input-log'>
+        <div className='form-floating mb-3 input-log'>
         <form className='row g-3 needs-validation' noValidate>
           <div>
             <input
@@ -82,7 +135,7 @@ function SharedLog() {
           </div>
           <div>
             <input
-              type='password'
+              type='text'
               className='form-control input-sign-form'
               id='validationCustom05'
               required
@@ -103,11 +156,11 @@ function SharedLog() {
             <p className='text-danger'>{errors.PasswordErr}</p>
           </div>
           <a href='#'>Forget your Password?</a>
-          <button className='login-creation'>Login</button>
+          <button className='login-creation' >Login</button>
         </form>
       </div>
     </>
   );
 }
 
-export default SharedLog;
+export default SharedLogComp;
