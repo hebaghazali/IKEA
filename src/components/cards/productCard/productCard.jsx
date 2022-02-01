@@ -72,8 +72,8 @@ const ProductCard = ({ showOptions, pId, productData }) => {
 
         <Link className='card category-card col-12 ' to=''>
           <img
-            src='https://www.ikea.com/eg/en/images/products/soederhamn-chaise-longue-samsta-orange__0802365_pe768432_s5.jpg?f=xxs'
-            // src={Images[isHovering ? 1 : 0]}
+            // src='https://www.ikea.com/eg/en/images/products/soederhamn-chaise-longue-samsta-orange__0802365_pe768432_s5.jpg?f=xxs'
+            src={Images[isHovering ? 1 : 0]}
             className='card-img-top'
             alt={Name}
             onMouseOver={() => setIsHovering(true)}

@@ -28,14 +28,8 @@ const ShoppingCart = () => {
             <section className='col-12 left-shopping-page'>
                 {
                     cartItems.map((item)=>{
-                      // totalPriceHandler+=(item.productData.Price*item.PurchasedAmount);
                         return(
-                          <>
-                            {/* {
-                              console.log(totalPrice)
-                            } */}
                             <CartCard id={item.id} key={item.id} product={item.productData} purchasedQuantity={item.PurchasedAmount}/>
-                          </>
                         )  
                     })
                 }

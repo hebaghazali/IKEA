@@ -1,9 +1,27 @@
+import { useSelector } from "react-redux";
+import { updateData } from "../../../services/firebase";
+import { updateUserStorageByID } from '../../../services/firebase';
+
 const EditPassword = (props) => {
+  const user=useSelector((state)=>state.user.user);
+  const id=useSelector((state)=>state.user.id);
+
+  var userInfo={
+    Password:user.Password,
+    Email:user.Email
+  }
+  
+  const updateUser = ()=>{
+    updateData('users',id,userInfo).then(()=>{
+      updateUserStorageByID(id);
+    })
+    props.changeSelection(0)
+  }
     return (
       <section className='col-12 col-lg-6'>
         <div className='form-floating mb-3 p-0 floating-input-holder'>
           <input
-            type='text'
+            type='password'
             className='form-control edit-input'
             id='floatingInput'
             placeholder=''
@@ -12,7 +30,7 @@ const EditPassword = (props) => {
         </div>
         <div className='form-floating mb-3 p-0 floating-input-holder'>
           <input
-            type='text'
+            type='password'
             className='form-control edit-input'
             id='floatingInput'
             placeholder=''
@@ -21,7 +39,7 @@ const EditPassword = (props) => {
         </div>
         <div className='form-floating mb-3 p-0 floating-input-holder'>
           <input
-            type='text'
+            type='password'
             className='form-control edit-input'
             id='floatingInput'
             placeholder=''

@@ -7,7 +7,8 @@ const CartCard = (props) => {
     const dispatch = useDispatch();
 
     const deleteItem = ()=>{
-        dispatch(removeFromCart(props.id))
+        dispatch(removeFromCart(props.id));
+        dispatch(setCartItemAmount(props.id,0))
     }
     useEffect(()=>{
         dispatch(setCartItemAmount({id:props.id,PurchasedAmount:selectedAmount}))
@@ -37,7 +38,7 @@ const CartCard = (props) => {
 
         <div className='shopping-img'>
           <img
-            src={props.product.Image}
+            src={props.product.Images[0]}
             alt='...'
           />
         </div>

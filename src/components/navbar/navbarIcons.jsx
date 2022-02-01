@@ -4,11 +4,13 @@ import { NavLink } from 'react-router-dom';
 
 const NavbarIcons = () => {
   const { cartProducts, favourits } = useSelector(state => state);
-
   return (
     <>
       <div className='navbar-icons'>
-        <NavLink to='/login'>
+        {/* <NavLink to='/login'>
+          <i className='bi bi-person'></i>
+        </NavLink> */}
+        <NavLink to='/profile'>
           <i className='bi bi-person'></i>
         </NavLink>
         <NavLink to='/favorite' style={{ position: 'relative' }}>
