@@ -11,24 +11,6 @@ import { getCollection } from './../../../services/firebase';
 import { useEffect } from 'react';
 
 const ProductCard = ({ showOptions, pId, productData }) => {
-  // const productData2 = {
-  //   Width: 120,
-  //   Images:[
-  //     'https://www.ikea.com/eg/en/images/products/songesand-bed-frame-brown__0638582_pe699001_s5.jpg?f=s',
-  //     'https://www.ikea.com/eg/en/images/products/songesand-bed-frame-brown__0860901_pe658190_s5.jpg?f=s'
-  //   ],
-  //   Length: 90,
-  //   SalePrice: 5900,
-  //   Material: 'wood',
-  //   Description:
-  //     'Prototype and test end-to-end with the Local Emulator Suite, now with Firebase Authentication',
-  //   Name: 'wooden bed ',
-  //   Price: 6000,
-  //   SubCategory: 'JBgtm4km2eLpPxLuK7cB',
-  //   CreatedAt:'',
-  //   Color:'brown'
-  // };
-
   const { favourits } = useSelector((state) => state.favourits);
   const { cartProducts } = useSelector((state) => state.cartProducts);
 
@@ -47,12 +29,12 @@ const ProductCard = ({ showOptions, pId, productData }) => {
   const toggleFavourite = () => {
     dispatch(isFavourite ? removeFromFav(pId) : addToFav({ pId, productData }));
     setIsFavourite(!isFavourite);
-    let productData2 = productData;
-    productData2.Color = 'green';
-    productData2.Price = 13000;
-    productData2.Images =['https://www.ikea.com/eg/en/images/products/smastad-loft-bed-white-green-with-desk-with-3-drawers__0946955_pe798328_s5.jpg?f=s','https://www.ikea.com/eg/en/images/products/smastad-loft-bed-white-green-with-desk-with-3-drawers__0939878_pe794702_s5.jpg?f=s']
+    // let productData2 = productData;
+    // productData2.Color = 'green';
+    // productData2.Price = 13000;
+    // productData2.Images =['https://www.ikea.com/eg/en/images/products/smastad-loft-bed-white-green-with-desk-with-3-drawers__0946955_pe798328_s5.jpg?f=s','https://www.ikea.com/eg/en/images/products/smastad-loft-bed-white-green-with-desk-with-3-drawers__0939878_pe794702_s5.jpg?f=s']
 
-    addData(productData2);
+    // addData(productData2);
   };
 
   const addCart = () => {
