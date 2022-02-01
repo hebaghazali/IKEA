@@ -13,16 +13,16 @@ import {
 } from '../../services/firebase';
 import SectionTitle from './sectionTitle';
 import { useSelector } from 'react-redux';
-import EmptyData from '../../components/emptyData';
+import EmptyData from './../../components/emptyData';
 import Carousel from './../../components/carousel/carousel';
 
-const Products = (props) => {
+const Products = props => {
   const { match, location } = props;
   //props.location.statet.subobj
   let { type, name, id, subCatName, subCatId, subObj } = location?.state;
   const [products, setProducts] = useState(null);
   const [subCategories, setSubCategories] = useState(null);
-  const { loader } = useSelector((state) => state.loader);
+  const { loader } = useSelector(state => state.loader);
 
   const sortStates = [
     {
@@ -144,17 +144,17 @@ const Products = (props) => {
         `${id}`,
       ],
       ['Name', '!=', `${subCatName}`]
-    ).then((allSubCategories) => {
+    ).then(allSubCategories => {
       setSubCategories(allSubCategories);
     });
   };
 
   const getProducts = () => {
     getCollection('Products', ['SubCategory', '==', subCatId])
-      .then((res) => {
+      .then(res => {
         setProducts(res);
       })
-      .catch((err) => console.log('error :', err));
+      .catch(err => console.log('error :', err));
   };
 
   const filterProds = (key, value, operator = '==') => {
@@ -163,14 +163,14 @@ const Products = (props) => {
       ['SubCategory', '==', subCatId],
       [key, operator, value]
     )
-      .then((res) => {
+      .then(res => {
         console.log('products', products);
         setProducts(res);
       })
-      .catch((err) => console.log('error :', err));
+      .catch(err => console.log('error :', err));
   };
 
-  const sortProducts = (sortProp) => {
+  const sortProducts = sortProp => {
     let order = 'asc';
     if (sortProp[0] === 'D') {
       //DPrice for descinding
@@ -179,11 +179,11 @@ const Products = (props) => {
     }
 
     sortCollection(['SubCategory', '==', subCatId], sortProp, order)
-      .then((res) => {
+      .then(res => {
         console.log('products', res);
         setProducts(res);
       })
-      .catch((err) => console.log('error :', err));
+      .catch(err => console.log('error :', err));
   };
 
   useEffect(() => {
@@ -217,7 +217,7 @@ const Products = (props) => {
             listName='colors-group'
             checkType='radio'
             items={colorsStates}
-            clickHandler={(color) => filterProds('Color', color)}
+            clickHandler={color => filterProds('Color', color)}
           />
 
           <FilterButton
@@ -229,7 +229,7 @@ const Products = (props) => {
             listName='price-group'
             checkType='radio'
             items={pricesStates}
-            clickHandler={(maxPrice) =>
+            clickHandler={maxPrice =>
               filterProds('Price', parseInt(maxPrice), '<=')
             }
           />
@@ -246,7 +246,7 @@ const Products = (props) => {
             listName='material-group'
             checkType='radio'
             items={materialStates}
-            clickHandler={(material) => filterProds('Material', material)}
+            clickHandler={material => filterProds('Material', material)}
           />
 
           <FilterButton title='allFilters' icon='fas fa-filter' noDrop />
@@ -260,7 +260,7 @@ const Products = (props) => {
           <Loader />
           {!loader && !products?.length && <EmptyData />}
 
-          {products?.map((i) => (
+          {products?.map(i => (
             <ProductCard
               key={i.id}
               productData={i.data()}
@@ -280,7 +280,7 @@ const Products = (props) => {
       <Loader />
       <div className='row mx-auto g-3 categories-slidder'>
         {subCategories &&
-          subCategories.map((subcategory) => {
+          subCategories.map(subcategory => {
             return (
               <SubCategoryCard
                 element={subcategory}
