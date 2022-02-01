@@ -1,6 +1,13 @@
+<<<<<<< HEAD
 import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
+=======
+
+import { initializeApp } from 'firebase/app'
+import {getFirestore} from 'firebase/firestore';
+import {getAuth} from "firebase/auth";
+>>>>>>> EsraaBranch
 const firebaseConfig = {
   apiKey: 'AIzaSyBvz1el-WaDgUU36xlWeIEj2G9iyI0ewW4',
   authDomain: 'ikea-8dc72.firebaseapp.com',
@@ -23,6 +30,12 @@ const firebaseConfig = {
 
 export const app = initializeApp(firebaseConfig);
 
+<<<<<<< HEAD
 export const fireStore = getFirestore(app);
 
 export const auth = getAuth(app);
+=======
+export  const fireStore = getFirestore(app);  
+
+export const auth = getAuth(app);
+>>>>>>> EsraaBranch

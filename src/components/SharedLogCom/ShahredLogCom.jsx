@@ -62,6 +62,7 @@ function SharedLogComp() {
     }
   };
 
+<<<<<<< HEAD
   const handleLogIn =() => {
     clearError()
     auth
@@ -74,14 +75,29 @@ function SharedLogComp() {
     //     case "auth/user-not-found":
     //       setError({EmailErr: err.message})
     //       break
+=======
+  // const handleLogIn =() => {
+  //   clearError()
+  //   auth
+  //   .logInWithEmailAndPassword(Email, Password)
+  //   // .catch((err) => {
+  //   //   switch(err.code)
+  //   //   {
+  //   //     case "auth/invalid-email":
+  //   //     case "auth/user-disabled":
+  //   //     case "auth/user-not-found":
+  //   //       setError({EmailErr: err.message})
+  //   //       break
+>>>>>>> EsraaBranch
 
-    //     case "auth/wrong-password":
-    //       setError({PasswordErr: err.message})
-    //       break
-    //   }
-    // })
-  }
+  //   //     case "auth/wrong-password":
+  //   //       setError({PasswordErr: err.message})
+  //   //       break
+  //   //   }
+  //   // })
+  // }
 
+<<<<<<< HEAD
   const authListner = () => {
     auth
     .onAuthStateChanged((users) => {
@@ -96,25 +112,44 @@ function SharedLogComp() {
       }
     })
   }
+=======
+  // const authListner = () => {
+  //   auth
+  //   .onAuthStateChanged((users) => {
+  //     if(users)
+  //     {
+  //       clearInputs()
+  //       setUser(users)
+  //     }
+  //     else
+  //     {
+  //       setUser("")
+  //     }
+  //   })
+  // }
+>>>>>>> EsraaBranch
 
-  const clearError = () => {
-    setEmail('')
-    setPassword('')
-  }
+  // const clearError = () => {
+  //   setEmail('')
+  //   setPassword('')
+  // }
 
-  const clearInputs = () => {
-    setUser({Email:'', Password:''})
-  }
+  // const clearInputs = () => {
+  //   setUser({Email:'', Password:''})
+  // }
 
-  useEffect(() => {
-    authListner()
-  }, [])
+  // useEffect(() => {
+  //   authListner()
+  // }, [])
 
   return (
     <>
+<<<<<<< HEAD
       {users? (
         <Hello />
       ) : (
+=======
+>>>>>>> EsraaBranch
         <div className='form-floating mb-3 input-log'>
         <form className='row g-3 needs-validation' noValidate>
           <div>
@@ -159,12 +194,13 @@ function SharedLogComp() {
             <p className='text-danger'>{errors.PasswordErr}</p>
           </div>
           <a href='#'>Forget your Password?</a>
+<<<<<<< HEAD
           <button className='login-creation' onClick={() => {handleLogIn()}}>Login</button>
+=======
+          <button className='login-creation' >Login</button>
+>>>>>>> EsraaBranch
         </form>
       </div>
-      )
-
-      }
     </>
   );
 }
