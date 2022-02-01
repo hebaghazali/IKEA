@@ -1,12 +1,13 @@
 import React from 'react';
 
-const ProductVariant = () => {
+const ProductVariant = ({product,chooseVariant,viewedId}) => {
+  const{Images,Color}=product.data();
   return (
-    <a className='variant-container'>
+    <a className={`variant-container ${product.id==viewedId&&'selectedV'}` }onClick={chooseVariant}>
       <img
         className='variant-img'
-        src='https://www.ikea.com/eg/en/images/products/vimle-3…saxemara-light-blue__0949435_pe799741_s5.jpg?f=xu'
-        alt='3-seat sofa, blue'
+        src={Images[0]}
+        alt={Color}
       />
     </a>
   );
