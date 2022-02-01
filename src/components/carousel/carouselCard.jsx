@@ -1,30 +1,30 @@
 import React from 'react';
 
 const CarouselCard = props => {
-  const { products } = props;
+  const { productData } = props;
 
   return (
     <>
-      {products.map(product => (
-        <div className='col-6 col-lg-3' key={products.indexOf(product)}>
-          <img className='w-100' src={product.imageURL} alt='' />
-          <p className='product-highlight'>{product.highlight}</p>
-          <p className='product-header'>{product.header}</p>
-          <p className='product-description'>{product.description}</p>
+      {productData && (
+        <div className='col-6 col-lg-3'>
+          <img className='w-100' src={productData.Images[0]} alt='' />
+          <p className='product-highlight'>Limited time offer</p>
+          <p className='product-header'>{productData.ProductName}</p>
+          <p className='product-description'>{productData.Name}</p>
           <div className='price'>
-            <div className='line-through'>
-              <sup>{product.lineThroughPrice}</sup>
-            </div>
+            {/* <div className='line-through'>
+            <sup>{productData.lineThroughPrice}</sup>
+          </div> */}
             <div className='original-price'>
-              <sup>{product.originalPrice.currency}</sup>
+              <sup>EGP</sup>
               <span>
                 <strong>
-                  {product.originalPrice.price ? (
-                    product.originalPrice.price
+                  {productData.Price ? (
+                    productData.Price
                   ) : (
                     <>
-                      {product.originalPrice.packs}
-                      <sub>/{product.originalPrice.perPack}</sub>
+                      {productData.packs}
+                      <sub>/{productData.perPack}</sub>
                     </>
                   )}
                 </strong>
@@ -33,7 +33,7 @@ const CarouselCard = props => {
           </div>
           <p className='more-options'>More options</p>
         </div>
-      ))}
+      )}
     </>
   );
 };
