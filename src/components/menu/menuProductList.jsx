@@ -21,22 +21,21 @@ import { getCollection } from '../../services/firebase';
 
 // const fireStore = getFirestore(app);
 
-const MenuProductList = (props) => {
+const MenuProductList = props => {
   const [categories, setCategories] = useState([]);
   useEffect(() => {
-    getCollection('ProductCategories').then(
-      (allCategories) => {
+    getCollection('ProductCategories')
+      .then(allCategories => {
         setCategories(allCategories);
-      }
-    ).catch((err) => console.log('error :', err));
-    ;
+      })
+      .catch(err => console.log('error :', err));
   }, []);
   return (
     <>
       <div className='offcanvas-body menu-body'>
         <div className='d-flex flex-row'>
           <button
-            className='position-sticky menu-btn'
+            className='position-sticky menu-btn left-arrow'
             onClick={() => {
               props.changeSelection('');
             }}
@@ -46,7 +45,7 @@ const MenuProductList = (props) => {
           <span className='head-title'>Products</span>
         </div>
         <ul className='small-text-list my-4' id='products-list'>
-          {categories.map((category) => {
+          {categories.map(category => {
             return (
               <li key={category.id}>
                 <Link

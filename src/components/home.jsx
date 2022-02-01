@@ -10,13 +10,17 @@ const Home = () => {
     <>
       <ImageGallery />
 
-      <Carousel />
+      <Carousel
+        condition={{ property: 'SalePrice', operator: '>', value: 0 }}
+      />
 
       <SalesButtons />
 
       <Slider />
 
-      <Carousel />
+      <Carousel
+        condition={{ property: 'LowerPrice', operator: '>', value: 0 }}
+      />
 
       <GoodToKnowCards />
 

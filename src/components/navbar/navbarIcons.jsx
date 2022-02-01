@@ -15,13 +15,17 @@ const NavbarIcons = () => {
         </NavLink>
         <NavLink to='/favorite' style={{ position: 'relative' }}>
           <i className='bi bi-heart'></i>
-          <span className='badge-yellow'>{favourits.favourits.length}</span>
+          {favourits.favourits.length !== 0 && (
+            <span className='badge-yellow'>{favourits.favourits.length}</span>
+          )}
         </NavLink>
         <NavLink to='/shoppingcart' style={{ position: 'relative' }}>
           <i className='bi bi-minecart-loaded'></i>
-          <span className='badge-yellow'>
-            {cartProducts.cartProducts.length}
-          </span>
+          {cartProducts.cartProducts.length !== 0 && (
+            <span className='badge-yellow'>
+              {cartProducts.cartProducts.length}
+            </span>
+          )}
         </NavLink>
       </div>
     </>

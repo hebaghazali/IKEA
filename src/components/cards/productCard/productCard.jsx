@@ -26,13 +26,14 @@ const ProductCard = ({ showOptions, pId, productData }) => {
   //   CreatedAt:'',
   //   Color:'brown'
   // };
-  const { Name, Material, Price, SalePrice, Width, Length, Images } =productData;
+  const { Name, ProductName, Price, SalePrice, Width, Length, Images } =
+    productData;
 
-  const { favourits } = useSelector((state) => state.favourits);
-  const { cartProducts } = useSelector((state) => state.cartProducts);
+  const { favourits } = useSelector(state => state.favourits);
+  const { cartProducts } = useSelector(state => state.cartProducts);
 
-  let found = favourits?.find((i) => i.id === pId);
-  let foundInCart = cartProducts?.find((i) => i.id === pId);
+  let found = favourits?.find(i => i.id === pId);
+  let foundInCart = cartProducts?.find(i => i.id === pId);
 
   const [isFavourite, setIsFavourite] = useState(found ? true : false);
   const [inCart, setInCart] = useState(foundInCart ? true : false);
@@ -70,6 +71,7 @@ const ProductCard = ({ showOptions, pId, productData }) => {
           </button>
         </header>
 
+<<<<<<< HEAD
         <Link className='card category-card col-12 ' to={{
           pathname: "/products/:pId",
           state: {
@@ -86,12 +88,33 @@ const ProductCard = ({ showOptions, pId, productData }) => {
           />
         </Link>
 
+=======
+>>>>>>> hebaBranch
         <div className='mt-1 position-relative'>
+          <Link
+            className='card category-card col-12 '
+            to={{
+              pathname: '/products/:pId',
+              state: {
+                prod: { id: pId, productData },
+              },
+            }}
+          >
+            <img
+              // src='https://www.ikea.com/eg/en/images/products/soederhamn-chaise-longue-samsta-orange__0802365_pe768432_s5.jpg?f=xxs'
+              src={Images[isHovering ? 1 : 0]}
+              className='card-img-top'
+              alt={Name}
+              onMouseOver={() => setIsHovering(true)}
+              onMouseLeave={() => setIsHovering(false)}
+            />
+          </Link>
           {/*TODO: if created recently  */}
           <strong className='new'>New</strong>
           {SalePrice && <p className='product-highlight'>Limited time offer</p>}
-          <p className='product-header'>{Name}</p>
-          <p>{Material}</p>
+          {/* <p>{Material}</p> */}
+          <p className='product-header'>{ProductName}</p>
+          <p className='product-description'>{Name}</p>
 
           {/*TODO: add feature field in db*/}
           <p>{Width && `${Width} * ${Length} cm`}</p>
