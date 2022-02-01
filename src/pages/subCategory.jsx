@@ -60,24 +60,20 @@ const SubCategory = props => {
   });
   return (
     <>
-      {
-        <div className='border-top pt-nav'>
-          <h4 className='head-title'>{params.name}</h4>
-          <div className='row mx-auto pt-5 g-3 categories-slidder'>
-            {subCategories.map(subcategory => {
-              return (
-                <SubCategoryCard
-                  element={subcategory}
-                  key={subcategory.id}
-                  params={params}
-                />
-              );
-            })}
-          </div>
-          <TextRightCard />
-          <StepsCard />
-        </div>
-      }
+      <h4 className='head-title'>{params.name}</h4>
+      <div className='row mx-auto g-3 categories-slidder'>
+        {subCategories.map(subcategory => {
+          return (
+            <SubCategoryCard
+              element={subcategory}
+              key={subcategory.id}
+              params={params}
+            />
+          );
+        })}
+      </div>
+      <TextRightCard />
+      <StepsCard />
     </>
   );
 };
