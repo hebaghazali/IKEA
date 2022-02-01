@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../../assets/scss/pages/_login.scss';
-import {app} from '../../SignConfig/signConfig'
+import {app} from '../../config/firebaseConfig'
 import Hello from '../Hello';
 
 function SharedLogComp() {
@@ -117,12 +117,12 @@ function SharedLogComp() {
       {users? (
         <Hello />
       ) : (
-        <div class='form-floating mb-3 input-log'>
-        <form class='row g-3 needs-validation' novalidate>
+        <div className='form-floating mb-3 input-log'>
+        <form className='row g-3 needs-validation' novalidate>
           <div>
             <input
               type='text'
-              class='form-control input-sign-form'
+              className='form-control input-sign-form'
               id='validationCustom05'
               placeholder='Email(UserName)'
               name='Email'
@@ -141,7 +141,7 @@ function SharedLogComp() {
           <div>
             <input
               type='text'
-              class='form-control input-sign-form'
+              className='form-control input-sign-form'
               id='validationCustom05'
               required
               name='Password'
@@ -161,7 +161,7 @@ function SharedLogComp() {
             <p className='text-danger'>{errors.PasswordErr}</p>
           </div>
           <a href='#'>Forget your Password?</a>
-          <button class='login-creation' onClick={() => {handleLogIn()}}>Login</button>
+          <button className='login-creation' onClick={() => {handleLogIn()}}>Login</button>
         </form>
       </div>
       )

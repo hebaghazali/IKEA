@@ -3,23 +3,44 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import Navbar from './components/navbar/navbar';
 import Home from './components/home.jsx';
 import Footer from './components/footer/footer';
+
 import SignIn from './components/SignIn/SignInPage'
 import LogIn from './components/LogIn/LogIn';
+import Products from './pages/products/products';
+import Menu from './components/menu/menu';
+import SubCategory from './pages/subCategory';
+import StoresPage from './pages/storeLocation';
+import Profile from './pages/profile';
+import { Provider } from 'react-redux';
+import store from './store/store';
+import Testpage from './pages/TestPage';
+
 
 function App() {
   return (
-    <>
-      <Navbar />
-
-      <Switch>
-        {/* <Route path='/home' component={Home} />
-        <Redirect from='/' exact to='/home' /> */}
-        <Route path='/sign' exact component={SignIn} />
-        <Route path='/log' exact component={LogIn} />
-      </Switch>
+    <Provider store={store}>
+      <Menu />
+      <div className='body-container'>
+        <Navbar />
+        <div className='mt-nav-2 pt-nav border-top'>
+          <Switch>
+            <Route path='/home' component={Home} />
+            <Route path='/category/:type/:name/:id' exact component={SubCategory} />
+            <Route path='/stores' component={StoresPage}/>
+            <Route path='/profile' component={Profile}/>
+            <Route path='/category/products' exact component={Products} />
+            <Route path='/sign' exact component={SignIn} />
+            <Route path='/log' exact component={LogIn} />
+            {/* <Route path='/category/:type/:name/:id/:subName/:subId' exact component={Products} /> */}
+            <Route path="/products/:pId" exact component={Testpage} />
+            <Redirect from='/' exact to='/home' />
+        
+          </Switch>
+        </div>
+      </div>
 
       <Footer />
-    </>
+    </Provider>
   );
 }
 
