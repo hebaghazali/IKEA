@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
-import CarouselCard from './carouselCard';
 import { getCollection } from './../../services/firebase';
+import ProductCard from '../cards/productCard/productCard';
 
 const Carousel = () => {
   const [products, setProducts] = useState([]);
@@ -40,9 +40,13 @@ const Carousel = () => {
 
         <div className='carousel-body p-0 pb-2 mb-5' ref={carouselBody}>
           <div className='row flex-nowrap'>
-            <CarouselCard products={products} />
             {products?.map(product => (
-              <CarouselCard key={product.id} productData={product.data()} />
+              <ProductCard
+                key={product.id}
+                productData={product.data()}
+                pId={product.id}
+                showOptions
+              />
             ))}
           </div>
         </div>
