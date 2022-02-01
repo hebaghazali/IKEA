@@ -35,6 +35,7 @@ function App() {
               component={SubCategory}
             />
             <Route path='/stores' component={StoresPage} />
+            <Route path='/shoppingcart' component={ShoppingCart}/>
             <Route path='/profile' component={Profile} />
             <Route path='/category/products' exact component={Products} />
             {/* <Route path='/category/:type/:name/:id/:subName/:subId' exact component={Products} /> */}

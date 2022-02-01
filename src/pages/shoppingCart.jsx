@@ -11,7 +11,7 @@ const ShoppingCart = () => {
     // useEffecs
   return (
     <>
-      <div className='fav-parent border-top pt-nav'>
+      <div className='fav-parent'>
         <div className='container'>
           <div className='shopping-header'>
             <h3>Shopping cart</h3>
