@@ -3,7 +3,7 @@ import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 
 import Navbar from './components/navbar/navbar';
-import Home from './components/home.jsx';
+import Home from './pages/home.jsx';
 import Footer from './components/footer/footer';
 import Products from './pages/products/products';
 import Menu from './components/menu/menu';
@@ -23,7 +23,7 @@ function App() {
       <div className='body-container'>
         <Navbar />
 
-        <div className='mt-nav-2 pt-nav border-top'>
+        <div className='mt-nav-4 pt-nav border-top'>
           <Switch>
             <Route path='/home' component={Home} />
             <Route path='/category/:type/:name/:id' component={SubCategory} />

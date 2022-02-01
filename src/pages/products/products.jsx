@@ -183,7 +183,7 @@ const Products = ({ match, location }) => {
   }, []);
 
   return (
-    <div className='mt-nav-2 pt-nav border-top'>
+    <>
       <Breadcrumb state={location.state} />
 
       <SectionTitle title={subCatName} />
@@ -273,7 +273,7 @@ const Products = ({ match, location }) => {
             );
           })}
       </div>
-    </div>
+    </>
   );
 };
 

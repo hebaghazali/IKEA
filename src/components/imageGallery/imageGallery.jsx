@@ -38,7 +38,7 @@ const ImageGallery = () => {
   ];
 
   return (
-    <div className='border-top mt-nav pt-nav pb-5'>
+    <div className=' pb-5'>
       <div className='image-gallery row g-4'>
         {images.map(imageCol => {
           return (
