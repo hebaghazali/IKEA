@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../../assets/scss/pages/_login.scss';
+import {app} from '../../SignConfig/signConfig'
+import Hello from '../Hello';
 
 function SharedLogComp() {
   const [users, setUser] = useState({
@@ -11,6 +13,9 @@ function SharedLogComp() {
     EmailErr: null,
     PasswordErr: null,
   });
+
+  const [Email, setEmail] = useState('')
+  const [Password, setPassword] = useState('')
 
   // Function to hadndle change in any input and write into it
   const handleChangeInInput = (e) => {
@@ -57,9 +62,62 @@ function SharedLogComp() {
     }
   };
 
+  const handleLogIn =() => {
+    clearError()
+    app
+    .auth()
+    .logInWithEmailAndPassword(Email, Password)
+    // .catch((err) => {
+    //   switch(err.code)
+    //   {
+    //     case "auth/invalid-email":
+    //     case "auth/user-disabled":
+    //     case "auth/user-not-found":
+    //       setError({EmailErr: err.message})
+    //       break
+
+    //     case "auth/wrong-password":
+    //       setError({PasswordErr: err.message})
+    //       break
+    //   }
+    // })
+  }
+
+  const authListner = () => {
+    app
+    .auth()
+    .onAuthStateChanged((users) => {
+      if(users)
+      {
+        clearInputs()
+        setUser(users)
+      }
+      else
+      {
+        setUser("")
+      }
+    })
+  }
+
+  const clearError = () => {
+    setEmail('')
+    setPassword('')
+  }
+
+  const clearInputs = () => {
+    setUser({Email:'', Password:''})
+  }
+
+  useEffect(() => {
+    authListner()
+  }, [])
+
   return (
     <>
-      <div class='form-floating mb-3 input-log'>
+      {users? (
+        <Hello />
+      ) : (
+        <div class='form-floating mb-3 input-log'>
         <form class='row g-3 needs-validation' novalidate>
           <div>
             <input
@@ -103,9 +161,12 @@ function SharedLogComp() {
             <p className='text-danger'>{errors.PasswordErr}</p>
           </div>
           <a href='#'>Forget your Password?</a>
-          <button class='login-creation'>Login</button>
+          <button class='login-creation' onClick={() => {handleLogIn()}}>Login</button>
         </form>
       </div>
+      )
+
+      }
     </>
   );
 }
