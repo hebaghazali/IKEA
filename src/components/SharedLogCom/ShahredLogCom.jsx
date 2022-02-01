@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../../assets/scss/pages/_login.scss';
-import {app} from '../../config/firebaseConfig'
-import Hello from '../Hello';
 
-function SharedLogComp() {
+function SharedLog() {
   const [users, setUser] = useState({
     Email: '',
     Password: '',
@@ -13,9 +11,6 @@ function SharedLogComp() {
     EmailErr: null,
     PasswordErr: null,
   });
-
-  const [Email, setEmail] = useState('')
-  const [Password, setPassword] = useState('')
 
   // Function to hadndle change in any input and write into it
   const handleChangeInInput = (e) => {
@@ -62,63 +57,10 @@ function SharedLogComp() {
     }
   };
 
-  const handleLogIn =() => {
-    clearError()
-    app
-    .auth()
-    .logInWithEmailAndPassword(Email, Password)
-    // .catch((err) => {
-    //   switch(err.code)
-    //   {
-    //     case "auth/invalid-email":
-    //     case "auth/user-disabled":
-    //     case "auth/user-not-found":
-    //       setError({EmailErr: err.message})
-    //       break
-
-    //     case "auth/wrong-password":
-    //       setError({PasswordErr: err.message})
-    //       break
-    //   }
-    // })
-  }
-
-  const authListner = () => {
-    app
-    .auth()
-    .onAuthStateChanged((users) => {
-      if(users)
-      {
-        clearInputs()
-        setUser(users)
-      }
-      else
-      {
-        setUser("")
-      }
-    })
-  }
-
-  const clearError = () => {
-    setEmail('')
-    setPassword('')
-  }
-
-  const clearInputs = () => {
-    setUser({Email:'', Password:''})
-  }
-
-  useEffect(() => {
-    authListner()
-  }, [])
-
   return (
     <>
-      {users? (
-        <Hello />
-      ) : (
-        <div className='form-floating mb-3 input-log'>
-        <form className='row g-3 needs-validation' novalidate>
+      <div className='form-floating mb-3 input-log'>
+        <form className='row g-3 needs-validation' noValidate>
           <div>
             <input
               type='text'
@@ -140,7 +82,7 @@ function SharedLogComp() {
           </div>
           <div>
             <input
-              type='text'
+              type='password'
               className='form-control input-sign-form'
               id='validationCustom05'
               required
@@ -161,14 +103,11 @@ function SharedLogComp() {
             <p className='text-danger'>{errors.PasswordErr}</p>
           </div>
           <a href='#'>Forget your Password?</a>
-          <button className='login-creation' onClick={() => {handleLogIn()}}>Login</button>
+          <button className='login-creation'>Login</button>
         </form>
       </div>
-      )
-
-      }
     </>
   );
 }
 
-export default SharedLogComp;
+export default SharedLog;

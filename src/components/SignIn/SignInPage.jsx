@@ -2,13 +2,13 @@ import React from 'react';
 import { useState } from 'react';
 import '../../assets/scss/pages/_login.scss';
 import { Link } from 'react-router-dom';
-import LogIn from '../LogIn/LogIn';
-import SharedLogComp from '../SharedLogCom/ShahredLogCom';
+import SharedLog from '../SharedLogCom/ShahredLogCom';
+
 
 function SignIn() {
   const [users, setUser] = useState({
     Name: '',
-    Phone: ','
+    Phone: '',
   });
 
   const [errors, setError] = useState({
@@ -66,7 +66,7 @@ function SignIn() {
             <section className='col-md-5 col-12 login-heading'>
               <h3>Create an IKEA Profile</h3>
               <p>
-                Already have an account? <Link to='./log'> Login</Link>{' '}
+                Already have an account? <Link to='./login'> Login</Link>{' '}
               </p>
             </section>
 
@@ -132,7 +132,7 @@ function SignIn() {
                       id='validationCustom04'
                       required
                     >
-                      <option  value=''>
+                      <option value=''>
                         IKEA Cairo Mall Of Arabia
                       </option>
                       <option>IKEA CFC</option>
@@ -142,7 +142,7 @@ function SignIn() {
                     </div>
                   </div>
 
-                  {/* <SharedLogComp /> */}
+                  <SharedLog />
 
                   <div>
                     <input type='checkbox' className='check-sign-form' /> I have

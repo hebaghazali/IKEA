@@ -30,7 +30,7 @@ function App() {
             <Route path='/profile' component={Profile}/>
             <Route path='/category/products' exact component={Products} />
             <Route path='/sign' exact component={SignIn} />
-            <Route path='/log' exact component={LogIn} />
+            <Route path='/login' exact component={LogIn} />
             {/* <Route path='/category/:type/:name/:id/:subName/:subId' exact component={Products} /> */}
             <Route path="/products/:pId" exact component={Testpage} />
             <Redirect from='/' exact to='/home' />
