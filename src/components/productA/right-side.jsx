@@ -1,26 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { addToCart } from './../../store/actions/cartProducts';
 
-const RightSide = () => {
+const RightSide = (props) => {
+  const{Images,Price,Name,Color,Description,SubCategory}=props.prod.productData;
+  const pId=props.prod.id;
+
+  const { cartProducts } = useSelector((state) => state.cartProducts);
+
+  let found = cartProducts?.find((i) => i.id === pId);
+  const [added, setAdded] = useState(found ? true : false);
+  const dispatch = useDispatch();
+  const addToBag = () => {
+    const{productData}=props.prod;
+    dispatch( addToCart({ id: pId, productData }));
+    setAdded(true);
+  };
+
     return (
         <>
-            
             <div className="col-12 col-md-4 right">
                 <div className="head">
-                 <b> GURSKEN</b>
+                 <b> {Name}</b>
                   <span className="span ms-5">
                     <sup>EGP</sup>
-                    <b>2,500</b>
+                    <b>{Price}</b>
                   </span>
                 </div>
                 <div>
-                Bedroom furniture, set of 5, light beige<pre>
+                Bedroom furniture, set of 5, {Color}<pre>
 
                 </pre>
-                <span >Mattress and bedlinen are sold separately.</span>
+                {SubCategory=='PH6KZW35bbvGRBdbQ8pe'&&
+                   <span >Mattress and bedlinen are sold separately.</span>}
                 </div>
 
                 <div id="right-btn ">
-                  <button className="col-7 mb-3 btn btn-primary rounded-pill">Add to bag </button>
+                  <button className={`col-7 mb-3 btn btn-primary rounded-pill ${added&&'disabled'}`} onClick={addToBag}>
+                  {!added ?"Add to bag" :"Added"}
+                  </button>
                 </div>
 
                 <p>

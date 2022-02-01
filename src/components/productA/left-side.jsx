@@ -2,7 +2,7 @@ import React from "react";
 import Carouselone from "./carouselOne";
 
 const LeftSide = (props) => {
-  const{Images}=props.prod.productData;
+  const{Images,Description,Name}=props.prod.productData;
   // console.log(":::",Images);
   return (
     <>
@@ -20,10 +20,9 @@ const LeftSide = (props) => {
 
         
         <div  className="gursken">
-          <b><span>GURSKEN</span></b>
+          <b><span>{Name}</span></b>
           <p>
-            Furnish an entire bedroom quickly and easily with GURSKEN.<br></br>
-            Everything you need is here – a bedside table, chest of drawers,
+            {Description}
             <br></br>
             wardrobe and of course a bed. Perfect for your first apartment or
             guest room.

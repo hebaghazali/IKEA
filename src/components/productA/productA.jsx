@@ -14,7 +14,7 @@ const ProductA = (props) => {
             <div className="row">
               <LeftSide prod={prod}/>
               
-              <RightSide />
+              <RightSide prod={prod}/>
 
             </div>
           </div>
