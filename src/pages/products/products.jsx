@@ -14,13 +14,15 @@ import {
 import SectionTitle from './sectionTitle';
 import { useSelector } from 'react-redux';
 import EmptyData from '../../components/emptyData';
+import Carousel from './../../components/carousel/carousel';
 
-const Products = ({ match, location }) => {
+const Products = (props) => {
+  const { match, location } = props;
   //props.location.statet.subobj
   let { type, name, id, subCatName, subCatId, subObj } = location?.state;
   const [products, setProducts] = useState(null);
   const [subCategories, setSubCategories] = useState(null);
-  const { loader } = useSelector(state => state.loader);
+  const { loader } = useSelector((state) => state.loader);
 
   const sortStates = [
     {
@@ -58,28 +60,36 @@ const Products = ({ match, location }) => {
       label: 'Gray',
       id: 'gray',
     },
+    {
+      label: 'Beige',
+      id: 'beige',
+    },
   ];
 
   const pricesStates = [
     {
-      label: 'EGP 1000-2000 ',
-      id: 'min1000',
+      label: 'maximum EGP 2000 ',
+      id: '2000',
     },
     {
-      label: 'EGP 2000-3000',
-      id: 'min2000',
+      label: 'maximum EGP 3000',
+      id: '3000',
     },
     {
-      label: 'EGP 3000-4000',
-      id: 'min3000',
+      label: 'maximum EGP 4000',
+      id: '4000',
     },
     {
-      label: 'EGP 3000-4000',
-      id: 'min3000',
+      label: 'maximum EGP 5000',
+      id: '5000',
     },
     {
-      label: 'EGP 4000-5000',
-      id: 'min4000',
+      label: 'maximum EGP 10000',
+      id: '10000',
+    },
+    {
+      label: 'maximum EGP 20000',
+      id: '20000',
     },
   ];
 
@@ -134,33 +144,33 @@ const Products = ({ match, location }) => {
         `${id}`,
       ],
       ['Name', '!=', `${subCatName}`]
-    ).then(allSubCategories => {
+    ).then((allSubCategories) => {
       setSubCategories(allSubCategories);
     });
   };
 
   const getProducts = () => {
     getCollection('Products', ['SubCategory', '==', subCatId])
-      .then(res => {
+      .then((res) => {
         setProducts(res);
       })
-      .catch(err => console.log('error :', err));
+      .catch((err) => console.log('error :', err));
   };
 
-  const filterProds = (key, value) => {
+  const filterProds = (key, value, operator = '==') => {
     filterCollection(
       'Products',
       ['SubCategory', '==', subCatId],
-      [key, '==', value]
+      [key, operator, value]
     )
-      .then(res => {
+      .then((res) => {
         console.log('products', products);
         setProducts(res);
       })
-      .catch(err => console.log('error :', err));
+      .catch((err) => console.log('error :', err));
   };
 
-  const sortProducts = sortProp => {
+  const sortProducts = (sortProp) => {
     let order = 'asc';
     if (sortProp[0] === 'D') {
       //DPrice for descinding
@@ -169,18 +179,17 @@ const Products = ({ match, location }) => {
     }
 
     sortCollection(['SubCategory', '==', subCatId], sortProp, order)
-      .then(res => {
+      .then((res) => {
         console.log('products', res);
         setProducts(res);
       })
-      .catch(err => console.log('error :', err));
+      .catch((err) => console.log('error :', err));
   };
 
   useEffect(() => {
-    console.log('>>>>>>>>>>>', location.state);
     getProducts();
     getSubCategories();
-  }, []);
+  }, [match.params.subId]);
 
   return (
     <>
@@ -208,7 +217,7 @@ const Products = ({ match, location }) => {
             listName='colors-group'
             checkType='radio'
             items={colorsStates}
-            clickHandler={color => filterProds('Color', color)}
+            clickHandler={(color) => filterProds('Color', color)}
           />
 
           <FilterButton
@@ -218,8 +227,11 @@ const Products = ({ match, location }) => {
           />
           <FilterDropList
             listName='price-group'
-            checkType='checkbox'
+            checkType='radio'
             items={pricesStates}
+            clickHandler={(maxPrice) =>
+              filterProds('Price', parseInt(maxPrice), '<=')
+            }
           />
 
           <FilterButton title='size' icon='fas fa-chevron-down' />
@@ -234,7 +246,7 @@ const Products = ({ match, location }) => {
             listName='material-group'
             checkType='radio'
             items={materialStates}
-            clickHandler={material => filterProds('Material', material)}
+            clickHandler={(material) => filterProds('Material', material)}
           />
 
           <FilterButton title='allFilters' icon='fas fa-filter' noDrop />
@@ -248,7 +260,7 @@ const Products = ({ match, location }) => {
           <Loader />
           {!loader && !products?.length && <EmptyData />}
 
-          {products?.map(i => (
+          {products?.map((i) => (
             <ProductCard
               key={i.id}
               productData={i.data()}
@@ -259,16 +271,23 @@ const Products = ({ match, location }) => {
         </div>
       </div>
 
+      <SectionTitle title='Top Seller' />
+      <Carousel
+        condition={{ property: 'SalePrice', operator: '>', value: 0 }}
+      />
+
       <SectionTitle title='Related categories' />
       <Loader />
       <div className='row mx-auto g-3 categories-slidder'>
         {subCategories &&
-          subCategories.map(subcategory => {
+          subCategories.map((subcategory) => {
             return (
               <SubCategoryCard
                 element={subcategory}
                 key={subcategory.id}
-                params={match.params}
+                type={type}
+                name={name}
+                id={id} //categId
               />
             );
           })}

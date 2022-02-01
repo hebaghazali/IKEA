@@ -38,10 +38,9 @@ function App() {
             <Route path='/stores' component={StoresPage} />
             <Route path='/shoppingcart' component={ShoppingCart} />
             <Route path='/profile' component={Profile} />
-            <Route path='/category/products' exact component={Products} />
+            <Route path='/category/products/:subId' exact component={Products} />
             <Route path='/sign' exact component={SignInPage} />
             <Route path='/login' exact component={LogIn} />
-            {/* <Route path='/category/:type/:name/:id/:subName/:subId' exact component={Products} /> */}
             <Route path='/products/:pId' exact component={ProductA} />
             <Redirect from='/' exact to='/home' />
           </Switch>
