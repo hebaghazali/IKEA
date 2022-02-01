@@ -26,7 +26,8 @@ const SubCategoryCard = (props) => {
         // name={props.element.Name}
       >
         <img
-          src='https://www.ikea.com/global/assets/navigation/images/gaming-furniture-55002.jpeg?imwidth=300'
+          // src='https://www.ikea.com/global/assets/navigation/images/gaming-furniture-55002.jpeg?imwidth=300'
+          src={props.element.data().Image}
           className='card-img-top'
           alt='...'
         />

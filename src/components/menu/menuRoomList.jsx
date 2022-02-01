@@ -25,7 +25,7 @@ const MenuRoomList = (props) => {
   const [rooms, setRooms] = useState([]);
   useEffect(()=>{
     getCollection('RoomCategories').then((allCategories) => {
-        setRooms(allCategories.docs);
+        setRooms(allCategories);
     });
   },[])
   return (
