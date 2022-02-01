@@ -1,7 +1,6 @@
-
-import { initializeApp } from 'firebase/app'
-import {getFirestore} from 'firebase/firestore';
-import {getAuth} from "firebase/auth";
+import { initializeApp } from 'firebase/app';
+import { getFirestore } from 'firebase/firestore';
+import { getAuth } from 'firebase/auth';
 const firebaseConfig = {
   apiKey: 'AIzaSyBvz1el-WaDgUU36xlWeIEj2G9iyI0ewW4',
   authDomain: 'ikea-8dc72.firebaseapp.com',
@@ -11,7 +10,7 @@ const firebaseConfig = {
   appId: '1:293717792182:web:f170e2edfe2370c9769d17',
 };
 
-//test 
+//test
 
 // const firebaseConfig = {
 //   apiKey: "AIzaSyDPXka0wfchj1QecSLRkaIWY3sE1vjV6OY",
@@ -24,6 +23,6 @@ const firebaseConfig = {
 
 export const app = initializeApp(firebaseConfig);
 
-export  const fireStore = getFirestore(app);  
+export const fireStore = getFirestore(app);
 
 export const auth = getAuth(app);

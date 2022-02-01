@@ -21,18 +21,18 @@ import { getCollection } from '../../services/firebase';
 
 // const fireStore = getFirestore(app);
 
-const MenuRoomList = (props) => {
+const MenuRoomList = props => {
   const [rooms, setRooms] = useState([]);
   useEffect(()=>{
     getCollection('RoomCategories').then((allCategories) => {
         setRooms(allCategories);
     });
-  },[])
+  }, []);
   return (
     <div className='offcanvas-body menu-body'>
       <div className='d-flex flex-row'>
         <button
-          className='position-sticky menu-btn'
+          className='position-sticky menu-btn left-arrow'
           onClick={() => {
             props.changeSelection('');
           }}
@@ -42,7 +42,7 @@ const MenuRoomList = (props) => {
         <span className='head-title'>Rooms</span>
       </div>
       <div className='row mx-auto g-4 my-4' id='rooms-list'>
-        {rooms.map((room) => {
+        {rooms.map(room => {
           return (
             <Link
               key={room.id}

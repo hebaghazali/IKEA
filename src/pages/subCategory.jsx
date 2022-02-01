@@ -36,18 +36,20 @@ import { getCollection } from '../services/firebase';
 //     });
 // });
 
-const SubCategory = (props) => {
+const SubCategory = props => {
   const params = useParams();
   const [subCategories, setSubCategories] = useState([]);
 
-  const getSubCategories = (field) => {
+  const getSubCategories = field => {
     // const q = query(
     //   collection(firestore, 'subCategory'),
     //   where(field, 'array-contains', `${params.id}`)
     // );
-    getCollection('subCategory',[field, 'array-contains', `${params.id}`]).then((allSubCategories) => {
-      setSubCategories(allSubCategories);
-    }).catch((err) => console.log('error :', err));
+    getCollection('subCategory', [field, 'array-contains', `${params.id}`])
+      .then(allSubCategories => {
+        setSubCategories(allSubCategories);
+      })
+      .catch(err => console.log('error :', err));
   };
   useEffect(() => {
     if (params.type === 'product') {
@@ -58,24 +60,23 @@ const SubCategory = (props) => {
   });
   return (
     <>
-      {
-        <div className='border-top pt-nav'>
-          <h4 className='head-title'>{params.name}</h4>
-          <div className='row mx-auto g-3 categories-slidder'>
-            {subCategories.map((subcategory) => {
-              return (
-                <SubCategoryCard
-                  element={subcategory}
-                  key={subcategory.id}
-                  params={params}
-                />
-              );
-            })}
-          </div>
-          <TextRightCard/>
-          <StepsCard/>
-        </div>
-      }
+      <h4 className='head-title'>{params.name}</h4>
+      <div className='row mx-auto g-3 categories-slidder'>
+        {subCategories.map(subcategory => {
+          return (
+            <SubCategoryCard
+            element={subcategory}
+            key={subcategory.id}
+            params={params}
+            type={params.type}
+            name={params.name}
+            id={params.id}//categId
+            />
+          );
+        })}
+      </div>
+      <TextRightCard />
+      <StepsCard />
     </>
   );
 };

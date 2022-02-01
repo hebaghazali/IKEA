@@ -1,75 +1,95 @@
 import Breadcrumb from '../../components/breadCrumb/breadCrumb';
 import FilterButton from './../../components/filterButton/filterButton';
 import FilterDropList from './../../components/filterDropList/FilterDropList';
+import SubCategoryCard from './../../components/cards/subcategoryCard';
+import ProductCard from '../../components/cards/productCard/productCard';
 import ProductRoomBtn from './productRoomBtn';
 import Loader from './../../components/loader';
 import { useEffect, useState } from 'react';
-import { getCollection, filterProducts } from '../../services/firebase';
-import ProductCard from '../../components/cards/productCard/productCard';
+import {
+  getCollection,
+  filterCollection,
+  sortCollection,
+} from '../../services/firebase';
 import SectionTitle from './sectionTitle';
-import SubCategoryCard from './../../components/cards/subcategoryCard';
 import { useSelector } from 'react-redux';
+import EmptyData from '../../components/emptyData';
+import Carousel from './../../components/carousel/carousel';
 
-const Products = ({ match, location }) => {
+const Products = (props) => {
+  const { match, location } = props;
   //props.location.statet.subobj
-  let { type, name, id, subCatName, subCatId } = location?.state;
+  let { type, name, id, subCatName, subCatId, subObj } = location?.state;
   const [products, setProducts] = useState(null);
   const [subCategories, setSubCategories] = useState(null);
+  const { loader } = useSelector((state) => state.loader);
 
   const sortStates = [
     {
       label: 'Newest',
-      id: 'newest-radio',
+      id: 'CreatedAt',
     },
     {
       label: 'Price: low to high',
-      id: 'lowToHigh-radio',
+      id: 'Price',
     },
     {
       label: 'Price: high to low',
-      id: 'highToLowRadio',
+      id: 'DPrice',
     },
     {
       label: 'Name',
-      id: 'name-radio',
+      id: 'Name',
     },
   ];
 
   const colorsStates = [
     {
       label: 'black',
-      id: 'blackR',
+      id: 'black',
     },
     {
       label: 'brown',
-      id: 'brown-r',
+      id: 'brown',
     },
     {
       label: 'white',
-      id: 'whiteR',
+      id: 'white',
+    },
+    {
+      label: 'Gray',
+      id: 'gray',
+    },
+    {
+      label: 'Beige',
+      id: 'beige',
     },
   ];
 
   const pricesStates = [
     {
-      label: 'EGP 1000-2000 ',
-      id: 'min1000',
+      label: 'maximum EGP 2000 ',
+      id: '2000',
     },
     {
-      label: 'EGP 2000-3000',
-      id: 'min2000',
+      label: 'maximum EGP 3000',
+      id: '3000',
     },
     {
-      label: 'EGP 3000-4000',
-      id: 'min3000',
+      label: 'maximum EGP 4000',
+      id: '4000',
     },
     {
-      label: 'EGP 3000-4000',
-      id: 'min3000',
+      label: 'maximum EGP 5000',
+      id: '5000',
     },
     {
-      label: 'EGP 4000-5000',
-      id: 'min4000',
+      label: 'maximum EGP 10000',
+      id: '10000',
+    },
+    {
+      label: 'maximum EGP 20000',
+      id: '20000',
     },
   ];
 
@@ -96,12 +116,35 @@ const Products = ({ match, location }) => {
     },
   ];
 
+  const materialStates = [
+    {
+      label: 'Wood',
+      id: 'wood',
+    },
+    {
+      label: 'Steel',
+      id: 'steel',
+    },
+    {
+      label: 'Upholstered',
+      id: 'Upholstered',
+    },
+    {
+      label: 'Cotton',
+      id: 'cotton',
+    },
+  ];
+
   const getSubCategories = () => {
-    getCollection('subCategory', [
-      type === 'product' ? 'ProductCategory' : 'RoomCategory',
-      'array-contains',
-      `${id}`,
-    ]).then((allSubCategories) => {
+    filterCollection(
+      'subCategory',
+      [
+        type === 'product' ? 'ProductCategory' : 'RoomCategory',
+        'array-contains',
+        `${id}`,
+      ],
+      ['Name', '!=', `${subCatName}`]
+    ).then((allSubCategories) => {
       setSubCategories(allSubCategories);
     });
   };
@@ -114,8 +157,12 @@ const Products = ({ match, location }) => {
       .catch((err) => console.log('error :', err));
   };
 
-  const filterProds = () => {
-    filterProducts('Products', ['Material', '==', ''], ['Color', '==', 'gray'])
+  const filterProds = (key, value, operator = '==') => {
+    filterCollection(
+      'Products',
+      ['SubCategory', '==', subCatId],
+      [key, operator, value]
+    )
       .then((res) => {
         console.log('products', products);
         setProducts(res);
@@ -123,27 +170,35 @@ const Products = ({ match, location }) => {
       .catch((err) => console.log('error :', err));
   };
 
-  useEffect(async () => {
-    console.log('>>>>>>>>>>>', location.state);
-    // filterProds();
+  const sortProducts = (sortProp) => {
+    let order = 'asc';
+    if (sortProp[0] === 'D') {
+      //DPrice for descinding
+      order = 'desc';
+      sortProp = sortProp.substring(1);
+    }
+
+    sortCollection(['SubCategory', '==', subCatId], sortProp, order)
+      .then((res) => {
+        console.log('products', res);
+        setProducts(res);
+      })
+      .catch((err) => console.log('error :', err));
+  };
+
+  useEffect(() => {
     getProducts();
     getSubCategories();
-  }, []);
+  }, [match.params.subId]);
 
   return (
-    <div className='mt-nav-2 pt-nav border-top'>
+    <>
       <Breadcrumb state={location.state} />
 
-      <SectionTitle title='Children beds' />
+      <SectionTitle title={subCatName} />
 
       <section className='col-12 col-md-7 col-lg-7'>
-        <p className='description'>
-          We understand that growing kids have lots of needs. Like a quiet spot
-          to relax or a place to do their homework. That's why loft beds for
-          kids are a super-smart multi-tasking solution, helping you free up
-          space for a desk, sofa, wardrobe or pillow fort. Bring home a
-          children's loft bed today!
-        </p>
+        <p className='description'>{subObj?.Descripton}</p>
       </section>
 
       <div className='row sticky-top filter-row'>
@@ -154,6 +209,7 @@ const Products = ({ match, location }) => {
             listName='sort-group'
             checkType='radio'
             items={sortStates}
+            clickHandler={sortProducts}
           />
 
           <FilterButton title='color' icon='fas fa-chevron-down' />
@@ -161,6 +217,7 @@ const Products = ({ match, location }) => {
             listName='colors-group'
             checkType='radio'
             items={colorsStates}
+            clickHandler={(color) => filterProds('Color', color)}
           />
 
           <FilterButton
@@ -170,8 +227,11 @@ const Products = ({ match, location }) => {
           />
           <FilterDropList
             listName='price-group'
-            checkType='checkbox'
+            checkType='radio'
             items={pricesStates}
+            clickHandler={(maxPrice) =>
+              filterProds('Price', parseInt(maxPrice), '<=')
+            }
           />
 
           <FilterButton title='size' icon='fas fa-chevron-down' />
@@ -181,34 +241,43 @@ const Products = ({ match, location }) => {
             items={sizesStates}
           />
 
-          <FilterButton title='material' icon='fas fa-chevron-down' noDrop />
+          <FilterButton title='material' icon='fas fa-chevron-down' />
           <FilterDropList
             listName='material-group'
             checkType='radio'
-            items={[]}
+            items={materialStates}
+            clickHandler={(material) => filterProds('Material', material)}
           />
 
           <FilterButton title='allFilters' icon='fas fa-filter' noDrop />
-          <div>{products?.length}</div>
         </div>
 
-        <ProductRoomBtn />
+        <ProductRoomBtn totalItems={products?.length} />
       </div>
 
-      <div className='row' id='show-proDetail'>
-        <Loader />
+      <div className='carousel-body p-0 pb-2 mb-5'>
+        <div className='row' id='show-proDetail'>
+          <Loader />
+          {!loader && !products?.length && <EmptyData />}
 
-        {products?.map((i) => (
-          <ProductCard
-            key={i.id}
-            productData={i.data()}
-            pId={i.id}
-            showOptions
-          />
-        ))}
+          {products?.map((i) => (
+            <ProductCard
+              key={i.id}
+              productData={i.data()}
+              pId={i.id}
+              showOptions
+            />
+          ))}
+        </div>
       </div>
+
+      <SectionTitle title='Top Seller' />
+      <Carousel
+        condition={{ property: 'SalePrice', operator: '>', value: 0 }}
+      />
 
       <SectionTitle title='Related categories' />
+      <Loader />
       <div className='row mx-auto g-3 categories-slidder'>
         {subCategories &&
           subCategories.map((subcategory) => {
@@ -216,12 +285,14 @@ const Products = ({ match, location }) => {
               <SubCategoryCard
                 element={subcategory}
                 key={subcategory.id}
-                params={match.params}
+                type={type}
+                name={name}
+                id={id} //categId
               />
             );
           })}
       </div>
-    </div>
+    </>
   );
 };
 
