@@ -12,6 +12,7 @@ import StoresPage from './pages/storeLocation';
 import Profile from './pages/profile';
 import { Provider } from 'react-redux';
 import store from './store/store';
+import ProductA from './components/productA/productA';
 import Testpage from './pages/TestPage';
 import ShoppingCart from './pages/shoppingCart';
 
@@ -21,9 +22,13 @@ function App() {
       <Menu />
       <div className='body-container'>
         <Navbar />
+
         <div className='mt-nav-2 pt-nav border-top'>
           <Switch>
             <Route path='/home' component={Home} />
+            <Route path='/category/:type/:name/:id' component={SubCategory} />
+            <Route path='/stores' component={StoresPage} />
+            <Route path='/proA' component={ProductA} />
             <Route
               path='/category/:type/:name/:id'
               exact
@@ -31,11 +36,9 @@ function App() {
             />
             <Route path='/stores' component={StoresPage} />
             <Route path='/profile' component={Profile} />
-            <Route path='/products' component={Products} />
-            <Route path='/shoppingcart' component={ShoppingCart} />
             <Route path='/category/products' exact component={Products} />
             {/* <Route path='/category/:type/:name/:id/:subName/:subId' exact component={Products} /> */}
-            <Route path='/products/:pId' exact component={Testpage} />
+            <Route path='/products/:pId' exact component={ProductA} />
             <Redirect from='/' exact to='/home' />
           </Switch>
         </div>
