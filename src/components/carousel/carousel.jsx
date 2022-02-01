@@ -2,15 +2,20 @@ import React, { useEffect, useRef, useState } from 'react';
 import { getCollection } from './../../services/firebase';
 import ProductCard from '../cards/productCard/productCard';
 
-const Carousel = () => {
+const Carousel = ({ condition }) => {
   const [products, setProducts] = useState([]);
 
   const getProducts = () => {
-    getCollection('Products', ['SalePrice', '>', 0])
-      .then(res => {
-        setProducts(res);
-      })
-      .catch(err => console.log('error :', err));
+    condition &&
+      getCollection('Products', [
+        condition.property,
+        condition.operator,
+        condition.value,
+      ])
+        .then(res => {
+          setProducts(res);
+        })
+        .catch(err => console.log('error :', err));
   };
 
   useEffect(() => {
