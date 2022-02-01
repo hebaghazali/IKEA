@@ -1,7 +1,7 @@
 
 import { initializeApp } from 'firebase/app'
 import {getFirestore} from 'firebase/firestore';
-
+import {getAuth} from "firebase/auth";
 const firebaseConfig = {
   apiKey: 'AIzaSyBvz1el-WaDgUU36xlWeIEj2G9iyI0ewW4',
   authDomain: 'ikea-8dc72.firebaseapp.com',
@@ -25,3 +25,5 @@ const firebaseConfig = {
 export const app = initializeApp(firebaseConfig);
 
 export  const fireStore = getFirestore(app);  
+
+export const auth = getAuth(app);
