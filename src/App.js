@@ -1,7 +1,5 @@
 import React from 'react';
-
 import { Route, Switch, Redirect } from 'react-router-dom';
-
 import Navbar from './components/navbar/navbar';
 import Home from './pages/home.jsx';
 import Footer from './components/footer/footer';
@@ -13,8 +11,9 @@ import Profile from './pages/profile';
 import { Provider } from 'react-redux';
 import store from './store/store';
 import ProductA from './components/productA/productA';
-import Testpage from './pages/TestPage';
 import ShoppingCart from './pages/shoppingCart';
+import SignInPage from './components/SignIn/SignInPage';
+import LogIn from './components/LogIn/LogIn';
 
 function App() {
   return (
@@ -26,6 +25,7 @@ function App() {
         <div className='mt-nav-4 pt-nav border-top'>
           <Switch>
             <Route path='/home' component={Home} />
+            <Route path='/shoppingcart' component={ShoppingCart} />
             <Route path='/category/:type/:name/:id' component={SubCategory} />
             <Route path='/stores' component={StoresPage} />
             <Route path='/proA' component={ProductA} />
@@ -37,6 +37,8 @@ function App() {
             <Route path='/stores' component={StoresPage} />
             <Route path='/profile' component={Profile} />
             <Route path='/category/products' exact component={Products} />
+            <Route path='/sign' exact component={SignInPage} />
+            <Route path='/login' exact component={LogIn} />
             {/* <Route path='/category/:type/:name/:id/:subName/:subId' exact component={Products} /> */}
             <Route path='/products/:pId' exact component={ProductA} />
             <Redirect from='/' exact to='/home' />
