@@ -7,12 +7,12 @@ const NavbarIcons = () => {
   return (
     <>
       <div className='navbar-icons'>
-        <NavLink to='/login'>
-          <i className='bi bi-person'></i>
-        </NavLink>
-        {/* <NavLink to='/profile'>
+        {/* <NavLink to='/login'>
           <i className='bi bi-person'></i>
         </NavLink> */}
+        <NavLink to='/profile'>
+          <i className='bi bi-person'></i>
+        </NavLink>
         <NavLink to='/favorite' style={{ position: 'relative' }}>
           <i className='bi bi-heart'></i>
           {favourits.favourits.length !== 0 && (
