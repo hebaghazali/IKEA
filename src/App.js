@@ -27,6 +27,7 @@ function App() {
             <Route path='/home' component={Home} />
             <Route path='/shoppingcart' component={ShoppingCart} />
             <Route path='/category/:type/:name/:id' component={SubCategory} />
+            <Route path='/shoppingcart' component={ShoppingCart} />
             <Route path='/stores' component={StoresPage} />
             <Route path='/proA' component={ProductA} />
             <Route
@@ -35,7 +36,7 @@ function App() {
               component={SubCategory}
             />
             <Route path='/stores' component={StoresPage} />
-            <Route path='/shoppingcart' component={ShoppingCart}/>
+            <Route path='/shoppingcart' component={ShoppingCart} />
             <Route path='/profile' component={Profile} />
             <Route path='/category/products' exact component={Products} />
             <Route path='/sign' exact component={SignInPage} />
