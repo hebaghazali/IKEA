@@ -66,7 +66,7 @@ function SignIn() {
             <section class='col-md-5 col-12 login-heading'>
               <h3>Create an IKEA Profile</h3>
               <p>
-                Already have an account? <Link to='./log'> Login</Link>{' '}
+                Already have an account? <Link to='./login'> Login</Link>{' '}
               </p>
             </section>
 
