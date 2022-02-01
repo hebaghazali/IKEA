@@ -20,7 +20,7 @@ const CartCard = props => {
   }, [dispatch, props.id, selectedAmount]);
 
   const selectAmount = event => {
-    setSelectedAmount(event.target.value);
+    setSelectedAmount(Number(event.target.value));
   };
 
   return (
