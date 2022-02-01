@@ -68,6 +68,9 @@ const SubCategory = (props) => {
                   element={subcategory}
                   key={subcategory.id}
                   params={params}
+                  type={params.type}
+                  name={params.name}
+                  id={params.id}//categId
                 />
               );
             })}

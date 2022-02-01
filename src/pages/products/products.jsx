@@ -16,12 +16,13 @@ import { useSelector } from 'react-redux';
 import EmptyData from '../../components/emptyData';
 import Carousel from './../../components/carousel/carousel';
 
-const Products = ({ match, location }) => {
+const Products = (props) => {
+  const { match, location } = props;
   //props.location.statet.subobj
   let { type, name, id, subCatName, subCatId, subObj } = location?.state;
   const [products, setProducts] = useState(null);
   const [subCategories, setSubCategories] = useState(null);
-  const { loader } = useSelector(state => state.loader);
+  const { loader } = useSelector((state) => state.loader);
 
   const sortStates = [
     {
@@ -58,6 +59,10 @@ const Products = ({ match, location }) => {
     {
       label: 'Gray',
       id: 'gray',
+    },
+    {
+      label: 'Beige',
+      id: 'beige',
     },
   ];
 
@@ -139,33 +144,33 @@ const Products = ({ match, location }) => {
         `${id}`,
       ],
       ['Name', '!=', `${subCatName}`]
-    ).then(allSubCategories => {
+    ).then((allSubCategories) => {
       setSubCategories(allSubCategories);
     });
   };
 
   const getProducts = () => {
     getCollection('Products', ['SubCategory', '==', subCatId])
-      .then(res => {
+      .then((res) => {
         setProducts(res);
       })
-      .catch(err => console.log('error :', err));
+      .catch((err) => console.log('error :', err));
   };
 
-  const filterProds = (key, value,operator='==') => {
+  const filterProds = (key, value, operator = '==') => {
     filterCollection(
       'Products',
       ['SubCategory', '==', subCatId],
       [key, operator, value]
     )
-      .then(res => {
+      .then((res) => {
         console.log('products', products);
         setProducts(res);
       })
-      .catch(err => console.log('error :', err));
+      .catch((err) => console.log('error :', err));
   };
 
-  const sortProducts = sortProp => {
+  const sortProducts = (sortProp) => {
     let order = 'asc';
     if (sortProp[0] === 'D') {
       //DPrice for descinding
@@ -174,18 +179,17 @@ const Products = ({ match, location }) => {
     }
 
     sortCollection(['SubCategory', '==', subCatId], sortProp, order)
-      .then(res => {
+      .then((res) => {
         console.log('products', res);
         setProducts(res);
       })
-      .catch(err => console.log('error :', err));
+      .catch((err) => console.log('error :', err));
   };
 
   useEffect(() => {
-    console.log('>>>>>>>>>>>', location.state);
     getProducts();
     getSubCategories();
-  }, []);
+  }, [match.params.subId]);
 
   return (
     <div className='mt-nav-2 pt-nav border-top'>
@@ -213,7 +217,7 @@ const Products = ({ match, location }) => {
             listName='colors-group'
             checkType='radio'
             items={colorsStates}
-            clickHandler={color => filterProds('Color', color)}
+            clickHandler={(color) => filterProds('Color', color)}
           />
 
           <FilterButton
@@ -225,7 +229,9 @@ const Products = ({ match, location }) => {
             listName='price-group'
             checkType='radio'
             items={pricesStates}
-            clickHandler={maxPrice => filterProds('Price',parseInt(maxPrice), '<=')}
+            clickHandler={(maxPrice) =>
+              filterProds('Price', parseInt(maxPrice), '<=')
+            }
           />
 
           <FilterButton title='size' icon='fas fa-chevron-down' />
@@ -240,7 +246,7 @@ const Products = ({ match, location }) => {
             listName='material-group'
             checkType='radio'
             items={materialStates}
-            clickHandler={material => filterProds('Material', material)}
+            clickHandler={(material) => filterProds('Material', material)}
           />
 
           <FilterButton title='allFilters' icon='fas fa-filter' noDrop />
@@ -254,7 +260,7 @@ const Products = ({ match, location }) => {
           <Loader />
           {!loader && !products?.length && <EmptyData />}
 
-          {products?.map(i => (
+          {products?.map((i) => (
             <ProductCard
               key={i.id}
               productData={i.data()}
@@ -274,12 +280,14 @@ const Products = ({ match, location }) => {
       <Loader />
       <div className='row mx-auto g-3 categories-slidder'>
         {subCategories &&
-          subCategories.map(subcategory => {
+          subCategories.map((subcategory) => {
             return (
               <SubCategoryCard
                 element={subcategory}
                 key={subcategory.id}
-                params={match.params}
+                type={type}
+                name={name}
+                id={id} //categId
               />
             );
           })}
