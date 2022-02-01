@@ -51,6 +51,7 @@ const Carousel = ({ condition }) => {
                 productData={product.data()}
                 pId={product.id}
                 showOptions
+                carousel={true}
               />
             ))}
           </div>

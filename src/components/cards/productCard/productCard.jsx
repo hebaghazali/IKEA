@@ -8,7 +8,7 @@ import { addToCart } from './../../../store/actions/cartProducts';
 import { addData } from '../../../services/firebase';
 import { Link } from 'react-router-dom';
 
-const ProductCard = ({ showOptions, pId, productData }) => {
+const ProductCard = ({ showOptions, pId, productData, carousel }) => {
   // const productData2 = {
   //   Width: 120,
   //   Images:[
@@ -111,7 +111,7 @@ const ProductCard = ({ showOptions, pId, productData }) => {
           )}
         </div>
 
-        {showOptions && (
+        {!carousel && showOptions && (
           <div className='row mt-3'>
             <small className='col-12'>more variants</small>
             <ProductVariant />

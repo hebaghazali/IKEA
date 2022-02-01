@@ -254,6 +254,7 @@ const Products = ({ match, location }) => {
               productData={i.data()}
               pId={i.id}
               showOptions
+              carousel={false}
             />
           ))}
         </div>
