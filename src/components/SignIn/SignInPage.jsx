@@ -1,9 +1,9 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState ,useRef } from 'react';
 import '../../assets/scss/pages/_login.scss';
 import { Link } from 'react-router-dom';
 import LogIn from '../LogIn/LogIn';
 import SharedLogComp from '../SharedLogCom/ShahredLogCom';
+import { signup, login, logout, useAuth } from "../../firebaseConfig/firebase";
 
 function SignIn() {
   const [users, setUser] = useState({
@@ -56,6 +56,22 @@ function SignIn() {
       }
     }
   };
+
+  const [ loading, setLoading ] = useState(false);
+  const currentUser = useAuth();
+
+  const emailRef = useRef();
+  const passwordRef = useRef();
+
+  async function handleSignup() {
+    setLoading(true);
+    // try {
+      await signup(emailRef.current.value, passwordRef.current.value);
+    // } catch {
+      // alert("Error!");
+    // }
+    setLoading(false);
+  }
 
   return (
     <>
@@ -150,7 +166,7 @@ function SignIn() {
                   </div>
 
                   <div className ='col-12'>
-                    <button className ='btn btn-primary' type='submit'>
+                    <button className ='btn btn-primary' type='submit' onClick={handleSignup}>
                       Create Profile
                     </button>
                   </div>

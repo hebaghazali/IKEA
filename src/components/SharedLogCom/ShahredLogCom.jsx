@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import '../../assets/scss/pages/_login.scss';
-import {auth} from '../../config/firebaseConfig'
-import Hello from '../Hello';
+import { Link } from 'react-router-dom';
+import { signup, login, logout, useAuth } from "../../firebaseConfig/firebase";
+// import {auth} from '../../config/firebaseConfig'
+// import Hello from '../Hello';
 
 function SharedLogComp() {
   const [users, setUser] = useState({
@@ -62,6 +64,27 @@ function SharedLogComp() {
     }
   };
 
+
+  const [ loading, setLoading ] = useState(false);
+  const currentUser = useAuth();
+
+  const emailRef = useRef();
+  const passwordRef = useRef();
+
+  async function handleLogin() {
+    console.log('function login');
+    setLoading(true);
+    try {
+      await login(emailRef.current.value, passwordRef.current.value);
+    } 
+    catch {
+      alert("Email not found you can signup!");
+      window.open('_self' , '../SignIn/SignInPage.jsx')
+    }
+    setLoading(false);
+  }
+
+
   // const handleLogIn =() => {
   //   clearError()
   //   auth
@@ -113,7 +136,7 @@ function SharedLogComp() {
   return (
     <>
         <div className='form-floating mb-3 input-log'>
-        <form className='row g-3 needs-validation' noValidate>
+        <div className='row g-3 needs-validation' noValidate>
           <div>
             <input
               type='text'
@@ -125,6 +148,7 @@ function SharedLogComp() {
               onChange={(e) => {
                 handleChangeInInput(e);
               }}
+              ref={emailRef}
             />
             <p></p>
             <p className='text-secondary'>
@@ -144,6 +168,7 @@ function SharedLogComp() {
               onChange={(e) => {
                 handleChangeInInput(e);
               }}
+              ref={passwordRef}
             />
             <p></p>
             <p className='text-secondary'>Password must have charters</p>
@@ -156,8 +181,9 @@ function SharedLogComp() {
             <p className='text-danger'>{errors.PasswordErr}</p>
           </div>
           <a href='#'>Forget your Password?</a>
-          <button className='login-creation' >Login</button>
-        </form>
+          <button className='login-creation' onClick={() => {handleLogin()}}> LogIn </button>
+        </div>
+
       </div>
     </>
   );
