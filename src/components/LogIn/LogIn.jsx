@@ -30,9 +30,6 @@ function LogIn() {
             </section>
           </section>
         </div>
-
-        
-
       </div>
     </>
   );

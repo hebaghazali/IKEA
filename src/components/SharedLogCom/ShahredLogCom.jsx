@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import '../../assets/scss/pages/_login.scss';
 import { Link } from 'react-router-dom';
-import { signup, login, logout, useAuth } from "../../firebaseConfig/firebase";
+import { signup, login, logout, useAuth } from '../../firebaseConfig/firebase';
 // import {auth} from '../../config/firebaseConfig'
 // import Hello from '../Hello';
 
@@ -16,8 +16,8 @@ function SharedLogComp() {
     PasswordErr: null,
   });
 
-  const [Email, setEmail] = useState('')
-  const [Password, setPassword] = useState('')
+  const [Email, setEmail] = useState('');
+  const [Password, setPassword] = useState('');
 
   // Function to hadndle change in any input and write into it
   const handleChangeInInput = (e) => {
@@ -64,8 +64,7 @@ function SharedLogComp() {
     }
   };
 
-
-  const [ loading, setLoading ] = useState(false);
+  const [loading, setLoading] = useState(false);
   const currentUser = useAuth();
 
   const emailRef = useRef();
@@ -76,66 +75,17 @@ function SharedLogComp() {
     setLoading(true);
     try {
       await login(emailRef.current.value, passwordRef.current.value);
-    } 
-    catch {
-      alert("Email not found you can signup!");
-      window.open('_self' , '../SignIn/SignInPage.jsx')
+      window.location.href = '/profile';
+    } catch {
+      alert('User not found you can signup!');
+      window.location.href = '/sign';
     }
     setLoading(false);
   }
 
-
-  // const handleLogIn =() => {
-  //   clearError()
-  //   auth
-  //   .logInWithEmailAndPassword(Email, Password)
-  //   // .catch((err) => {
-  //   //   switch(err.code)
-  //   //   {
-  //   //     case "auth/invalid-email":
-  //   //     case "auth/user-disabled":
-  //   //     case "auth/user-not-found":
-  //   //       setError({EmailErr: err.message})
-  //   //       break
-
-  //   //     case "auth/wrong-password":
-  //   //       setError({PasswordErr: err.message})
-  //   //       break
-  //   //   }
-  //   // })
-  // }
-
-  // const authListner = () => {
-  //   auth
-  //   .onAuthStateChanged((users) => {
-  //     if(users)
-  //     {
-  //       clearInputs()
-  //       setUser(users)
-  //     }
-  //     else
-  //     {
-  //       setUser("")
-  //     }
-  //   })
-  // }
-
-  // const clearError = () => {
-  //   setEmail('')
-  //   setPassword('')
-  // }
-
-  // const clearInputs = () => {
-  //   setUser({Email:'', Password:''})
-  // }
-
-  // useEffect(() => {
-  //   authListner()
-  // }, [])
-
   return (
     <>
-        <div className='form-floating mb-3 input-log'>
+      <div className='form-floating mb-3 input-log'>
         <div className='row g-3 needs-validation' noValidate>
           <div>
             <input
@@ -181,9 +131,16 @@ function SharedLogComp() {
             <p className='text-danger'>{errors.PasswordErr}</p>
           </div>
           <a href='#'>Forget your Password?</a>
-          <button className='login-creation' onClick={() => {handleLogin()}}> LogIn </button>
+          <button
+            className='login-creation'
+            onClick={() => {
+              handleLogin();
+            }}
+          >
+            {' '}
+            LogIn{' '}
+          </button>
         </div>
-
       </div>
     </>
   );
