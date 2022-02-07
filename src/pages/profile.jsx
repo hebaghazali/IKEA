@@ -11,19 +11,20 @@ const Profile = () => {
      window.location.href= '/'
   }
 
-  // onAuthStateChanged(auth,(user)=>{
-  //     user?
-  //     console.log(user.email)
-  //      :
-  //     window.location.href= '/sign'   
-  // })
 
-//   onAuthStateChanged(auth,(user)=>{
-//     user?
-//      `<h1 className='userName'>Hello Dear {user.email}</h1>`
-//      :
-//     window.location.href= '/sign'   
-// })
+  onAuthStateChanged(auth,(user)=>{
+    if (user) 
+    {
+      console.log(user.email)
+      console.log(user.uid)
+      localStorage.setItem("UID", user.uid)
+    }
+     
+     else
+    {
+      window.location.href= '/sign'  
+    } 
+})
 
   return (
     <>

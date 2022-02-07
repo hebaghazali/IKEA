@@ -109,7 +109,7 @@ function SharedLogComp() {
           </div>
           <div>
             <input
-              type='text'
+              type='password'
               className='form-control input-sign-form'
               id='validationCustom05'
               required
