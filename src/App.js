@@ -3,7 +3,6 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import Navbar from './components/navbar/navbar';
 import Home from './pages/home.jsx';
 import Footer from './components/footer/footer';
-
 import SignIn from './components/SignIn/SignInPage';
 import LogIn from './components/LogIn/LogIn';
 import Products from './pages/products/products';
