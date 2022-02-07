@@ -11,23 +11,25 @@ import { getCollection } from './../../../services/firebase';
 import { useEffect } from 'react';
 
 const ProductCard = ({ showOptions, pId, productData }) => {
-  const { favourits } = useSelector((state) => state.favourits);
-  const { cartProducts } = useSelector((state) => state.cartProducts);
+  const { favourits } = useSelector(state => state.favourits);
+  const { cartProducts } = useSelector(state => state.cartProducts);
 
-  let found = favourits?.find((i) => i.id === pId);
-  let foundInCart = cartProducts?.find((i) => i.id === pId);
+  let found = favourits?.find(i => i.id === pId);
+  let foundInCart = cartProducts?.find(i => i.id === pId);
 
   const [isFavourite, setIsFavourite] = useState(found ? true : false);
   const [inCart, setInCart] = useState(foundInCart ? true : false);
   const [isHovering, setIsHovering] = useState(false);
   const [variants, setVariants] = useState(null);
-  const [viewedProduct, setViewedProduct] = useState({pId, productData });
+  const [viewedProduct, setViewedProduct] = useState({ pId, productData });
   const { Name, ProductName, Price, SalePrice, Width, Length, Images, Height } =
     viewedProduct.productData;
 
   const dispatch = useDispatch();
   const toggleFavourite = () => {
-    dispatch(isFavourite ? removeFromFav(pId) : addToFav({ pId, productData }));
+    dispatch(
+      isFavourite ? removeFromFav(pId) : addToFav({ id: pId, productData })
+    );
     setIsFavourite(!isFavourite);
     // let productData2 = productData;
     // productData2.Color = 'green';
@@ -44,11 +46,11 @@ const ProductCard = ({ showOptions, pId, productData }) => {
 
   const getVariants = () => {
     getCollection('Products', ['ProductName', '==', ProductName])
-      .then((res) => {
+      .then(res => {
         setVariants(res);
         console.log('variants', res);
       })
-      .catch((err) => console.log('error :', err));
+      .catch(err => console.log('error :', err));
   };
 
   useEffect(() => {
@@ -77,9 +79,12 @@ const ProductCard = ({ showOptions, pId, productData }) => {
           <Link
             className='card category-card col-12 '
             to={{
-              pathname: "/products/"+viewedProduct.pId,
+              pathname: '/products/' + viewedProduct.pId,
               state: {
-                prod: { id: viewedProduct.pId, productData:viewedProduct.productData },
+                prod: {
+                  id: viewedProduct.pId,
+                  productData: viewedProduct.productData,
+                },
               },
             }}
           >
@@ -117,7 +122,7 @@ const ProductCard = ({ showOptions, pId, productData }) => {
           <div className='row mt-3'>
             <small className='col-12'>more variants</small>
 
-            {variants.map((item) => (
+            {variants.map(item => (
               <ProductVariant
                 key={item.id}
                 product={item}
