@@ -3,6 +3,8 @@ import '../../assets/scss/pages/_login.scss';
 import { Link } from 'react-router-dom';
 import SharedLogComp from '../SharedLogCom/ShahredLogCom';
 import { signup, login, logout, useAuth } from '../../firebaseConfig/firebase';
+import { addDocByID } from '../../services/firebase';
+import { changeUser } from '../../store/actions/auth';
 
 function SignIn() {
   const [users, setUser] = useState({
@@ -97,13 +99,31 @@ function SignIn() {
 
   const emailRef = useRef();
   const passwordRef = useRef();
+  const firstNameRef = useRef();
+  const lastNameRef = useRef();
+  const phoneRef = useRef();
+  const storeRef = useRef();
 
   async function handleSignup() {
     console.log('function signIn');
+    var userObj={
+      FirstName: firstNameRef.current.value,
+      LastName: lastNameRef.current.value,
+      Email: emailRef.current.value,
+      PhoneNum: phoneRef.current.value,
+      PrefferedStore: storeRef.current.value
+    }
     setLoading(true);
     try {
-      await signup(emailRef.current.value, passwordRef.current.value);
-      window.location.href = '/profile';
+      await signup(emailRef.current.value, passwordRef.current.value).then(
+        (userCredentials) => {
+          addDocByID('users', userCredentials.user.uid,userObj).then(() => {
+            localStorage.setItem('UID', userCredentials.user.uid);
+            // changeUser(userObj);
+            window.location.href = '/profile';
+          });
+        }
+      );
     } catch {
       alert('User is alredy exist!');
     }
@@ -140,6 +160,7 @@ function SignIn() {
                       onChange={(e) => {
                         handleChangeInInput(e);
                       }}
+                      ref={firstNameRef}
                     />
                     <small className='text-danger'>{errors.NameErr}</small>
                   </div>
@@ -154,6 +175,7 @@ function SignIn() {
                       onChange={(e) => {
                         handleChangeInInput(e);
                       }}
+                      ref={lastNameRef}
                     />
                     <small className='text-danger'>{errors.NameErr}</small>
                   </div>
@@ -168,6 +190,7 @@ function SignIn() {
                         onChange={(e) => {
                           handleChangeInInput(e);
                         }}
+                        ref={phoneRef}
                       />
                       <small className='text-danger'>{errors.PhoneErr}</small>
                     </div>
@@ -184,9 +207,10 @@ function SignIn() {
                       className='form-select selct-form-sign'
                       id='validationCustom04'
                       required
+                      ref={storeRef}
                     >
-                      <option value=''>IKEA Cairo Mall Of Arabia</option>
-                      <option>IKEA CFC</option>
+                      <option value='1'>IKEA Cairo Mall Of Arabia</option>
+                      <option value='2'>IKEA CFC</option>
                     </select>
                     <div className='invalid-feedback'>
                       Please select a valid Store.

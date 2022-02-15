@@ -4,25 +4,22 @@ import { updateUserStorageByID } from '../services/firebase';
 import { useEffect } from 'react';
 import { logout, auth } from '../firebaseConfig/firebase';
 import { signOut, onAuthStateChanged } from 'firebase/auth';
+import { Link } from 'react-router-dom';
 
 const Profile = () => {
   const user = useSelector(state => state.user.user);
   useEffect(() => {
-    updateUserStorageByID('5wIZCtrIXgZ4S9OiPyrx');
+    updateUserStorageByID(localStorage.getItem('UID'));
   }, []);
 
   function handleLogout() {
     console.log('logoutFunction');
     signOut(auth);
-    window.location.href = '/';
+    return <Link to='/'/>
   }
 
   onAuthStateChanged(auth, user => {
-    if (user) {
-      console.log(user.email);
-      console.log(user.uid);
-      localStorage.setItem('UID', user.uid);
-    } else {
+    if (!user) {
       window.location.href = '/sign';
     }
   });

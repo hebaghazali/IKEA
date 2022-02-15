@@ -108,7 +108,7 @@ const AccountTab = () => {
         </div>
         {editSection !== 3 && (
           <>
-          <input className='d-block border-0' type="password" value={user.Password} disabled/>
+          <input className='d-block border-0' type="password" value="{user.Password}" disabled/>
           </>
         )}
         {editSection === 3 && (

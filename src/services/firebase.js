@@ -8,6 +8,7 @@ import {
   doc,
   getDoc,
   orderBy,
+  setDoc
 } from 'firebase/firestore';
 import { fireStore } from '../config/firebaseConfig';
 import { useDispatch, useSelector } from 'react-redux';
@@ -94,3 +95,7 @@ export const updateUserStorageByID = ID => {
     store.dispatch(changeUser({ id: ID, user: res.data() }));
   });
 };
+
+export const addDocByID = async (collName,ID,data)=>{
+  await setDoc(doc(fireStore,collName,ID),data)
+}
