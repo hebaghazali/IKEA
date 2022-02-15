@@ -9,8 +9,8 @@ const EditPersonalInfo = (props) => {
   var userInfo={
     FirstName:user.FirstName,
     LastName:user.LastName,
-    BirthDate:user.BirthDate,
-    Gender:user.Gender
+    BirthDate:user.BirthDate?user.BirthDate:'',
+    Gender:user.Gender?user.Gender:''
   }
 
   const updateUser = ()=>{

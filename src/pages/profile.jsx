@@ -4,7 +4,6 @@ import { updateUserStorageByID } from '../services/firebase';
 import { useEffect } from 'react';
 import { logout, auth } from '../firebaseConfig/firebase';
 import { signOut, onAuthStateChanged } from 'firebase/auth';
-import { Link } from 'react-router-dom';
 
 const Profile = () => {
   const user = useSelector(state => state.user.user);
@@ -15,7 +14,7 @@ const Profile = () => {
   function handleLogout() {
     console.log('logoutFunction');
     signOut(auth);
-    return <Link to='/'/>
+    window.location.href = '/';
   }
 
   onAuthStateChanged(auth, user => {
