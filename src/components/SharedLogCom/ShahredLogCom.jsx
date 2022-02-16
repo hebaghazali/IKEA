@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import '../../assets/scss/pages/_login.scss';
 import { Link } from 'react-router-dom';
 import { signup, login, logout, useAuth } from '../../firebaseConfig/firebase';
+import { changeUser } from '../../store/actions/auth';
 // import {auth} from '../../config/firebaseConfig'
 // import Hello from '../Hello';
 
@@ -74,7 +75,9 @@ function SharedLogComp() {
     console.log('function login');
     setLoading(true);
     try {
-      await login(emailRef.current.value, passwordRef.current.value);
+      await login(emailRef.current.value, passwordRef.current.value).then((userCredentials)=>{
+        // changeUser(userCredentials.user.uid);
+      })
       window.location.href = '/profile';
     } catch {
       alert('User not found you can signup!');

@@ -8,6 +8,7 @@ import {
   doc,
   getDoc,
   orderBy,
+  setDoc,
 } from 'firebase/firestore';
 import { fireStore } from '../config/firebaseConfig';
 import { changeLoader } from './../store/actions/loader';
@@ -134,4 +135,7 @@ export const removeCartItemFromUser = async (userID, productID) => {
   await updateDoc(doc(fireStore, 'users', userID), {
     CartItems: cartItems.filter(id => id !== productID),
   });
+};
+export const addDocByID = async (collName, ID, data) => {
+  await setDoc(doc(fireStore, collName, ID), data);
 };

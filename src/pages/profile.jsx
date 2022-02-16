@@ -18,11 +18,7 @@ const Profile = () => {
   }
 
   onAuthStateChanged(auth, user => {
-    if (user) {
-      console.log(user.email);
-      console.log(user.uid);
-      localStorage.setItem('UID', user.uid);
-    } else {
+    if (!user) {
       window.location.href = '/sign';
     }
   });
