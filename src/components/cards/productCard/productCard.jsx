@@ -5,12 +5,15 @@ import { addToFav, removeFromFav } from '../../../store/actions/favourits';
 import ProductPrice from './productPrice';
 import ProductVariant from './productVariant';
 import { addToCart } from './../../../store/actions/cartProducts';
-import { addData } from '../../../services/firebase';
+import { addCartItemsToUser } from '../../../services/firebase';
 import { Link } from 'react-router-dom';
 import { getCollection } from './../../../services/firebase';
 import { useEffect } from 'react';
 
-const ProductCard = ({ showOptions, pId, productData }) => {
+const ProductCard = ({ showOptions, pId, productData, carousel }) => {
+  const { Name, ProductName, Price, SalePrice, Width, Length, Images } =
+    productData;
+
   const { favourits } = useSelector(state => state.favourits);
   const { cartProducts } = useSelector(state => state.cartProducts);
 
@@ -42,6 +45,8 @@ const ProductCard = ({ showOptions, pId, productData }) => {
   const addCart = () => {
     dispatch(addToCart({ id: pId, productData, PurchasedAmount: 1 }));
     setInCart(true);
+
+    addCartItemsToUser(localStorage.getItem('UID'), pId);
   };
 
   const getVariants = () => {

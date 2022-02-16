@@ -10,7 +10,6 @@ import {
   orderBy,
 } from 'firebase/firestore';
 import { fireStore } from '../config/firebaseConfig';
-import { useDispatch, useSelector } from 'react-redux';
 import { changeLoader } from './../store/actions/loader';
 import { changeUser } from './../store/actions/auth';
 import store from './../store/store';
@@ -92,5 +91,47 @@ export const getDocumentByID = (collName, ID) => {
 export const updateUserStorageByID = ID => {
   getDoc(doc(fireStore, 'users', ID)).then(res => {
     store.dispatch(changeUser({ id: ID, user: res.data() }));
+  });
+};
+
+export const getCartItemsFromUser = userID => {
+  return getDoc(doc(fireStore, 'users', userID)).then(res => {
+    return res.data().CartItems;
+  });
+};
+
+export const addCartItemsToUser = async (userID, productID) => {
+  let cartItems = [];
+  await getDoc(doc(fireStore, 'users', userID)).then(res => {
+    if (res.data().CartItems) {
+      cartItems.push(...res.data().CartItems);
+    }
+  });
+
+  updateDoc(doc(fireStore, 'users', userID), {
+    CartItems: [productID, ...cartItems],
+  })
+    .then(() => {
+      console.log('cart items added to current user');
+    })
+    .catch(err => console.log('adding cart items to user ERROR: ' + err));
+};
+
+export const getProductDataById = id => {
+  return getDoc(doc(fireStore, 'Products', id)).then(product => {
+    return product.data();
+  });
+};
+
+export const removeCartItemFromUser = async (userID, productID) => {
+  let cartItems = [];
+  await getDoc(doc(fireStore, 'users', userID)).then(res => {
+    if (res.data().CartItems) {
+      cartItems.push(...res.data().CartItems);
+    }
+  });
+
+  await updateDoc(doc(fireStore, 'users', userID), {
+    CartItems: cartItems.filter(id => id !== productID),
   });
 };

@@ -2,13 +2,13 @@ import ProfileTab from '../components/profile/profileTabs';
 import { useSelector } from 'react-redux';
 import { updateUserStorageByID } from '../services/firebase';
 import { useEffect } from 'react';
-import { logout, auth } from '../firebaseConfig/firebase';
+import { auth } from '../firebaseConfig/firebase';
 import { signOut, onAuthStateChanged } from 'firebase/auth';
 
 const Profile = () => {
   const user = useSelector(state => state.user.user);
   useEffect(() => {
-    updateUserStorageByID('5wIZCtrIXgZ4S9OiPyrx');
+    updateUserStorageByID(localStorage.getItem('UID'));
   }, []);
 
   function handleLogout() {
@@ -36,9 +36,10 @@ const Profile = () => {
           </div>
           <div className='d-flex pt-2'>
             Need to change account?
-            <button className='logout' onClick={handleLogout}>
+            {/* <button className='logout' onClick={handleLogout}>
               Log out
-            </button>
+            </button> */}
+            <button className='logout'>Log out</button>
           </div>
           <ProfileTab />
         </div>

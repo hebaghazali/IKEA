@@ -13,15 +13,16 @@ const CartCard = props => {
     dispatch(removeFromCart(props.id));
     dispatch(setCartItemAmount(props.id, 0));
   };
+
+  const selectAmount = event => {
+    setSelectedAmount(Number(event.target.value));
+  };
+
   useEffect(() => {
     dispatch(
       setCartItemAmount({ id: props.id, PurchasedAmount: selectedAmount })
     );
   }, [dispatch, props.id, selectedAmount]);
-
-  const selectAmount = event => {
-    setSelectedAmount(Number(event.target.value));
-  };
 
   return (
     <>
