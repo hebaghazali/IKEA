@@ -1,38 +1,70 @@
-import { useSelector } from "react-redux";
-import { updateData } from "../../../services/firebase";
+import { useEffect } from 'react';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { updateData } from '../../../services/firebase';
 import { updateUserStorageByID } from '../../../services/firebase';
 
 const EditPersonalInfo = (props) => {
-  const user=useSelector((state)=>state.user.user);
-  const id=useSelector((state)=>state.user.id);
+  const user = useSelector((state) => state.user.user);
+  const id = useSelector((state) => state.user.id);
+  const [errors, setError] = useState({
+    FirstNameErr: null,
+    LastNameErr: null,
+  });
+  const [allValid, setAllValid] = useState(
+    errors.FirstNameErr === null && errors.LastNameErr === null
+  );
 
-  var userInfo={
-    FirstName:user.FirstName,
-    LastName:user.LastName,
-    BirthDate:user.BirthDate?user.BirthDate:'',
-    Gender:user.Gender?user.Gender:''
-  }
-
-  const updateUser = ()=>{
-    updateData('users',id,userInfo).then(()=>{
-      updateUserStorageByID(id);
-    })
-    props.changeSelection(0);
-  }
+  const [userInfo, setUserInfo] = useState({
+    FirstName: user.FirstName,
+    LastName: user.LastName,
+    BirthDate: user.BirthDate ? user.BirthDate : '',
+    Gender: user.Gender ? user.Gender : '',
+  });
+  useEffect(() => {
+    setAllValid(errors.FirstNameErr === null && errors.LastNameErr === null);
+  }, [errors]);
+  const handleSubmit = (e) => {
+    if (!allValid) {
+      e.preventDefault();
+    } else {
+      updateData('users', id, userInfo).then(() => {
+        updateUserStorageByID(id);
+      });
+      props.changeSelection(0);
+    }
+  };
   return (
-    <section className='col-12 col-lg-6'>
+    <form className='col-12 col-lg-6' onSubmit={(e) => handleSubmit(e)}>
       <div className='form-floating mb-3 p-0 floating-input-holder'>
         <input
           type='text'
           className='form-control edit-input'
           id='floatingInput'
           placeholder=''
-          defaultValue={user.FirstName}
-          onChange={
-            (e)=>{userInfo.FirstName=e.target.value}
-          }
+          defaultValue={userInfo.FirstName}
+          onChange={(e) => {
+            if (e.target.value.match(/^[A-Za-z]{3,}$/)) {
+              setError({
+                ...errors,
+                FirstNameErr: null,
+              });
+            } else {
+              setError({
+                ...errors,
+                FirstNameErr: 'First Name should be 3 letters at least',
+              });
+            }
+            setUserInfo({
+              ...userInfo,
+              FirstName: e.target.value,
+            });
+          }}
         />
         <label htmlFor='floatingInput'>First name</label>
+        {errors.FirstNameErr !== null && (
+          <small className='text-danger'>{errors.FirstNameErr}</small>
+        )}
       </div>
       <div className='form-floating mb-3 p-0 floating-input-holder'>
         <input
@@ -40,12 +72,29 @@ const EditPersonalInfo = (props) => {
           className='form-control edit-input'
           id='floatingInput'
           placeholder=''
-          defaultValue={user.LastName}
-          onChange={
-            (e)=>{userInfo.LastName=e.target.value}
-          }
+          defaultValue={userInfo.LastName}
+          onChange={(e) => {
+            if (e.target.value.match(/^[A-Za-z]{3,}$/)) {
+              setError({
+                ...errors,
+                LastNameErr: null,
+              });
+            } else {
+              setError({
+                ...errors,
+                LastNameErr: 'Last Name should be 3 letters at least',
+              });
+            }
+            setUserInfo({
+              ...userInfo,
+              LastName: e.target.value,
+            });
+          }}
         />
         <label htmlFor='floatingInput'>Last name</label>
+        {errors.LastNameErr !== null && (
+          <small className='text-danger'>{errors.LastNameErr}</small>
+        )}
       </div>
       <div className='form-floating mb-3 p-0 floating-input-holder'>
         <input
@@ -53,10 +102,13 @@ const EditPersonalInfo = (props) => {
           className='form-control edit-input'
           id='floatingInput'
           placeholder='DD-MM_YYYY'
-          defaultValue={user.BirthDate}
-          onChange={
-            (e)=>{userInfo.BirthDate=e.target.value}
-          }
+          defaultValue={userInfo.BirthDate}
+          onChange={(e) => {
+            setUserInfo({
+              ...userInfo,
+              BirthDate: e.target.value,
+            });
+          }}
         />
         <label htmlFor='floatingInput'>Birthdate (Optional)</label>
       </div>
@@ -65,10 +117,13 @@ const EditPersonalInfo = (props) => {
           className='form-select edit-input'
           id='floatingSelect'
           aria-label='Floating label select example'
-          defaultValue={user.Gender}
-          onChange={
-            (e)=>{userInfo.Gender=e.target.value}
-          }
+          defaultValue={userInfo.Gender}
+          onChange={(e) => {
+            setUserInfo({
+              ...userInfo,
+              Gender: e.target.value,
+            });
+          }}
         >
           <option></option>
           <option value='1'>Male</option>
@@ -86,8 +141,10 @@ const EditPersonalInfo = (props) => {
       >
         Cancel
       </button>
-      <button className='dark-btn save-change-btn col-12' onClick={()=>updateUser()}>Save changes</button>
-    </section>
+      <button className='dark-btn save-change-btn col-12' type='submit'>
+        Save changes
+      </button>
+    </form>
   );
 };
 export default EditPersonalInfo;
