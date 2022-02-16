@@ -14,6 +14,7 @@ import { Provider } from 'react-redux';
 import store from './store/store';
 import ProductA from './components/productA/productA';
 import ShoppingCart from './pages/shoppingCart';
+import FavouritePage from './pages/favouritePage'
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function App() {
             />
             <Route path='/sign' exact component={SignIn} />
             <Route path='/login' exact component={LogIn} />
+            <Route path='/favorite' exact component={FavouritePage} />
             <Route path='/products/:pId' exact component={ProductA} />
             <Redirect from='/' exact to='/home' />
           </Switch>

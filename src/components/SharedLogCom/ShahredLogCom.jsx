@@ -1,6 +1,8 @@
 import React, { useState, useRef } from 'react';
 import '../../assets/scss/pages/_login.scss';
 import { login, useAuth } from '../../firebaseConfig/firebase';
+import { Link } from 'react-router-dom';
+import { changeUser } from '../../store/actions/auth';
 
 
 function SharedLogComp() {

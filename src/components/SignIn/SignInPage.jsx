@@ -3,6 +3,7 @@ import '../../assets/scss/pages/_login.scss';
 import { Link } from 'react-router-dom';
 import { signup, useAuth } from '../../firebaseConfig/firebase';
 import { addDocByID } from '../../services/firebase';
+import { changeUser } from '../../store/actions/auth';
 
 
 function SignIn() {
