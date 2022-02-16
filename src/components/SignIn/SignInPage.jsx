@@ -1,8 +1,7 @@
 import React, { useState, useRef } from 'react';
 import '../../assets/scss/pages/_login.scss';
 import { Link } from 'react-router-dom';
-import SharedLogComp from '../SharedLogCom/ShahredLogCom';
-import { signup, login, logout, useAuth } from '../../firebaseConfig/firebase';
+import { signup, useAuth } from '../../firebaseConfig/firebase';
 
 function SignIn() {
   const [users, setUser] = useState({
@@ -164,7 +163,7 @@ function SignIn() {
                         className='form-control input-sign-form'
                         id='validationCustom01'
                         name='Phone'
-                        placeholder='EG(+20)'
+                        placeholder='EG(011, 012, 015, 010)'
                         onChange={(e) => {
                           handleChangeInInput(e);
                         }}
