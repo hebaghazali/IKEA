@@ -1,23 +1,23 @@
 import { useSelector } from 'react-redux';
-import { useState } from 'react/cjs/react.development';
+import { useState } from 'react';
 import { updateData } from '../../../services/firebase';
 import { updateUserStorageByID } from '../../../services/firebase';
 
 const AddressTab = () => {
   const [editSection, setEditSection] = useState(0);
-  const user=useSelector((state)=>state.user.user);
-  const id=useSelector((state)=>state.user.id);
+  const user = useSelector(state => state.user.user);
+  const id = useSelector(state => state.user.id);
 
-  var userInfo={
-    Address:user.Address
-  }
-  
-  const updateUser = ()=>{
-    updateData('users',id,userInfo).then(()=>{
+  var userInfo = {
+    Address: user.Address,
+  };
+
+  const updateUser = () => {
+    updateData('users', id, userInfo).then(() => {
       updateUserStorageByID(id);
-    })
-    setEditSection(0)
-  }
+    });
+    setEditSection(0);
+  };
   return (
     <>
       <section className='py-5 border-bottom'>
@@ -55,7 +55,9 @@ const AddressTab = () => {
                   id='floatingTextarea2'
                   style={{ height: '100px' }}
                   defaultValue={user.Address}
-                  onChange={(e)=>{userInfo.Address=e.target.value}}
+                  onChange={e => {
+                    userInfo.Address = e.target.value;
+                  }}
                 ></textarea>
                 <button
                   className='default-btn cancel-change-btn col-12 mt-5'
@@ -63,7 +65,10 @@ const AddressTab = () => {
                 >
                   Cancel
                 </button>
-                <button className='dark-btn save-change-btn col-12' onClick={()=>updateUser()}>
+                <button
+                  className='dark-btn save-change-btn col-12'
+                  onClick={() => updateUser()}
+                >
                   Save changes
                 </button>
               </div>

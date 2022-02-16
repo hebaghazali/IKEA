@@ -39,8 +39,8 @@ export const addData = data => {
 
 export const filterCollection = async (
   collName,
-  condition = undefined,
-  secondCond
+  secondCond,
+  condition = undefined
 ) => {
   //dispatch loading
   store.dispatch(changeLoader(true));

@@ -1,34 +1,42 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { removeFromCart, setCartItemAmount } from "../../store/actions/cartProducts";
+import {
+  removeFromCart,
+  setCartItemAmount,
+} from '../../store/actions/cartProducts';
 
-const CartCard = (props) => {
-    const [selectedAmount,setSelectedAmount] = useState(props.purchasedQuantity);
-    const dispatch = useDispatch();
+const CartCard = props => {
+  const [selectedAmount, setSelectedAmount] = useState(props.purchasedQuantity);
+  const dispatch = useDispatch();
 
-    const deleteItem = ()=>{
-        dispatch(removeFromCart(props.id));
-        dispatch(setCartItemAmount(props.id,0))
-    }
-    useEffect(()=>{
-        dispatch(setCartItemAmount({id:props.id,PurchasedAmount:selectedAmount}))
-    },[selectedAmount]);
+  const deleteItem = () => {
+    dispatch(removeFromCart(props.id));
+    dispatch(setCartItemAmount(props.id, 0));
+  };
+  useEffect(() => {
+    dispatch(
+      setCartItemAmount({ id: props.id, PurchasedAmount: selectedAmount })
+    );
+  }, [dispatch, props.id, selectedAmount]);
+
+  const selectAmount = event => {
+    setSelectedAmount(Number(event.target.value));
+  };
+
   return (
     <>
       <div className='shop-section'>
         <div className='shop-icon'>
-          <button className='prod-box'
-          onClick={()=>deleteItem()}
-          >
+          <button className='prod-box' onClick={() => deleteItem()}>
             <i className='fas fa-trash-alt'></i>
           </button>
 
           <div className='prod-box'>
-            <select defaultValue={selectedAmount}>
+            <select defaultValue={selectedAmount} onChange={selectAmount}>
               {(() => {
                 const options = [];
                 for (let i = 0; i < props.product.Quantity; i++) {
-                  options.push(<option key={i+1} onClick={()=>setSelectedAmount(i+1)}>{i+1}</option>);
+                  options.push(<option key={i + 1}>{i + 1}</option>);
                 }
                 return options;
               })()}
@@ -37,10 +45,7 @@ const CartCard = (props) => {
         </div>
 
         <div className='shopping-img'>
-          <img
-            src={props.product.Images[0]}
-            alt='...'
-          />
+          <img src={props.product.Images[0]} alt='...' />
         </div>
 
         <div className='shopping-info'>
@@ -48,10 +53,12 @@ const CartCard = (props) => {
           <p>{props.product.Description}</p>
           <h6>EGP {props.product.Price}</h6>
           <p className='txt-info'>
-            {props.product.Material}, {props.product.Width} x {props.product.Length}
+            {props.product.Material}, {props.product.Width} x{' '}
+            {props.product.Length}
           </p>
           <span>
-            Subtotal: <strong>EGP {props.product.Price * selectedAmount}</strong>
+            Subtotal:{' '}
+            <strong>EGP {props.product.Price * selectedAmount}</strong>
           </span>
         </div>
       </div>

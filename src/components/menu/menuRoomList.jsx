@@ -23,9 +23,9 @@ import { getCollection } from '../../services/firebase';
 
 const MenuRoomList = props => {
   const [rooms, setRooms] = useState([]);
-  useEffect(() => {
-    getCollection('RoomCategories').then(allCategories => {
-      setRooms(allCategories.docs);
+  useEffect(()=>{
+    getCollection('RoomCategories').then((allCategories) => {
+        setRooms(allCategories);
     });
   }, []);
   return (
@@ -49,7 +49,7 @@ const MenuRoomList = props => {
               className='card category-card col-3 col-md-5'
               to={`/category/room/${room.data().Name}/${room.id}`}
             >
-              <img src='' className='card-img-top' alt='...' />
+              <img src={room.data().Image} className='card-img-top' alt='...' />
               <div className='card-body category-body'>
                 <p className='card-text'>{room.data().Name}</p>
               </div>
