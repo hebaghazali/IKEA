@@ -139,3 +139,41 @@ export const removeCartItemFromUser = async (userID, productID) => {
 export const addDocByID = async (collName, ID, data) => {
   await setDoc(doc(fireStore, collName, ID), data);
 };
+
+
+// Function that use it in fav page
+export const addFavItemsToUser = async (userID, productID) => {
+  let favItems = [];
+  await getDoc(doc(fireStore, 'users', userID)).then(res => {
+    if (res.data().FavItems) {
+      favItems.push(...res.data().FavItems);
+    }
+  });
+
+  updateDoc(doc(fireStore, 'users', userID), {
+    FavItems: [productID, ...favItems],
+  })
+    .then(() => {
+      console.log('cart items added to current user');
+    })
+    .catch(err => console.log('adding cart items to user ERROR: ' + err));
+};
+
+export const removeFavItemFromUser = async (userID, productID) => {
+  let favItems = [];
+  await getDoc(doc(fireStore, 'users', userID)).then(res => {
+    if (res.data().FavItems) {
+      favItems.push(...res.data().FavItems);
+    }
+  });
+
+  await updateDoc(doc(fireStore, 'users', userID), {
+    FavItems: favItems.filter(id => id !== productID),
+  });
+};
+
+export const getFavItemsFromUser = userID => {
+  return getDoc(doc(fireStore, 'users', userID)).then(res => {
+    return res.data().FavItems;
+  });
+};
