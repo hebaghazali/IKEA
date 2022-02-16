@@ -18,21 +18,22 @@ const Navbar = () => {
   const cartItems = useSelector(state => state.cartProducts.cartProducts);
 
   useEffect(() => {
-    getCartItemsFromUser(localStorage.getItem('UID')).then(productIDs => {
-      // console.log(productIDs);
+    localStorage.getItem('UID') &&
+      getCartItemsFromUser(localStorage.getItem('UID')).then(productIDs => {
+        // console.log(productIDs);
 
-      productIDs &&
-        productIDs.forEach(productID => {
-          getProductDataById(productID).then(productData => {
-            // if there are cart items that already exist in store don't dispatch again and just skip it
-            if (!cartItems.some(item => item.id === productID))
-              // use this condition if the navbar will be rendered again, but as long as it is never rendered again this condition won't be needed
-              dispatch(
-                addToCart({ id: productID, productData, PurchasedAmount: 1 })
-              );
+        productIDs &&
+          productIDs.forEach(productID => {
+            getProductDataById(productID).then(productData => {
+              // if there are cart items that already exist in store don't dispatch again and just skip it
+              if (!cartItems.some(item => item.id === productID))
+                // use this condition if the navbar will be rendered again, but as long as it is never rendered again this condition won't be needed
+                dispatch(
+                  addToCart({ id: productID, productData, PurchasedAmount: 1 })
+                );
+            });
           });
-        });
-    });
+      });
   }, []);
 
   return (
