@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
 
-const MenuOfferList = (props) => {
+const MenuOfferList = props => {
   return (
     <div className='offcanvas-body menu-body'>
       <div className='d-flex flex-row'>
         <button
-          className='position-sticky menu-btn'
+          className='position-sticky menu-btn left-arrow'
           onClick={() => {
             props.changeSelection('');
           }}

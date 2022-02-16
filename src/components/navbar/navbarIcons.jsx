@@ -4,22 +4,28 @@ import { NavLink } from 'react-router-dom';
 
 const NavbarIcons = () => {
   const { cartProducts, favourits } = useSelector(state => state);
-
   return (
     <>
       <div className='navbar-icons'>
-        <NavLink to='/login'>
+        {/* <NavLink to='/login'>
+          <i className='bi bi-person'></i>
+        </NavLink> */}
+        <NavLink to='/profile'>
           <i className='bi bi-person'></i>
         </NavLink>
         <NavLink to='/favorite' style={{ position: 'relative' }}>
           <i className='bi bi-heart'></i>
-          <span className='badge-yellow'>{favourits.favourits.length}</span>
+          {favourits.favourits.length !== 0 && (
+            <span className='badge-yellow'>{favourits.favourits.length}</span>
+          )}
         </NavLink>
-        <NavLink to='/shopping-bag' style={{ position: 'relative' }}>
+        <NavLink to='/shoppingcart' style={{ position: 'relative' }}>
           <i className='bi bi-minecart-loaded'></i>
-          <span className='badge-yellow'>
-            {cartProducts.cartProducts.length}
-          </span>
+          {cartProducts.cartProducts.length !== 0 && (
+            <span className='badge-yellow'>
+              {cartProducts.cartProducts.length}
+            </span>
+          )}
         </NavLink>
       </div>
     </>

@@ -1,4 +1,3 @@
-
 import { initializeApp } from 'firebase/app'
 import {getFirestore} from 'firebase/firestore';
 import {getAuth} from "firebase/auth";
@@ -11,7 +10,7 @@ const firebaseConfig = {
   appId: '1:293717792182:web:f170e2edfe2370c9769d17',
 };
 
-//test 
+//test
 
 // const firebaseConfig = {
 //   apiKey: "AIzaSyDPXka0wfchj1QecSLRkaIWY3sE1vjV6OY",

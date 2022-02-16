@@ -10,11 +10,11 @@ const SubCategoryCard = (props) => {
       )}
       <Link
         to={{
-          pathname: "/category/products",
+          pathname: "/category/products/"+props.element.id,
           state: {
-            type: props.params.type,//products or rooms
-            name: props.params.name,//category name
-            id: props.params.id,//category Id
+            type: props.type,//products or rooms
+            name: props.name,//category name
+            id: props.id,//category Id
             subCatName:props.element.data().Name,
             subCatId:props.element.id,
             subObj:props.element.data()
@@ -26,7 +26,8 @@ const SubCategoryCard = (props) => {
         // name={props.element.Name}
       >
         <img
-          src='https://www.ikea.com/global/assets/navigation/images/gaming-furniture-55002.jpeg?imwidth=300'
+          // src='https://www.ikea.com/global/assets/navigation/images/gaming-furniture-55002.jpeg?imwidth=300'
+          src={props.element.data().Image}
           className='card-img-top'
           alt='...'
         />

@@ -3,7 +3,7 @@ import LocationAccordion from "../components/accordion/locationsAccordion";
 const StoresPage = () => {
   return (
     <>
-      <div className='row big-title col-12 col-md-7 p-2'>
+      <div className='row big-title col-12 col-md-7 p-2 border-top pt-nav'>
         Choose your nearest IKEA store
       </div>
       <div className='row small-text col-12 col-md-7 p-2'>
