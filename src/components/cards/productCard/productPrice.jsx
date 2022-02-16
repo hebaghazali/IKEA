@@ -5,13 +5,13 @@ const ProductPrice = ({ Price, SalePrice }) => {
     <div className='price'>
       {SalePrice && (
         <div className='line-through text-decoration-line-through'>
-          <sup>EGP {Price}</sup>
+          <sup>EGP {SalePrice}</sup>
         </div>
       )}
       <div className='original-price'>
         <sup>EGP</sup>
         <span>
-          <strong> {SalePrice ? SalePrice : Price} </strong>
+          <strong> {Price} </strong>
         </span>
       </div>
     </div>

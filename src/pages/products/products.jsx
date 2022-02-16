@@ -22,6 +22,7 @@ const Products = props => {
   let { type, name, id, subCatName, subCatId, subObj } = location?.state;
   const [products, setProducts] = useState(null);
   const [subCategories, setSubCategories] = useState(null);
+  const [roomBtn, setRoomBtn] = useState(false);
   const { loader } = useSelector(state => state.loader);
 
   const sortStates = [
@@ -186,6 +187,11 @@ const Products = props => {
       .catch(err => console.log('error :', err));
   };
 
+  const clearFilters=()=>{
+    getProducts();
+
+  }
+
   useEffect(() => {
     getProducts();
     getSubCategories();
@@ -252,8 +258,13 @@ const Products = props => {
           <FilterButton title='allFilters' icon='fas fa-filter' noDrop />
         </div>
 
-        <ProductRoomBtn totalItems={products?.length} />
+        <ProductRoomBtn totalItems={products?.length} setRoomBtn={(val)=>setRoomBtn(val)} />
       </div>
+
+      {true&& <div className='my-3'>
+       <FilterButton title='clear filter' icon='bi bi-x' noDrop  setRoomBtn={clearFilters}/>
+      </div>}
+
 
       <div className='carousel-body p-0 pb-2 mb-5'>
         <div className='row' id='show-proDetail'>
@@ -266,6 +277,7 @@ const Products = props => {
               productData={i.data()}
               pId={i.id}
               showOptions
+              roomBtn={roomBtn}
             />
           ))}
         </div>
