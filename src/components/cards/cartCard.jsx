@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { removeCartItemFromUser } from '../../services/firebase';
 import {
   removeFromCart,
   setCartItemAmount,
@@ -12,6 +13,8 @@ const CartCard = props => {
   const deleteItem = () => {
     dispatch(removeFromCart(props.id));
     dispatch(setCartItemAmount(props.id, 0));
+
+    removeCartItemFromUser(localStorage.getItem('UID'), props.id);
   };
 
   const selectAmount = event => {
