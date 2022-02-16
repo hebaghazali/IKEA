@@ -22,7 +22,7 @@ function SignIn() {
   });
 
   // Function to hadndle change in any input and write into it
-  const handleChangeInInput = (e) => {
+  const handleChangeInInput = e => {
     const regName = /^\w[a-zA-Z]{3,}/;
     const regPhoneNum = /^01[0125][0-9]{8}$/;
     const regEmail = /^([a-zA-Z0-9_\-\.]+){3,}@([a-zA-Z0-9_\-\.]+){3,}(.com)$/;
@@ -106,18 +106,18 @@ function SignIn() {
 
   async function handleSignup() {
     console.log('function signIn');
-    var userObj={
+    var userObj = {
       FirstName: firstNameRef.current.value,
       LastName: lastNameRef.current.value,
       Email: emailRef.current.value,
       PhoneNum: phoneRef.current.value,
-      PrefferedStore: storeRef.current.value
-    }
+      PrefferedStore: storeRef.current.value,
+    };
     setLoading(true);
     try {
       await signup(emailRef.current.value, passwordRef.current.value).then(
-        (userCredentials) => {
-          addDocByID('users', userCredentials.user.uid,userObj).then(() => {
+        userCredentials => {
+          addDocByID('users', userCredentials.user.uid, userObj).then(() => {
             localStorage.setItem('UID', userCredentials.user.uid);
             // changeUser(userObj);
             window.location.href = '/profile';
@@ -157,7 +157,7 @@ function SignIn() {
                       name='Name'
                       placeholder='First Name'
                       required
-                      onChange={(e) => {
+                      onChange={e => {
                         handleChangeInInput(e);
                       }}
                       ref={firstNameRef}
@@ -172,7 +172,7 @@ function SignIn() {
                       name='Name'
                       placeholder='Last name'
                       required
-                      onChange={(e) => {
+                      onChange={e => {
                         handleChangeInInput(e);
                       }}
                       ref={lastNameRef}
@@ -187,7 +187,7 @@ function SignIn() {
                         id='validationCustom01'
                         name='Phone'
                         placeholder='EG(+20)'
-                        onChange={(e) => {
+                        onChange={e => {
                           handleChangeInInput(e);
                         }}
                         ref={phoneRef}
@@ -227,7 +227,7 @@ function SignIn() {
                           placeholder='Email(UserName)'
                           name='Email'
                           required
-                          onChange={(e) => {
+                          onChange={e => {
                             handleChangeInInput(e);
                           }}
                           ref={emailRef}
@@ -247,7 +247,7 @@ function SignIn() {
                           required
                           name='Password'
                           placeholder='Password'
-                          onChange={(e) => {
+                          onChange={e => {
                             handleChangeInInput(e);
                           }}
                           ref={passwordRef}
