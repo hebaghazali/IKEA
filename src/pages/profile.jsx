@@ -1,13 +1,32 @@
-import ProfileTab from "../components/profile/profileTabs";
+import ProfileTab from '../components/profile/profileTabs';
 import { useSelector } from 'react-redux';
-import { updateUserStorageByID } from "../services/firebase";
-import { useEffect } from "react";
+import { updateUserStorageByID } from '../services/firebase';
+import { useEffect } from 'react';
+import { logout, auth } from '../firebaseConfig/firebase';
+import { signOut, onAuthStateChanged } from 'firebase/auth';
 
 const Profile = () => {
-    const user= useSelector((state)=>state.user.user);
-    useEffect(()=>{
-      updateUserStorageByID("5wIZCtrIXgZ4S9OiPyrx");
-    },[])
+  const user = useSelector(state => state.user.user);
+  useEffect(() => {
+    updateUserStorageByID('5wIZCtrIXgZ4S9OiPyrx');
+  }, []);
+
+  function handleLogout() {
+    console.log('logoutFunction');
+    signOut(auth);
+    window.location.href = '/';
+  }
+
+  onAuthStateChanged(auth, user => {
+    if (user) {
+      console.log(user.email);
+      console.log(user.uid);
+      localStorage.setItem('UID', user.uid);
+    } else {
+      window.location.href = '/sign';
+    }
+  });
+
   return (
     <>
       <div className='mt-nav-2 pt-nav border-top'>
@@ -17,11 +36,11 @@ const Profile = () => {
           </div>
           <div className='d-flex pt-2'>
             Need to change account?
-            <button className='logout'>
+            <button className='logout' onClick={handleLogout}>
               Log out
             </button>
           </div>
-          <ProfileTab/>
+          <ProfileTab />
         </div>
       </div>
     </>

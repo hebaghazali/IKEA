@@ -19,7 +19,7 @@ const Home = () => {
       <Slider />
 
       <Carousel
-        condition={{ property: 'LowerPrice', operator: '>', value: 0 }}
+        condition={{ property: 'LowerPrice', operator: '==', value: true }}
       />
 
       <GoodToKnowCards />

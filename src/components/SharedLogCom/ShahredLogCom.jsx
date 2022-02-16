@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import '../../assets/scss/pages/_login.scss';
-import {auth} from '../../config/firebaseConfig'
-import Hello from '../Hello';
+import { Link } from 'react-router-dom';
+import { signup, login, logout, useAuth } from '../../firebaseConfig/firebase';
+// import {auth} from '../../config/firebaseConfig'
+// import Hello from '../Hello';
 
 function SharedLogComp() {
   const [users, setUser] = useState({
@@ -14,8 +16,8 @@ function SharedLogComp() {
     PasswordErr: null,
   });
 
-  const [Email, setEmail] = useState('')
-  const [Password, setPassword] = useState('')
+  const [Email, setEmail] = useState('');
+  const [Password, setPassword] = useState('');
 
   // Function to hadndle change in any input and write into it
   const handleChangeInInput = (e) => {
@@ -62,61 +64,29 @@ function SharedLogComp() {
     }
   };
 
-  const handleLogIn =() => {
-    clearError()
-    auth
-    .logInWithEmailAndPassword(Email, Password)
-    // .catch((err) => {
-    //   switch(err.code)
-    //   {
-    //     case "auth/invalid-email":
-    //     case "auth/user-disabled":
-    //     case "auth/user-not-found":
-    //       setError({EmailErr: err.message})
-    //       break
+  const [loading, setLoading] = useState(false);
+  const currentUser = useAuth();
 
-    //     case "auth/wrong-password":
-    //       setError({PasswordErr: err.message})
-    //       break
-    //   }
-    // })
+  const emailRef = useRef();
+  const passwordRef = useRef();
+
+  async function handleLogin() {
+    console.log('function login');
+    setLoading(true);
+    try {
+      await login(emailRef.current.value, passwordRef.current.value);
+      window.location.href = '/profile';
+    } catch {
+      alert('User not found you can signup!');
+      window.location.href = '/sign';
+    }
+    setLoading(false);
   }
-
-  const authListner = () => {
-    auth
-    .onAuthStateChanged((users) => {
-      if(users)
-      {
-        clearInputs()
-        setUser(users)
-      }
-      else
-      {
-        setUser("")
-      }
-    })
-  }
-
-  const clearError = () => {
-    setEmail('')
-    setPassword('')
-  }
-
-  const clearInputs = () => {
-    setUser({Email:'', Password:''})
-  }
-
-  useEffect(() => {
-    authListner()
-  }, [])
 
   return (
     <>
-      {users? (
-        <Hello />
-      ) : (
-        <div className='form-floating mb-3 input-log'>
-        <form className='row g-3 needs-validation' noValidate>
+      <div className='form-floating mb-3 input-log'>
+        <div className='row g-3 needs-validation' noValidate>
           <div>
             <input
               type='text'
@@ -128,6 +98,7 @@ function SharedLogComp() {
               onChange={(e) => {
                 handleChangeInInput(e);
               }}
+              ref={emailRef}
             />
             <p></p>
             <p className='text-secondary'>
@@ -138,7 +109,7 @@ function SharedLogComp() {
           </div>
           <div>
             <input
-              type='text'
+              type='password'
               className='form-control input-sign-form'
               id='validationCustom05'
               required
@@ -147,6 +118,7 @@ function SharedLogComp() {
               onChange={(e) => {
                 handleChangeInInput(e);
               }}
+              ref={passwordRef}
             />
             <p></p>
             <p className='text-secondary'>Password must have charters</p>
@@ -159,12 +131,17 @@ function SharedLogComp() {
             <p className='text-danger'>{errors.PasswordErr}</p>
           </div>
           <a href='#'>Forget your Password?</a>
-          <button className='login-creation' onClick={() => {handleLogIn()}}>Login</button>
-        </form>
+          <button
+            className='login-creation'
+            onClick={() => {
+              handleLogin();
+            }}
+          >
+            {' '}
+            LogIn{' '}
+          </button>
+        </div>
       </div>
-      )
-
-      }
     </>
   );
 }

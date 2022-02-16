@@ -3,6 +3,8 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import Navbar from './components/navbar/navbar';
 import Home from './pages/home.jsx';
 import Footer from './components/footer/footer';
+import SignIn from './components/SignIn/SignInPage';
+import LogIn from './components/LogIn/LogIn';
 import Products from './pages/products/products';
 import Menu from './components/menu/menu';
 import SubCategory from './pages/subCategory';
@@ -12,8 +14,6 @@ import { Provider } from 'react-redux';
 import store from './store/store';
 import ProductA from './components/productA/productA';
 import ShoppingCart from './pages/shoppingCart';
-import SignInPage from './components/SignIn/SignInPage';
-import LogIn from './components/LogIn/LogIn';
 
 function App() {
   return (
@@ -38,14 +38,19 @@ function App() {
             <Route path='/stores' component={StoresPage} />
             <Route path='/shoppingcart' component={ShoppingCart} />
             <Route path='/profile' component={Profile} />
-            <Route path='/category/products/:subId' exact component={Products} />
-            <Route path='/sign' exact component={SignInPage} />
+            <Route
+              path='/category/products/:subId'
+              exact
+              component={Products}
+            />
+            <Route path='/sign' exact component={SignIn} />
             <Route path='/login' exact component={LogIn} />
             <Route path='/products/:pId' exact component={ProductA} />
             <Redirect from='/' exact to='/home' />
           </Switch>
         </div>
       </div>
+
       <Footer />
     </Provider>
   );
