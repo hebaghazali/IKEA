@@ -266,6 +266,7 @@ const Products = props => {
               productData={i.data()}
               pId={i.id}
               showOptions
+              carousel={false}
             />
           ))}
         </div>

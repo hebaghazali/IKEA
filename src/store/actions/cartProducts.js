@@ -1,20 +1,20 @@
-export const addToCart = (data) => {
+export const addToCart = data => {
   return {
-    type: 'ADD-TO-CART',
+    type: 'ADD_TO_CART',
     payload: data,
   };
 };
 
-export const removeFromCart = (data) => {
+export const removeFromCart = data => {
   return {
-    type: 'REMOVE-FROM-CART',
+    type: 'REMOVE_FROM_CART',
     payload: data,
   };
 };
 
-export const setCartItemAmount = (data)=>{
-  return{
-    type: 'SET-AMOUNT',
-    payload:data
-  }
-}
+export const setCartItemAmount = data => {
+  return {
+    type: 'SET_AMOUNT',
+    payload: data,
+  };
+};
