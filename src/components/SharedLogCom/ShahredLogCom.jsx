@@ -77,6 +77,7 @@ function SharedLogComp() {
     try {
       await login(emailRef.current.value, passwordRef.current.value).then((userCredentials)=>{
         // changeUser(userCredentials.user.uid);
+        localStorage.setItem('UID', userCredentials.user.uid);
       })
       window.location.href = '/profile';
     } catch {

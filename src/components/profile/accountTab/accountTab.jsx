@@ -5,7 +5,7 @@ import EditPassword from './editPassword';
 import EditPersonalInfo from './editPersonalInfo';
 const AccountTab = () => {
   const [editSection, setEditSection] = useState(0);
-  const user= useSelector((state)=>state.user.user);
+  const user = useSelector((state) => state.user.user);
   return (
     <>
       <section className='py-5 border-bottom'>
@@ -30,18 +30,22 @@ const AccountTab = () => {
         </div>
         {editSection !== 1 && (
           <>
-            <span className='d-block'>{user.FirstName + " " + user.LastName}</span>
-            { user.BirthDate==="" &&<span className='small-text'>Add birth date</span>}
-            { user.BirthDate!=="" &&<span className='small-text'>{user.BirthDate}</span>}
-            { user.Gender===""&&<p className='small-text'>Add gender</p> }
-            { user.Gender!==""&&<p className='small-text'>
-              {
-                user.Gender==="1" && "Male"
-              }
-              {
-                user.Gender==="2" && "Female"
-              }
-            </p> }
+            <span className='d-block'>
+              {user.FirstName + ' ' + user.LastName}
+            </span>
+            {user.BirthDate === '' && (
+              <span className='small-text'>Add birth date</span>
+            )}
+            {user.BirthDate !== '' && (
+              <span className='small-text'>{user.BirthDate}</span>
+            )}
+            {user.Gender === '' && <p className='small-text'>Add gender</p>}
+            {user.Gender !== '' && (
+              <p className='small-text'>
+                {user.Gender === '1' && 'Male'}
+                {user.Gender === '2' && 'Female'}
+              </p>
+            )}
           </>
         )}
         {editSection === 1 && (
@@ -73,8 +77,12 @@ const AccountTab = () => {
         </div>
         {editSection !== 2 && (
           <>
-            { user.PhoneNum==="" &&<span className='d-block'>Add mobile</span>}
-            { user.PhoneNum!=="" &&<span className='d-block'>{user.PhoneNum}</span>}
+            {user.PhoneNum === '' && (
+              <span className='d-block'>Add mobile</span>
+            )}
+            {user.PhoneNum !== '' && (
+              <span className='d-block'>{user.PhoneNum}</span>
+            )}
             <span className='small-text'>{user.Email}</span>
           </>
         )}
@@ -107,7 +115,12 @@ const AccountTab = () => {
         </div>
         {editSection !== 3 && (
           <>
-          <input className='d-block border-0' type="password" value="{user.Password}" disabled/>
+            <input
+              className='d-block border-0'
+              type='password'
+              value='userPassword'
+              disabled
+            />
           </>
         )}
         {editSection === 3 && (
