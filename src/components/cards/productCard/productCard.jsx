@@ -10,10 +10,7 @@ import { Link } from 'react-router-dom';
 import { getCollection } from './../../../services/firebase';
 import { useEffect } from 'react';
 
-const ProductCard = ({ showOptions, pId, productData, carousel }) => {
-  const { Name, ProductName, Price, SalePrice, Width, Length, Images } =
-    productData;
-
+const ProductCard = ({ showOptions, pId, productData }) => {
   const { favourits } = useSelector(state => state.favourits);
   const { cartProducts } = useSelector(state => state.cartProducts);
 

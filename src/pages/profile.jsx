@@ -36,10 +36,9 @@ const Profile = () => {
           </div>
           <div className='d-flex pt-2'>
             Need to change account?
-            {/* <button className='logout' onClick={handleLogout}>
+            <button className='logout' onClick={handleLogout}>
               Log out
-            </button> */}
-            <button className='logout'>Log out</button>
+            </button>
           </div>
           <ProfileTab />
         </div>
