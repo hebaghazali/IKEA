@@ -15,7 +15,7 @@ export default function favReducer(state = initialState, action) {
         ...state,
         favourits: state.favourits.filter(i => i.id !== action.payload),
       };
-
+      
       default:
         return state;
 
