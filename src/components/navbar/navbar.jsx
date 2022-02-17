@@ -11,7 +11,6 @@ import {
   getProductDataById,
   getFavItemsFromUser,
 } from '../../services/firebase';
-
 import { addToCart } from '../../store/actions/cartProducts';
 import { addToFav } from '../../store/actions/favourits';
 
@@ -23,6 +22,7 @@ const Navbar = () => {
 
   useEffect(() => {
 
+    // Handle Add toCart
     localStorage.getItem('UID') &&
       getCartItemsFromUser(localStorage.getItem('UID')).then(productIDs => {
         // console.log(productIDs);
@@ -35,6 +35,24 @@ const Navbar = () => {
                 // use this condition if the navbar will be rendered again, but as long as it is never rendered again this condition won't be needed
                 dispatch(
                   addToCart({ id: productID, productData, PurchasedAmount: 1 })
+                );
+            });
+          });
+      });
+
+      // Handle Add to Favourite
+      localStorage.getItem('UID') &&
+      getFavItemsFromUser(localStorage.getItem('UID')).then(productIDs => {
+        // console.log(productIDs);
+
+        productIDs &&
+          productIDs.forEach(productID => {
+            getProductDataById(productID).then(productData => {
+              // if there are cart items that already exist in store don't dispatch again and just skip it
+              if (!favItems.some(item => item.id === productID))
+                // use this condition if the navbar will be rendered again, but as long as it is never rendered again this condition won't be needed
+                dispatch(
+                  addToFav({ id: productID, productData })
                 );
             });
           });

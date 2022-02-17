@@ -154,9 +154,9 @@ export const addFavItemsToUser = async (userID, productID) => {
     FavItems: [productID, ...favItems],
   })
     .then(() => {
-      console.log('cart items added to current user');
+      console.log('Favourite items added to current user');
     })
-    .catch(err => console.log('adding cart items to user ERROR: ' + err));
+    .catch(err => console.log('adding Favourite items to user ERROR: ' + err));
 };
 
 export const removeFavItemFromUser = async (userID, productID) => {
