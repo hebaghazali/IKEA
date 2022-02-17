@@ -9,13 +9,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   getCartItemsFromUser,
   getProductDataById,
+  getFavItemsFromUser,
 } from '../../services/firebase';
+
 import { addToCart } from '../../store/actions/cartProducts';
+import { addToFav } from '../../store/actions/favourits';
 
 const Navbar = () => {
   const dispatch = useDispatch();
 
   const cartItems = useSelector(state => state.cartProducts.cartProducts);
+  const favItems = useSelector(state => state.favourits.favourits);
 
   useEffect(() => {
 

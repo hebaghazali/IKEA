@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import '../../assets/scss/pages/_favourite.scss'
 import { removeFromFav, setFavItemAmount } from '../../store/actions/favourits';
+import { removeFavItemFromUser } from '../../services/firebase';
+
 
 const FavouriteCard = (props) => {
   const [selectedAmount, setSelectedAmount] = useState(props.purchasedQuantity);
@@ -10,6 +12,9 @@ const FavouriteCard = (props) => {
   const deleteItem = () => {
     dispatch(removeFromFav(props.id));
     dispatch(setFavItemAmount(props.id, 0));
+
+    removeFavItemFromUser(localStorage.getItem('UID'), props.id);
+
   };
 
   const selectAmount = (event) => {
@@ -56,9 +61,9 @@ const FavouriteCard = (props) => {
             {props.product.Length}
           </p>
           {/* <!-- button For Shopping --> */}
-          <div class='prod-box col-5'>
-            <button class='card-button'>
-              <i class='fas fa-shopping-bag'></i> Add to shopping bag
+          <div className='prod-box col-5'>
+            <button className='card-button'>
+              <i className='fas fa-shopping-bag'></i> Add to shopping bag
             </button>
           </div>
         </div>

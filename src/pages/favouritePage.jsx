@@ -4,7 +4,8 @@ import '../assets/scss/pages/_favourite.scss'
 
 const FavouritePage = () => {
 
-  const cartItems = useSelector(state => state.favourits.favourits);
+  const favItems = useSelector(state => state.favourits.favourits);
+  
 
   return (
     <>
@@ -22,14 +23,13 @@ const FavouritePage = () => {
                 <h6></h6>
               </div>
               <hr />
-            <h6>No items in Favourite Page</h6>
             <div className='shopping-total-price'>
               <h6>Go to product and click on heart icon to save product in this page</h6>
             </div>
           </div>
           <section className='row shopping-page'>
             <section className='col-12 left-shopping-page'>
-              {cartItems.map(item => {
+              {favItems.map(item => {
                 return (
                   <FavouriteCard
                     id={item.id}
