@@ -101,7 +101,7 @@ export const getCartItemsFromUser = userID => {
   });
 };
 
-export const addCartItemsToUser = async (userID, productID) => {
+export const addCartItemToUser = async (userID, productID) => {
   let cartItems = [];
   await getDoc(doc(fireStore, 'users', userID)).then(res => {
     if (res.data().CartItems) {

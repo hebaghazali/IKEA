@@ -14,6 +14,7 @@ const Profile = () => {
   function handleLogout() {
     console.log('logoutFunction');
     signOut(auth);
+    localStorage.removeItem('UID');
     window.location.href = '/';
   }
 
