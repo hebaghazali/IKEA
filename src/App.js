@@ -14,8 +14,17 @@ import { Provider } from 'react-redux';
 import store from './store/store';
 import ProductA from './components/productA/productA';
 import ShoppingCart from './pages/shoppingCart';
+import GuardedRoute from 'react-guarded-route';
 
 function App() {
+  const loginValidator = () => {
+    return !localStorage.getItem('UID');
+  };
+
+  const profileValidator = () => {
+    return !!localStorage.getItem('UID');
+  };
+
   return (
     <Provider store={store}>
       <Menu />
@@ -37,15 +46,28 @@ function App() {
             />
             <Route path='/stores' component={StoresPage} />
             <Route path='/shoppingcart' component={ShoppingCart} />
-            <Route path='/profile' component={Profile} />
             <Route
               path='/category/products/:subId'
               exact
               component={Products}
             />
-            <Route path='/sign' exact component={SignIn} />
-            <Route path='/login' exact component={LogIn} />
             <Route path='/products/:pId' exact component={ProductA} />
+            <Route path='/sign' exact component={SignIn} />
+
+            <GuardedRoute
+              path='/login'
+              component={LogIn}
+              redirectTo='/profile'
+              validatorFunction={loginValidator()}
+            ></GuardedRoute>
+
+            <GuardedRoute
+              path='/profile'
+              component={Profile}
+              redirectTo='/sign'
+              validatorFunction={profileValidator()}
+            ></GuardedRoute>
+
             <Redirect from='/' exact to='/home' />
           </Switch>
         </div>
