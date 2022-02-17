@@ -11,14 +11,14 @@ const FavouritePage = () => {
       <div className='fav-parent'>
         <div className='container'>
           <div className='center-fav-page'>
-          <div class="fav-frow">
+          <div className="fav-frow">
                 <h3>Wish List</h3>
               </div>
 
-              <div class="fav-srow">
+              <div className="fav-srow">
                 <h6></h6>
                 <h6>Buy Online</h6>
-                <h6 class="availbility">Available in-store?</h6>
+                <h6 className="availbility">Available in-store?</h6>
                 <h6></h6>
               </div>
               <hr />

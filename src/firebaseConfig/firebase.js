@@ -32,9 +32,9 @@ export function login(email, password) {
   // console.log(password);
 }
 
-export function logout() {
-  return signOut(auth);
-}
+// export function logout() {
+//   return signOut(auth);
+// }
 
 // Custom Hook
 export function useAuth() {
