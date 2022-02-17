@@ -18,10 +18,12 @@ import GuardedRoute from 'react-guarded-route';
 
 function App() {
   const loginValidator = () => {
+    // If there is UID it will return false, otherwise it will return true
     return !localStorage.getItem('UID');
   };
 
   const profileValidator = () => {
+    // If there is UID it will return true, otherwise it will return false
     return !!localStorage.getItem('UID');
   };
 
@@ -52,11 +54,17 @@ function App() {
               component={Products}
             />
             <Route path='/products/:pId' exact component={ProductA} />
-            <Route path='/sign' exact component={SignIn} />
 
             <GuardedRoute
               path='/login'
               component={LogIn}
+              redirectTo='/profile'
+              validatorFunction={loginValidator()}
+            ></GuardedRoute>
+
+            <GuardedRoute
+              path='/sign'
+              component={SignIn}
               redirectTo='/profile'
               validatorFunction={loginValidator()}
             ></GuardedRoute>
