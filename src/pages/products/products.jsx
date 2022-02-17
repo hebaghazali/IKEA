@@ -15,6 +15,7 @@ import SectionTitle from './sectionTitle';
 import { useSelector } from 'react-redux';
 import EmptyData from './../../components/emptyData';
 import Carousel from './../../components/carousel/carousel';
+import FiltersMenu from './filtersMenu.jsx/filtersMenu';
 
 const Products = props => {
   const { match, location } = props;
@@ -255,7 +256,8 @@ const Products = props => {
             clickHandler={material => filterProds('Material', material)}
           />
 
-          <FilterButton title='allFilters' icon='fas fa-filter' noDrop />
+          <FilterButton title='allFilters' icon='fas fa-filter' noDrop  offcanvas/>
+          <FiltersMenu/>
         </div>
 
         <ProductRoomBtn totalItems={products?.length} setRoomBtn={(val)=>setRoomBtn(val)} />
