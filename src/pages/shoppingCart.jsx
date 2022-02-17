@@ -1,14 +1,14 @@
-import { useEffect, useState } from "react";
 import { useSelector } from 'react-redux';
 
-import CartCard from "../components/cards/cartCard";
+import CartCard from '../components/cards/cartCard';
 
 const ShoppingCart = () => {
-    const itemsCount=useSelector((state)=>state.cartProducts.totalAmountOfCartItems);
-    const cartItems=useSelector((state)=>state.cartProducts.cartProducts);
-    const totalOrderPrice=useSelector((state)=>state.cartProducts.totalPrice);
-    
-    // useEffecs
+  const itemsCount = useSelector(
+    state => state.cartProducts.totalAmountOfCartItems
+  );
+  const cartItems = useSelector(state => state.cartProducts.cartProducts);
+  const totalOrderPrice = useSelector(state => state.cartProducts.totalPrice);
+
   return (
     <>
       <div className='fav-parent'>
@@ -26,13 +26,16 @@ const ShoppingCart = () => {
           </div>
           <section className='row shopping-page'>
             <section className='col-12 left-shopping-page'>
-                {
-                    cartItems.map((item)=>{
-                        return(
-                            <CartCard id={item.id} key={item.id} product={item.productData} purchasedQuantity={item.PurchasedAmount}/>
-                        )  
-                    })
-                }
+              {cartItems.map(item => {
+                return (
+                  <CartCard
+                    id={item.id}
+                    key={item.id}
+                    product={item.productData}
+                    purchasedQuantity={item.PurchasedAmount}
+                  />
+                );
+              })}
             </section>
           </section>
         </div>

@@ -21,15 +21,15 @@ export const auth = getAuth();
 export function signup(email, password) {
   // addDoc(collection(firestore,'users'),data))
   return createUserWithEmailAndPassword(auth, email, password);
-  console.log(email);
-  console.log(password);
+  // console.log(email);
+  // console.log(password);
 }
 
 export function login(email, password) {
   return signInWithEmailAndPassword(auth, email, password)
     
-  console.log(email);
-  console.log(password);
+  // console.log(email);
+  // console.log(password);
 }
 
 // export function logout() {

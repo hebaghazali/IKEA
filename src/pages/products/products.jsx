@@ -280,6 +280,7 @@ const Products = props => {
               pId={i.id}
               showOptions
               roomBtn={roomBtn}
+              carousel={false}
             />
           ))}
         </div>
