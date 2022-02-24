@@ -89,8 +89,8 @@ export const getDocumentByID =async (collName, ID) => {
   });
 };
 
-export const updateUserStorageByID = ID => {
-  getDoc(doc(fireStore, 'users', ID)).then(res => {
+export const updateUserStorageByID = async(ID) => {
+  return getDoc(doc(fireStore, 'users', ID)).then(res => {
     store.dispatch(changeUser({ id: ID, user: res.data() }));
   });
 };

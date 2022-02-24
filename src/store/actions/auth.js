@@ -4,3 +4,8 @@ export function changeUser(data) {
     payload: data,
   };
 }
+export function clearUser(){
+  return{
+    type:'CLEAR_USER'
+  }
+}
