@@ -26,7 +26,6 @@ const Profile = () => {
 
   return (
     <>
-      <div className='mt-nav-2 pt-nav border-top'>
         <div className='col-12 col-md-11 col-lg-10 mx-auto'>
           <div className='row big-title col-12 col-md-7 pt-2' id='username'>
             Hello, {user.FirstName}
@@ -39,7 +38,6 @@ const Profile = () => {
           </div>
           <ProfileTab />
         </div>
-      </div>
     </>
   );
 };
