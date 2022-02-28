@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import CartCard from '../components/cards/cartCard';
 
@@ -21,7 +22,9 @@ const ShoppingCart = () => {
               <h4>EGP {totalOrderPrice}</h4>
             </div>
             <div className='shopping-total-price d-flex flex-row-reverse'>
-              <button>Begin Checkout</button>
+              <Link to='/checkout'>
+                <button>Begin Checkout</button>
+              </Link>
             </div>
           </div>
           <section className='row shopping-page'>

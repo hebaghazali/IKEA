@@ -9,6 +9,7 @@ import {
   getDoc,
   orderBy,
   setDoc,
+  limit,
 } from 'firebase/firestore';
 import { fireStore } from '../config/firebaseConfig';
 import { changeLoader } from './../store/actions/loader';
@@ -83,13 +84,13 @@ export const updateData = async (collName, ID, data) => {
   });
 };
 
-export const getDocumentByID =async (collName, ID) => {
+export const getDocumentByID = async (collName, ID) => {
   return await getDoc(doc(fireStore, collName, ID)).then(res => {
     return res.data();
   });
 };
 
-export const updateUserStorageByID = async(ID) => {
+export const updateUserStorageByID = async ID => {
   return getDoc(doc(fireStore, 'users', ID)).then(res => {
     store.dispatch(changeUser({ id: ID, user: res.data() }));
   });
@@ -140,7 +141,6 @@ export const addDocByID = async (collName, ID, data) => {
   await setDoc(doc(fireStore, collName, ID), data);
 };
 
-
 // Function that use it in fav page
 export const addFavItemsToUser = async (userID, productID) => {
   let favItems = [];
@@ -176,4 +176,28 @@ export const getFavItemsFromUser = userID => {
   return getDoc(doc(fireStore, 'users', userID)).then(res => {
     return res.data().FavItems;
   });
+};
+// Search
+
+export const getFirst4Categories = async () => {
+  const q = await query(collection(fireStore, 'subCategory'), limit(10));
+
+  let results = await getDocs(q);
+  // store.dispatch(changeLoader(false));
+
+  let categories = [];
+
+  results.forEach(res => {
+    categories.push({ id: res.id, data: res.data() });
+  });
+
+  return categories;
+};
+
+export const getProductCatById = id => {
+  return getDoc(doc(fireStore, 'ProductCategories', id)).then(
+    productCategories => {
+      return productCategories.data();
+    }
+  );
 };

@@ -10,12 +10,12 @@ import Menu from './components/menu/menu';
 import SubCategory from './pages/subCategory';
 import StoresPage from './pages/storeLocation';
 import Profile from './pages/profile';
-import { Provider } from 'react-redux';
-import store from './store/store';
 import ProductA from './components/productA/productA';
 import ShoppingCart from './pages/shoppingCart';
 import GuardedRoute from 'react-guarded-route';
 import FavouritePage from './pages/favouritePage';
+import Checkout from './components/paypalCheckout/checkout';
+import PayPal from './components/paypalCheckout/PayPal';
 
 function App() {
   const loginValidator = () => {
@@ -28,8 +28,13 @@ function App() {
     return !!localStorage.getItem('UID');
   };
 
+  const checkoutValidator = () => {
+    // If there is UID it will return true, otherwise it will return false
+    return !!localStorage.getItem('UID');
+  };
+
   return (
-    <Provider store={store}>
+    <>
       <Menu />
       <div className='body-container'>
         <Navbar />
@@ -79,13 +84,19 @@ function App() {
               validatorFunction={profileValidator()}
             ></GuardedRoute>
 
+            <GuardedRoute
+              path='/checkout'
+              component={Checkout}
+              redirectTo='/login'
+              validatorFunction={checkoutValidator()}
+            ></GuardedRoute>
+
             <Redirect from='/' exact to='/home' />
           </Switch>
         </div>
       </div>
-
       <Footer />
-    </Provider>
+    </>
   );
 }
 
