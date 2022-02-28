@@ -4,11 +4,20 @@ import { updateUserStorageByID } from '../services/firebase';
 import { useEffect } from 'react';
 import { auth } from '../firebaseConfig/firebase';
 import { signOut, onAuthStateChanged } from 'firebase/auth';
+import store from '../store/store';
+import { clearUser } from '../store/actions/auth';
+import { changeLoader } from '../store/actions/loader';
+import { useState } from 'react';
+import Loader from '../components/loader';
 
 const Profile = () => {
-  const user = useSelector(state => state.user.user);
+  const user = useSelector((state) => state.user.user);
+  // const loader = useSelector((state) => state.loader);
+  const [loader, setLoader] = useState(true);
   useEffect(() => {
-    updateUserStorageByID(localStorage.getItem('UID'));
+    updateUserStorageByID(localStorage.getItem('UID')).then(() =>
+      setLoader(false)
+    );
   }, []);
 
   function handleLogout() {
@@ -16,9 +25,10 @@ const Profile = () => {
     signOut(auth);
     localStorage.removeItem('UID');
     window.location.href = '/';
+    store.dispatch(clearUser());
   }
 
-  onAuthStateChanged(auth, user => {
+  onAuthStateChanged(auth, (user) => {
     if (!user) {
       window.location.href = '/sign';
     }
@@ -26,7 +36,8 @@ const Profile = () => {
 
   return (
     <>
-      <div className='mt-nav-2 pt-nav border-top'>
+      {loader && <Loader />}
+      {!loader && (
         <div className='col-12 col-md-11 col-lg-10 mx-auto'>
           <div className='row big-title col-12 col-md-7 pt-2' id='username'>
             Hello, {user.FirstName}
@@ -39,7 +50,7 @@ const Profile = () => {
           </div>
           <ProfileTab />
         </div>
-      </div>
+      )}
     </>
   );
 };
