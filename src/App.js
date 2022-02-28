@@ -26,23 +26,22 @@ function App() {
           <Switch>
             <Route path='/home' component={Home} />
             <Route path='/shoppingcart' component={ShoppingCart} />
-            <Route path='/category/:type/:name/:id' component={SubCategory} />
             <Route path='/shoppingcart' component={ShoppingCart} />
             <Route path='/stores' component={StoresPage} />
-            <Route path='/proA' component={ProductA} />
+            <Route path='/category/:type/:name/:id/:subName/:subId/:prodName/:prodId' component={ProductA} />
             <Route
               path='/category/:type/:name/:id'
               exact
               component={SubCategory}
             />
-            <Route path='/stores' component={StoresPage} />
-            <Route path='/shoppingcart' component={ShoppingCart} />
-            <Route path='/profile' component={Profile} />
             <Route
-              path='/category/products/:subId'
+              path='/category/:type/:name/:id/:subName/:subId'
               exact
               component={Products}
             />
+            <Route path='/stores' component={StoresPage} />
+            <Route path='/shoppingcart' component={ShoppingCart} />
+            <Route path='/profile' component={Profile} />
             <Route path='/sign' exact component={SignIn} />
             <Route path='/login' exact component={LogIn} />
             <Route path='/products/:pId' exact component={ProductA} />

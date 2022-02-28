@@ -5,7 +5,6 @@ import LeftSide from "./left-side";
 import RightSide from "./right-side";
 
 const ProductA = (props) => {
-  console.log(props.location.state.prod);
     const{prod}=props.location.state
   return (
       <>

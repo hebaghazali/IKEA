@@ -84,7 +84,7 @@ export const updateData = async (collName, ID, data) => {
 };
 
 export const getDocumentByID = (collName, ID) => {
-  getDoc(doc(fireStore, collName, ID)).then(res => {
+  return getDoc(doc(fireStore, collName, ID)).then(res => {
     return res.data();
   });
 };
