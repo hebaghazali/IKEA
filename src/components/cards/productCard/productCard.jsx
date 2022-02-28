@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToFav, removeFromFav } from '../../../store/actions/favourits';
-
+import { addFavItemsToUser } from '../../../services/firebase';
 import ProductPrice from './productPrice';
 import ProductVariant from './productVariant';
 import { addToCart } from './../../../store/actions/cartProducts';
@@ -28,8 +28,12 @@ const ProductCard = ({ showOptions, pId, productData }) => {
   const dispatch = useDispatch();
   const toggleFavourite = () => {
     dispatch(
-      isFavourite ? removeFromFav(pId) : addToFav({ id: pId, productData })
-    );
+      isFavourite ? removeFromFav(pId) :
+      
+      addToFav({ id: pId, productData }));
+      setInCart(true);
+
+    addFavItemsToUser(localStorage.getItem('UID'), pId);
     setIsFavourite(!isFavourite);
     // let productData2 = productData;
     // productData2.Color = 'green';

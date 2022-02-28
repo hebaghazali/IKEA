@@ -11,3 +11,10 @@ export const removeFromFav = data => {
     payload: data,
   };
 };
+
+export const setFavItemAmount = data => {
+  return {
+    type: 'SET_AMOUNT',
+    payload: data,
+  };
+};

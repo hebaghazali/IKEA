@@ -15,6 +15,7 @@ import store from './store/store';
 import ProductA from './components/productA/productA';
 import ShoppingCart from './pages/shoppingCart';
 import GuardedRoute from 'react-guarded-route';
+import FavouritePage from './pages/favouritePage';
 
 function App() {
   const loginValidator = () => {
@@ -54,6 +55,8 @@ function App() {
               component={Products}
             />
             <Route path='/products/:pId' exact component={ProductA} />
+
+            <Route path='/favorite' exact component={FavouritePage} />
 
             <GuardedRoute
               path='/login'

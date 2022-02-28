@@ -21,6 +21,8 @@ export default function authReducer(state = initial, action) {
         user: action.payload.user,
         id: action.payload.id
       };
+    case 'CLEAR_USER':
+      return state={};
     default:
       return state;
   }

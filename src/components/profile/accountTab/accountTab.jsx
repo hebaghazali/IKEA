@@ -33,13 +33,13 @@ const AccountTab = () => {
             <span className='d-block'>
               {user.FirstName + ' ' + user.LastName}
             </span>
-            {user.BirthDate === '' && (
+            {!user.BirthDate && (
               <span className='small-text'>Add birth date</span>
             )}
             {user.BirthDate !== '' && (
               <span className='small-text'>{user.BirthDate}</span>
             )}
-            {user.Gender === '' && <p className='small-text'>Add gender</p>}
+            {!user.Gender && <p className='small-text'>Add gender</p>}
             {user.Gender !== '' && (
               <p className='small-text'>
                 {user.Gender === '1' && 'Male'}
