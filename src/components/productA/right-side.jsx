@@ -13,7 +13,7 @@ const RightSide = (props) => {
   const dispatch = useDispatch();
   const addToBag = () => {
     const{productData}=props.prod;
-    dispatch( addToCart({ id: pId, productData }));
+    dispatch(addToCart({ id: pId, productData, PurchasedAmount: 1 }));
     setAdded(true);
   };
 

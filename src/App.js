@@ -42,11 +42,11 @@ function App() {
         <div className='mt-nav-4 pt-nav border-top'>
           <Switch>
             <Route path='/home' component={Home} />
-            <Route path='/shoppingcart' component={ShoppingCart} />
-            <Route path='/category/:type/:name/:id' component={SubCategory} />
-            <Route path='/shoppingcart' component={ShoppingCart} />
             <Route path='/stores' component={StoresPage} />
-            <Route path='/proA' component={ProductA} />
+            <Route
+              path='/category/:type/:name/:id/:subName/:subId/:prodName/:prodId'
+              component={ProductA}
+            />
             <Route
               path='/category/:type/:name/:id'
               exact
@@ -55,7 +55,7 @@ function App() {
             <Route path='/stores' component={StoresPage} />
             <Route path='/shoppingcart' component={ShoppingCart} />
             <Route
-              path='/category/products/:subId'
+              path='/category/:type/:name/:id/:subName/:subId'
               exact
               component={Products}
             />

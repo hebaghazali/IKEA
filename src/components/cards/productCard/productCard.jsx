@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 import { getCollection } from './../../../services/firebase';
 import { useEffect } from 'react';
 
-const ProductCard = ({ showOptions, pId, productData }) => {
+const ProductCard = ({ showOptions, pId, productData , roomBtn ,baseUrl}) => {
   const { favourits } = useSelector(state => state.favourits);
   const { cartProducts } = useSelector(state => state.cartProducts);
 
@@ -85,7 +85,8 @@ const ProductCard = ({ showOptions, pId, productData }) => {
           <Link
             className='card category-card col-12 '
             to={{
-              pathname: '/products/' + viewedProduct.pId,
+              // pathname: '/products/' + viewedProduct.pId,
+              pathname:baseUrl? `${baseUrl}/${Name}/${viewedProduct.pId}`: '/products/' + viewedProduct.pId,
               state: {
                 prod: {
                   id: viewedProduct.pId,
@@ -95,8 +96,7 @@ const ProductCard = ({ showOptions, pId, productData }) => {
             }}
           >
             <img
-              // src='https://www.ikea.com/eg/en/images/products/soederhamn-chaise-longue-samsta-orange__0802365_pe768432_s5.jpg?f=xxs'
-              src={Images[isHovering ? 1 : 0]}
+              src={roomBtn?Images[isHovering ? 0 : 1] :Images[isHovering ? 1 : 0]}
               className='card-img-top'
               alt={Name}
               onMouseOver={() => setIsHovering(true)}

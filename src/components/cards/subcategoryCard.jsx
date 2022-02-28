@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 
 const SubCategoryCard = (props) => {
+  const{type,name,id,element}=props;
   return (
     <>
       {!props.element && (
@@ -10,15 +11,16 @@ const SubCategoryCard = (props) => {
       )}
       <Link
         to={{
-          pathname: "/category/products/"+props.element.id,
-          state: {
-            type: props.type,//products or rooms
-            name: props.name,//category name
-            id: props.id,//category Id
-            subCatName:props.element.data().Name,
-            subCatId:props.element.id,
-            subObj:props.element.data()
-          }
+          // pathname: "/category/products/"+props.element.id,
+          pathname: `/category/${type}/${name}/${id}/${element.data().Name}/${element.id}`,
+          // state: {
+          //   type: props.type,//products or rooms
+          //   name: props.name,//category name
+          //   id: props.id,//category Id
+          //   subCatName:props.element.data().Name,
+          //   subCatId:props.element.id,
+          //   subObj:props.element.data()
+          // }
         }}
         // to={`/category/product/${props.params.name }/${props.params.id }/${props.element.data().Name}/${props.element.id}`}
         className='card category-card col-4 col-lg-2'
