@@ -148,5 +148,13 @@
     "ShoppingCart":"Shopping cart",
     "ItemsInBag":"items in shopping bag",
     "TotalWithVat":"Total For This Order incl. VAT",
-    "Checkout":"Begin Checkout"
+    "Checkout":"Begin Checkout",
+    "Items":"items",
+    "WishList":"Wish List",
+    "AvailableInStore":"Available in-store?",
+    "BuyOnline":"Buy Online",
+    "AddToCart":"Add to shopping bag",
+    "NotReady":"Not quite ready to buy?",
+    "SaveUntilReady":"Save it here until you're ready",
+    "BrowseProducts":"Browse our products"
 }

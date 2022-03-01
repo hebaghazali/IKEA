@@ -3,9 +3,10 @@ import { useDispatch } from 'react-redux';
 import '../../assets/scss/pages/_favourite.scss'
 import { removeFromFav, setFavItemAmount } from '../../store/actions/favourits';
 import { removeFavItemFromUser } from '../../services/firebase';
-
+import { useTranslation } from 'react-i18next';
 
 const FavouriteCard = (props) => {
+  const {t} = useTranslation();
   const [selectedAmount, setSelectedAmount] = useState(props.purchasedQuantity);
   const dispatch = useDispatch();
 
@@ -55,7 +56,7 @@ const FavouriteCard = (props) => {
         <div className='shopping-info'>
           <h6>{props.product.Name}</h6>
           <p>{props.product.Description}</p>
-          <h6>EGP {props.product.Price}</h6>
+          <h6>{t('EGP')} {props.product.Price}</h6>
           <p className='txt-info'>
             {props.product.Material}, {props.product.Width} x{' '}
             {props.product.Length}
@@ -63,7 +64,7 @@ const FavouriteCard = (props) => {
           {/* <!-- button For Shopping --> */}
           <div className='prod-box col-5'>
             <button className='card-button'>
-              <i className='fas fa-shopping-bag'></i> Add to shopping bag
+              <i className='fas fa-shopping-bag'></i>  {t('AddToCart')}
             </button>
           </div>
         </div>
