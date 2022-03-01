@@ -294,7 +294,7 @@ const Products = ({ match }) => {
       <div className='carousel-body p-0 pb-2 mb-5'>
         <div className='row' id='show-proDetail'>
           {loading&&<Loader />}
-          {/* {!loader && !products?.length && <EmptyData />} */}
+          {!loading && !products?.length && <EmptyData />}
 
           {products?.map((i) => (
             <ProductCard
