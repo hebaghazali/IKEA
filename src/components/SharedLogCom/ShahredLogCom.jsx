@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import '../../assets/scss/pages/_login.scss';
+import { login, useAuth } from '../../firebaseConfig/firebase';
 import { Link } from 'react-router-dom';
-import { signup, login, logout, useAuth } from '../../firebaseConfig/firebase';
 import { changeUser } from '../../store/actions/auth';
 // import {auth} from '../../config/firebaseConfig'
 // import Hello from '../Hello';

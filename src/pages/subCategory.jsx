@@ -4,6 +4,7 @@ import TextRightCard from '../components/cards/textRightCard';
 import { useEffect, useState } from 'react';
 import StepsCard from '../components/cards/stepsCard';
 import { getCollection } from '../services/firebase';
+
 const SubCategory = props => {
   const params = useParams();
   const [subCategories, setSubCategories] = useState([]);
@@ -29,12 +30,12 @@ const SubCategory = props => {
         {subCategories.map(subcategory => {
           return (
             <SubCategoryCard
-            element={subcategory}
-            key={subcategory.id}
-            params={params}
-            type={params.type}
-            name={params.name}
-            id={params.id}//categId
+              element={subcategory}
+              key={subcategory.id}
+              params={params}
+              type={params.type}
+              name={params.name}
+              id={params.id} //categId
             />
           );
         })}

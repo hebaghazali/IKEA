@@ -10,6 +10,7 @@ import {
   getCollection,
   filterCollection,
   sortCollection,
+  getDocumentByID,
 } from '../../services/firebase';
 import SectionTitle from './sectionTitle';
 import { useSelector } from 'react-redux';
@@ -17,14 +18,16 @@ import EmptyData from './../../components/emptyData';
 import Carousel from './../../components/carousel/carousel';
 import { useTranslation } from 'react-i18next';
 
-const Products = props => {
+import FiltersMenu from './filtersMenu.jsx/filtersMenu';
+
+const Products = ({ match }) => {
   const { t } = useTranslation();
-  const { match, location } = props;
-  //props.location.statet.subobj
-  let { type, name, id, subCatName, subCatId, subObj } = location?.state;
+  let { type, name, id, subName, subId } = match?.params;
   const [products, setProducts] = useState(null);
   const [subCategories, setSubCategories] = useState(null);
-  const { loader } = useSelector(state => state.loader);
+  const [currentSub, setCurrentSub] = useState(null);
+  const [roomBtn, setRoomBtn] = useState(false);
+  const { loader } = useSelector((state) => state.loader);
 
   const sortStates = [
     {
@@ -145,34 +148,40 @@ const Products = props => {
         'array-contains',
         `${id}`,
       ],
-      ['Name', '!=', `${subCatName}`]
-    ).then(allSubCategories => {
+      ['Name', '!=', `${subName}`]
+    ).then((allSubCategories) => {
       setSubCategories(allSubCategories);
     });
   };
 
+  const getCurrentSub = () => {
+    getDocumentByID('subCategory', subId).then((current) => {
+      setCurrentSub(current);
+    });
+  };
+
   const getProducts = () => {
-    getCollection('Products', ['SubCategory', '==', subCatId])
-      .then(res => {
+    getCollection('Products', ['SubCategory', '==', subId])
+      .then((res) => {
         setProducts(res);
       })
-      .catch(err => console.log('error :', err));
+      .catch((err) => console.log('error :', err));
   };
 
   const filterProds = (key, value, operator = '==') => {
     filterCollection(
       'Products',
-      ['SubCategory', '==', subCatId],
+      ['SubCategory', '==', subId],
       [key, operator, value]
     )
-      .then(res => {
+      .then((res) => {
         console.log('products', products);
         setProducts(res);
       })
-      .catch(err => console.log('error :', err));
+      .catch((err) => console.log('error :', err));
   };
 
-  const sortProducts = sortProp => {
+  const sortProducts = (sortProp) => {
     let order = 'asc';
     if (sortProp[0] === 'D') {
       //DPrice for descinding
@@ -180,27 +189,31 @@ const Products = props => {
       sortProp = sortProp.substring(1);
     }
 
-    sortCollection(['SubCategory', '==', subCatId], sortProp, order)
-      .then(res => {
+    sortCollection(['SubCategory', '==', subId], sortProp, order)
+      .then((res) => {
         console.log('products', res);
         setProducts(res);
       })
-      .catch(err => console.log('error :', err));
+      .catch((err) => console.log('error :', err));
+  };
+
+  const clearFilters = () => {
+    getProducts();
   };
 
   useEffect(() => {
-    getProducts();
-    getSubCategories();
+    console.log('start products');
+    Promise.all([getProducts(), getSubCategories(), getCurrentSub()]);
   }, [match.params.subId]);
 
   return (
     <>
-      <Breadcrumb state={location.state} />
+      {/* <Breadcrumb state={location.state} /> */}
 
-      <SectionTitle title={subCatName} />
+      <SectionTitle title={subName} />
 
       <section className='col-12 col-md-7 col-lg-7'>
-        <p className='description'>{subObj?.Descripton}</p>
+        <p className='description'>{currentSub?.Descripton}</p>
       </section>
 
       <div className='row sticky-top filter-row'>
@@ -219,7 +232,7 @@ const Products = props => {
             listName='colors-group'
             checkType='radio'
             items={colorsStates}
-            clickHandler={color => filterProds('Color', color)}
+            clickHandler={(color) => filterProds('Color', color)}
           />
 
           <FilterButton
@@ -231,7 +244,7 @@ const Products = props => {
             listName='price-group'
             checkType='radio'
             items={pricesStates}
-            clickHandler={maxPrice =>
+            clickHandler={(maxPrice) =>
               filterProds('Price', parseInt(maxPrice), '<=')
             }
           />
@@ -248,27 +261,49 @@ const Products = props => {
             listName='material-group'
             checkType='radio'
             items={materialStates}
-            clickHandler={material => filterProds('Material', material)}
+            clickHandler={(material) => filterProds('Material', material)}
           />
 
-          <FilterButton title={t('AllFilters')} icon='fas fa-filter' noDrop />
+          <FilterButton
+            title={t('AllFilters')}
+            icon='fas fa-filter'
+            noDrop
+            offcanvas
+          />
+          <FiltersMenu />
         </div>
 
-        <ProductRoomBtn totalItems={products?.length} />
+        <ProductRoomBtn
+          totalItems={products?.length}
+          setRoomBtn={(val) => setRoomBtn(val)}
+        />
       </div>
+
+      {true && (
+        <div className='my-3'>
+          <FilterButton
+            title='clear filter'
+            icon='bi bi-x'
+            noDrop
+            setRoomBtn={clearFilters}
+          />
+        </div>
+      )}
 
       <div className='carousel-body p-0 pb-2 mb-5'>
         <div className='row' id='show-proDetail'>
           <Loader />
           {!loader && !products?.length && <EmptyData />}
 
-          {products?.map(i => (
+          {products?.map((i) => (
             <ProductCard
               key={i.id}
               productData={i.data()}
               pId={i.id}
               showOptions
+              roomBtn={roomBtn}
               carousel={false}
+              baseUrl={match.url}
             />
           ))}
         </div>
@@ -283,7 +318,7 @@ const Products = props => {
       <Loader />
       <div className='row mx-auto g-3 categories-slidder'>
         {subCategories &&
-          subCategories.map(subcategory => {
+          subCategories.map((subcategory) => {
             return (
               <SubCategoryCard
                 element={subcategory}

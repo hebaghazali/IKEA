@@ -7,13 +7,13 @@ const ProductPrice = ({ Price, SalePrice }) => {
     <div className='price'>
       {SalePrice && (
         <div className='line-through text-decoration-line-through'>
-          <sup>{t('EGP')} {Price}</sup>
+          <sup>{t('EGP')} {SalePrice}</sup>
         </div>
       )}
       <div className='original-price'>
         <sup>{t('EGP')}</sup>
         <span>
-          <strong> {SalePrice ? SalePrice : Price} </strong>
+          <strong> {Price} </strong>
         </span>
       </div>
     </div>
