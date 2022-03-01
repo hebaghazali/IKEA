@@ -1,8 +1,10 @@
 import { useSelector } from "react-redux";
 import { updateData } from "../../../services/firebase";
 import { updateUserStorageByID } from '../../../services/firebase';
+import { useTranslation } from 'react-i18next';
 
 const SettingsTab = () => {
+  const { t } = useTranslation();
   const user=useSelector((state)=>state.user.user);
   const id=useSelector((state)=>state.user.id);
 
@@ -19,7 +21,7 @@ const SettingsTab = () => {
     <>
       <section className='py-5 border-bottom'>
         <div className='row fw-bold d-flex justify-content-between mb-2'>
-          <div className='col-6'>Ikea Store</div>
+          <div className='col-6'>{t('IkeaStore')}</div>
         </div>
         <section className='col-12 col-lg-6'>
         <div className='form-floating floating-input-holder col-9'>
@@ -39,20 +41,19 @@ const SettingsTab = () => {
           <option value='1'>IKEA Cairo Mall Of Arabia</option>
           <option value='2'>IKEA CFC</option>
         </select>
-        <label htmlFor='floatingSelect'>Preffered store</label>
+        <label htmlFor='floatingSelect'>{t('PrefferedStore')}</label>
         </div>
         </section>
       </section>
 
       <section className='py-5 border-bottom'>
         <div className='row fw-bold d-flex justify-content-between mb-2'>
-          <div className='col-6'>Delete profile</div>
+          <div className='col-6'>{t('DeleteProfile')}</div>
         </div>
         <p className='small-text'>
-          You can delete your IKEA acoount at any point. This deletes your
-          profile and the info associated with it.
+          {t('DeleteInfo')}
         </p>
-        <strong className='small-text'>Want to remove account?</strong>
+        <strong className='small-text'>{t('DeleteConfirmation')}</strong>
       </section>
     </>
   );

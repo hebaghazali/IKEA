@@ -3,8 +3,10 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { updateData } from '../../../services/firebase';
 import { updateUserStorageByID } from '../../../services/firebase';
+import { useTranslation } from 'react-i18next';
 
 const EditPersonalInfo = (props) => {
+  const { t } = useTranslation();
   const user = useSelector((state) => state.user.user);
   const id = useSelector((state) => state.user.id);
   const [errors, setError] = useState({
@@ -52,7 +54,7 @@ const EditPersonalInfo = (props) => {
             } else {
               setError({
                 ...errors,
-                FirstNameErr: 'First Name should be 3 letters at least',
+                FirstNameErr: t('FirstNameWrong'),
               });
             }
             setUserInfo({
@@ -61,7 +63,7 @@ const EditPersonalInfo = (props) => {
             });
           }}
         />
-        <label htmlFor='floatingInput'>First name</label>
+        <label htmlFor='floatingInput'>{t('FirstName')}</label>
         {errors.FirstNameErr !== null && (
           <small className='text-danger'>{errors.FirstNameErr}</small>
         )}
@@ -82,7 +84,7 @@ const EditPersonalInfo = (props) => {
             } else {
               setError({
                 ...errors,
-                LastNameErr: 'Last Name should be 3 letters at least',
+                LastNameErr: t('LastNameWrong'),
               });
             }
             setUserInfo({
@@ -91,7 +93,7 @@ const EditPersonalInfo = (props) => {
             });
           }}
         />
-        <label htmlFor='floatingInput'>Last name</label>
+        <label htmlFor='floatingInput'>{t('LastName')}</label>
         {errors.LastNameErr !== null && (
           <small className='text-danger'>{errors.LastNameErr}</small>
         )}
@@ -110,7 +112,7 @@ const EditPersonalInfo = (props) => {
             });
           }}
         />
-        <label htmlFor='floatingInput'>Birthdate (Optional)</label>
+        <label htmlFor='floatingInput'>{t('OptionalBirthDate')}</label>
       </div>
       <div className='form-floating floating-input-holder col-9'>
         <select
@@ -126,23 +128,19 @@ const EditPersonalInfo = (props) => {
           }}
         >
           <option></option>
-          <option value='1'>Male</option>
-          <option value='2'>Female</option>
+          <option value='1'>{t('Male')}</option>
+          <option value='2'>{t('Female')}</option>
         </select>
-        <label htmlFor='floatingSelect'>Gender (Optional)</label>
-        <p className='small-text mt-2 mb-5'>
-          We require this field in order to best personalize communication &
-          marketing material and understand our users better.
-        </p>
+        <label htmlFor='floatingSelect'>{t('OptionalGender')}</label>
       </div>
       <button
         className='default-btn cancel-change-btn col-12'
         onClick={() => props.changeSelection(0)}
       >
-        Cancel
+      {t('Cancel')}
       </button>
       <button className='dark-btn save-change-btn col-12' type='submit'>
-        Save changes
+      {t('SaveChanges')}
       </button>
     </form>
   );

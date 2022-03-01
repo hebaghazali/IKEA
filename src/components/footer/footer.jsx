@@ -1,8 +1,10 @@
 import React from 'react';
 import FooterInfo from './footerInfo';
 import FooterSocialLanguages from './footerSocialLanguages';
+import { useTranslation } from 'react-i18next';
 
 const Footer = () => {
+  const { t } = useTranslation();
   return (
     <>
       <footer className='footer'>
@@ -10,88 +12,88 @@ const Footer = () => {
           <div className='col-3'>
             <ul>
               <li>
-                <p>Useful links</p>
+                <p>{t('UsefulLinks')}</p>
               </li>
               <li>
-                <a href='#'>Catalogue and brochures</a>
+                <a href='#'>{t('CatalogueAndBrochures')}</a>
               </li>
               <li>
-                <a href='#'>IKEA shopping app</a>
+                <a href='#'>{t('IKEAShoppingApp')}</a>
               </li>
               <li>
-                <a href='#'>Planning tools</a>
+                <a href='#'>{t('PlanningTools')}</a>
               </li>
               <li>
-                <a href='#'>Stores</a>
+                <a href='#'>{t('IkeaStores')}</a>
               </li>
               <li>
-                <a href='#'>IKEA food</a>
+                <a href='#'>{t('IkeaFood')}</a>
               </li>
               <li>
-                <a href='#'>IKEA FAMILY</a>
-              </li>
-            </ul>
-          </div>
-          <div className='col-3'>
-            <ul>
-              <li>
-                <p>Customer service</p>
-              </li>
-              <li>
-                <a href='#'>About services</a>
-              </li>
-              <li>
-                <a href='#'>About shopping</a>
-              </li>
-              <li>
-                <a href='#'>Return policy</a>
-              </li>
-              <li>
-                <a href='#'>Contact us</a>
-              </li>
-              <li>
-                <a href='#'>FAQ</a>
-              </li>
-              <li>
-                <a href='#'>Give us your feedback</a>
+                <a href='#'>{t('IkeaFamily')}</a>
               </li>
             </ul>
           </div>
           <div className='col-3'>
             <ul>
               <li>
-                <p>This is IKEA</p>
+                <p>{t('CustomerService')}</p>
               </li>
               <li>
-                <a href='#'>About IKEA</a>
+                <a href='#'>{t('AboutServices')}</a>
               </li>
               <li>
-                <a href='#'>Democratic design</a>
+                <a href='#'>{t('AboutShopping')}</a>
               </li>
               <li>
-                <a href='#'>Sustainable everyday</a>
+                <a href='#'>{t('ReturnPolicy')}</a>
               </li>
               <li>
-                <a href='#'>Community engagement</a>
+                <a href='#'>{t('ContactUs')}</a>
               </li>
               <li>
-                <a href='#'>Working at IKEA</a>
+                <a href='#'>{t('FAQ')}</a>
+              </li>
+              <li>
+                <a href='#'>{t('Feedback')}</a>
               </li>
             </ul>
           </div>
           <div className='col-3'>
             <ul>
               <li>
-                <p>General information</p>
+                <p>{t('ThisIkea')}</p>
               </li>
               <li>
-                <a href='#'>Newsroom</a>
+                <a href='#'>{t('AboutIkea')}</a>
               </li>
               <li>
-                <a href='#'>Product recalls</a>
+                <a href='#'>{t('DemocraticDesign')}</a>
               </li>
               <li>
-                <a href='#'>Product guides</a>
+                <a href='#'>{t('Sustainable')}</a>
+              </li>
+              <li>
+                <a href='#'>{t('CommunityEngagement')}</a>
+              </li>
+              <li>
+                <a href='#'>{t('WorkingAtIkea')}</a>
+              </li>
+            </ul>
+          </div>
+          <div className='col-3'>
+            <ul>
+              <li>
+                <p>{t('GeneralInfo')}</p>
+              </li>
+              <li>
+                <a href='#'>{t('NewsRoom')}</a>
+              </li>
+              <li>
+                <a href='#'>{t('ProductRecalls')}</a>
+              </li>
+              <li>
+                <a href='#'>{t('ProductGuides')}</a>
               </li>
             </ul>
           </div>

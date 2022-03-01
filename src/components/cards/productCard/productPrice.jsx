@@ -1,15 +1,17 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 const ProductPrice = ({ Price, SalePrice }) => {
+  const { t } = useTranslation();
   return (
     <div className='price'>
       {SalePrice && (
         <div className='line-through text-decoration-line-through'>
-          <sup>EGP {Price}</sup>
+          <sup>{t('EGP')} {Price}</sup>
         </div>
       )}
       <div className='original-price'>
-        <sup>EGP</sup>
+        <sup>{t('EGP')}</sup>
         <span>
           <strong> {SalePrice ? SalePrice : Price} </strong>
         </span>

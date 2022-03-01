@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 const storesInfo = [
   {
     id: 1,
@@ -63,6 +64,7 @@ const storesInfo = [
   },
 ];
 const LocationAccordion = () => {
+  const { t } = useTranslation();
   return (
     <>
       {storesInfo.map((store) => {
@@ -110,7 +112,7 @@ const LocationAccordion = () => {
                       onClick={() => window.open(store.googleLink, '_blank')}
                       style={{ textDecoration: 'underline', cursor: 'pointer' }}
                     >
-                      Get direction
+                      {t('GetDirection')}
                     </strong>
                     <br />
                     <br />

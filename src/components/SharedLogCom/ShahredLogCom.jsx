@@ -5,8 +5,10 @@ import { signup, login, logout, useAuth } from '../../firebaseConfig/firebase';
 import { changeUser } from '../../store/actions/auth';
 // import {auth} from '../../config/firebaseConfig'
 // import Hello from '../Hello';
+import { useTranslation } from 'react-i18next';
 
 function SharedLogComp() {
+  const { t } = useTranslation();
   const [users, setUser] = useState({
     Email: '',
     Password: '',
@@ -25,7 +27,7 @@ function SharedLogComp() {
     const regEmail = /^([a-zA-Z0-9_\-\.]+){3,}@([a-zA-Z0-9_\-\.]+){3,}(.com)$/;
     const regName = /^\w[a-zA-Z]{3,}[^-\s][a-zA-Z]{3,}/;
     const regPassword =
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?_&]{8,}$/;
 
     // console.log(e.target.value , e.target.name);
 
@@ -44,7 +46,7 @@ function SharedLogComp() {
       } else {
         setError({
           ...errors,
-          EmailErr: 'Email is not valid',
+          EmailErr: t('EmailInvalid'),
         });
       }
     }
@@ -59,7 +61,7 @@ function SharedLogComp() {
       } else {
         setError({
           ...errors,
-          PasswordErr: 'Password is not valid',
+          PasswordErr: t('PasswordInvalid'),
         });
       }
     }
@@ -96,7 +98,7 @@ function SharedLogComp() {
               type='text'
               className='form-control input-sign-form'
               id='validationCustom05'
-              placeholder='Email(UserName)'
+              placeholder={t('EmailPlaceholder')}
               name='Email'
               required
               onChange={(e) => {
@@ -107,7 +109,7 @@ function SharedLogComp() {
             <p></p>
             <p className='text-secondary'>
               {' '}
-              Example of valid mail: examle@ec123.com
+              {t('ValidEmailExample')}
             </p>
             <small className='text-danger'>{errors.EmailErr}</small>
           </div>
@@ -125,16 +127,16 @@ function SharedLogComp() {
               ref={passwordRef}
             />
             <p></p>
-            <p className='text-secondary'>Password must have charters</p>
+            <p className='text-secondary'>{t('CharPassValidation')}</p>
             <p className='text-secondary'>
-              Password must have SmallCase and UpperCase
+              {t('SmallAndUppercaseValidation')}
             </p>
             <p className='text-secondary'>
-              Password must have Special Char as $*#
+              {t('SpecialCharValidation')}
             </p>
             <p className='text-danger'>{errors.PasswordErr}</p>
           </div>
-          <a href='#'>Forget your Password?</a>
+          <a href='#'>{t('ForgetPassword')}</a>
           <button
             className='login-creation'
             onClick={() => {
@@ -142,7 +144,7 @@ function SharedLogComp() {
             }}
           >
             {' '}
-            LogIn{' '}
+            {t('Login')}{' '}
           </button>
         </div>
       </div>

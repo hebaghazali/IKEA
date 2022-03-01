@@ -1,4 +1,5 @@
 import React from 'react';
+import './i18n/config';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import Navbar from './components/navbar/navbar';
 import Home from './pages/home.jsx';
@@ -14,12 +15,16 @@ import { Provider } from 'react-redux';
 import store from './store/store';
 import ProductA from './components/productA/productA';
 import ShoppingCart from './pages/shoppingCart';
+import { useTranslation } from 'react-i18next';
 
 function App() {
+  const { i18n } = useTranslation();
+
   return (
-    <Provider store={store}>
+    <Provider store={store} >
+      <div dir={i18n.dir()}>
       <Menu />
-      <div className='body-container'>
+      <div className={`${i18n.dir()==='ltr'?'body-container-ltr':'body-container-rtl'}`}>
         <Navbar />
 
         <div className='mt-nav-4 pt-nav border-top'>
@@ -52,6 +57,7 @@ function App() {
       </div>
 
       <Footer />
+      </div>
     </Provider>
   );
 }

@@ -1,7 +1,9 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 const SliderCard = props => {
   const { card } = props;
+  const { i18n } = useTranslation();
 
   return (
     <div className='col-12 col-lg-4 col-md-6'>
@@ -16,7 +18,7 @@ const SliderCard = props => {
           <p>{card.description.paragraph}</p>
         </div>
         <button className={card.arrowBtnColor ? card.arrowBtnColor : ''}>
-          <i className='fas fa-arrow-right'></i>
+          <i className={i18n.language==="en"?'fas fa-arrow-right':'fas fa-arrow-left'}></i>
         </button>
       </div>
     </div>

@@ -5,8 +5,10 @@ import SharedLogComp from '../SharedLogCom/ShahredLogCom';
 import { signup, login, logout, useAuth } from '../../firebaseConfig/firebase';
 import { addDocByID } from '../../services/firebase';
 import { changeUser } from '../../store/actions/auth';
+import { useTranslation } from 'react-i18next';
 
 function SignIn() {
+  const { t } = useTranslation();
   const [users, setUser] = useState({
     Name: '',
     Phone: ',',
@@ -28,7 +30,7 @@ function SignIn() {
     const regEmail = /^([a-zA-Z0-9_\-\.]+){3,}@([a-zA-Z0-9_\-\.]+){3,}(.com)$/;
     // const regName = /^\w[a-zA-Z]{3,}[^-\s][a-zA-Z]{3,}/;
     const regPassword =
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?_&])[A-Za-z\d@$!%*?&]{8,}$/;
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?_&])[A-Za-z\d@$!%*?_&]{8,}$/;
 
     // Validate Name Input
     setUser({
@@ -46,7 +48,7 @@ function SignIn() {
       } else {
         setError({
           ...errors,
-          NameErr: "Name is not Allowed don't make space at start",
+          NameErr: t('NameValidation'),
         });
       }
     } else if (e.target.name === 'Phone') {
@@ -58,7 +60,7 @@ function SignIn() {
       } else {
         setError({
           ...errors,
-          PhoneErr: 'Inavalid phone number',
+          PhoneErr: t('PhoneInvalid'),
         });
       }
     }
@@ -73,7 +75,7 @@ function SignIn() {
       } else {
         setError({
           ...errors,
-          EmailErr: 'Email is not valid',
+          EmailErr: t('ValidEmailExample'),
         });
       }
     }
@@ -88,7 +90,7 @@ function SignIn() {
       } else {
         setError({
           ...errors,
-          PasswordErr: 'Password is not valid',
+          PasswordErr: t('PasswordInvalid'),
         });
       }
     }
@@ -137,9 +139,9 @@ function SignIn() {
           {/* <!-- Left section --> */}
           <section className='row left-box-log'>
             <section className='col-md-5 col-12 login-heading'>
-              <h3>Create an IKEA Profile</h3>
+              <h3>{t('CreateIkeaProfile')}</h3>
               <p>
-                Already have an account? <Link to='./login'> Login</Link>{' '}
+                {t('AlreadyHaveAccount')} <Link to='./login'> {t('Login')}</Link>{' '}
               </p>
             </section>
 
@@ -155,7 +157,7 @@ function SignIn() {
                       className='form-control input-sign-form'
                       id='validationCustom01'
                       name='Name'
-                      placeholder='First Name'
+                      placeholder={t('FirstName')}
                       required
                       onChange={e => {
                         handleChangeInInput(e);
@@ -170,7 +172,7 @@ function SignIn() {
                       className='form-control input-sign-form'
                       id='validationCustom02'
                       name='Name'
-                      placeholder='Last name'
+                      placeholder={t('LastName')}
                       required
                       onChange={e => {
                         handleChangeInInput(e);
@@ -201,7 +203,7 @@ function SignIn() {
                       htmlFor='validationCustom04'
                       className='form-label selct-label-form-sign'
                     >
-                      Prefered Store
+                     {t('PrefferedStore')}
                     </label>
                     <select
                       className='form-select selct-form-sign'
@@ -209,11 +211,12 @@ function SignIn() {
                       required
                       ref={storeRef}
                     >
+                      <option></option>
                       <option value='1'>IKEA Cairo Mall Of Arabia</option>
                       <option value='2'>IKEA CFC</option>
                     </select>
                     <div className='invalid-feedback'>
-                      Please select a valid Store.
+                      {t('PrefferedStoreValidation')}
                     </div>
                   </div>
 
@@ -224,7 +227,7 @@ function SignIn() {
                           type='text'
                           className='form-control input-sign-form'
                           id='validationCustom05'
-                          placeholder='Email(UserName)'
+                          placeholder={t('EmailPlaceholder')}
                           name='Email'
                           required
                           onChange={e => {
@@ -235,7 +238,7 @@ function SignIn() {
                         <p></p>
                         <p className='text-secondary'>
                           {' '}
-                          Example of valid mail: examle@ec123.com
+                          {t('ValidEmailExample')}
                         </p>
                         <small className='text-danger'>{errors.EmailErr}</small>
                       </div>
@@ -246,7 +249,7 @@ function SignIn() {
                           id='validationCustom05'
                           required
                           name='Password'
-                          placeholder='Password'
+                          placeholder={t('PasswordPlaceholder')}
                           onChange={e => {
                             handleChangeInInput(e);
                           }}
@@ -254,24 +257,23 @@ function SignIn() {
                         />
                         <p></p>
                         <p className='text-secondary'>
-                          Password must have charters
+                          {t('CharPassValidation')}
                         </p>
                         <p className='text-secondary'>
-                          Password must have SmallCase and UpperCase
+                          {t('SmallAndUppercaseValidation')}
                         </p>
                         <p className='text-secondary'>
-                          Password must have Special Char as $*#
+                          {t('SpecialCharValidation')}
                         </p>
                         <p className='text-danger'>{errors.PasswordErr}</p>
                       </div>
-                      <a href='#'>Forget your Password?</a>
                     </div>
                   </div>
 
-                  <div>
+                  {/* <div>
                     <input type='checkbox' className='check-sign-form' /> I have
                     read and understood the <Link to=''>Privacy policy.</Link>
-                  </div>
+                  </div> */}
 
                   <div className='col-12'>
                     <button
@@ -279,7 +281,7 @@ function SignIn() {
                       type='submit'
                       onClick={handleSignup}
                     >
-                      Create Profile
+                    {t('CreateProfile')}
                     </button>
                   </div>
                 </div>
