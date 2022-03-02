@@ -157,5 +157,9 @@
     "NotReady":"Not quite ready to buy?",
     "SaveUntilReady":"Save it here until you're ready",
     "BrowseProducts":"Browse our products",
-    "Hotline":"Hotline"
+    "Hotline":"Hotline",
+    "WrongPassword":"Password is wrong",
+    "DeleteDesc":"Are you sure you want to delete your account?",
+    "EnterPassword":"Enter your password:",
+    "DeleteAccount":"Delete account"
 }
