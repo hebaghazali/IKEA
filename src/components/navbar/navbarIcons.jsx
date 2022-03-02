@@ -1,18 +1,16 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 const NavbarIcons = () => {
   const { cartProducts, favourits } = useSelector(state => state);
 
-  let profileLink = '';
-  if (localStorage.getItem('UID')) profileLink = '/profile';
-  else profileLink = '/login';
-
   return (
     <>
       <div className='navbar-icons'>
-        <NavLink to={profileLink}>
+        <NavLink to='/login'>
           <i className='bi bi-person'></i>
         </NavLink>
         <NavLink to='/favorite' style={{ position: 'relative' }}>

@@ -180,7 +180,7 @@ export const getFavItemsFromUser = userID => {
 // Search
 
 export const getFirst4Categories = async () => {
-  const q = await query(collection(fireStore, 'subCategory'), limit(10));
+  const q = query(collection(fireStore, 'subCategory'), limit(4));
 
   let results = await getDocs(q);
   // store.dispatch(changeLoader(false));
@@ -200,4 +200,63 @@ export const getProductCatById = id => {
       return productCategories.data();
     }
   );
+};
+
+export const getProductsBySearchText = async text => {
+  const productsNames = [];
+  const productsDescription = [];
+
+  const res = await getCollection('Products');
+  // res.filter(product => product.data().Name.includes(text.to))
+
+  res.forEach(product => {
+    productsNames.push(product.data().Name);
+    product.data().Description &&
+      productsDescription.push(product.data().Description);
+  });
+
+  const filteredProductsByName = productsNames.filter(product =>
+    text.test(product)
+  );
+  const filteredProductsByDescription = productsDescription.filter(product =>
+    text.test(product)
+  );
+
+  const filteredProducts = [
+    ...filteredProductsByName,
+    ...filteredProductsByDescription,
+  ];
+
+  // console.log(filteredProducts);
+
+  // Query
+
+  let products = [];
+
+  const productsRes = filteredProducts.map(async description => {
+    const nameQuery = query(
+      collection(fireStore, 'Products'),
+      where('Name', '==', description)
+    );
+
+    const descriptionQuery = query(
+      collection(fireStore, 'Products'),
+      where('Description', '==', description)
+    );
+
+    let namesResults = await getDocs(nameQuery);
+    let descResults = await getDocs(descriptionQuery);
+
+    namesResults.forEach(result =>
+      products.push({ id: result.id, data: result.data() })
+    );
+    descResults.forEach(result => {
+      !products.some(p => p.id === result.id) &&
+        products.push({ id: result.id, data: result.data() });
+    });
+
+    return products;
+  });
+
+  return productsRes[productsRes.length - 1];
 };

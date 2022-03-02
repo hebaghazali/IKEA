@@ -24,7 +24,7 @@ const Products = ({ match }) => {
   const [subCategories, setSubCategories] = useState(null);
   const [currentSub, setCurrentSub] = useState(null);
   const [roomBtn, setRoomBtn] = useState(false);
-  const { loader } = useSelector((state) => state.loader);
+  const { loader } = useSelector(state => state.loader);
 
   const sortStates = [
     {
@@ -146,23 +146,23 @@ const Products = ({ match }) => {
         `${id}`,
       ],
       ['Name', '!=', `${subName}`]
-    ).then((allSubCategories) => {
+    ).then(allSubCategories => {
       setSubCategories(allSubCategories);
     });
   };
 
   const getCurrentSub = () => {
-    getDocumentByID('subCategory', subId).then((current) => {
+    getDocumentByID('subCategory', subId).then(current => {
       setCurrentSub(current);
     });
   };
 
   const getProducts = () => {
     getCollection('Products', ['SubCategory', '==', subId])
-      .then((res) => {
+      .then(res => {
         setProducts(res);
       })
-      .catch((err) => console.log('error :', err));
+      .catch(err => console.log('error :', err));
   };
 
   const filterProds = (key, value, operator = '==') => {
@@ -171,14 +171,14 @@ const Products = ({ match }) => {
       ['SubCategory', '==', subId],
       [key, operator, value]
     )
-      .then((res) => {
+      .then(res => {
         console.log('products', products);
         setProducts(res);
       })
-      .catch((err) => console.log('error :', err));
+      .catch(err => console.log('error :', err));
   };
 
-  const sortProducts = (sortProp) => {
+  const sortProducts = sortProp => {
     let order = 'asc';
     if (sortProp[0] === 'D') {
       //DPrice for descinding
@@ -187,11 +187,11 @@ const Products = ({ match }) => {
     }
 
     sortCollection(['SubCategory', '==', subId], sortProp, order)
-      .then((res) => {
+      .then(res => {
         console.log('products', res);
         setProducts(res);
       })
-      .catch((err) => console.log('error :', err));
+      .catch(err => console.log('error :', err));
   };
 
   const clearFilters = () => {
@@ -229,7 +229,7 @@ const Products = ({ match }) => {
             listName='colors-group'
             checkType='radio'
             items={colorsStates}
-            clickHandler={(color) => filterProds('Color', color)}
+            clickHandler={color => filterProds('Color', color)}
           />
 
           <FilterButton
@@ -241,7 +241,7 @@ const Products = ({ match }) => {
             listName='price-group'
             checkType='radio'
             items={pricesStates}
-            clickHandler={(maxPrice) =>
+            clickHandler={maxPrice =>
               filterProds('Price', parseInt(maxPrice), '<=')
             }
           />
@@ -258,7 +258,7 @@ const Products = ({ match }) => {
             listName='material-group'
             checkType='radio'
             items={materialStates}
-            clickHandler={(material) => filterProds('Material', material)}
+            clickHandler={material => filterProds('Material', material)}
           />
 
           <FilterButton
@@ -272,7 +272,7 @@ const Products = ({ match }) => {
 
         <ProductRoomBtn
           totalItems={products?.length}
-          setRoomBtn={(val) => setRoomBtn(val)}
+          setRoomBtn={val => setRoomBtn(val)}
         />
       </div>
 
@@ -292,7 +292,7 @@ const Products = ({ match }) => {
           <Loader />
           {!loader && !products?.length && <EmptyData />}
 
-          {products?.map((i) => (
+          {products?.map(i => (
             <ProductCard
               key={i.id}
               productData={i.data()}
@@ -315,7 +315,7 @@ const Products = ({ match }) => {
       <Loader />
       <div className='row mx-auto g-3 categories-slidder'>
         {subCategories &&
-          subCategories.map((subcategory) => {
+          subCategories.map(subcategory => {
             return (
               <SubCategoryCard
                 element={subcategory}

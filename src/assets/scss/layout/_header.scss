@@ -86,7 +86,7 @@
       li {
         font-size: 0.9rem;
 
-        a {
+        & > * {
           padding: 1rem;
           display: block;
         }
