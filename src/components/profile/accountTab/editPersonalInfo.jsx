@@ -6,6 +6,7 @@ import { updateUserStorageByID } from '../../../services/firebase';
 import { useTranslation } from 'react-i18next';
 
 const EditPersonalInfo = (props) => {
+  const [today,setToday]=useState(new Date())
   const { t } = useTranslation();
   const user = useSelector((state) => state.user.user);
   const id = useSelector((state) => state.user.id);
@@ -25,6 +26,16 @@ const EditPersonalInfo = (props) => {
   });
   useEffect(() => {
     setAllValid(errors.FirstNameErr === null && errors.LastNameErr === null);
+    var dd = today.getDate();
+    var mm = today.getMonth() + 1;
+    var yyyy = today.getFullYear();
+    if (dd < 10) {
+      dd = '0' + dd;
+    }
+    if (mm < 10) {
+      mm = '0' + mm;
+    }
+    setToday(yyyy + '-' + mm + '-' + dd);
   }, [errors]);
   const handleSubmit = (e) => {
     if (!allValid) {
@@ -100,7 +111,7 @@ const EditPersonalInfo = (props) => {
       </div>
       <div className='form-floating mb-3 p-0 floating-input-holder'>
         <input
-          type='text'
+          type='date'
           className='form-control edit-input'
           id='floatingInput'
           placeholder='DD-MM_YYYY'
@@ -111,6 +122,7 @@ const EditPersonalInfo = (props) => {
               BirthDate: e.target.value,
             });
           }}
+          max={today}
         />
         <label htmlFor='floatingInput'>{t('OptionalBirthDate')}</label>
       </div>
@@ -137,10 +149,10 @@ const EditPersonalInfo = (props) => {
         className='default-btn cancel-change-btn col-12'
         onClick={() => props.changeSelection(0)}
       >
-      {t('Cancel')}
+        {t('Cancel')}
       </button>
       <button className='dark-btn save-change-btn col-12' type='submit'>
-      {t('SaveChanges')}
+        {t('SaveChanges')}
       </button>
     </form>
   );
