@@ -120,7 +120,7 @@ function SharedLogComp() {
               id='validationCustom05'
               required
               name='Password'
-              placeholder='Password'
+              placeholder={t('PasswordPlaceholder')}
               onChange={(e) => {
                 handleChangeInInput(e);
               }}
