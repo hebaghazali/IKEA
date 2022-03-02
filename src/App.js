@@ -19,6 +19,7 @@ import GuardedRoute from 'react-guarded-route';
 import FavouritePage from './pages/favouritePage';
 import Checkout from './components/paypalCheckout/checkout';
 import PayPal from './components/paypalCheckout/PayPal';
+import ProductsSearch from './pages/productsSearch';
 
 function App() {
   const loginValidator = () => {
@@ -47,6 +48,8 @@ function App() {
 
         <div className='mt-nav-4 pt-nav border-top'>
           <Switch>
+            <Redirect from='/' exact to='/home' />
+
             <Route path='/home' component={Home} />
             <Route path='/stores' component={StoresPage} />
             <Route
@@ -66,6 +69,12 @@ function App() {
               component={Products}
             />
             <Route path='/products/:pId' exact component={ProductA} />
+
+            <Route
+              path='/productsSearch/:query'
+              exact
+              component={ProductsSearch}
+            />
 
             <Route path='/favorite' exact component={FavouritePage} />
 
@@ -96,8 +105,6 @@ function App() {
               redirectTo='/login'
               validatorFunction={checkoutValidator()}
             ></GuardedRoute>
-
-            <Redirect from='/' exact to='/home' />
           </Switch>
         </div>
       </div>

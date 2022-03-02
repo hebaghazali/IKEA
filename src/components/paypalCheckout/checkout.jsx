@@ -4,10 +4,8 @@ import './checkout.scss';
 
 const initialOptions = {
   'client-id':
-    'AdcMFkqM5zNdxccrf64_CI0lHw2UesXgqBiubND4BpmVJv8_5ZcjrBBfIp9-gSD2mjws8n6Dk3GedXwD',
-  currency: 'EUR',
-  intent: 'capture',
-  // 'data-client-token': 'abc123xyz==',
+    'ASbDLGhIXQB7EmCkTpz9g6jG4fSZrAWl0poNKWmjoYDvnCiqdsBy4cn8d4yfwz5CvsjbNqEGrhuMgF5n',
+  currency: 'USD',
 };
 
 const Checkout = () => {
