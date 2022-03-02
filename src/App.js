@@ -20,7 +20,6 @@ import ProductsSearch from './pages/productsSearch';
 
 function App() {
   const loginValidator = () => {
-    console.log(!localStorage.getItem('UID'));
     // If there is UID it will return false, otherwise it will return true
     return !localStorage.getItem('UID');
   };

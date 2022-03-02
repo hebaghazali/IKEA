@@ -1,8 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { useState } from 'react';
-import { useEffect } from 'react';
 
 const NavbarIcons = () => {
   const { cartProducts, favourits } = useSelector(state => state);
@@ -10,7 +8,7 @@ const NavbarIcons = () => {
   return (
     <>
       <div className='navbar-icons'>
-        <NavLink to='/login'>
+        <NavLink to='/profile'>
           <i className='bi bi-person'></i>
         </NavLink>
         <NavLink to='/favorite' style={{ position: 'relative' }}>

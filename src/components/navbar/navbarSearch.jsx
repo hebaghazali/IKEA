@@ -2,8 +2,11 @@ import React, { useRef, useEffect, useState } from 'react';
 import { getDocumentByID, getFirst4Categories } from '../../services/firebase';
 import { Link, useHistory } from 'react-router-dom';
 
+import Cookies from 'universal-cookie';
+
 const NavbarSearch = () => {
   const history = useHistory();
+  const cookies = new Cookies();
 
   const navbarSearchContainer = useRef(null);
   const navbarSearch = useRef(null);
@@ -19,6 +22,7 @@ const NavbarSearch = () => {
   const [finalInput, setFinalInput] = useState();
 
   const recommendedSearch = ['mirror', 'desk', 'table', 'chair']; // should be guessed by AI
+  const [searchHistory, setSearchHistory] = useState([]);
 
   const changeHandler = e => {
     setInput(e.target.value);
@@ -37,6 +41,11 @@ const NavbarSearch = () => {
     inputRef.current.blur();
   };
 
+  const clearSearchHistory = () => {
+    setSearchHistory([]);
+    cookies.remove('search_history');
+  };
+
   const overlayOn = () => {
     overlay.current.style.display = 'block';
     navbarSearchContainer.current.classList.add('focus');
@@ -51,6 +60,9 @@ const NavbarSearch = () => {
 
   useEffect(() => {
     getFirst4Categories().then(cat => setCategories(cat));
+
+    cookies.get('search_history') &&
+      setSearchHistory(cookies.get('search_history'));
   }, []);
 
   useEffect(() => {
@@ -61,8 +73,24 @@ const NavbarSearch = () => {
   }, [productCatId]);
 
   useEffect(() => {
-    finalInput && history.push(`/productsSearch/${finalInput}`);
-  }, [finalInput, history]);
+    if (finalInput) {
+      history.push(`/productsSearch/${finalInput}`);
+
+      if (searchHistory.length === 6)
+        setSearchHistory(searchHistory.splice(searchHistory.length - 1, 1));
+
+      const newSearchHistory = [finalInput];
+      searchHistory.forEach(element => {
+        if (!newSearchHistory.includes(element)) newSearchHistory.push(element);
+      });
+      setSearchHistory(newSearchHistory);
+    }
+  }, [finalInput]);
+
+  useEffect(() => {
+    cookies.set('search_history', searchHistory);
+    console.log(cookies.get('search_history'));
+  }, [searchHistory]);
 
   return (
     <>
@@ -84,35 +112,52 @@ const NavbarSearch = () => {
           </form>
         </div>
 
-        <ul className='list'>
-          {recommendedSearch.map(element => {
-            return (
-              <li
-                key={recommendedSearch.indexOf(element)}
-                onClick={() => handleSearch(element)}
-              >
-                <div>
-                  <i className='fas fa-search'></i>
-                  <span>{element}</span>
-                </div>
-              </li>
-            );
-          })}
-          {categories.map(categoryData => {
-            !productCatId &&
-              setProductCatId(categoryData.data.ProductCategory[0]);
-            return (
-              <li key={categories.indexOf(categoryData)} onClick={overlayOff}>
-                <Link
-                  to={`/category/product/${productCatName}/${productCatId}/${categoryData.data.Name}/${categoryData.id}`}
+        {searchHistory.length !== 0 ? (
+          <>
+            <ul className='list'>
+              <p>Your search history</p>{' '}
+              <button onClick={clearSearchHistory}>Clear</button>
+              {searchHistory.map(el => (
+                <li key={searchHistory.indexOf(el)}>
+                  <div>
+                    <i className='fas fa-search'></i>
+                    <span>{el}</span>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </>
+        ) : (
+          <ul className='list'>
+            {recommendedSearch.map(element => {
+              return (
+                <li
+                  key={recommendedSearch.indexOf(element)}
+                  onClick={() => handleSearch(element)}
                 >
-                  <i className='fas fa-list'></i>
-                  <span>{categoryData.data.Name}</span>
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
+                  <div>
+                    <i className='fas fa-search'></i>
+                    <span>{element}</span>
+                  </div>
+                </li>
+              );
+            })}
+            {categories.map(categoryData => {
+              !productCatId &&
+                setProductCatId(categoryData.data.ProductCategory[0]);
+              return (
+                <li key={categories.indexOf(categoryData)} onClick={overlayOff}>
+                  <Link
+                    to={`/category/product/${productCatName}/${productCatId}/${categoryData.data.Name}/${categoryData.id}`}
+                  >
+                    <i className='fas fa-list'></i>
+                    <span>{categoryData.data.Name}</span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        )}
       </div>
 
       {/* Overlay */}
