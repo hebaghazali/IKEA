@@ -2,8 +2,7 @@
   @include radius(50%);
   position: fixed;
   top: 2rem;
-  left: 2rem;
-  z-index: 10;
+  left: 1.5rem;
 
   &:hover {
     background-color: $secondary-color;

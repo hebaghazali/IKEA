@@ -48,13 +48,17 @@ const NavbarSearch = () => {
 
   const overlayOn = () => {
     overlay.current.style.display = 'block';
+    overlay.current.style.zIndex = '10';
     navbarSearchContainer.current.classList.add('focus');
+    navbarSearchContainer.current.style.zIndex = '100';
     navbarSearch.current.classList.add('navbar-focus');
   };
 
   const overlayOff = () => {
     overlay.current.style.display = 'none';
+    overlay.current.style.zIndex = '0';
     navbarSearchContainer.current.classList.remove('focus');
+    navbarSearchContainer.current.style.zIndex = '0';
     navbarSearch.current.classList.remove('navbar-focus');
   };
 
