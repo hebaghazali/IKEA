@@ -28,7 +28,6 @@ const RightSide = (props) => {
     setAdded(true);
     addCartItemToUser(localStorage.getItem('UID'), pId);
   };
-
   return (
     <>
       <div className='col-12 col-md-4 right'>
@@ -72,10 +71,22 @@ const RightSide = (props) => {
           <span className='me-1'>
             <i className='fas fa-solid fa-store right-icon'> </i>
           </span>
-          <span>
-            {' '}
-            {t('AvailableInStock')} : {Quantity}
+          {(Quantity > 2 )&& (
+            <span>
+              {t('AvailableInStock')} : {Quantity}{' '}
+            </span>
+          )}
+          {(Quantity<=2 && Quantity!==0) && (
+            <span className='text-danger'>
+              {Quantity} {t('OnlyInStock')}
+            </span>
+          )
+          }
+          {(Quantity===0) &&
+            <span className='text-danger'>
+            {t('OutOfStock')}
           </span>
+          }
         </p>
       </div>
     </>

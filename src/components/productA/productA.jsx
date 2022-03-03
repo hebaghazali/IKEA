@@ -29,6 +29,7 @@ const ProductA = (props) => {
                   operator: '==',
                   value: prod.productData.SubCategory,
                 }}
+                ignore={prod.id}
               />
             </div>
           </div>
