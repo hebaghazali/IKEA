@@ -8,13 +8,15 @@
     "AddGender":"نوع",
     "AddMobile":"إضافة هاتفك المحمول",
     "AddToCart":"أضف إلى العربة ",
+    "Added":"تمت الإضافة",
     "Address":"عنوان",
     "AlreadyHaveAccount":"هل تمتلك حساب بالفعل؟",
     "AllFilters":"جميع الفلاتر",
     "Assembly":"التجميع",
     "AssemblyDesc":"خدمة احترافية - في المنزل أو في العمل",
     "AvailableInStore":"متوفر بالمتجر",
-    
+    "AvailableInStock":"المخزون المتوفر",
+
     "BrowseProducts":"استعرض منتجاتنا ",
     "BuyBack":"إعادة الشراء وإعادة البيع",
     "BuyBackDesc":"المال لشراء منتجات ايكيا المستعملة",
@@ -71,7 +73,8 @@
     "GeneralInfo":"معلومات عامة",
     "GetDirection":"الحصول على ارشادات الوصول",
     "GoodToKnow":"من الجيد أن تعرف!",
-
+    
+    "Height":"الارتفاع",
     "Hello":"مرحبا",
     "Hotline":"الخط الساخن",
 
@@ -101,6 +104,7 @@
     "Max5000":"الاقصي 5000 جنيه",
     "Max10000":"الاقصي 10000 جنيه",
     "Max20000":"الاقصي 20000 جنيه",
+    "Measurements":"قياسات",
     "Mobile":"الهاتف المحمول",
     "MoreOptions":"المزيد",
     "MoreVariants":"المزيد من المتغيرات",
@@ -142,11 +146,13 @@
     "PrivacyPolicy":"سياسة الخصوصية ",
     "Product":"منتج",
     "Products":"المنتجات",
+    "ProductDetails":"تفاصيل المنتج",
     "ProductGuides":"إرشادات حول المنتج",
     "ProductPrice":"سعر المنتج",
     "ProductRecalls":"عمليات سحب المنتجات",
     "PurchasedAmount":"الكمية المطلوبة",
 
+    "RelatedProducts":"منتجات ذات صله",
     "ReturnPolicy":"سياسة الإرجاع",
     "Room":"غرفة",
     "Rooms":"الغرف",
@@ -155,6 +161,7 @@
     "SaveChanges":"حفظ التغييرات",
     "SaveUntilReady":"احفظ المنتجات هنا حتى تصبح مستعدًا ",
     "SearchPlaceHolder":"عما تبحث؟",
+    "SeeDeliveryOptions":"انظر خيارات التسليم عند الخروج",
     "SelectLocalStore":"اختر محل ايكيا الأقرب إليك لتتعرف على الموقع، وساعات العمل، والعروض والفعاليات، والخدمات، والمزيد. محل ايكيا",
     "SelectStore":"اختر المتجر",
     "Settings":"الإعدادات",
@@ -169,6 +176,7 @@
     "Sustainable":"الاستدامة يوماً بعد يوم",
 
     "TermsConditions":"الشروط والأحكام",
+    "Thickness":"العمق",
     "ThisIkea":"هذه هي ايكيا",
     "TotalPrice":"مجموع الطلبيات:",
     "TotalWithVat":"إجمالي هذا الطلب شاملًا ضريبة القيمة المضافة",
@@ -179,6 +187,7 @@
     "ValidEmailExample":"شكل البريد الايليكترونى الصحيح : examle@ec123.com",
 
     "WhatNew":"جديدنا",
+    "Width":"العرض",
     "WishList":"قائمة الرغبات",
     "WorkingAtIkea":"العمل في ايكيا",
     "WrongPassword":"كلمة المرور خاطئة"

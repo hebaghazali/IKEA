@@ -1,18 +1,21 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import '../../assets/scss/pages/_favourite.scss'
+import '../../assets/scss/pages/_favourite.scss';
 import { removeFromFav, setFavItemAmount } from '../../store/actions/favourits';
-import { addCartItemToUser, removeFavItemFromUser } from '../../services/firebase';
+import {
+  addCartItemToUser,
+  removeFavItemFromUser,
+} from '../../services/firebase';
 import { useTranslation } from 'react-i18next';
 import { addToCart } from '../../store/actions/cartProducts';
 
 const FavouriteCard = (props) => {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   const [selectedAmount, setSelectedAmount] = useState(1);
 
-  const { cartProducts } = useSelector(state => state.cartProducts);
-  // let foundInCart = cartProducts?.find(i => i.id === props.id);
-  // const [inCart, setInCart] = useState(foundInCart ? true : false);
+  const { cartProducts } = useSelector((state) => state.cartProducts);
+  let foundInCart = cartProducts?.find(i => i.id === props.id);
+  const [inCart, setInCart] = useState(foundInCart ? true : false);
 
   const dispatch = useDispatch();
 
@@ -21,7 +24,6 @@ const FavouriteCard = (props) => {
     dispatch(setFavItemAmount(props.id, 0));
 
     removeFavItemFromUser(localStorage.getItem('UID'), props.id);
-
   };
 
   const selectAmount = (event) => {
@@ -29,11 +31,17 @@ const FavouriteCard = (props) => {
   };
 
   const addCart = () => {
-    dispatch(addToCart({ id: props.id, productData:props.product, PurchasedAmount: selectedAmount }));
-    // setInCart(true);
+    dispatch(
+      addToCart({
+        id: props.id,
+        productData: props.product,
+        PurchasedAmount: selectedAmount,
+      })
+    );
+    setInCart(true);
 
     addCartItemToUser(localStorage.getItem('UID'), props.id);
-  }; 
+  };
 
   useEffect(() => {
     dispatch(
@@ -69,15 +77,21 @@ const FavouriteCard = (props) => {
         <div className='shopping-info'>
           <h6>{props.product.Name}</h6>
           <p>{props.product.Description}</p>
-          <h6>{t('EGP')} {props.product.Price}</h6>
+          <h6>
+            {t('EGP')} {props.product.Price}
+          </h6>
           <p className='txt-info'>
             {props.product.Material}, {props.product.Width} x{' '}
             {props.product.Length}
           </p>
           {/* <!-- button For Shopping --> */}
           <div className='prod-box col-5'>
-            <button className='card-button' onClick={addCart}>
-              <i className='fas fa-shopping-bag'></i>  {t('AddToCart')}
+            <button
+              className={`btn card-button ${inCart && 'disabled'}`}
+              onClick={addCart}
+            >
+              <i className='fas fa-shopping-bag'></i>{' '}
+              {!inCart ? t('AddToCart') : t('Added')}
             </button>
           </div>
         </div>

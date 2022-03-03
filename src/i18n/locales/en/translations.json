@@ -8,12 +8,14 @@
     "AddGender":"Add gender",
     "AddMobile":"Add mobile",
     "AddToCart":"Add to shopping bag",
+    "Added":"Added",
     "Address":"Address",
     "AlreadyHaveAccount":"Already have an account?",
     "AllFilters":"All filters",
     "Assembly":"Assembly",
     "AssemblyDesc":"A professional service – at home or at work",
     "AvailableInStore":"Available in-store?",
+    "AvailableInStock":"Available in stock",
 
     "BrowseProducts":"Browse our products",
     "BuyBack":"Buy back and resell",
@@ -71,7 +73,8 @@
     "GeneralInfo":"General information",
     "GetDirection":"Get direction",
     "GoodToKnow":"Good to know!",
-
+    
+    "Height":"Height",
     "Hello":"Hello",  
     "Hotline":"Hotline",
 
@@ -101,6 +104,7 @@
     "Max5000":"maximum EGP 5000",
     "Max10000":"maximum EGP 10000",
     "Max20000":"maximum EGP 20000",
+    "Measurements":"Measurements",
     "Mobile":"Mobile",
     "MoreOptions":"More options",
     "MoreVariants":"More variants",
@@ -143,10 +147,12 @@
     "Product":"Product",
     "Products":"Products",
     "ProductGuides":"Product guides",
+    "ProductDetails":"Product details",
     "ProductPrice":"Product price",
     "ProductRecalls":"Product recalls",
     "PurchasedAmount":"Purchased Amount",
 
+    "RelatedProducts":"Related products",
     "ReturnPolicy":"Return policy",
     "Room":"Room",
     "Rooms":"Rooms",
@@ -155,6 +161,7 @@
     "SaveChanges":"Save changes",
     "SaveUntilReady":"Save it here until you're ready",
     "SearchPlaceHolder":"What are you looking for?",
+    "SeeDeliveryOptions":"See delivery options at checkout",
     "SelectLocalStore":"Select your local IKEA store to see the location, opening hours, offers& events, services, and more.",
     "SelectStore":"Select store",
     "Settings":"Settings",
@@ -169,6 +176,7 @@
     "Sustainable":"Sustainable everyday",
 
     "TermsConditions":"Terms and conditions",
+    "Thickness":"Thickness",
     "ThisIkea":"This is IKEA",
     "TotalPrice":"Total Price:",
     "TotalWithVat":"Total For This Order incl. VAT",
@@ -179,6 +187,7 @@
     "ValidEmailExample":"Example of valid mail: examle@ec123.com",
 
     "WhatNew":"What's new",
+    "Width":"Width",
     "WishList":"Wish List",
     "WorkingAtIkea":"Working at IKEA",
     "WrongPassword":"Password is wrong"

@@ -33,7 +33,7 @@ const ProductCard = ({ showOptions, pId, productData , roomBtn ,baseUrl}) => {
       isFavourite ? removeFromFav(pId) :
       
       addToFav({ id: pId, productData }));
-      setInCart(true);
+      // setInCart(true);
 
     addFavItemsToUser(localStorage.getItem('UID'), pId);
     setIsFavourite(!isFavourite);
