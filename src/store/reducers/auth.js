@@ -1,15 +1,16 @@
 const initial = {
-  id:"",
+  id: '',
   user: {
-    Address: "",
-    Email: "",
-    FirstName: "",
-    LastName: "",
-    Password: "",
-    PhoneNum: "",
-    BirthDate:"",
-    Gender:"",
-    PrefferedStore:""
+    Address: '',
+    Email: '',
+    FirstName: '',
+    LastName: '',
+    Password: '',
+    PhoneNum: '',
+    BirthDate: '',
+    Gender: '',
+    PrefferedStore: '',
+    Locations: '',
   },
 };
 
@@ -19,10 +20,10 @@ export default function authReducer(state = initial, action) {
       return {
         ...state,
         user: action.payload.user,
-        id: action.payload.id
+        id: action.payload.id,
       };
     case 'CLEAR_USER':
-      return state={};
+      return (state = {});
     default:
       return state;
   }

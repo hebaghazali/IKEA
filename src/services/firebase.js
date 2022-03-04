@@ -260,3 +260,21 @@ export const getProductsBySearchText = async text => {
 
   return productsRes[productsRes.length - 1];
 };
+
+export const setUserLocation = async (userID, locationData) => {
+  const locations = [];
+
+  await getDoc(doc(fireStore, 'users', userID)).then(res => {
+    if (res.data().Locations) {
+      locations.push(...res.data().Locations);
+    }
+  });
+
+  updateDoc(doc(fireStore, 'users', userID), {
+    Locations: [locationData, ...locations],
+  })
+    .then(() => {
+      console.log('Location added to current user');
+    })
+    .catch(err => console.log('adding location to user ERROR: ' + err));
+};

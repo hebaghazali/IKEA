@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { updateUserStorageByID } from '../services/firebase';
 import { useEffect } from 'react';
 import { auth } from '../firebaseConfig/firebase';
-import { signOut, onAuthStateChanged } from 'firebase/auth';
+import { signOut } from 'firebase/auth';
 import store from '../store/store';
 import { clearUser } from '../store/actions/auth';
 import { changeLoader } from '../store/actions/loader';
@@ -11,7 +11,7 @@ import { useState } from 'react';
 import Loader from '../components/loader';
 
 const Profile = () => {
-  const user = useSelector((state) => state.user.user);
+  const user = useSelector(state => state.user.user);
   // const loader = useSelector((state) => state.loader);
   const [loader, setLoader] = useState(true);
   useEffect(() => {
@@ -27,12 +27,6 @@ const Profile = () => {
     window.location.href = '/';
     store.dispatch(clearUser());
   }
-
-  onAuthStateChanged(auth, (user) => {
-    if (!user) {
-      window.location.href = '/sign';
-    }
-  });
 
   return (
     <>

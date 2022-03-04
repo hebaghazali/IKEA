@@ -5,7 +5,6 @@ import { signup, useAuth } from '../../firebaseConfig/firebase';
 import { addDocByID } from '../../services/firebase';
 import { changeUser } from '../../store/actions/auth';
 
-
 function SignIn() {
   const [users, setUser] = useState({
     Name: '',
@@ -187,7 +186,7 @@ function SignIn() {
                         id='validationCustom01'
                         name='Phone'
                         placeholder='EG(011, 012, 015, 010)'
-                        onChange={(e) => {
+                        onChange={e => {
                           handleChangeInInput(e);
                         }}
                         ref={phoneRef}

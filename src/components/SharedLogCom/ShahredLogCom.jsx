@@ -4,7 +4,6 @@ import { login, useAuth } from '../../firebaseConfig/firebase';
 import { Link } from 'react-router-dom';
 import { changeUser } from '../../store/actions/auth';
 
-
 function SharedLogComp() {
   const [users, setUser] = useState({
     Email: '',
@@ -20,7 +19,7 @@ function SharedLogComp() {
   const [Password, setPassword] = useState('');
 
   // Function to hadndle change in any input and write into it
-  const handleChangeInInput = (e) => {
+  const handleChangeInInput = e => {
     const regEmail = /^([a-zA-Z0-9_\-\.]+){3,}@([a-zA-Z0-9_\-\.]+){3,}(.com)$/;
     const regName = /^\w[a-zA-Z]{3,}[^-\s][a-zA-Z]{3,}/;
     const regPassword =
@@ -74,10 +73,12 @@ function SharedLogComp() {
     console.log('function login');
     setLoading(true);
     try {
-      await login(emailRef.current.value, passwordRef.current.value).then((userCredentials)=>{
-        // changeUser(userCredentials.user.uid);
-        localStorage.setItem('UID', userCredentials.user.uid);
-      })
+      await login(emailRef.current.value, passwordRef.current.value).then(
+        userCredentials => {
+          // changeUser(userCredentials.user.uid);
+          localStorage.setItem('UID', userCredentials.user.uid);
+        }
+      );
       window.location.href = '/profile';
     } catch {
       alert('User not found you can signup!');
@@ -98,7 +99,7 @@ function SharedLogComp() {
               placeholder='Email(UserName)'
               name='Email'
               required
-              onChange={(e) => {
+              onChange={e => {
                 handleChangeInInput(e);
               }}
               ref={emailRef}
@@ -118,7 +119,7 @@ function SharedLogComp() {
               required
               name='Password'
               placeholder='Password'
-              onChange={(e) => {
+              onChange={e => {
                 handleChangeInInput(e);
               }}
               ref={passwordRef}
