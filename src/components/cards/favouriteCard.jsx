@@ -10,7 +10,7 @@ import { useTranslation } from 'react-i18next';
 import { addToCart } from '../../store/actions/cartProducts';
 
 const FavouriteCard = (props) => {
-  const { t } = useTranslation();
+  const { t , i18n } = useTranslation();
   const [selectedAmount, setSelectedAmount] = useState(1);
 
   const { cartProducts } = useSelector((state) => state.cartProducts);
@@ -75,13 +75,13 @@ const FavouriteCard = (props) => {
         </div>
 
         <div className='shopping-info'>
-          <h6>{props.product.Name}</h6>
-          <p>{props.product.Description}</p>
+          <h6>{i18n.language=='en'?props.product.Name:props.product.NameAr}</h6>
+          <p>{i18n.language=='en'?props.product.Description:props.product.DescriptionAr}</p>
           <h6>
             {t('EGP')} {props.product.Price}
           </h6>
           <p className='txt-info'>
-            {props.product.Material}, {props.product.Width} x{' '}
+            {i18n.language=='en'?props.product.Material:props.product.MaterialAr}, {props.product.Width} x{' '}
             {props.product.Length}
           </p>
           {/* <!-- button For Shopping --> */}

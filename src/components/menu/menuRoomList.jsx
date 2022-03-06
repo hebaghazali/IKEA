@@ -35,7 +35,7 @@ const MenuRoomList = props => {
             >
               <img src={room.data().Image} className='card-img-top' alt='...' />
               <div className='card-body category-body'>
-                <p className='card-text'>{room.data().Name}</p>
+                <p className='card-text'>{i18n.language=='en'?room.data().Name:room.data().NameAr}</p>
               </div>
             </Link>
           );

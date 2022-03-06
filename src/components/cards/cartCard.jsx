@@ -7,8 +7,8 @@ import {
 } from '../../store/actions/cartProducts';
 import { useTranslation } from 'react-i18next';
 
-const CartCard = props => {
-  const { t } = useTranslation();
+const CartCard = (props) => {
+  const { t, i18n } = useTranslation();
   const [selectedAmount, setSelectedAmount] = useState(props.purchasedQuantity);
   const dispatch = useDispatch();
 
@@ -19,7 +19,7 @@ const CartCard = props => {
     removeCartItemFromUser(localStorage.getItem('UID'), props.id);
   };
 
-  const selectAmount = event => {
+  const selectAmount = (event) => {
     setSelectedAmount(Number(event.target.value));
   };
 
@@ -55,17 +55,37 @@ const CartCard = props => {
         </div>
 
         <div className='shopping-info'>
-          <h6>{props.product.Name}</h6>
-          <p>{props.product.Description}</p>
-          <h6>{t('EGP')} {props.product.Price}</h6>
+          <h6>
+            {i18n.language == 'en' ? props.product.Name : props.product.NameAr}
+          </h6>
+          <p>
+            {i18n.language == 'en'
+              ? props.product.Description
+              : props.product.DescriptionAr}
+          </p>
+          <h6>
+            {t('EGP')} {props.product.Price}
+          </h6>
           <p className='txt-info'>
-            {props.product.Material}, {props.product.Width} x{' '}
-            {props.product.Length}
+            {i18n.language == 'en'
+              ? props.product.Material
+              : props.product.MaterialAr}
+            , {props.product.Width} x {props.product.Length}
           </p>
           <span>
             {t('SubTotal')}:{' '}
-            <strong>{t('EGP')} {props.product.Price * selectedAmount}</strong>
+            <strong>
+              {t('EGP')} {props.product.Price * selectedAmount}
+            </strong>
           </span>
+          {props.product.SalePrice && (
+            <p className='text-danger'>
+              {t('SaleSubTotal')}:{' '}
+              <strong>
+                {t('EGP')} {props.product.SalePrice * selectedAmount}
+              </strong>
+            </p>
+          )}
         </div>
       </div>
     </>

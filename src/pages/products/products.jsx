@@ -21,7 +21,7 @@ import { useTranslation } from 'react-i18next';
 import FiltersMenu from './filtersMenu.jsx/filtersMenu';
 
 const Products = ({ match }) => {
-  const { t } = useTranslation();
+  const { t , i18n } = useTranslation();
   let { type, name, id, subName, subId } = match?.params;
   const [products, setProducts] = useState(null);
   const [subCategories, setSubCategories] = useState(null);
@@ -210,10 +210,10 @@ const Products = ({ match }) => {
     <>
       {/* <Breadcrumb state={location.state} /> */}
 
-      <SectionTitle title={subName} />
+      <SectionTitle title={i18n.language==='en'?currentSub?.Name:currentSub?.NameAr} />
 
       <section className='col-12 col-md-7 col-lg-7'>
-        <p className='description'>{currentSub?.Descripton}</p>
+        <p className='description'>{i18n.language==='en'?currentSub?.Description:currentSub?.DescriptionAr}</p>
       </section>
 
       <div className='row sticky-top filter-row'>
