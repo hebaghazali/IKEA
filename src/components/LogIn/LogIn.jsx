@@ -2,8 +2,11 @@ import React from 'react';
 import '../../assets/scss/pages/_login.scss';
 import { Link } from 'react-router-dom';
 import SharedLogComp from '../SharedLogCom/ShahredLogCom';
+import { useTranslation } from 'react-i18next';
 
 function LogIn() {
+  const { t } = useTranslation();
+
   return (
     <>
       <div className='log-parent'>
@@ -11,14 +14,13 @@ function LogIn() {
           {/* <!-- Left section --> */}
           <section className='row left-box-log'>
             <section className='col-md-5 col-12 login-heading'>
-              <h3>Login to your IKEA account</h3>
+              <h3>{t('LoginToYourAccount')}</h3>
               <p>
-                Login or create an account to access your latest shopping lists
-                within our website and IKEA Shopping app.
+                {t('LoginDesc')}
               </p>
               <button className='login-creation'>
                 {' '}
-                <Link to='/sign'>Create account</Link>{' '}
+                <Link to='/sign'>{t('CreateAccount')}</Link>{' '}
               </button>
             </section>
 

@@ -1,25 +1,27 @@
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const MenuNewList = props => {
+  const { t , i18n } = useTranslation();
   return (
-    <div class='offcanvas-body menu-body'>
-      <div class='d-flex flex-row'>
+    <div className='offcanvas-body menu-body'>
+      <div className='d-flex flex-row'>
         <button
-          class='position-sticky menu-btn left-arrow'
+          className={`position-sticky ${i18n.dir()==='ltr'?' menu-btn-ltr left-arrow':'menu-btn-rtl right-arrow'}`}
           onClick={() => {
             props.changeSelection('');
           }}
         >
-          <i class='bi bi-arrow-left-short'></i>
+          <i className={`bi ${i18n.dir()==='ltr'?'bi-arrow-left-short':'bi-arrow-right-short'}`}></i>
         </button>
-        <span class='head-title'>What's new</span>
+        <span className='head-title'>{t('WhatNew')}</span>
       </div>
-      <ul class='small-text-list my-4'>
+      <ul className='small-text-list my-4'>
         <li>
-          <Link to='/'>New Products</Link>
+          <Link to='/'>{t('NewProducts')}</Link>
         </li>
         <li>
-          <Link to='/'>Stories</Link>
+          <Link to='/'>{t('Stories')}</Link>
         </li>
       </ul>
     </div>

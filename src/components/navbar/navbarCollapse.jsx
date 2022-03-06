@@ -1,6 +1,9 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 const NavbarCollapse = () => {
+  const { t } = useTranslation();
+
   return (
     <>
       <div className='collapse navbar-collapse'>
@@ -11,7 +14,7 @@ const NavbarCollapse = () => {
               data-bs-toggle='offcanvas'
               data-bs-target='#offcanvasExample'
             >
-              Products
+              {t('Products')}
             </p>
           </li>
           <li className='nav-item'>
@@ -20,7 +23,7 @@ const NavbarCollapse = () => {
               data-bs-toggle='offcanvas'
               data-bs-target='#offcanvasExample'
             >
-              Rooms
+              {t('Rooms')}
             </p>
           </li>
           <li className='nav-item'>
@@ -29,7 +32,7 @@ const NavbarCollapse = () => {
               data-bs-toggle='offcanvas'
               data-bs-target='#offcanvasExample'
             >
-              Offers
+              {t('Offers')}
             </p>
           </li>
           <li className='nav-item'>
@@ -38,7 +41,7 @@ const NavbarCollapse = () => {
               data-bs-toggle='offcanvas'
               data-bs-target='#offcanvasExample'
             >
-              What's new
+              {t('WhatNew')}
             </p>
           </li>
         </ul>

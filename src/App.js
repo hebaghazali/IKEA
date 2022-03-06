@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Switch, Redirect, useHistory } from 'react-router-dom';
+import './i18n/config';
 import Navbar from './components/navbar/navbar';
 import Home from './pages/home.jsx';
 import Footer from './components/footer/footer';
@@ -12,6 +13,8 @@ import StoresPage from './pages/storeLocation';
 import Profile from './pages/profile';
 import ProductA from './components/productA/productA';
 import ShoppingCart from './pages/shoppingCart';
+import { useTranslation } from 'react-i18next';
+
 import GuardedRoute from 'react-guarded-route';
 import FavouritePage from './pages/favouritePage';
 import Checkout from './components/paypalCheckout/checkout';
@@ -51,78 +54,84 @@ function App() {
   useEffect(() => {
     updateUserStorageByID(localStorage.getItem('UID'));
   }, []);
+  const { i18n } = useTranslation();
 
   return (
     <>
-      <Menu />
+      <div dir={i18n.dir()}>
+        <Menu />
+        <div
+          className={`${
+            i18n.dir() === 'ltr' ? 'body-container-ltr' : 'body-container-rtl'
+          }`}
+        >
+          <Navbar />
 
-      <div className='body-container'>
-        <Navbar />
+          <div className='mt-nav-4 pt-nav border-top'>
+            <Switch>
+              <Redirect from='/' exact to='/home' />
 
-        <div className='mt-nav-4 pt-nav border-top'>
-          <Switch>
-            <Redirect from='/' exact to='/home' />
+              <Route path='/home' component={Home} />
+              <Route path='/stores' component={StoresPage} />
+              <Route
+                path='/category/:type/:name/:id/:subName/:subId/:prodName/:prodId'
+                component={ProductA}
+              />
+              <Route
+                path='/category/:type/:name/:id'
+                exact
+                component={SubCategory}
+              />
+              <Route path='/stores' component={StoresPage} />
+              <Route path='/shoppingcart' component={ShoppingCart} />
+              <Route
+                path='/category/:type/:name/:id/:subName/:subId'
+                exact
+                component={Products}
+              />
+              <Route path='/products/:pId' exact component={ProductA} />
 
-            <Route path='/home' component={Home} />
-            <Route path='/stores' component={StoresPage} />
-            <Route
-              path='/category/:type/:name/:id/:subName/:subId/:prodName/:prodId'
-              component={ProductA}
-            />
-            <Route
-              path='/category/:type/:name/:id'
-              exact
-              component={SubCategory}
-            />
-            <Route path='/stores' component={StoresPage} />
-            <Route path='/shoppingcart' component={ShoppingCart} />
-            <Route
-              path='/category/:type/:name/:id/:subName/:subId'
-              exact
-              component={Products}
-            />
-            <Route path='/products/:pId' exact component={ProductA} />
+              <Route
+                path='/productsSearch/:query'
+                exact
+                component={ProductsSearch}
+              />
 
-            <Route
-              path='/productsSearch/:query'
-              exact
-              component={ProductsSearch}
-            />
+              <Route path='/favorite' exact component={FavouritePage} />
 
-            <Route path='/favorite' exact component={FavouritePage} />
+              <GuardedRoute
+                path='/login'
+                component={LogIn}
+                redirectTo='/profile'
+                validatorFunction={loginValidator()}
+              ></GuardedRoute>
 
-            <GuardedRoute
-              path='/login'
-              component={LogIn}
-              redirectTo='/profile'
-              validatorFunction={loginValidator()}
-            ></GuardedRoute>
+              <GuardedRoute
+                path='/sign'
+                component={SignIn}
+                redirectTo='/profile'
+                validatorFunction={loginValidator()}
+              ></GuardedRoute>
 
-            <GuardedRoute
-              path='/sign'
-              component={SignIn}
-              redirectTo='/profile'
-              validatorFunction={loginValidator()}
-            ></GuardedRoute>
+              <GuardedRoute
+                path='/profile'
+                component={Profile}
+                redirectTo='/sign'
+                validatorFunction={profileValidator()}
+              ></GuardedRoute>
 
-            <GuardedRoute
-              path='/profile'
-              component={Profile}
-              redirectTo='/sign'
-              validatorFunction={profileValidator()}
-            ></GuardedRoute>
-
-            <GuardedRoute
-              path='/checkout'
-              component={Order}
-              redirectTo='/login'
-              validatorFunction={checkoutValidator()}
-            ></GuardedRoute>
-          </Switch>
+              <GuardedRoute
+                path='/checkout'
+                component={Order}
+                redirectTo='/login'
+                validatorFunction={checkoutValidator()}
+              ></GuardedRoute>
+            </Switch>
+          </div>
         </div>
-      </div>
 
-      <Footer />
+        <Footer />
+      </div>
     </>
   );
 }

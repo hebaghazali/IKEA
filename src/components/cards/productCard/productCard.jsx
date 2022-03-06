@@ -9,10 +9,12 @@ import { addCartItemToUser } from '../../../services/firebase';
 import { Link } from 'react-router-dom';
 import { getCollection } from './../../../services/firebase';
 import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const ProductCard = ({ showOptions, pId, productData , roomBtn ,baseUrl}) => {
   const { favourits } = useSelector(state => state.favourits);
   const { cartProducts } = useSelector(state => state.cartProducts);
+  const { t } = useTranslation();
 
   let found = favourits?.find(i => i.id === pId);
   let foundInCart = cartProducts?.find(i => i.id === pId);
@@ -31,7 +33,7 @@ const ProductCard = ({ showOptions, pId, productData , roomBtn ,baseUrl}) => {
       isFavourite ? removeFromFav(pId) :
       
       addToFav({ id: pId, productData }));
-      setInCart(true);
+      // setInCart(true);
 
     addFavItemsToUser(localStorage.getItem('UID'), pId);
     setIsFavourite(!isFavourite);
@@ -104,18 +106,18 @@ const ProductCard = ({ showOptions, pId, productData , roomBtn ,baseUrl}) => {
             />
           </Link>
           {/*TODO: if created recently  */}
-          <strong className='new'>New</strong>
-          {SalePrice && <p className='product-highlight'>Limited time offer</p>}
+          <strong className='new'>{t('New')}</strong>
+          {SalePrice && <p className='product-highlight'>{t('LimitedOffer')}</p>}
           {/* <p>{Material}</p> */}
           <p className='product-header'>{ProductName}</p>
           <p className='product-description'>{Name}</p>
 
           {/*TODO: add feature field in db*/}
-          <p>{Width && `${Width} * ${Length ? Length : Height} cm`}</p>
+          <p>{Width && `${Width} * ${Length ? Length : Height} ${t('cm')}`}</p>
           <ProductPrice Price={Price} SalePrice={SalePrice} />
 
           {!showOptions && !inCart && (
-            <p className='more-options'>More options</p>
+            <p className='more-options'>{t('MoreOptions')}</p>
           )}
           {!inCart && (
             <button className='card-icon' onClick={addCart}>
@@ -126,7 +128,7 @@ const ProductCard = ({ showOptions, pId, productData , roomBtn ,baseUrl}) => {
 
         {variants && (
           <div className='row mt-3'>
-            <small className='col-12'>more variants</small>
+            <small className='col-12'>{t('MoreVariants')}</small>
 
             {variants.map(item => (
               <ProductVariant

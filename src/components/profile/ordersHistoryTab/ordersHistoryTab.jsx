@@ -4,8 +4,10 @@ import { useSelector } from 'react-redux';
 import { getDocumentByID } from '../../../services/firebase';
 import Loader from '../../loader';
 import OrderCard from './orderCard';
+import { useTranslation } from 'react-i18next';
 
 const OrdersTab = () => {
+  const { t } = useTranslation();
   const [loader, setLoader] = useState(true);
   const purchases = useSelector((state) => state.user.user.Purchased);
   const [orders, setOrders] = useState([]);
@@ -33,7 +35,7 @@ const OrdersTab = () => {
       {!purchases && (
         <div className='text-center my-5'>
           <p className='fst-italic' style={{ color: 'grey' }}>
-            you have no orders
+            {t('NoOrders')}
           </p>
         </div>
       )}

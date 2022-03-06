@@ -1,6 +1,8 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 const FooterInfo = () => {
+  const { t } = useTranslation();
   return (
     <>
       <div className='footer-info d-flex justify-content-between pb-3 pt-3 mt-4'>
@@ -10,13 +12,13 @@ const FooterInfo = () => {
         <div className='legal-links'>
           <ul className='d-flex'>
             <li>
-              <a href='#'>Privacy policy</a>
+              <a href='#'>{t('PrivacyPolicy')}</a>
             </li>
             <li>
-              <a href='#'>Cookie policy</a>
+              <a href='#'>{t('CookiePolicy')}</a>
             </li>
             <li>
-              <a href='#'>Terms and conditions</a>
+              <a href='#'>{t('TermsConditions')}</a>
             </li>
           </ul>
         </div>

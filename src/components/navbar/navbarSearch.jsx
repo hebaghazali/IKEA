@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import React, { useRef, useEffect, useState } from 'react';
 import { getDocumentByID, getFirst4Categories } from '../../services/firebase';
 import { Link, useHistory } from 'react-router-dom';
@@ -12,6 +13,8 @@ const NavbarSearch = () => {
   const navbarSearch = useRef(null);
   const inputRef = useRef(null);
   const overlay = useRef(null);
+
+  const { t } = useTranslation();
 
   const [categories, setCategories] = useState([]);
 
@@ -105,7 +108,7 @@ const NavbarSearch = () => {
               <i className='bi bi-search'></i>
               <input
                 type='text'
-                placeholder='What are you looking for?'
+                placeholder={t('SearchPlaceHolder')}
                 onFocus={overlayOn}
                 onChange={changeHandler}
                 value={input}

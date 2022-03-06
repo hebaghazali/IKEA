@@ -9,11 +9,13 @@ import { clearUser } from '../store/actions/auth';
 import { changeLoader } from '../store/actions/loader';
 import { useState } from 'react';
 import Loader from '../components/loader';
+import { useTranslation } from 'react-i18next';
 
 const Profile = () => {
   const user = useSelector(state => state.user.user);
   // const loader = useSelector((state) => state.loader);
   const [loader, setLoader] = useState(true);
+  const { t } = useTranslation();
   useEffect(() => {
     updateUserStorageByID(localStorage.getItem('UID')).then(() =>
       setLoader(false)
@@ -34,12 +36,12 @@ const Profile = () => {
       {!loader && (
         <div className='col-12 col-md-11 col-lg-10 mx-auto'>
           <div className='row big-title col-12 col-md-7 pt-2' id='username'>
-            Hello, {user.FirstName}
+            {t('Hello')} {user.FirstName}!
           </div>
           <div className='d-flex pt-2'>
-            Need to change account?
+            {t('ChangeAccount')}
             <button className='logout' onClick={handleLogout}>
-              Log out
+              {t('Logout')}
             </button>
           </div>
           <ProfileTab />

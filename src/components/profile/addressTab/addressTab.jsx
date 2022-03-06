@@ -3,8 +3,10 @@ import { useState } from 'react';
 import { updateData } from '../../../services/firebase';
 import { updateUserStorageByID } from '../../../services/firebase';
 import Loader from '../../loader';
+import { useTranslation } from 'react-i18next';
 
 const AddressTab = () => {
+  const { t } = useTranslation();
   const [editSection, setEditSection] = useState(0);
   const user = useSelector((state) => state.user.user);
   const id = useSelector((state) => state.user.id);
@@ -28,13 +30,13 @@ const AddressTab = () => {
       {!loader && (
         <section className='py-5 border-bottom'>
           <div className='row fw-bold d-flex justify-content-between mb-2'>
-            <div className='col-6'>Address</div>
+            <div className='col-6'>{t('Address')}</div>
             {editSection !== 1 && (
               <button
                 className='col-3 text-end text-decoration-underline'
                 onClick={() => setEditSection(1)}
               >
-                Edit
+              {t('Edit')}
               </button>
             )}
             {editSection === 1 && (
@@ -42,13 +44,13 @@ const AddressTab = () => {
                 className='col-3 text-end text-decoration-underline'
                 onClick={() => setEditSection(0)}
               >
-                Close
+              {t('Close')}
               </button>
             )}
           </div>
           {editSection !== 1 && (
             <>
-              {!user.Address && <span className='small-text'>Add Address</span>}
+              {!user.Address && <span className='small-text'>{t('AddAddress')}</span>}
               <span className='d-block'>{user.Address}</span>
             </>
           )}
@@ -70,13 +72,13 @@ const AddressTab = () => {
                     className='default-btn cancel-change-btn col-12 mt-5'
                     onClick={() => setEditSection(0)}
                   >
-                    Cancel
+                  {t('Cancel')}
                   </button>
                   <button
                     className='dark-btn save-change-btn col-12'
                     onClick={() => updateUser()}
                   >
-                    Save changes
+                  {t('SaveChanges')}
                   </button>
                 </div>
               </section>

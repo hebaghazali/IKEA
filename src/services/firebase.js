@@ -10,6 +10,7 @@ import {
   orderBy,
   setDoc,
   limit,
+  deleteDoc,
 } from 'firebase/firestore';
 import { fireStore } from '../config/firebaseConfig';
 import { changeLoader } from './../store/actions/loader';
@@ -200,6 +201,10 @@ export const getProductCatById = id => {
       return productCategories.data();
     }
   );
+};
+
+export const deleteDocument = (id, collName) => {
+  return deleteDoc(doc(fireStore, collName, id));
 };
 
 export const getProductsBySearchText = async text => {

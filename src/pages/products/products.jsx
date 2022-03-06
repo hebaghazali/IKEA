@@ -16,9 +16,12 @@ import SectionTitle from './sectionTitle';
 import { useSelector } from 'react-redux';
 import EmptyData from './../../components/emptyData';
 import Carousel from './../../components/carousel/carousel';
+import { useTranslation } from 'react-i18next';
+
 import FiltersMenu from './filtersMenu.jsx/filtersMenu';
 
 const Products = ({ match }) => {
+  const { t } = useTranslation();
   let { type, name, id, subName, subId } = match?.params;
   const [products, setProducts] = useState(null);
   const [subCategories, setSubCategories] = useState(null);
@@ -28,19 +31,19 @@ const Products = ({ match }) => {
 
   const sortStates = [
     {
-      label: 'Newest',
+      label: t('Newest'),
       id: 'CreatedAt',
     },
     {
-      label: 'Price: low to high',
+      label: t('PriceLowToHigh'),
       id: 'Price',
     },
     {
-      label: 'Price: high to low',
+      label: t('PriceHighToLow'),
       id: 'DPrice',
     },
     {
-      label: 'Name',
+      label: t('Name'),
       id: 'Name',
     },
   ];
@@ -70,27 +73,27 @@ const Products = ({ match }) => {
 
   const pricesStates = [
     {
-      label: 'maximum EGP 2000 ',
+      label: t('Max2000'),
       id: '2000',
     },
     {
-      label: 'maximum EGP 3000',
+      label: t('Max3000'),
       id: '3000',
     },
     {
-      label: 'maximum EGP 4000',
+      label: t('Max4000'),
       id: '4000',
     },
     {
-      label: 'maximum EGP 5000',
+      label: t('Max5000'),
       id: '5000',
     },
     {
-      label: 'maximum EGP 10000',
+      label: t('Max10000'),
       id: '10000',
     },
     {
-      label: 'maximum EGP 20000',
+      label: t('Max20000'),
       id: '20000',
     },
   ];
@@ -216,7 +219,7 @@ const Products = ({ match }) => {
       <div className='row sticky-top filter-row'>
         <div className='col-12 col-lg-8 d-flex flex-nowrap overflow-auto py-3 my-2'>
           {/* <FilterButton title="compare" /> */}
-          <FilterButton title='sort' icon='fas fa-chevron-down' />
+          <FilterButton title={t('Sort')} icon='fas fa-chevron-down' />
           <FilterDropList
             listName='sort-group'
             checkType='radio'
@@ -224,7 +227,7 @@ const Products = ({ match }) => {
             clickHandler={sortProducts}
           />
 
-          <FilterButton title='color' icon='fas fa-chevron-down' />
+          <FilterButton title={t('Color')} icon='fas fa-chevron-down' />
           <FilterDropList
             listName='colors-group'
             checkType='radio'
@@ -234,7 +237,7 @@ const Products = ({ match }) => {
 
           <FilterButton
             id='price-filter'
-            title='price'
+            title={t('Price')}
             icon='fas fa-chevron-down'
           />
           <FilterDropList
@@ -246,14 +249,14 @@ const Products = ({ match }) => {
             }
           />
 
-          <FilterButton title='size' icon='fas fa-chevron-down' />
+          <FilterButton title={t('Size')} icon='fas fa-chevron-down' />
           <FilterDropList
             listName='sizes-group'
             checkType='radio'
             items={sizesStates}
           />
 
-          <FilterButton title='material' icon='fas fa-chevron-down' />
+          <FilterButton title={t('Material')} icon='fas fa-chevron-down' />
           <FilterDropList
             listName='material-group'
             checkType='radio'
@@ -262,7 +265,7 @@ const Products = ({ match }) => {
           />
 
           <FilterButton
-            title='allFilters'
+            title={t('AllFilters')}
             icon='fas fa-filter'
             noDrop
             offcanvas

@@ -4,9 +4,15 @@ import MenuNewList from './menuNewList';
 import MenuOfferList from './menuOfferList';
 import MenuProductList from './menuProductList';
 import MenuRoomList from './menuRoomList';
+import { useTranslation } from 'react-i18next';
 
 const MenuMainBody = () => {
   const [selectedSection, setSelectedSection] = useState('');
+  const { t , i18n } = useTranslation();
+  function changeLanguage(e) {
+    i18n.changeLanguage(e.target.value);
+    localStorage.setItem("language",i18n.language);
+  }
 
   return (
     <>
@@ -19,7 +25,7 @@ const MenuMainBody = () => {
               }}
               style={{ cursor: 'pointer' }}
             >
-              Products
+              {t('Products')}
             </li>
             <li
               onClick={() => {
@@ -27,7 +33,7 @@ const MenuMainBody = () => {
               }}
               style={{ cursor: 'pointer' }}
             >
-              Rooms
+              {t('Rooms')}
             </li>
             <li
               onClick={() => {
@@ -35,7 +41,7 @@ const MenuMainBody = () => {
               }}
               style={{ cursor: 'pointer' }}
             >
-              Offers
+              {t('Offers')}
             </li>
             <li
               onClick={() => {
@@ -43,25 +49,25 @@ const MenuMainBody = () => {
               }}
               style={{ cursor: 'pointer' }}
             >
-              What's new
+              {t('WhatNew')}
             </li>
           </ul>
           <ul className='small-text-list'>
             <li>
-              <Link to='/stores'>Stores</Link>
+              <Link to='/stores'>{t('Stores')}</Link>
             </li>
             <li>
-              <Link to='/conactUs'>Contact us</Link>
+              <Link to='/conactUs'>{t('ContactUs')}</Link>
             </li>
           </ul>
           <div className='d-flex flex-row justify-content-around'>
-            <select type='button' className='selector-btn'>
-              <option>English</option>
-              <option>العربية</option>
+            <select onChange={changeLanguage} type='button' className='selector-btn' defaultValue={i18n.language}>
+              <option value='en'>English</option>
+              <option value='ar'>العربية</option>
             </select>
             <button className='selector-btn'>
               <i className='bi bi-globe'></i>
-              Change country
+              {t('ChangeCountry')}
             </button>
           </div>
         </div>
