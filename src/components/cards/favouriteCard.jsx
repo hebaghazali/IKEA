@@ -81,8 +81,7 @@ const FavouriteCard = (props) => {
             {t('EGP')} {props.product.Price}
           </h6>
           <p className='txt-info'>
-            {i18n.language=='en'?props.product.Material:props.product.MaterialAr}, {props.product.Width} x{' '}
-            {props.product.Length}
+            {i18n.language=='en'?props.product.Material:props.product.MaterialAr}, {props.product.Width}{t('cm')} * {props.product.Length}{t('cm')}
           </p>
           {/* <!-- button For Shopping --> */}
           <div className='prod-box col-5'>

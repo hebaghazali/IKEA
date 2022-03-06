@@ -70,7 +70,7 @@ const CartCard = (props) => {
             {i18n.language == 'en'
               ? props.product.Material
               : props.product.MaterialAr}
-            , {props.product.Width} x {props.product.Length}
+            , {props.product.Length}{t('cm')} * {props.product.Width}{t('cm')}
           </p>
           <span>
             {t('SubTotal')}:{' '}
