@@ -13,7 +13,6 @@ import {
   getDocumentByID,
 } from '../../services/firebase';
 import SectionTitle from './sectionTitle';
-import { useSelector } from 'react-redux';
 import EmptyData from './../../components/emptyData';
 import Carousel from './../../components/carousel/carousel';
 import { useTranslation } from 'react-i18next';
@@ -27,7 +26,7 @@ const Products = ({ match }) => {
   const [subCategories, setSubCategories] = useState(null);
   const [currentSub, setCurrentSub] = useState(null);
   const [roomBtn, setRoomBtn] = useState(false);
-  const { loader } = useSelector(state => state.loader);
+  const [loading, setLoading] = useState(true);
 
   const sortStates = [
     {
@@ -162,8 +161,10 @@ const Products = ({ match }) => {
 
   const getProducts = () => {
     getCollection('Products', ['SubCategory', '==', subId])
-      .then(res => {
+      .then((res) => {
+        setLoading(true);
         setProducts(res);
+        setLoading(false);
       })
       .catch(err => console.log('error :', err));
   };
@@ -174,9 +175,10 @@ const Products = ({ match }) => {
       ['SubCategory', '==', subId],
       [key, operator, value]
     )
-      .then(res => {
-        console.log('products', products);
+      .then((res) => {
+        setLoading(true);
         setProducts(res);
+        setLoading(false);
       })
       .catch(err => console.log('error :', err));
   };
@@ -190,9 +192,10 @@ const Products = ({ match }) => {
     }
 
     sortCollection(['SubCategory', '==', subId], sortProp, order)
-      .then(res => {
-        console.log('products', res);
+      .then((res) => {
+        setLoading(true);
         setProducts(res);
+        setLoading(false);
       })
       .catch(err => console.log('error :', err));
   };
@@ -204,6 +207,7 @@ const Products = ({ match }) => {
   useEffect(() => {
     console.log('start products');
     Promise.all([getProducts(), getSubCategories(), getCurrentSub()]);
+
   }, [match.params.subId]);
 
   return (
@@ -292,8 +296,8 @@ const Products = ({ match }) => {
 
       <div className='carousel-body p-0 pb-2 mb-5'>
         <div className='row' id='show-proDetail'>
-          <Loader />
-          {!loader && !products?.length && <EmptyData />}
+          {loading&&<Loader />}
+          {!loading && !products?.length && <EmptyData />}
 
           {products?.map(i => (
             <ProductCard
@@ -315,7 +319,7 @@ const Products = ({ match }) => {
       />
 
       <SectionTitle title='Related categories' />
-      <Loader />
+      {/* <Loader /> */}
       <div className='row mx-auto g-3 categories-slidder'>
         {subCategories &&
           subCategories.map(subcategory => {
