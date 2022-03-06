@@ -52,7 +52,8 @@ function App() {
   };
 
   useEffect(() => {
-    updateUserStorageByID(localStorage.getItem('UID'));
+    localStorage.getItem('UID') &&
+      updateUserStorageByID(localStorage.getItem('UID'));
   }, []);
   const { i18n } = useTranslation();
 

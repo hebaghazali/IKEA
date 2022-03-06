@@ -1,6 +1,7 @@
 import React from 'react';
 import Checkout from '../paypalCheckout/checkout';
-import { useEffect } from 'react';
+import { useEffect, useContext } from 'react';
+import { locationContext } from '../../contexts/locationContext';
 
 const ReviewAccordion = ({
   reviewAccordionBtn,
@@ -10,8 +11,9 @@ const ReviewAccordion = ({
   handleReviewNext,
   continuePayment,
   totalOrderPrice,
-  selectedAddress,
 }) => {
+  const { checkedAddress, userLocations } = useContext(locationContext);
+
   return (
     <div className='accordion-item'>
       <h2 className='accordion-header' id='flush-headingThree'>
@@ -47,9 +49,9 @@ const ReviewAccordion = ({
               </p>
               <p>
                 <strong>Address:</strong>{' '}
-                {user.Locations && user.Locations[0].address}
+                {userLocations && userLocations[checkedAddress].address}
                 <br />
-                {user.Locations && user.Locations[0].building}
+                {userLocations && userLocations[checkedAddress].building}
               </p>
             </div>
           </div>
@@ -64,9 +66,9 @@ const ReviewAccordion = ({
               </p>
               <p>
                 <strong>Address:</strong>{' '}
-                {user.Locations && user.Locations[0].address}
+                {userLocations && userLocations[checkedAddress].address}
                 <br />
-                {user.Locations && user.Locations[0].building}
+                {userLocations && userLocations[checkedAddress].building}
               </p>
             </div>
           </div>

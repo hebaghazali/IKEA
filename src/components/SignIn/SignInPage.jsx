@@ -1,5 +1,4 @@
-import { useEffect } from 'react';
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import '../../assets/scss/pages/_login.scss';
 import { Link } from 'react-router-dom';
 import { signup, useAuth } from '../../firebaseConfig/firebase';
