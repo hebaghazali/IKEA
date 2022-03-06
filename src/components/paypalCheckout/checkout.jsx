@@ -21,8 +21,7 @@ const Checkout = () => {
               purchase_units: [
                 {
                   amount: {
-                    value: '5',
-                    // value: totalOrderPrice / 16,
+                    value: totalOrderPrice ? totalOrderPrice / 16 : 1,
                   },
                 },
               ],

@@ -1,19 +1,40 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { locationContext } from '../../contexts/locationContext';
 
-const AddressForm = ({ handleAddressForm, register, locations }) => {
+const AddressForm = ({
+  handleAddressForm,
+  register,
+  locations,
+  locationsExist,
+  gov,
+  setGov,
+}) => {
+  // const { gov, setGov } = useContext(locationContext);
+
   const [areas, setAreas] = useState([]);
 
-  const handleSelect = e => {
-    console.log(e.target.value);
+  const handleGovSelect = e => {
     locations.forEach(loc => {
       if (loc.Name === e.target.value) {
         setAreas(loc.Areas);
+        setGov({ ...gov, gov: e.target.value });
+      }
+    });
+  };
+
+  const handleAreaSelect = e => {
+    locations.forEach(loc => {
+      if (loc.Areas.includes(e.target.value)) {
+        loc.Areas.forEach(area => {
+          if (area === e.target.value) setGov({ ...gov, area: e.target.value });
+        });
       }
     });
   };
 
   useEffect(() => {
     console.log(areas);
+    // setGov({ ...gov, area: a });
   }, [areas]);
 
   return (
@@ -32,9 +53,7 @@ const AddressForm = ({ handleAddressForm, register, locations }) => {
         <select
           className='form-select form-control mb-3'
           defaultValue={'default'}
-          onChange={handleSelect}
-          name='governorate'
-          {...register('governorate')}
+          onChange={handleGovSelect}
           required
         >
           <option disabled value='default'>
@@ -50,8 +69,7 @@ const AddressForm = ({ handleAddressForm, register, locations }) => {
         <select
           className='form-select form-control mb-3'
           defaultValue={'default'}
-          name='area'
-          {...register('area')}
+          onChange={handleAreaSelect}
           required
         >
           <option disabled value='default'>
@@ -104,8 +122,8 @@ const AddressForm = ({ handleAddressForm, register, locations }) => {
             className='form-check-input'
             type='checkbox'
             value=''
-            name='check'
-            {...register('check')}
+            name='isUsedAsShippingAddress'
+            {...register('isUsedAsShippingAddress')}
           />
           <label className='form-check-label' htmlFor='flexCheckDefault'>
             <small>Use as shipping address</small>

@@ -3,7 +3,6 @@ import '../../assets/scss/pages/_login.scss';
 import { login, useAuth } from '../../firebaseConfig/firebase';
 import { Link } from 'react-router-dom';
 import { changeUser } from '../../store/actions/auth';
-
 // import {auth} from '../../config/firebaseConfig'
 // import Hello from '../Hello';
 import { useTranslation } from 'react-i18next';
@@ -113,6 +112,9 @@ function SharedLogComp() {
               {' '}
               {t('ValidEmailExample')}
             </p>
+
+            <p></p>
+            <p className='text-secondary'> {t('ValidEmailExample')}</p>
 
             <small className='text-danger'>{errors.EmailErr}</small>
           </div>

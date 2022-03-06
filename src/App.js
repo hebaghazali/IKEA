@@ -1,5 +1,4 @@
 import React from 'react';
-
 import './i18n/config';
 import { Route, Switch, Redirect, useHistory } from 'react-router-dom';
 import Navbar from './components/navbar/navbar';
@@ -52,14 +51,17 @@ function App() {
     return !!localStorage.getItem('UID');
   };
 
+
   const { i18n } = useTranslation();
 
   useEffect(() => {
-    updateUserStorageByID(localStorage.getItem('UID'));
+    localStorage.getItem('UID') &&
+      updateUserStorageByID(localStorage.getItem('UID'));
   }, []);
 
   return (
       <div dir={i18n.dir()}>
+
       <Menu />
       <div className={`${i18n.dir()==='ltr'?'body-container-ltr':'body-container-rtl'}`}>
 
@@ -139,6 +141,80 @@ function App() {
 
 
       <Footer />
+=======
+        <Menu />
+        <div
+          className={`${
+            i18n.dir() === 'ltr' ? 'body-container-ltr' : 'body-container-rtl'
+          }`}
+        >
+          <Navbar />
+
+          <div className='mt-nav-4 pt-nav border-top'>
+            <Switch>
+              <Redirect from='/' exact to='/home' />
+
+              <Route path='/home' component={Home} />
+              <Route path='/stores' component={StoresPage} />
+              <Route
+                path='/category/:type/:name/:id/:subName/:subId/:prodName/:prodId'
+                component={ProductA}
+              />
+              <Route
+                path='/category/:type/:name/:id'
+                exact
+                component={SubCategory}
+              />
+              <Route path='/stores' component={StoresPage} />
+              <Route path='/shoppingcart' component={ShoppingCart} />
+              <Route
+                path='/category/:type/:name/:id/:subName/:subId'
+                exact
+                component={Products}
+              />
+              <Route path='/products/:pId' exact component={ProductA} />
+
+              <Route
+                path='/productsSearch/:query'
+                exact
+                component={ProductsSearch}
+              />
+
+              <Route path='/favorite' exact component={FavouritePage} />
+
+              <GuardedRoute
+                path='/login'
+                component={LogIn}
+                redirectTo='/profile'
+                validatorFunction={loginValidator()}
+              ></GuardedRoute>
+
+              <GuardedRoute
+                path='/sign'
+                component={SignIn}
+                redirectTo='/profile'
+                validatorFunction={loginValidator()}
+              ></GuardedRoute>
+
+              <GuardedRoute
+                path='/profile'
+                component={Profile}
+                redirectTo='/sign'
+                validatorFunction={profileValidator()}
+              ></GuardedRoute>
+
+              <GuardedRoute
+                path='/checkout'
+                component={Order}
+                redirectTo='/login'
+                validatorFunction={checkoutValidator()}
+              ></GuardedRoute>
+            </Switch>
+          </div>
+        </div>
+
+        <Footer />
+
       </div>
       </div>
   );
