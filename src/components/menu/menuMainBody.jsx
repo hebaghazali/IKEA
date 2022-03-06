@@ -5,9 +5,11 @@ import MenuOfferList from './menuOfferList';
 import MenuProductList from './menuProductList';
 import MenuRoomList from './menuRoomList';
 import { useTranslation } from 'react-i18next';
+import { useHistory } from 'react-router-dom';
 
 const MenuMainBody = () => {
   const [selectedSection, setSelectedSection] = useState('');
+  const history = useHistory();
   const { t , i18n } = useTranslation();
   function changeLanguage(e) {
     i18n.changeLanguage(e.target.value);
@@ -37,7 +39,8 @@ const MenuMainBody = () => {
             </li>
             <li
               onClick={() => {
-                setSelectedSection('o-content');
+                // setSelectedSection('o-content');
+                history.push('/offers/sale')
               }}
               style={{ cursor: 'pointer' }}
             >
@@ -82,7 +85,7 @@ const MenuMainBody = () => {
           changeSelection={(selection) => setSelectedSection(selection)}
         />
       )}
-      {selectedSection === 'o-content' && (
+      {/* {selectedSection === 'o-content' && (
         <MenuOfferList
           changeSelection={(selection) => setSelectedSection(selection)}
         />
@@ -91,7 +94,7 @@ const MenuMainBody = () => {
         <MenuNewList
           changeSelection={(selection) => setSelectedSection(selection)}
         />
-      )}
+      )} */}
     </>
   );
 };

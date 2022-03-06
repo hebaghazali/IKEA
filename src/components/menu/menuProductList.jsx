@@ -37,7 +37,7 @@ const MenuProductList = props => {
                     category.id
                   }`}
                 >
-                  {category.data().Name}
+                  {i18n.language=='en'?category.data().Name:category.data().NameAr}
                 </Link>
               </li>
             );

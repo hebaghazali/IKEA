@@ -3,17 +3,21 @@ import Carousel from '../carousel/carousel';
 import Carouselone from './carouselOne';
 import { useTranslation } from 'react-i18next';
 const LeftSide = (props) => {
-  const { t } = useTranslation();
+  const { t , i18n } = useTranslation();
   const {
     Images,
     Description,
+    DescriptionAr,
     Name,
+    NameAr,
     SubCategory,
     Width,
     Height,
     Thickness,
     Material,
+    MaterialAr,
     Color,
+    ColorAr
   } = props.prod.productData;
   // console.log(":::",Images);
   return (
@@ -27,10 +31,10 @@ const LeftSide = (props) => {
 
         <div className='gursken'>
           <b>
-            <span>{Name}</span>
+            <span>{i18n.language=='en'?Name:NameAr}</span>
           </b>
           <p>
-            {Description}
+            {i18n.language=='en'?Description:DescriptionAr}
             {/* <br></br>
             wardrobe and of course a bed. Perfect for your first apartment or
             guest room. */}
@@ -77,25 +81,25 @@ const LeftSide = (props) => {
 
             <div className='offcanvas-body'>
               <div>
-                <h3>{Name}</h3>
+                <h3>{i18n.language=='en'?Name:NameAr}</h3>
               </div>
               {/* <img src={Images[0]} className='col-12' /> */}
               {Description && (
                 <div>
-                  <p>{Description}</p>
+                  <p>{i18n.language=='en'?Description:DescriptionAr}</p>
                 </div>
               )}
               {Material && (
                 <div>
                   <h4>
-                    {t('Material')}: {Material}
+                    {t('Material')}: {i18n.language=='en'?Material:MaterialAr}
                   </h4>
                 </div>
               )}
               {Color && (
                 <div>
                   <h4>
-                    {t('Color')}:{Color}
+                    {t('Color')}:{i18n.language=='en'?Color:ColorAr}
                     {/* <input
                       className='input-field'
                       type='color'
