@@ -263,17 +263,23 @@ const Products = ({ match }) => {
     <>
       {/* <Breadcrumb state={location.state} /> */}
 
-      <SectionTitle
-        title={i18n.language === 'en' ? currentSub?.Name : currentSub?.NameAr}
-      />
+      {subId && (
+        <>
+          <SectionTitle
+            title={
+              i18n.language === 'en' ? currentSub?.Name : currentSub?.NameAr
+            }
+          />
 
-      <section className='col-12 col-md-7 col-lg-7'>
-        <p className='description'>
-          {i18n.language === 'en'
-            ? currentSub?.Description
-            : currentSub?.DescriptionAr}
-        </p>
-      </section>
+          <section className='col-12 col-md-7 col-lg-7'>
+            <p className='description'>
+              {i18n.language === 'en'
+                ? currentSub?.Description
+                : currentSub?.DescriptionAr}
+            </p>
+          </section>
+        </>
+      )}
 
       <div className='row sticky-top filter-row'>
         <div className='col-12 col-lg-8 d-flex flex-nowrap overflow- py-3 my-2'>
@@ -304,8 +310,12 @@ const Products = ({ match }) => {
             checkType='radio'
             items={pricesStates}
             clickHandler={(maxPrice) => {
-              {subId && filterProds('Price', parseInt(maxPrice), '<=')}
-              {sale && filterProds('SalePrice', parseInt(maxPrice), '<=')}
+              {
+                subId && filterProds('Price', parseInt(maxPrice), '<=');
+              }
+              {
+                sale && filterProds('SalePrice', parseInt(maxPrice), '<=');
+              }
             }}
           />
 
