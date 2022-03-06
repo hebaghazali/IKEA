@@ -1,12 +1,14 @@
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const SubCategoryCard = (props) => {
+  const { t } = useTranslation();
   const{type,name,id,element}=props;
   return (
     <>
       {!props.element && (
         <div className='text-center py-5' id='noData'>
-          <h4>oops no data :(</h4>
+          <h4>{t('NoData')} :(</h4>
         </div>
       )}
       <Link

@@ -1,13 +1,16 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 const LocationContainer = () => {
+  const { t } = useTranslation();
+
   return (
     <>
       <div className='location-container'>
         <i className='bi bi-shop'></i>
         <div className='location-text'>
-          <small>See opening hours and more</small>
-          <strong>Select store</strong>
+          <small>{t('OpenHours')}</small>
+          <strong>{t('SelectStore')}</strong>
         </div>
       </div>
     </>

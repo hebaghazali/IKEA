@@ -2,8 +2,10 @@ import { useEffect, useState} from 'react';
 import { useSelector } from 'react-redux';
 import { updateData } from '../../../services/firebase';
 import { updateUserStorageByID } from '../../../services/firebase';
+import { useTranslation } from 'react-i18next';
 
 const EditContactInfo = (props) => {
+  const { t } = useTranslation();
   const user = useSelector((state) => state.user.user);
   const id = useSelector((state) => state.user.id);
   const [errors, setError] = useState({
@@ -48,7 +50,7 @@ const EditContactInfo = (props) => {
             } else {
               setError({
                 ...errors,
-                PhoneNumErr: 'your number is not valid'
+                PhoneNumErr: t('PhoneInvalid')
               });
             }
             setUserInfo({
@@ -57,7 +59,7 @@ const EditContactInfo = (props) => {
             });
           }}
         />
-        <label htmlFor='floatingInput'>Mobile</label>
+        <label htmlFor='floatingInput'>{t('Mobile')}</label>
         {errors.PhoneNumErr !== null && (
           <small className='text-danger'>{errors.PhoneNumErr}</small>
         )}
@@ -78,7 +80,7 @@ const EditContactInfo = (props) => {
             } else {
               setError({
                 ...errors,
-                EmailErr: 'your email is not valid',
+                EmailErr: t('EmailInvalid'),
               });
             }
             setUserInfo({
@@ -87,7 +89,7 @@ const EditContactInfo = (props) => {
             });
           }}
         />
-        <label htmlFor='floatingInput'>Email</label>
+        <label htmlFor='floatingInput'>{t('Email')}</label>
         {errors.EmailErr !== null && (
           <small className='text-danger'>{errors.EmailErr}</small>
         )}
@@ -96,10 +98,10 @@ const EditContactInfo = (props) => {
         className='default-btn cancel-change-btn col-12 mt-5'
         onClick={() => props.changeSelection(0)}
       >
-        Cancel
+       {t('Cancel')}
       </button>
       <button type='submit' className='dark-btn save-change-btn col-12'>
-        Save changes
+      {t('SaveChanges')}
       </button>
     </form>
   );

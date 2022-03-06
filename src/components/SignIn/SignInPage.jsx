@@ -1,34 +1,41 @@
+import { useEffect } from 'react';
 import React, { useState, useRef } from 'react';
 import '../../assets/scss/pages/_login.scss';
 import { Link } from 'react-router-dom';
 import { signup, useAuth } from '../../firebaseConfig/firebase';
 import { addDocByID } from '../../services/firebase';
 import { changeUser } from '../../store/actions/auth';
-
+import { useTranslation } from 'react-i18next';
 
 function SignIn() {
+  const { t } = useTranslation();
   const [users, setUser] = useState({
-    Name: '',
-    Phone: ',',
+    FirstName: '',
+    LastName:'',
+    Phone: '',
     Email: '',
     Password: '',
   });
 
   const [errors, setError] = useState({
-    NameErr: null,
+    FirstNameErr: null,
+    LastNameErr:null,
     PhoneErr: null,
     EmailErr: null,
     PasswordErr: null,
   });
 
+  const [allValid, setAllValid] = useState(
+    errors.FirstNameErr === null && errors.LastNameErr === null && errors.PhoneErr === null && errors.EmailErr === null && errors.PasswordErr === null
+  );
   // Function to hadndle change in any input and write into it
-  const handleChangeInInput = e => {
+  const handleChangeInInput = (e) => {
     const regName = /^\w[a-zA-Z]{3,}/;
     const regPhoneNum = /^01[0125][0-9]{8}$/;
     const regEmail = /^([a-zA-Z0-9_\-\.]+){3,}@([a-zA-Z0-9_\-\.]+){3,}(.com)$/;
     // const regName = /^\w[a-zA-Z]{3,}[^-\s][a-zA-Z]{3,}/;
     const regPassword =
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?_&])[A-Za-z\d@$!%*?&]{8,}$/;
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?_&])[A-Za-z\d@$!%*?_&]{8,}$/;
 
     // Validate Name Input
     setUser({
@@ -37,28 +44,42 @@ function SignIn() {
     });
 
     // Validate Name Input
-    if (e.target.name === 'Name') {
+    if (e.target.name === 'FirstName') {
       if (regName.test(e.target.value)) {
         setError({
           ...errors,
-          NameErr: '',
+          FirstNameErr: null,
         });
       } else {
         setError({
           ...errors,
-          NameErr: "Name is not Allowed don't make space at start",
+          FirstNameErr: t('NameValidation'),
         });
       }
-    } else if (e.target.name === 'Phone') {
+    }
+    else if(e.target.name === 'LastName') {
+      if (regName.test(e.target.value)) {
+        setError({
+          ...errors,
+          LastNameErr: null,
+        });
+      } else {
+        setError({
+          ...errors,
+          LastNameErr: t('NameValidation'),
+        });
+      }
+    }  
+    else if (e.target.name === 'Phone') {
       if (regPhoneNum.test(e.target.value)) {
         setError({
           ...errors,
-          PhoneErr: '',
+          PhoneErr: null,
         });
       } else {
         setError({
           ...errors,
-          PhoneErr: 'Inavalid phone number',
+          PhoneErr: t('PhoneInvalid'),
         });
       }
     }
@@ -68,12 +89,12 @@ function SignIn() {
       if (regEmail.test(e.target.value)) {
         setError({
           ...errors,
-          EmailErr: '',
+          EmailErr: null,
         });
       } else {
         setError({
           ...errors,
-          EmailErr: 'Email is not valid',
+          EmailErr: t('ValidEmailExample'),
         });
       }
     }
@@ -83,12 +104,12 @@ function SignIn() {
       if (regPassword.test(e.target.value)) {
         setError({
           ...errors,
-          PasswordErr: '',
+          PasswordErr: null,
         });
       } else {
         setError({
           ...errors,
-          PasswordErr: 'Password is not valid',
+          PasswordErr: t('PasswordInvalid'),
         });
       }
     }
@@ -104,7 +125,7 @@ function SignIn() {
   const phoneRef = useRef();
   const storeRef = useRef();
 
-  async function handleSignup() {
+  async function handleSignup(e) {
     console.log('function signIn');
     var userObj = {
       FirstName: firstNameRef.current.value,
@@ -114,22 +135,29 @@ function SignIn() {
       PrefferedStore: storeRef.current.value,
     };
     setLoading(true);
-    try {
-      await signup(emailRef.current.value, passwordRef.current.value).then(
-        userCredentials => {
-          addDocByID('users', userCredentials.user.uid, userObj).then(() => {
-            localStorage.setItem('UID', userCredentials.user.uid);
-            // changeUser(userObj);
-            window.location.href = '/profile';
-          });
-        }
-      );
-    } catch {
-      alert('User is alredy exist!');
+    if (!allValid) {
+      e.preventDefault();
+    } else {
+      try {
+        await signup(emailRef.current.value, passwordRef.current.value).then(
+          (userCredentials) => {
+            addDocByID('users', userCredentials.user.uid, userObj).then(() => {
+              localStorage.setItem('UID', userCredentials.user.uid);
+              // changeUser(userObj);
+              window.location.href = '/profile';
+            });
+          }
+        );
+      } catch {
+        alert(t('UserExists'));
+      }
     }
     setLoading(false);
   }
 
+  useEffect(()=>{
+    setAllValid(errors.FirstNameErr === null && errors.LastNameErr === null && errors.PhoneErr === null && errors.EmailErr === null && errors.PasswordErr === null);
+  },[errors])
   return (
     <>
       <div className='log-parent'>
@@ -137,9 +165,10 @@ function SignIn() {
           {/* <!-- Left section --> */}
           <section className='row left-box-log'>
             <section className='col-md-5 col-12 login-heading'>
-              <h3>Create an IKEA Profile</h3>
+              <h3>{t('CreateIkeaProfile')}</h3>
               <p>
-                Already have an account? <Link to='./login'> Login</Link>{' '}
+                {t('AlreadyHaveAccount')}{' '}
+                <Link to='/login'> {t('Login')}</Link>{' '}
               </p>
             </section>
 
@@ -154,30 +183,30 @@ function SignIn() {
                       type='text'
                       className='form-control input-sign-form'
                       id='validationCustom01'
-                      name='Name'
-                      placeholder='First Name'
+                      name='FirstName'
+                      placeholder={t('FirstName')}
                       required
-                      onChange={e => {
+                      onChange={(e) => {
                         handleChangeInInput(e);
                       }}
                       ref={firstNameRef}
                     />
-                    <small className='text-danger'>{errors.NameErr}</small>
+                    <small className='text-danger'>{errors.FirstNameErr}</small>
                   </div>
                   <div className='input-box'>
                     <input
                       type='text'
                       className='form-control input-sign-form'
                       id='validationCustom02'
-                      name='Name'
-                      placeholder='Last name'
+                      name='LastName'
+                      placeholder={t('LastName')}
                       required
-                      onChange={e => {
+                      onChange={(e) => {
                         handleChangeInInput(e);
                       }}
                       ref={lastNameRef}
                     />
-                    <small className='text-danger'>{errors.NameErr}</small>
+                    <small className='text-danger'>{errors.LastNameErr}</small>
                   </div>
                   <div className='input-box'>
                     <div className='input-group has-validation'>
@@ -201,7 +230,7 @@ function SignIn() {
                       htmlFor='validationCustom04'
                       className='form-label selct-label-form-sign'
                     >
-                      Prefered Store
+                      {t('PrefferedStore')}
                     </label>
                     <select
                       className='form-select selct-form-sign'
@@ -209,11 +238,12 @@ function SignIn() {
                       required
                       ref={storeRef}
                     >
+                      <option></option>
                       <option value='1'>IKEA Cairo Mall Of Arabia</option>
                       <option value='2'>IKEA CFC</option>
                     </select>
                     <div className='invalid-feedback'>
-                      Please select a valid Store.
+                      {t('PrefferedStoreValidation')}
                     </div>
                   </div>
 
@@ -224,10 +254,10 @@ function SignIn() {
                           type='text'
                           className='form-control input-sign-form'
                           id='validationCustom05'
-                          placeholder='Email(UserName)'
+                          placeholder={t('EmailPlaceholder')}
                           name='Email'
                           required
-                          onChange={e => {
+                          onChange={(e) => {
                             handleChangeInInput(e);
                           }}
                           ref={emailRef}
@@ -235,7 +265,7 @@ function SignIn() {
                         <p></p>
                         <p className='text-secondary'>
                           {' '}
-                          Example of valid mail: examle@ec123.com
+                          {t('ValidEmailExample')}
                         </p>
                         <small className='text-danger'>{errors.EmailErr}</small>
                       </div>
@@ -246,32 +276,31 @@ function SignIn() {
                           id='validationCustom05'
                           required
                           name='Password'
-                          placeholder='Password'
-                          onChange={e => {
+                          placeholder={t('PasswordPlaceholder')}
+                          onChange={(e) => {
                             handleChangeInInput(e);
                           }}
                           ref={passwordRef}
                         />
                         <p></p>
                         <p className='text-secondary'>
-                          Password must have charters
+                          {t('CharPassValidation')}
                         </p>
                         <p className='text-secondary'>
-                          Password must have SmallCase and UpperCase
+                          {t('SmallAndUppercaseValidation')}
                         </p>
                         <p className='text-secondary'>
-                          Password must have Special Char as $*#
+                          {t('SpecialCharValidation')}
                         </p>
                         <p className='text-danger'>{errors.PasswordErr}</p>
                       </div>
-                      <a href='#'>Forget your Password?</a>
                     </div>
                   </div>
 
-                  <div>
+                  {/* <div>
                     <input type='checkbox' className='check-sign-form' /> I have
                     read and understood the <Link to=''>Privacy policy.</Link>
-                  </div>
+                  </div> */}
 
                   <div className='col-12'>
                     <button
@@ -279,7 +308,7 @@ function SignIn() {
                       type='submit'
                       onClick={handleSignup}
                     >
-                      Create Profile
+                      {t('CreateProfile')}
                     </button>
                   </div>
                 </div>

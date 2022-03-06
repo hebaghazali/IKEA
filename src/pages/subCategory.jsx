@@ -40,7 +40,7 @@ const SubCategory = props => {
           );
         })}
       </div>
-      <TextRightCard />
+      {/* <TextRightCard /> */}
       <StepsCard />
     </>
   );

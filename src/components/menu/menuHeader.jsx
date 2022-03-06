@@ -1,8 +1,11 @@
+import { useTranslation } from 'react-i18next';
+
 const MenuHeader = () => {
+  const { i18n } = useTranslation();
   return (
     <>
       <div className='offcanvas-header menu-header'>
-        <button type='button' className='menu-btn' data-bs-dismiss='offcanvas'>
+        <button type='button' className={`${i18n.dir()==='ltr'?'menu-btn-ltr':'menu-btn-rtl'}`} data-bs-dismiss='offcanvas'>
           <i className='bi bi-x'></i>
         </button>
         <img

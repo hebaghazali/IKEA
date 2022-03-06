@@ -8,11 +8,13 @@ import {
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 const EditPassword = (props) => {
   const user = useSelector((state) => state.user.user);
   const id = useSelector((state) => state.user.id);
   const auth = getAuth();
+  const { t } = useTranslation();
 
   const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
@@ -45,14 +47,14 @@ const EditPassword = (props) => {
                 .catch(() => {
                   setErrors({
                     ...errors,
-                    currentPassErr: 'current password is wrong',
+                    currentPassErr: t('CurrentPasswordWrong'),
                   });
                 });
             })
             .catch(() => {
               setErrors({
                 ...errors,
-                currentPassErr: 'current password is wrong',
+                currentPassErr: t('CurrentPasswordWrong'),
               });
             });
         }
@@ -75,7 +77,7 @@ const EditPassword = (props) => {
             setCurrentPassword(e.target.value);
           }}
         />
-        <label htmlFor='floatingInput'>Current password</label>
+        <label htmlFor='floatingInput'>{t('CurrentPassword')}</label>
         {errors.currentPassErr !== null && (
           <small className='text-danger'>{errors.currentPassErr}</small>
         )}
@@ -99,8 +101,7 @@ const EditPassword = (props) => {
             } else {
               setErrors({
                 ...errors,
-                newPassErr:
-                  'Password is not valid, should contain 1 lowercase - 1 uppercase - 1 digit number - special character(@$!%*?_&) and 8 length at least',
+                newPassErr:t('NewPasswordWrong'),
               });
             }
             if (e.target.value === confirmPassword) {
@@ -111,14 +112,14 @@ const EditPassword = (props) => {
             } else {
               setErrors({
                 ...errors,
-                confirmPassErr: 'Confirm password doesn not match new password',
+                confirmPassErr: t('ConfirmPasswordWrong'),
               });
             }
 
             setNewPassword(e.target.value);
           }}
         />
-        <label htmlFor='floatingInput'>New password</label>
+        <label htmlFor='floatingInput'>{t('NewPassword')}</label>
         {errors.newPassErr !== null && (
           <small className='text-danger'>{errors.newPassErr}</small>
         )}
@@ -138,13 +139,13 @@ const EditPassword = (props) => {
             } else {
               setErrors({
                 ...errors,
-                confirmPassErr: 'Confirm password doesn not match new password',
+                confirmPassErr: t('ConfirmPasswordWrong'),
               });
             }
             setConfirmPassword(e.target.value);
           }}
         />
-        <label htmlFor='floatingInput'>Confirm new password</label>
+        <label htmlFor='floatingInput'>{t('ConfirmNewPassword')}</label>
         {errors.confirmPassErr !== null && (
           <small className='text-danger'>{errors.confirmPassErr}</small>
         )}
@@ -153,13 +154,13 @@ const EditPassword = (props) => {
         className='default-btn cancel-change-btn col-12 mt-5'
         onClick={() => props.changeSelection(0)}
       >
-        Cancel
+       {t('Cancel')}
       </button>
       <button
         className='dark-btn save-change-btn col-12'
         onClick={() => updateUser()}
       >
-        Save changes
+       {t('SaveChanges')}
       </button>
     </section>
   );

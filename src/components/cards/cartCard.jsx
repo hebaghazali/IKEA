@@ -5,8 +5,10 @@ import {
   removeFromCart,
   setCartItemAmount,
 } from '../../store/actions/cartProducts';
+import { useTranslation } from 'react-i18next';
 
 const CartCard = props => {
+  const { t } = useTranslation();
   const [selectedAmount, setSelectedAmount] = useState(props.purchasedQuantity);
   const dispatch = useDispatch();
 
@@ -49,20 +51,20 @@ const CartCard = props => {
         </div>
 
         <div className='shopping-img'>
-          <img src={props.product.Images[0]} alt='...' />
+          <img src={props.product.Images[0]} alt={props.product.Name} />
         </div>
 
         <div className='shopping-info'>
           <h6>{props.product.Name}</h6>
           <p>{props.product.Description}</p>
-          <h6>EGP {props.product.Price}</h6>
+          <h6>{t('EGP')} {props.product.Price}</h6>
           <p className='txt-info'>
             {props.product.Material}, {props.product.Width} x{' '}
             {props.product.Length}
           </p>
           <span>
-            Subtotal:{' '}
-            <strong>EGP {props.product.Price * selectedAmount}</strong>
+            {t('SubTotal')}:{' '}
+            <strong>{t('EGP')} {props.product.Price * selectedAmount}</strong>
           </span>
         </div>
       </div>
