@@ -49,9 +49,11 @@ const ReviewAccordion = ({
               </p>
               <p>
                 <strong>Address:</strong>{' '}
-                {userLocations && userLocations[checkedAddress].address}
+                {userLocations.length !== 0 &&
+                  userLocations[checkedAddress].address}
                 <br />
-                {userLocations && userLocations[checkedAddress].building}
+                {userLocations.length !== 0 &&
+                  userLocations[checkedAddress].building}
               </p>
             </div>
           </div>
@@ -66,9 +68,11 @@ const ReviewAccordion = ({
               </p>
               <p>
                 <strong>Address:</strong>{' '}
-                {userLocations && userLocations[checkedAddress].address}
+                {userLocations.length !== 0 &&
+                  userLocations[checkedAddress].address}
                 <br />
-                {userLocations && userLocations[checkedAddress].building}
+                {userLocations.length !== 0 &&
+                  userLocations[checkedAddress].building}
               </p>
             </div>
           </div>
