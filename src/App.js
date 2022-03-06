@@ -1,6 +1,7 @@
 import React from 'react';
+
 import './i18n/config';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch, Redirect, useHistory } from 'react-router-dom';
 import Navbar from './components/navbar/navbar';
 import Home from './pages/home.jsx';
 import Footer from './components/footer/footer';
@@ -20,8 +21,15 @@ import FavouritePage from './pages/favouritePage';
 import Checkout from './components/paypalCheckout/checkout';
 import PayPal from './components/paypalCheckout/PayPal';
 import ProductsSearch from './pages/productsSearch';
+// import { OrderProvider } from './contexts/orderContext';
+// import { useState, useEffect } from 'react';
+import Order from './pages/order';
+import { useEffect } from 'react';
+import { updateUserStorageByID } from './services/firebase';
 
 function App() {
+  const history = useHistory();
+
   const loginValidator = () => {
     // If there is UID it will return false, otherwise it will return true
     return !localStorage.getItem('UID');
@@ -34,16 +42,30 @@ function App() {
 
   const checkoutValidator = () => {
     // If there is UID it will return true, otherwise it will return false
+    // if (!!localStorage.getItem('UID')) {
+    //   return true;
+    // } else {
+    //   setInOrderProcess(false);
+    //   return false;
+    // }
+
     return !!localStorage.getItem('UID');
   };
 
   const { i18n } = useTranslation();
 
+  useEffect(() => {
+    updateUserStorageByID(localStorage.getItem('UID'));
+  }, []);
+
   return (
-    <>
       <div dir={i18n.dir()}>
       <Menu />
       <div className={`${i18n.dir()==='ltr'?'body-container-ltr':'body-container-rtl'}`}>
+
+
+      <div className='body-container'>
+
         <Navbar />
 
         <div className='mt-nav-4 pt-nav border-top'>
@@ -101,16 +123,19 @@ function App() {
 
             <GuardedRoute
               path='/checkout'
-              component={Checkout}
+              component={Order}
               redirectTo='/login'
               validatorFunction={checkoutValidator()}
             ></GuardedRoute>
           </Switch>
         </div>
+
       </div>
+
+
       <Footer />
       </div>
-    </>
+      </div>
   );
 }
 

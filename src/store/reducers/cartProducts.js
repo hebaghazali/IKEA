@@ -84,6 +84,7 @@ export default function cartReducer(state = initialState, action) {
     case 'SET_AMOUNT': {
       state.totalPrice = 0;
       state.totalAmountOfCartItems = 0;
+      // eslint-disable-next-line array-callback-return
       state.cartProducts.find((i, index) => {
         if (i.id === action.payload.id) {
           state.cartProducts[index].PurchasedAmount =

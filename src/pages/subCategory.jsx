@@ -1,6 +1,5 @@
 import { useParams } from 'react-router-dom';
 import SubCategoryCard from '../components/cards/subcategoryCard';
-import TextRightCard from '../components/cards/textRightCard';
 import { useEffect, useState } from 'react';
 import StepsCard from '../components/cards/stepsCard';
 import { getCollection } from '../services/firebase';
