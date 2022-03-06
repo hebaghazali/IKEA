@@ -23,7 +23,7 @@ function SharedLogComp() {
   const [Password, setPassword] = useState('');
 
   // Function to hadndle change in any input and write into it
-  const handleChangeInInput = (e) => {
+  const handleChangeInInput = e => {
     const regEmail = /^([a-zA-Z0-9_\-\.]+){3,}@([a-zA-Z0-9_\-\.]+){3,}(.com)$/;
     const regName = /^\w[a-zA-Z]{3,}[^-\s][a-zA-Z]{3,}/;
     const regPassword =
@@ -77,10 +77,12 @@ function SharedLogComp() {
     console.log('function login');
     setLoading(true);
     try {
-      await login(emailRef.current.value, passwordRef.current.value).then((userCredentials)=>{
-        // changeUser(userCredentials.user.uid);
-        localStorage.setItem('UID', userCredentials.user.uid);
-      })
+      await login(emailRef.current.value, passwordRef.current.value).then(
+        userCredentials => {
+          // changeUser(userCredentials.user.uid);
+          localStorage.setItem('UID', userCredentials.user.uid);
+        }
+      );
       window.location.href = '/profile';
     } catch {
       alert('User not found you can signup!');
@@ -101,16 +103,13 @@ function SharedLogComp() {
               placeholder={t('EmailPlaceholder')}
               name='Email'
               required
-              onChange={(e) => {
+              onChange={e => {
                 handleChangeInInput(e);
               }}
               ref={emailRef}
             />
             <p></p>
-            <p className='text-secondary'>
-              {' '}
-              {t('ValidEmailExample')}
-            </p>
+            <p className='text-secondary'> {t('ValidEmailExample')}</p>
             <small className='text-danger'>{errors.EmailErr}</small>
           </div>
           <div>
@@ -121,19 +120,15 @@ function SharedLogComp() {
               required
               name='Password'
               placeholder={t('PasswordPlaceholder')}
-              onChange={(e) => {
+              onChange={e => {
                 handleChangeInInput(e);
               }}
               ref={passwordRef}
             />
             <p></p>
             <p className='text-secondary'>{t('CharPassValidation')}</p>
-            <p className='text-secondary'>
-              {t('SmallAndUppercaseValidation')}
-            </p>
-            <p className='text-secondary'>
-              {t('SpecialCharValidation')}
-            </p>
+            <p className='text-secondary'>{t('SmallAndUppercaseValidation')}</p>
+            <p className='text-secondary'>{t('SpecialCharValidation')}</p>
             <p className='text-danger'>{errors.PasswordErr}</p>
           </div>
           <a href='#'>{t('ForgetPassword')}</a>

@@ -1,5 +1,4 @@
-import { useEffect } from 'react';
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import '../../assets/scss/pages/_login.scss';
 import { Link } from 'react-router-dom';
 import { signup, useAuth } from '../../firebaseConfig/firebase';
@@ -11,7 +10,7 @@ function SignIn() {
   const { t } = useTranslation();
   const [users, setUser] = useState({
     FirstName: '',
-    LastName:'',
+    LastName: '',
     Phone: '',
     Email: '',
     Password: '',
@@ -19,17 +18,21 @@ function SignIn() {
 
   const [errors, setError] = useState({
     FirstNameErr: null,
-    LastNameErr:null,
+    LastNameErr: null,
     PhoneErr: null,
     EmailErr: null,
     PasswordErr: null,
   });
 
   const [allValid, setAllValid] = useState(
-    errors.FirstNameErr === null && errors.LastNameErr === null && errors.PhoneErr === null && errors.EmailErr === null && errors.PasswordErr === null
+    errors.FirstNameErr === null &&
+      errors.LastNameErr === null &&
+      errors.PhoneErr === null &&
+      errors.EmailErr === null &&
+      errors.PasswordErr === null
   );
   // Function to hadndle change in any input and write into it
-  const handleChangeInInput = (e) => {
+  const handleChangeInInput = e => {
     const regName = /^\w[a-zA-Z]{3,}/;
     const regPhoneNum = /^01[0125][0-9]{8}$/;
     const regEmail = /^([a-zA-Z0-9_\-\.]+){3,}@([a-zA-Z0-9_\-\.]+){3,}(.com)$/;
@@ -56,8 +59,7 @@ function SignIn() {
           FirstNameErr: t('NameValidation'),
         });
       }
-    }
-    else if(e.target.name === 'LastName') {
+    } else if (e.target.name === 'LastName') {
       if (regName.test(e.target.value)) {
         setError({
           ...errors,
@@ -69,8 +71,7 @@ function SignIn() {
           LastNameErr: t('NameValidation'),
         });
       }
-    }  
-    else if (e.target.name === 'Phone') {
+    } else if (e.target.name === 'Phone') {
       if (regPhoneNum.test(e.target.value)) {
         setError({
           ...errors,
@@ -140,7 +141,7 @@ function SignIn() {
     } else {
       try {
         await signup(emailRef.current.value, passwordRef.current.value).then(
-          (userCredentials) => {
+          userCredentials => {
             addDocByID('users', userCredentials.user.uid, userObj).then(() => {
               localStorage.setItem('UID', userCredentials.user.uid);
               // changeUser(userObj);
@@ -155,9 +156,15 @@ function SignIn() {
     setLoading(false);
   }
 
-  useEffect(()=>{
-    setAllValid(errors.FirstNameErr === null && errors.LastNameErr === null && errors.PhoneErr === null && errors.EmailErr === null && errors.PasswordErr === null);
-  },[errors])
+  useEffect(() => {
+    setAllValid(
+      errors.FirstNameErr === null &&
+        errors.LastNameErr === null &&
+        errors.PhoneErr === null &&
+        errors.EmailErr === null &&
+        errors.PasswordErr === null
+    );
+  }, [errors]);
   return (
     <>
       <div className='log-parent'>
@@ -167,8 +174,7 @@ function SignIn() {
             <section className='col-md-5 col-12 login-heading'>
               <h3>{t('CreateIkeaProfile')}</h3>
               <p>
-                {t('AlreadyHaveAccount')}{' '}
-                <Link to='/login'> {t('Login')}</Link>{' '}
+                {t('AlreadyHaveAccount')} <Link to='/login'> {t('Login')}</Link>{' '}
               </p>
             </section>
 
@@ -186,7 +192,7 @@ function SignIn() {
                       name='FirstName'
                       placeholder={t('FirstName')}
                       required
-                      onChange={(e) => {
+                      onChange={e => {
                         handleChangeInInput(e);
                       }}
                       ref={firstNameRef}
@@ -201,7 +207,7 @@ function SignIn() {
                       name='LastName'
                       placeholder={t('LastName')}
                       required
-                      onChange={(e) => {
+                      onChange={e => {
                         handleChangeInInput(e);
                       }}
                       ref={lastNameRef}
@@ -216,7 +222,7 @@ function SignIn() {
                         id='validationCustom01'
                         name='Phone'
                         placeholder='EG(011, 012, 015, 010)'
-                        onChange={(e) => {
+                        onChange={e => {
                           handleChangeInInput(e);
                         }}
                         ref={phoneRef}
@@ -257,7 +263,7 @@ function SignIn() {
                           placeholder={t('EmailPlaceholder')}
                           name='Email'
                           required
-                          onChange={(e) => {
+                          onChange={e => {
                             handleChangeInInput(e);
                           }}
                           ref={emailRef}
@@ -277,7 +283,7 @@ function SignIn() {
                           required
                           name='Password'
                           placeholder={t('PasswordPlaceholder')}
-                          onChange={(e) => {
+                          onChange={e => {
                             handleChangeInInput(e);
                           }}
                           ref={passwordRef}

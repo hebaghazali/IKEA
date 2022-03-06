@@ -1,6 +1,7 @@
 import React from 'react';
 import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
 import './checkout.scss';
+import { useSelector } from 'react-redux';
 
 const initialOptions = {
   'client-id':
@@ -9,6 +10,8 @@ const initialOptions = {
 };
 
 const Checkout = () => {
+  const totalOrderPrice = useSelector(state => state.cartProducts.totalPrice);
+
   return (
     <div className='checkout-container'>
       <PayPalScriptProvider options={initialOptions}>
@@ -18,7 +21,7 @@ const Checkout = () => {
               purchase_units: [
                 {
                   amount: {
-                    value: '1.99',
+                    value: totalOrderPrice ? totalOrderPrice / 16 : 1,
                   },
                 },
               ],
