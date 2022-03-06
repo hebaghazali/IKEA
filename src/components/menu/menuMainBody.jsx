@@ -40,7 +40,7 @@ const MenuMainBody = () => {
             <li
               onClick={() => {
                 // setSelectedSection('o-content');
-                history.push('/offers')
+                history.push('/offers/sale')
               }}
               style={{ cursor: 'pointer' }}
             >

@@ -69,7 +69,7 @@ function App() {
               component={Products}
             />
             <Route
-              path='/offers'
+              path='/offers/:sale'
               exact
               component={Products}
             />
