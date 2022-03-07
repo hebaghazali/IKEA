@@ -7,7 +7,7 @@ import {
   addDoc,
 } from 'firebase/firestore';
 import { fireStore } from '../config/firebaseConfig';
-import { useDispatch, useSelector } from 'react-redux';
+// import { useDispatch, useSelector } from 'react-redux';
 import { changeLoader } from './../store/actions/loader';
 import store from './../store/store';
 

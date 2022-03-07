@@ -14,6 +14,7 @@ import { Provider } from 'react-redux';
 import store from './store/store';
 import ProductA from './components/productA/productA';
 import Testpage from './pages/TestPage';
+import Rating from './components/Rating/rating'
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
             <Route path='/category/products' exact component={Products} />
             {/* <Route path='/category/:type/:name/:id/:subName/:subId' exact component={Products} /> */}
             <Route path="/products/:pId" exact component={ProductA} />
+            <Route path='/rating' exact component={Rating} />
             <Redirect from='/' exact to='/home' />
           </Switch>
         </div>
