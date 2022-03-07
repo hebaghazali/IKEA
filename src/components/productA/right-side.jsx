@@ -4,13 +4,16 @@ import { addToCart } from './../../store/actions/cartProducts';
 import { useTranslation } from 'react-i18next';
 import { addCartItemToUser } from '../../services/firebase';
 const RightSide = (props) => {
-  const { t } = useTranslation();
+  const { t , i18n } = useTranslation();
   const {
     Images,
     Price,
     Name,
+    NameAr,
     Color,
+    ColorAr,
     Description,
+    DescriptionAr,
     SubCategory,
     ProductName,
     Quantity,
@@ -42,7 +45,7 @@ const RightSide = (props) => {
           </span>
         </div>
         <div>
-          {Name}, {Color}
+          {i18n.language=='en'?Name:NameAr}, {i18n.language=='en'?Color:ColorAr}
           {/* {SubCategory=='PH6KZW35bbvGRBdbQ8pe'&&
                    <span >Mattress and bedlinen are sold separately.</span>} */}
         </div>

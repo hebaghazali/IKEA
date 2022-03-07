@@ -14,7 +14,7 @@ import { useTranslation } from 'react-i18next';
 const ProductCard = ({ showOptions, pId, productData , roomBtn ,baseUrl}) => {
   const { favourits } = useSelector(state => state.favourits);
   const { cartProducts } = useSelector(state => state.cartProducts);
-  const { t } = useTranslation();
+  const { t , i18n } = useTranslation();
 
   let found = favourits?.find(i => i.id === pId);
   let foundInCart = cartProducts?.find(i => i.id === pId);
@@ -24,7 +24,7 @@ const ProductCard = ({ showOptions, pId, productData , roomBtn ,baseUrl}) => {
   const [isHovering, setIsHovering] = useState(false);
   const [variants, setVariants] = useState(null);
   const [viewedProduct, setViewedProduct] = useState({ pId, productData });
-  const { Name, ProductName, Price, SalePrice, Width, Length, Images, Height } =
+  const { Name,NameAr, ProductName, Price, SalePrice, Width, Length, Images, Height } =
     viewedProduct.productData;
 
   const dispatch = useDispatch();
@@ -100,7 +100,7 @@ const ProductCard = ({ showOptions, pId, productData , roomBtn ,baseUrl}) => {
             <img
               src={roomBtn?Images[isHovering ? 0 : 1] :Images[isHovering ? 1 : 0]}
               className='card-img-top'
-              alt={Name}
+              alt={i18n.language=='en'?Name:NameAr}
               onMouseOver={() => setIsHovering(true)}
               onMouseLeave={() => setIsHovering(false)}
             />
@@ -110,7 +110,7 @@ const ProductCard = ({ showOptions, pId, productData , roomBtn ,baseUrl}) => {
           {SalePrice && <p className='product-highlight'>{t('LimitedOffer')}</p>}
           {/* <p>{Material}</p> */}
           <p className='product-header'>{ProductName}</p>
-          <p className='product-description'>{Name}</p>
+          <p className='product-description'>{i18n.language=='en'?Name:NameAr}</p>
 
           {/*TODO: add feature field in db*/}
           <p>{Width && `${Width} * ${Length ? Length : Height} ${t('cm')}`}</p>

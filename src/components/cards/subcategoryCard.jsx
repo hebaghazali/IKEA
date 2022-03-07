@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 const SubCategoryCard = (props) => {
-  const { t } = useTranslation();
+  const { t , i18n } = useTranslation();
   const{type,name,id,element}=props;
   return (
     <>
@@ -37,7 +37,7 @@ const SubCategoryCard = (props) => {
         />
 
         <div className='card-body category-body'>
-          <p className='card-text'>{props.element.data().Name}</p>
+          <p className='card-text'>{i18n.language=='en'?props.element.data().Name:props.element.data().NameAr}</p>
           {/* <p className='card-text'>{props.element.Name}</p> */}
         </div>
       </Link>

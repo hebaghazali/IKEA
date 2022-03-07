@@ -5,13 +5,15 @@ import MenuOfferList from './menuOfferList';
 import MenuProductList from './menuProductList';
 import MenuRoomList from './menuRoomList';
 import { useTranslation } from 'react-i18next';
+import { useHistory } from 'react-router-dom';
 
 const MenuMainBody = () => {
   const [selectedSection, setSelectedSection] = useState('');
-  const { t , i18n } = useTranslation();
+  const history = useHistory();
+  const { t, i18n } = useTranslation();
   function changeLanguage(e) {
     i18n.changeLanguage(e.target.value);
-    localStorage.setItem("language",i18n.language);
+    localStorage.setItem('language', i18n.language);
   }
 
   return (
@@ -37,7 +39,8 @@ const MenuMainBody = () => {
             </li>
             <li
               onClick={() => {
-                setSelectedSection('o-content');
+                // setSelectedSection('o-content');
+                history.push('/offers/sale');
               }}
               style={{ cursor: 'pointer' }}
             >
@@ -45,7 +48,8 @@ const MenuMainBody = () => {
             </li>
             <li
               onClick={() => {
-                setSelectedSection('w-content');
+                // setSelectedSection('w-content');
+                history.push('/whatsnew/newArrival');
               }}
               style={{ cursor: 'pointer' }}
             >
@@ -56,12 +60,17 @@ const MenuMainBody = () => {
             <li>
               <Link to='/stores'>{t('Stores')}</Link>
             </li>
-            <li>
+            {/* <li>
               <Link to='/conactUs'>{t('ContactUs')}</Link>
-            </li>
+            </li> */}
           </ul>
           <div className='d-flex flex-row justify-content-around'>
-            <select onChange={changeLanguage} type='button' className='selector-btn' defaultValue={i18n.language}>
+            <select
+              onChange={changeLanguage}
+              type='button'
+              className='selector-btn'
+              defaultValue={i18n.language}
+            >
               <option value='en'>English</option>
               <option value='ar'>العربية</option>
             </select>
@@ -82,7 +91,7 @@ const MenuMainBody = () => {
           changeSelection={(selection) => setSelectedSection(selection)}
         />
       )}
-      {selectedSection === 'o-content' && (
+      {/* {selectedSection === 'o-content' && (
         <MenuOfferList
           changeSelection={(selection) => setSelectedSection(selection)}
         />
@@ -91,7 +100,7 @@ const MenuMainBody = () => {
         <MenuNewList
           changeSelection={(selection) => setSelectedSection(selection)}
         />
-      )}
+      )} */}
     </>
   );
 };

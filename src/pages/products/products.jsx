@@ -11,6 +11,7 @@ import {
   filterCollection,
   sortCollection,
   getDocumentByID,
+  sortCollectionWithoutCondition,
 } from '../../services/firebase';
 import SectionTitle from './sectionTitle';
 import EmptyData from './../../components/emptyData';
@@ -20,8 +21,8 @@ import { useTranslation } from 'react-i18next';
 import FiltersMenu from './filtersMenu.jsx/filtersMenu';
 
 const Products = ({ match }) => {
-  const { t } = useTranslation();
-  let { type, name, id, subName, subId } = match?.params;
+  const { t, i18n } = useTranslation();
+  let { type, name, id, subName, subId, sale, newArrival } = match?.params;
   const [products, setProducts] = useState(null);
   const [subCategories, setSubCategories] = useState(null);
   const [currentSub, setCurrentSub] = useState(null);
@@ -148,56 +149,143 @@ const Products = ({ match }) => {
         `${id}`,
       ],
       ['Name', '!=', `${subName}`]
-    ).then(allSubCategories => {
+    ).then((allSubCategories) => {
       setSubCategories(allSubCategories);
     });
   };
 
   const getCurrentSub = () => {
-    getDocumentByID('subCategory', subId).then(current => {
+    getDocumentByID('subCategory', subId).then((current) => {
       setCurrentSub(current);
     });
   };
 
   const getProducts = () => {
-    getCollection('Products', ['SubCategory', '==', subId])
-      .then((res) => {
-        setLoading(true);
-        setProducts(res);
-        setLoading(false);
-      })
-      .catch(err => console.log('error :', err));
+    {
+      subId &&
+        getCollection('Products', ['SubCategory', '==', subId])
+          .then((res) => {
+            setLoading(true);
+            setProducts(res);
+            setLoading(false);
+          })
+          .catch((err) => console.log('error :', err));
+    }
+    {
+      sale &&
+        getCollection('Products', ['SalePrice', '>', 0])
+          .then((res) => {
+            setLoading(true);
+            setProducts(res);
+            setLoading(false);
+          })
+          .catch((err) => console.log('error :', err));
+    }
+    {
+      newArrival &&
+        sortCollectionWithoutCondition('CreatedAt', 'desc')
+          .then((res) => {
+            const partOfres = res.slice(0, 10);
+            setLoading(true);
+            setProducts(partOfres);
+            setLoading(false);
+          })
+          .catch((err) => console.log('error :', err));
+    }
   };
 
   const filterProds = (key, value, operator = '==') => {
-    filterCollection(
-      'Products',
-      ['SubCategory', '==', subId],
-      [key, operator, value]
-    )
-      .then((res) => {
-        setLoading(true);
-        setProducts(res);
-        setLoading(false);
-      })
-      .catch(err => console.log('error :', err));
+    {
+      subId &&
+        filterCollection(
+          'Products',
+          ['SubCategory', '==', subId],
+          [key, operator, value]
+        )
+          .then((res) => {
+            setLoading(true);
+            setProducts(res);
+            setLoading(false);
+          })
+          .catch((err) => console.log('error :', err));
+    }
+
+    {
+      sale &&
+        getCollection('Products', [key, operator, value])
+          .then((result) => {
+            return result.filter((prd) => prd.data().SalePrice > 0);
+          })
+          .then((res) => {
+            setLoading(true);
+            setProducts(res);
+            setLoading(false);
+          })
+          .catch((err) => console.log('error :', err));
+    }
+    {
+      newArrival &&
+        sortCollectionWithoutCondition('CreatedAt', 'desc')
+          .then(async (result) => {
+            const partOfres = result.slice(0, 10);
+            const filtered = await getCollection('Products', [
+              key,
+              operator,
+              value,
+            ]);
+            return { partOfres, filtered };
+          })
+          .then((res) => {
+            let filtered = [];
+            for (let i = 0; i < res.partOfres.length; i++) {
+              for (let j = 0; j < res.filtered.length; j++) {
+                if (res.filtered[j].id === res.partOfres[i].id) {
+                  filtered.push(res.filtered[j]);
+                }
+              }
+              if (i === res.partOfres.length - 1) {
+                return filtered;
+              }
+            }
+          })
+          .then((res) => {
+            setProducts(res);
+            setLoading(false);
+          })
+          .catch((err) => console.log('error :', err));
+    }
   };
 
-  const sortProducts = sortProp => {
+  const sortProducts = (sortProp) => {
     let order = 'asc';
     if (sortProp[0] === 'D') {
       //DPrice for descinding
       order = 'desc';
       sortProp = sortProp.substring(1);
     }
-
-    sortCollection(['SubCategory', '==', subId], sortProp, order)
-      .then((res) => {
-        setLoading(true);
-        setProducts(res);
-        setLoading(false);
-      })
-      .catch(err => console.log('error :', err));
+    {
+      subId &&
+        sortCollection(['SubCategory', '==', subId], sortProp, order)
+          .then((res) => {
+            setLoading(true);
+            setProducts(res);
+            setLoading(false);
+          })
+          .catch((err) => console.log('error :', err));
+    }
+    {
+      sale &&
+        sortCollectionWithoutCondition(sortProp, order)
+          .then((res) => {
+            return res.filter((prd) => prd.data().SalePrice > 0);
+          })
+          .then((results) => {
+            setLoading(true);
+            setProducts(results);
+            setLoading(false);
+          })
+          .catch((err) => console.log('error :', err));
+    }
   };
 
   const clearFilters = () => {
@@ -206,37 +294,55 @@ const Products = ({ match }) => {
 
   useEffect(() => {
     console.log('start products');
-    Promise.all([getProducts(), getSubCategories(), getCurrentSub()]);
-
-  }, [match.params.subId]);
-
+    Promise.all([
+      getProducts(),
+      subId && getSubCategories(),
+      subId && getCurrentSub(),
+    ]);
+  }, [match.params.subId, match.params]);
   return (
     <>
       {/* <Breadcrumb state={location.state} /> */}
 
-      <SectionTitle title={subName} />
+      {subId && (
+        <>
+          <SectionTitle
+            title={
+              i18n.language === 'en' ? currentSub?.Name : currentSub?.NameAr
+            }
+          />
 
-      <section className='col-12 col-md-7 col-lg-7'>
-        <p className='description'>{currentSub?.Descripton}</p>
-      </section>
+          <section className='col-12 col-md-7 col-lg-7'>
+            <p className='description'>
+              {i18n.language === 'en'
+                ? currentSub?.Description
+                : currentSub?.DescriptionAr}
+            </p>
+          </section>
+        </>
+      )}
 
       <div className='row sticky-top filter-row'>
-        <div className='col-12 col-lg-8 d-flex flex-nowrap overflow-auto py-3 my-2'>
+        <div className='col-12 col-lg-8 d-flex flex-nowrap overflow- py-3 my-2'>
           {/* <FilterButton title="compare" /> */}
-          <FilterButton title={t('Sort')} icon='fas fa-chevron-down' />
-          <FilterDropList
-            listName='sort-group'
-            checkType='radio'
-            items={sortStates}
-            clickHandler={sortProducts}
-          />
+          {!newArrival && (
+            <>
+              <FilterButton title={t('Sort')} icon='fas fa-chevron-down' />
+              <FilterDropList
+                listName='sort-group'
+                checkType='radio'
+                items={sortStates}
+                clickHandler={sortProducts}
+              />
+            </>
+          )}
 
           <FilterButton title={t('Color')} icon='fas fa-chevron-down' />
           <FilterDropList
             listName='colors-group'
             checkType='radio'
             items={colorsStates}
-            clickHandler={color => filterProds('Color', color)}
+            clickHandler={(color) => filterProds('Color', color)}
           />
 
           <FilterButton
@@ -248,9 +354,15 @@ const Products = ({ match }) => {
             listName='price-group'
             checkType='radio'
             items={pricesStates}
-            clickHandler={maxPrice =>
-              filterProds('Price', parseInt(maxPrice), '<=')
-            }
+            clickHandler={(maxPrice) => {
+              {
+                (subId || newArrival) &&
+                  filterProds('Price', parseInt(maxPrice), '<=');
+              }
+              {
+                sale && filterProds('SalePrice', parseInt(maxPrice), '<=');
+              }
+            }}
           />
 
           <FilterButton title={t('Size')} icon='fas fa-chevron-down' />
@@ -265,7 +377,7 @@ const Products = ({ match }) => {
             listName='material-group'
             checkType='radio'
             items={materialStates}
-            clickHandler={material => filterProds('Material', material)}
+            clickHandler={(material) => filterProds('Material', material)}
           />
 
           <FilterButton
@@ -279,7 +391,7 @@ const Products = ({ match }) => {
 
         <ProductRoomBtn
           totalItems={products?.length}
-          setRoomBtn={val => setRoomBtn(val)}
+          setRoomBtn={(val) => setRoomBtn(val)}
         />
       </div>
 
@@ -294,12 +406,12 @@ const Products = ({ match }) => {
         </div>
       )}
 
-      <div className='carousel-body p-0 pb-2 mb-5'>
+      <div className='carousel-body overflow-hidden px-3 pb-2 mb-5'>
         <div className='row' id='show-proDetail'>
-          {loading&&<Loader />}
+          {loading && <Loader />}
           {!loading && !products?.length && <EmptyData />}
 
-          {products?.map(i => (
+          {products?.map((i) => (
             <ProductCard
               key={i.id}
               productData={i.data()}
@@ -307,7 +419,7 @@ const Products = ({ match }) => {
               showOptions
               roomBtn={roomBtn}
               carousel={false}
-              baseUrl={match.url}
+              baseUrl={subId && match.url}
             />
           ))}
         </div>
@@ -322,7 +434,7 @@ const Products = ({ match }) => {
       {/* <Loader /> */}
       <div className='row mx-auto g-3 categories-slidder'>
         {subCategories &&
-          subCategories.map(subcategory => {
+          subCategories.map((subcategory) => {
             return (
               <SubCategoryCard
                 element={subcategory}
