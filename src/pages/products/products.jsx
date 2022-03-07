@@ -11,7 +11,7 @@ import {
   filterCollection,
   sortCollection,
   getDocumentByID,
-  sortCollectionWithoutCondition
+  sortCollectionWithoutCondition,
 } from '../../services/firebase';
 import SectionTitle from './sectionTitle';
 import EmptyData from './../../components/emptyData';
@@ -22,7 +22,7 @@ import FiltersMenu from './filtersMenu.jsx/filtersMenu';
 
 const Products = ({ match }) => {
   const { t, i18n } = useTranslation();
-  let { type, name, id, subName, subId, sale } = match?.params;
+  let { type, name, id, subName, subId, sale, newArrival } = match?.params;
   const [products, setProducts] = useState(null);
   const [subCategories, setSubCategories] = useState(null);
   const [currentSub, setCurrentSub] = useState(null);
@@ -181,6 +181,17 @@ const Products = ({ match }) => {
           })
           .catch((err) => console.log('error :', err));
     }
+    {
+      newArrival &&
+        sortCollectionWithoutCondition('CreatedAt', 'desc')
+          .then((res) => {
+            const partOfres = res.slice(0, 10);
+            setLoading(true);
+            setProducts(partOfres);
+            setLoading(false);
+          })
+          .catch((err) => console.log('error :', err));
+    }
   };
 
   const filterProds = (key, value, operator = '==') => {
@@ -207,6 +218,37 @@ const Products = ({ match }) => {
           })
           .then((res) => {
             setLoading(true);
+            setProducts(res);
+            setLoading(false);
+          })
+          .catch((err) => console.log('error :', err));
+    }
+    {
+      newArrival &&
+        sortCollectionWithoutCondition('CreatedAt', 'desc')
+          .then(async (result) => {
+            const partOfres = result.slice(0, 10);
+            const filtered = await getCollection('Products', [
+              key,
+              operator,
+              value,
+            ]);
+            return { partOfres, filtered };
+          })
+          .then((res) => {
+            let filtered = [];
+            for (let i = 0; i < res.partOfres.length; i++) {
+              for (let j = 0; j < res.filtered.length; j++) {
+                if (res.filtered[j].id === res.partOfres[i].id) {
+                  filtered.push(res.filtered[j]);
+                }
+              }
+              if (i === res.partOfres.length - 1) {
+                return filtered;
+              }
+            }
+          })
+          .then((res) => {
             setProducts(res);
             setLoading(false);
           })
@@ -257,8 +299,7 @@ const Products = ({ match }) => {
       subId && getSubCategories(),
       subId && getCurrentSub(),
     ]);
-  }, [match.params.subId]);
-
+  }, [match.params.subId, match.params]);
   return (
     <>
       {/* <Breadcrumb state={location.state} /> */}
@@ -284,13 +325,17 @@ const Products = ({ match }) => {
       <div className='row sticky-top filter-row'>
         <div className='col-12 col-lg-8 d-flex flex-nowrap overflow- py-3 my-2'>
           {/* <FilterButton title="compare" /> */}
-          <FilterButton title={t('Sort')} icon='fas fa-chevron-down' />
-          <FilterDropList
-            listName='sort-group'
-            checkType='radio'
-            items={sortStates}
-            clickHandler={sortProducts}
-          />
+          {!newArrival && (
+            <>
+              <FilterButton title={t('Sort')} icon='fas fa-chevron-down' />
+              <FilterDropList
+                listName='sort-group'
+                checkType='radio'
+                items={sortStates}
+                clickHandler={sortProducts}
+              />
+            </>
+          )}
 
           <FilterButton title={t('Color')} icon='fas fa-chevron-down' />
           <FilterDropList
@@ -311,7 +356,8 @@ const Products = ({ match }) => {
             items={pricesStates}
             clickHandler={(maxPrice) => {
               {
-                subId && filterProds('Price', parseInt(maxPrice), '<=');
+                (subId || newArrival) &&
+                  filterProds('Price', parseInt(maxPrice), '<=');
               }
               {
                 sale && filterProds('SalePrice', parseInt(maxPrice), '<=');
@@ -379,31 +425,27 @@ const Products = ({ match }) => {
         </div>
       </div>
 
-      {subId && (
-        <>
-          <SectionTitle title='Top Seller' />
-          <Carousel
-            condition={{ property: 'SalePrice', operator: '>', value: 0 }}
-          />
+      <SectionTitle title='Top Seller' />
+      <Carousel
+        condition={{ property: 'SalePrice', operator: '>', value: 0 }}
+      />
 
-          <SectionTitle title='Related categories' />
-          {/* <Loader /> */}
-          <div className='row mx-auto g-3 categories-slidder'>
-            {subCategories &&
-              subCategories.map((subcategory) => {
-                return (
-                  <SubCategoryCard
-                    element={subcategory}
-                    key={subcategory.id}
-                    type={type}
-                    name={name}
-                    id={id} //categId
-                  />
-                );
-              })}
-          </div>
-        </>
-      )}
+      <SectionTitle title='Related categories' />
+      {/* <Loader /> */}
+      <div className='row mx-auto g-3 categories-slidder'>
+        {subCategories &&
+          subCategories.map((subcategory) => {
+            return (
+              <SubCategoryCard
+                element={subcategory}
+                key={subcategory.id}
+                type={type}
+                name={name}
+                id={id} //categId
+              />
+            );
+          })}
+      </div>
     </>
   );
 };
