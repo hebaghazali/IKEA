@@ -10,10 +10,10 @@ import { useHistory } from 'react-router-dom';
 const MenuMainBody = () => {
   const [selectedSection, setSelectedSection] = useState('');
   const history = useHistory();
-  const { t , i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   function changeLanguage(e) {
     i18n.changeLanguage(e.target.value);
-    localStorage.setItem("language",i18n.language);
+    localStorage.setItem('language', i18n.language);
   }
 
   return (
@@ -40,7 +40,7 @@ const MenuMainBody = () => {
             <li
               onClick={() => {
                 // setSelectedSection('o-content');
-                history.push('/offers/sale')
+                history.push('/offers/sale');
               }}
               style={{ cursor: 'pointer' }}
             >
@@ -48,7 +48,8 @@ const MenuMainBody = () => {
             </li>
             <li
               onClick={() => {
-                setSelectedSection('w-content');
+                // setSelectedSection('w-content');
+                history.push('/whatsnew/newArrival');
               }}
               style={{ cursor: 'pointer' }}
             >
@@ -59,12 +60,17 @@ const MenuMainBody = () => {
             <li>
               <Link to='/stores'>{t('Stores')}</Link>
             </li>
-            <li>
+            {/* <li>
               <Link to='/conactUs'>{t('ContactUs')}</Link>
-            </li>
+            </li> */}
           </ul>
           <div className='d-flex flex-row justify-content-around'>
-            <select onChange={changeLanguage} type='button' className='selector-btn' defaultValue={i18n.language}>
+            <select
+              onChange={changeLanguage}
+              type='button'
+              className='selector-btn'
+              defaultValue={i18n.language}
+            >
               <option value='en'>English</option>
               <option value='ar'>العربية</option>
             </select>

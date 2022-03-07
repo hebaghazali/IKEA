@@ -73,6 +73,11 @@ function App() {
               exact
               component={Products}
             />
+            <Route
+            path='/whatsnew/:newArrival'
+            exact
+            component={Products}
+            />
             <Route path='/products/:pId' exact component={ProductA} />
 
             <Route
