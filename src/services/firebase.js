@@ -280,8 +280,19 @@ export const createNewOrder = async data => {
     TotalPrice: data.totalPrice,
     UserID: data.userId,
     CheckedAddress: data.checkedAddress,
-  }).then((res)=>{
-    console.log(res);
+  })
+  .then(async newDoc => {
+    let purchased = [];
+    await getDoc(doc(fireStore, 'users', data.userId)).then(res => {
+      if (res.data().Purchased) {
+        purchased.push(...res.data().Purchased);
+      }
+    });
+    updateDoc(doc(fireStore, 'users', data.userId), {
+      Purchased: [newDoc.id, ...purchased],
+    });
+  })
+  .then(()=>{
     data.items.map(async (item)=>{
        const res = await getDocumentByID('Products', item.ProductID);
       await updateData('Products', item.ProductID, {
