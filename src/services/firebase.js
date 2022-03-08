@@ -53,21 +53,19 @@ export const sortCollection = async (condition, sortProp, order) => {
     orderBy(sortProp, order)
   );
 
-
   let results = await getDocs(sortQ);
-
 
   return results.docs;
 };
 
-export const sortCollectionWithoutCondition=async(sortProp,order)=>{
-  const sortQ=query(
-    collection(fireStore,'Products'),
-    orderBy(sortProp,order)
+export const sortCollectionWithoutCondition = async (sortProp, order) => {
+  const sortQ = query(
+    collection(fireStore, 'Products'),
+    orderBy(sortProp, order)
   );
   let results = await getDocs(sortQ);
   return results.docs;
-}
+};
 
 export const updateData = async (collName, ID, data) => {
   await updateDoc(doc(fireStore, collName, ID), data).then(() => {
@@ -280,5 +278,6 @@ export const createNewOrder = async data => {
     Status: data.status,
     TotalPrice: data.totalPrice,
     UserID: data.userId,
+    CheckedAddress: data.checkedAddress,
   });
 };

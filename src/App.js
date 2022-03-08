@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Route, Switch, Redirect, useHistory } from 'react-router-dom';
 import './i18n/config';
 import Navbar from './components/navbar/navbar';
@@ -17,13 +17,10 @@ import { useTranslation } from 'react-i18next';
 
 import GuardedRoute from 'react-guarded-route';
 import FavouritePage from './pages/favouritePage';
-import Checkout from './components/paypalCheckout/checkout';
-
 import ProductsSearch from './pages/productsSearch';
-// import { OrderProvider } from './contexts/orderContext';
-// import { useState, useEffect } from 'react';
+
 import Order from './pages/order';
-import { useEffect } from 'react';
+
 import { updateUserStorageByID } from './services/firebase';
 
 function App() {
@@ -123,7 +120,7 @@ function App() {
 
               <GuardedRoute
                 path='/checkout'
-                component={Checkout}
+                component={Order}
                 redirectTo='/login'
                 validatorFunction={checkoutValidator()}
               ></GuardedRoute>

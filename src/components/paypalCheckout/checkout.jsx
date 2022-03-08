@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
 import './checkout.scss';
 import { useSelector } from 'react-redux';
 import { Timestamp } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 import { createNewOrder } from '../../services/firebase';
+import { locationContext } from '../../contexts/locationContext';
 
 const initialOptions = {
   'client-id':
@@ -13,6 +14,8 @@ const initialOptions = {
 };
 
 const Checkout = () => {
+  const { checkedAddress } = useContext(locationContext);
+
   const purchasedItems = useSelector(state => state.cartProducts.cartProducts);
   const totalOrderPrice = useSelector(state => state.cartProducts.totalPrice);
 
@@ -51,6 +54,7 @@ const Checkout = () => {
                 status: false,
                 totalPrice: totalOrderPrice,
                 userId: localStorage.getItem('UID'),
+                checkedAddress: checkedAddress,
               });
             }, 2000);
 
