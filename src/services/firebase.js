@@ -14,6 +14,7 @@ import {
   Timestamp,
 } from 'firebase/firestore';
 import { fireStore } from '../config/firebaseConfig';
+import { removeFromCart, setCartItemAmount } from '../store/actions/cartProducts';
 import { changeUser } from './../store/actions/auth';
 import store from './../store/store';
 
@@ -279,5 +280,17 @@ export const createNewOrder = async data => {
     TotalPrice: data.totalPrice,
     UserID: data.userId,
     CheckedAddress: data.checkedAddress,
-  });
+  }).then((res)=>{
+    console.log(res);
+    data.items.map(async (item)=>{
+       const res = await getDocumentByID('Products', item.ProductID);
+      await updateData('Products', item.ProductID, {
+        Quantity: res.Quantity - item.Amount
+      });
+      removeCartItemFromUser(localStorage.getItem('UID'), item.ProductID);
+      store.dispatch(removeFromCart(item.ProductID));
+      store.dispatch(setCartItemAmount(item.ProductID, 0));
+      console.log('hereeee');
+    });
+  })
 };

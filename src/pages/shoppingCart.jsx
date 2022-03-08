@@ -35,14 +35,17 @@ const ShoppingCart = () => {
           <section className='row shopping-page'>
             <section className='col-12 left-shopping-page'>
               {cartItems.map(item => {
-                return (
-                  <CartCard
-                    id={item.id}
-                    key={item.id}
-                    product={item.productData}
-                    purchasedQuantity={item.PurchasedAmount}
-                  />
-                );
+                if(item.productData.Quantity>=item.PurchasedAmount)
+                {
+                  return (
+                    <CartCard
+                      id={item.id}
+                      key={item.id}
+                      product={item.productData}
+                      purchasedQuantity={item.PurchasedAmount}
+                    />
+                  );
+                }
               })}
             </section>
           </section>
