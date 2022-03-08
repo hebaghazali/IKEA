@@ -1,9 +1,8 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
 import './checkout.scss';
 import { useSelector } from 'react-redux';
 import { Timestamp } from 'firebase/firestore';
-import { useEffect, useState } from 'react';
 import { createNewOrder } from '../../services/firebase';
 import { locationContext } from '../../contexts/locationContext';
 
@@ -37,7 +36,9 @@ const Checkout = () => {
               purchase_units: [
                 {
                   amount: {
-                    value: totalOrderPrice ? totalOrderPrice / 16 : 1,
+                    value: totalOrderPrice
+                      ? (totalOrderPrice / 16).toFixed(2)
+                      : 1,
                   },
                 },
               ],
