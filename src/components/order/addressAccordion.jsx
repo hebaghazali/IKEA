@@ -60,7 +60,6 @@ const AddressAccordion = ({
                     defaultChecked={
                       user.Locations.indexOf(loc) === checkedAddress
                     }
-                    checked={userLocations.indexOf(loc) === checkedAddress}
                     onChange={getCheckedAddress}
                   />
                   <div className='card-body'>

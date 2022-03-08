@@ -1,16 +1,12 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { locationContext } from '../../contexts/locationContext';
+import React, { useState, useEffect } from 'react';
 
 const AddressForm = ({
   handleAddressForm,
   register,
   locations,
-  locationsExist,
   gov,
   setGov,
 }) => {
-  // const { gov, setGov } = useContext(locationContext);
-
   const [areas, setAreas] = useState([]);
 
   const handleGovSelect = e => {
@@ -31,11 +27,6 @@ const AddressForm = ({
       }
     });
   };
-
-  useEffect(() => {
-    console.log(areas);
-    // setGov({ ...gov, area: a });
-  }, [areas]);
 
   return (
     <>
