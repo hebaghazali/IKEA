@@ -2,6 +2,9 @@ import React from 'react';
 import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
 import './checkout.scss';
 import { useSelector } from 'react-redux';
+import { Timestamp } from 'firebase/firestore';
+import { useEffect, useState } from 'react';
+import { createNewOrder } from '../../services/firebase';
 
 const initialOptions = {
   'client-id':
@@ -10,7 +13,17 @@ const initialOptions = {
 };
 
 const Checkout = () => {
+  const purchasedItems = useSelector(state => state.cartProducts.cartProducts);
   const totalOrderPrice = useSelector(state => state.cartProducts.totalPrice);
+
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    purchasedItems.forEach(item => {
+      const newItem = { ProductID: item.id, Amount: item.PurchasedAmount };
+      setItems(prevItems => [...prevItems, newItem]);
+    });
+  }, []);
 
   return (
     <div className='checkout-container'>
@@ -29,7 +42,18 @@ const Checkout = () => {
           }}
           onApprove={(data, actions) => {
             console.log('onApprove Data: ');
-            console.log(data);
+            const purchaseDate = Timestamp.fromDate(new Date());
+
+            setTimeout(() => {
+              createNewOrder({
+                createdAt: purchaseDate,
+                items: items,
+                status: false,
+                totalPrice: totalOrderPrice,
+                userId: localStorage.getItem('UID'),
+              });
+            }, 2000);
+
             return actions.order.capture().then(details => {
               const name = details.payer.name.given_name;
               alert(`Transaction completed by ${name}`);

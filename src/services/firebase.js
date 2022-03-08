@@ -11,6 +11,7 @@ import {
   setDoc,
   limit,
   deleteDoc,
+  Timestamp,
 } from 'firebase/firestore';
 import { fireStore } from '../config/firebaseConfig';
 import { changeLoader } from './../store/actions/loader';
@@ -282,4 +283,14 @@ export const setUserLocation = async (userID, locationData) => {
       console.log('Location added to current user');
     })
     .catch(err => console.log('adding location to user ERROR: ' + err));
+};
+
+export const createNewOrder = async data => {
+  await addDoc(collection(fireStore, 'Orders'), {
+    CreatedAt: data.createdAt,
+    Items: data.items,
+    Status: data.status,
+    TotalPrice: data.totalPrice,
+    UserID: data.userId,
+  });
 };

@@ -38,8 +38,6 @@ const Order = () => {
 
     const newLocation = { ...getValues(), ...gov };
 
-    console.log(newLocation);
-
     setUserLocations([...userLocations, newLocation]);
     setUserLocation(localStorage.getItem('UID'), newLocation);
 
@@ -103,11 +101,9 @@ const Order = () => {
 
   useEffect(() => {
     user.Locations ? setLocationsExist(true) : setLocationsExist(false);
-    console.log(user.Locations);
     const userLoc = user.Locations;
 
     if (userLoc instanceof Array && userLoc.length !== 0) {
-      console.log(userLoc);
       setUserLocations([...user.Locations]);
     }
   }, [user.Locations, locationsExist]);
