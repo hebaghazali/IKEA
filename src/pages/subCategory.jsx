@@ -6,6 +6,7 @@ import { getCollection, getDocumentByID } from '../services/firebase';
 import { useTranslation } from 'react-i18next';
 import Loader from '../components/loader';
 import EmptyData from '../components/emptyData';
+import TextRightCard from '../components/cards/textRightCard'
 
 const SubCategory = (props) => {
   const params = useParams();

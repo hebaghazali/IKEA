@@ -61,10 +61,6 @@ function App() {
 
   return (
       <div dir={i18n.dir()}>
-<<<<<<< HEAD
-
-=======
->>>>>>> cd363aea27643e0562685004d3cfda374b6a201b
       <Menu />
       <div className={`${i18n.dir()==='ltr'?'body-container-ltr':'body-container-rtl'}`}>
 
@@ -148,15 +144,13 @@ function App() {
       </div>
 
         <Footer />
-<<<<<<< HEAD
+
 
       </div>
       </div>
-=======
-        </div>
-        </div>
-    </>
->>>>>>> cd363aea27643e0562685004d3cfda374b6a201b
+      
+   
+
   );
 }
 
