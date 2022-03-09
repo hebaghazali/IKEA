@@ -1,5 +1,6 @@
 import ItemCard from './itemCard';
 import { useTranslation } from 'react-i18next';
+import Rating from '../../Rating/rating';
 
 const OrderCard = ({ order }) => {
   const { t } = useTranslation();
@@ -15,6 +16,9 @@ const OrderCard = ({ order }) => {
         </h5>
         {order.Status && <h5 className='text-success'>{t('Delivered')}</h5>}
         {!order.Status && <h5 className='text-danger'>{t('Pending')}</h5>}
+        <small>
+          <Rating />
+        </small>
         <h4>{t('TotalPrice')} {t('EGP')} {order.TotalPrice}</h4>
       </div>
       <div className='col-7'>

@@ -8,6 +8,7 @@ import { changeUser } from '../../store/actions/auth';
 import { useTranslation } from 'react-i18next';
 
 function SharedLogComp() {
+
   const { t } = useTranslation();
   const [users, setUser] = useState({
     Email: '',
@@ -35,7 +36,6 @@ function SharedLogComp() {
       ...users,
       [e.target.name]: e.target.value,
     });
-
     // Validate Email Input
     if (e.target.name == 'Email') {
       if (regEmail.test(e.target.value)) {
@@ -50,7 +50,6 @@ function SharedLogComp() {
         });
       }
     }
-
     // Validate Password Input
     else if (e.target.name == 'Password') {
       if (regPassword.test(e.target.value)) {
@@ -108,8 +107,15 @@ function SharedLogComp() {
               }}
               ref={emailRef}
             />
+            
+            <p className='text-secondary'>
+              {' '}
+              {t('ValidEmailExample')}
+            </p>
+
             <p></p>
             <p className='text-secondary'> {t('ValidEmailExample')}</p>
+
             <small className='text-danger'>{errors.EmailErr}</small>
           </div>
           <div>
@@ -131,6 +137,7 @@ function SharedLogComp() {
             <p className='text-secondary'>{t('SpecialCharValidation')}</p>
             <p className='text-danger'>{errors.PasswordErr}</p>
           </div>
+
           <a href='#'>{t('ForgetPassword')}</a>
           <button
             className='login-creation'
@@ -141,10 +148,12 @@ function SharedLogComp() {
             {' '}
             {t('Login')}{' '}
           </button>
+
         </div>
       </div>
+
     </>
-  );
-}
+           
+  )}         
 
 export default SharedLogComp;

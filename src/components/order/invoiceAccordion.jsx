@@ -75,14 +75,14 @@ const InvoiceAccordion = ({
                       {item.productData.ProductName} {item.productData.Name}
                     </p>
                     <p>
-                      <strong>EGP {item.productData.SalePrice}</strong>
+                      <strong>EGP {item.productData.Price}</strong>
                     </p>
                   </div>
                 </div>
                 <div className='right'>
                   <p>
                     <strong>
-                      EGP {item.PurchasedAmount * item.productData.SalePrice}
+                      EGP {item.PurchasedAmount * item.productData.Price}
                     </strong>
                   </p>
                 </div>

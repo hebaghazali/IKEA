@@ -1,0 +1,26 @@
+.radio-button {
+  display: none;
+}
+
+.ratingVal {
+  display: flex;
+  padding: 10px;
+  min-height: 100vh;
+}
+
+.header {
+  font-size: 25px;
+}
+
+.star {
+  cursor: pointer;
+  transition: color 200ms;
+  margin: 7px;
+}
+
+.rate {
+  text-decoration: underline;
+  font-weight: bold;
+  font-size: small;
+  color: rgb(219, 189, 18);
+}

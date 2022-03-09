@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { signup, useAuth } from '../../firebaseConfig/firebase';
 import { addDocByID } from '../../services/firebase';
 import { changeUser } from '../../store/actions/auth';
+
 import { useTranslation } from 'react-i18next';
 
 function SignIn() {
