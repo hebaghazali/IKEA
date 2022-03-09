@@ -61,7 +61,7 @@ const AddressAccordion = ({
                       user.Locations.indexOf(loc) === checkedAddress
                     }
                     onChange={e => {
-                      setCheckedAddress(userLocations.indexOf(loc));
+                      setCheckedAddress(Number(e.target.value));
                     }}
                   />
                   <div className='card-body'>

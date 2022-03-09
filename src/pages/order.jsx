@@ -38,8 +38,9 @@ const Order = () => {
 
     const newLocation = { ...getValues(), ...gov };
 
-    setUserLocations([...userLocations, newLocation]);
+    setUserLocations([newLocation, ...userLocations]);
     setUserLocation(localStorage.getItem('UID'), newLocation);
+    setCheckedAddress(0);
 
     reset({ name: '' });
     reset({ email: '' });
