@@ -17,14 +17,18 @@ const ShoppingCart = () => {
         <div className='container'>
           <div className='shopping-header'>
             <h3>{t('ShoppingCart')}</h3>
-            <h6>{itemsCount} {t('ItemsInBag')}</h6>
+            <h6>
+              {itemsCount} {t('ItemsInBag')}
+            </h6>
             <div className='shopping-total-price'>
               <h6>{t('TotalWithVat')}</h6>
-              <h4>{t('EGP')} {totalOrderPrice}</h4>
+              <h4>
+                {t('EGP')} {totalOrderPrice}
+              </h4>
             </div>
             <div className='shopping-total-price d-flex flex-row-reverse'>
               <Link to='/checkout'>
-              <button>{t('Checkout')}</button>
+                <button>{t('Checkout')}</button>
               </Link>
             </div>
           </div>

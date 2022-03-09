@@ -1,6 +1,6 @@
-import React from 'react';
-import './i18n/config';
+import React, { useEffect } from 'react';
 import { Route, Switch, Redirect, useHistory } from 'react-router-dom';
+import './i18n/config';
 import Navbar from './components/navbar/navbar';
 import Home from './pages/home.jsx';
 import Footer from './components/footer/footer';
@@ -17,18 +17,13 @@ import { useTranslation } from 'react-i18next';
 
 import GuardedRoute from 'react-guarded-route';
 import FavouritePage from './pages/favouritePage';
-import Checkout from './components/paypalCheckout/checkout';
-import PayPal from './components/paypalCheckout/PayPal';
 import ProductsSearch from './pages/productsSearch';
-// import { OrderProvider } from './contexts/orderContext';
-// import { useState, useEffect } from 'react';
+
 import Order from './pages/order';
-import { useEffect } from 'react';
+
 import { updateUserStorageByID } from './services/firebase';
 
 function App() {
-  const history = useHistory();
-
   const loginValidator = () => {
     // If there is UID it will return false, otherwise it will return true
     return !localStorage.getItem('UID');
@@ -150,7 +145,7 @@ function App() {
       </div>
       
    
-
+     
   );
 }
 

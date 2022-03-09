@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
 import './checkout.scss';
 import { useSelector } from 'react-redux';
+import { Timestamp } from 'firebase/firestore';
+import { createNewOrder } from '../../services/firebase';
+import { locationContext } from '../../contexts/locationContext';
 
 const initialOptions = {
   'client-id':
@@ -10,7 +13,19 @@ const initialOptions = {
 };
 
 const Checkout = () => {
+  const { checkedAddress } = useContext(locationContext);
+
+  const purchasedItems = useSelector(state => state.cartProducts.cartProducts);
   const totalOrderPrice = useSelector(state => state.cartProducts.totalPrice);
+
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    purchasedItems.forEach(item => {
+      const newItem = { ProductID: item.id, Amount: item.PurchasedAmount };
+      setItems(prevItems => [...prevItems, newItem]);
+    });
+  }, []);
 
   return (
     <div className='checkout-container'>
@@ -21,7 +36,9 @@ const Checkout = () => {
               purchase_units: [
                 {
                   amount: {
-                    value: totalOrderPrice ? totalOrderPrice / 16 : 1,
+                    value: totalOrderPrice
+                      ? (totalOrderPrice / 16).toFixed(2)
+                      : 1,
                   },
                 },
               ],
@@ -29,7 +46,19 @@ const Checkout = () => {
           }}
           onApprove={(data, actions) => {
             console.log('onApprove Data: ');
-            console.log(data);
+            const purchaseDate = Timestamp.fromDate(new Date());
+
+            setTimeout(() => {
+              createNewOrder({
+                createdAt: purchaseDate,
+                items: items,
+                status: false,
+                totalPrice: totalOrderPrice,
+                userId: localStorage.getItem('UID'),
+                checkedAddress: checkedAddress,
+              });
+            }, 2000);
+
             return actions.order.capture().then(details => {
               const name = details.payer.name.given_name;
               alert(`Transaction completed by ${name}`);

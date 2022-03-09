@@ -11,6 +11,7 @@ import {
   setDoc,
   limit,
   deleteDoc,
+  Timestamp,
 } from 'firebase/firestore';
 import { fireStore } from '../config/firebaseConfig';
 import { changeUser } from './../store/actions/auth';
@@ -52,21 +53,19 @@ export const sortCollection = async (condition, sortProp, order) => {
     orderBy(sortProp, order)
   );
 
-
   let results = await getDocs(sortQ);
-
 
   return results.docs;
 };
 
-export const sortCollectionWithoutCondition=async(sortProp,order)=>{
-  const sortQ=query(
-    collection(fireStore,'Products'),
-    orderBy(sortProp,order)
+export const sortCollectionWithoutCondition = async (sortProp, order) => {
+  const sortQ = query(
+    collection(fireStore, 'Products'),
+    orderBy(sortProp, order)
   );
   let results = await getDocs(sortQ);
   return results.docs;
-}
+};
 
 export const updateData = async (collName, ID, data) => {
   await updateDoc(doc(fireStore, collName, ID), data).then(() => {
@@ -270,4 +269,25 @@ export const setUserLocation = async (userID, locationData) => {
       console.log('Location added to current user');
     })
     .catch(err => console.log('adding location to user ERROR: ' + err));
+};
+
+export const createNewOrder = async data => {
+  await addDoc(collection(fireStore, 'Orders'), {
+    CreatedAt: data.createdAt,
+    Items: data.items,
+    Status: data.status,
+    TotalPrice: data.totalPrice,
+    UserID: data.userId,
+    CheckedAddress: data.checkedAddress,
+  }).then(async newDoc => {
+    let purchased = [];
+    await getDoc(doc(fireStore, 'users', data.userId)).then(res => {
+      if (res.data().Purchased) {
+        purchased.push(...res.data().Purchased);
+      }
+    });
+    updateDoc(doc(fireStore, 'users', data.userId), {
+      Purchased: [newDoc.id, ...purchased],
+    });
+  });
 };
