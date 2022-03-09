@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import AddressForm from './addressForm';
 
 const AddressAccordion = ({
@@ -12,13 +12,13 @@ const AddressAccordion = ({
   locations,
   handleAddressNext,
   userLocations,
+  checkedAddress,
+  getCheckedAddress,
   addNewAddressRef,
   setGov,
   gov,
   locationsExist,
 }) => {
-  const [checkedAddress, setCheckedAddress] = useState(0);
-
   return (
     <div className='accordion-item'>
       <h2 className='accordion-header' id='flush-headingOne'>
@@ -60,9 +60,7 @@ const AddressAccordion = ({
                     defaultChecked={
                       user.Locations.indexOf(loc) === checkedAddress
                     }
-                    onChange={() =>
-                      setCheckedAddress(userLocations.indexOf(loc))
-                    }
+                    onChange={getCheckedAddress}
                   />
                   <div className='card-body'>
                     <p>
