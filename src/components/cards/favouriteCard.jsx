@@ -57,6 +57,7 @@ const FavouriteCard = (props) => {
             <i className='fas fa-trash-alt'></i>
           </button>
 
+          {props.product.Quantity!==0 &&
           <div className='prod-box'>
             <select defaultValue={selectedAmount} onChange={selectAmount}>
               {(() => {
@@ -67,7 +68,7 @@ const FavouriteCard = (props) => {
                 return options;
               })()}
             </select>
-          </div>
+          </div>}
         </div>
 
         <div className='shopping-img'>
@@ -85,13 +86,14 @@ const FavouriteCard = (props) => {
           </p>
           {/* <!-- button For Shopping --> */}
           <div className='prod-box col-5'>
+            {props.product.Quantity!==0 &&
             <button
               className={`btn card-button ${inCart && 'disabled'}`}
               onClick={addCart}
             >
               <i className='fas fa-shopping-bag'></i>{' '}
               {!inCart ? t('AddToCart') : t('Added')}
-            </button>
+            </button>}
           </div>
         </div>
       </div>

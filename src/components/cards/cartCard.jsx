@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { removeCartItemFromUser } from '../../services/firebase';
+import { getDocumentByID, removeCartItemFromUser } from '../../services/firebase';
 import {
   removeFromCart,
   setCartItemAmount,
@@ -11,7 +11,7 @@ const CartCard = (props) => {
   const { t, i18n } = useTranslation();
   const [selectedAmount, setSelectedAmount] = useState(props.purchasedQuantity);
   const dispatch = useDispatch();
-
+  const [product,setProduct]= useState({});
   const deleteItem = () => {
     dispatch(removeFromCart(props.id));
     dispatch(setCartItemAmount(props.id, 0));
@@ -29,6 +29,11 @@ const CartCard = (props) => {
     );
   }, [dispatch, props.id, selectedAmount]);
 
+  useEffect(()=>{
+    getDocumentByID('Products',props.id).then((res)=>{
+      setProduct(res);
+    })
+  },[])
   return (
     <>
       <div className='shop-section'>
@@ -41,7 +46,7 @@ const CartCard = (props) => {
             <select defaultValue={selectedAmount} onChange={selectAmount}>
               {(() => {
                 const options = [];
-                for (let i = 0; i < props.product.Quantity; i++) {
+                for (let i = 0; i < product.Quantity; i++) {
                   options.push(<option key={i + 1}>{i + 1}</option>);
                 }
                 return options;

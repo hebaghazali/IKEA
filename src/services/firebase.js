@@ -290,17 +290,17 @@ export const createNewOrder = async data => {
     });
     updateDoc(doc(fireStore, 'users', data.userId), {
       Purchased: [newDoc.id, ...purchased],
+      CartItems: []
     });
   })
   .then(()=>{
     data.items.map(async (item)=>{
        const res = await getDocumentByID('Products', item.ProductID);
-      await updateData('Products', item.ProductID, {
-        Quantity: res.Quantity - item.Amount
+      updateData('Products', item.ProductID, {
+        Quantity:  ((item.Amount > res.Quantity) ? 0 : res.Quantity-item.Amount)
       });
-      removeCartItemFromUser(localStorage.getItem('UID'), item.ProductID);
       store.dispatch(removeFromCart(item.ProductID));
-      store.dispatch(setCartItemAmount(item.ProductID, 0));
+      store.dispatch(setCartItemAmount(item.ProductID, 0)); 
       console.log('hereeee');
     });
   })

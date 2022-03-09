@@ -6,28 +6,17 @@ import InvoiceAccordion from '../components/order/invoiceAccordion';
 import ReviewAccordion from '../components/order/reviewAccordion';
 import { LocationProvider } from '../contexts/locationContext';
 
-import {
-  getDocumentByID,
-  removeCartItemFromUser,
-  setUserLocation,
-} from '../services/firebase';
-import {
-  removeFromCart,
-  setCartItemAmount,
-} from '../store/actions/cartProducts';
-import store from '../store/store';
+import { getDocumentByID, setUserLocation } from '../services/firebase';
 
 const Order = () => {
   const [locations, setLocations] = useState();
   const [locationsExist, setLocationsExist] = useState();
 
-  const user = useSelector((state) => state.user.user);
+  const user = useSelector(state => state.user.user);
   const [userLocations, setUserLocations] = useState([]);
 
-  const purchasedItems = useSelector(
-    (state) => state.cartProducts.cartProducts
-  );
-  const totalOrderPrice = useSelector((state) => state.cartProducts.totalPrice);
+  const purchasedItems = useSelector(state => state.cartProducts.cartProducts);
+  const totalOrderPrice = useSelector(state => state.cartProducts.totalPrice);
 
   const { register, getValues, reset } = useForm();
   const [gov, setGov] = useState({});
@@ -42,7 +31,7 @@ const Order = () => {
   const invoiceAccordionCollapse = useRef();
   const reviewAccordionCollapse = useRef();
 
-  const handleAddressForm = (e) => {
+  const handleAddressForm = e => {
     e.preventDefault();
 
     !locationsExist && setLocationsExist(true);
@@ -93,35 +82,20 @@ const Order = () => {
   };
 
   const [continuePayment, setContinuePayment] = useState(false);
-  const [itemsRemoved, setItemsRemoved] = useState([]);
-  // const [err, setErr] = useState(false);
-  // const [note, setNote] = useState('');
 
   const handleReviewNext = () => {
-    // if (err) {
-    //   setContinuePayment(false);
-    // } else {
-      setContinuePayment(true);
-    // }
+    setContinuePayment(true);
   };
 
   const [checkedAddress, setCheckedAddress] = useState(0);
 
-  const getCheckedAddress = (e) => {
+  const getCheckedAddress = e => {
     setCheckedAddress(Number(e.target.value));
   };
 
   useEffect(() => {
-    getDocumentByID('governorate', 'VZsmOmwYmRM8qL2TAnqR').then((data) => {
+    getDocumentByID('governorate', 'VZsmOmwYmRM8qL2TAnqR').then(data => {
       setLocations(data.Governorates);
-    });
-    purchasedItems.forEach((item) => {
-      getDocumentByID('Products', item.id).then((res) => {
-        if (res.Quantity < item.PurchasedAmount) {
-          setItemsRemoved((items) => [...items, item]);
-          // setErr(true);
-        }
-      });
     });
   }, []);
 
@@ -176,7 +150,6 @@ const Order = () => {
             handleReviewNext={handleReviewNext}
             continuePayment={continuePayment}
             totalOrderPrice={totalOrderPrice}
-            removedItems={itemsRemoved}
           />
         </div>
       </div>

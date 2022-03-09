@@ -11,7 +11,6 @@ const ReviewAccordion = ({
   handleReviewNext,
   continuePayment,
   totalOrderPrice,
-  removedItems
 }) => {
   const { checkedAddress, userLocations } = useContext(locationContext);
 
@@ -97,35 +96,15 @@ const ReviewAccordion = ({
           agree to
           <span style={{ color: '#90baf1' }}>Terms and Conditions</span>
         </p>
-        {
-          removedItems.length!=0 && (
-            <>
-            <p className='text-danger p-5 fs-3'>Items you have picked are not available any more please check current quantity</p>
-            {
-              removedItems.map((item)=>{
-                <div className='d-flex flex-row'>
-                  <img src={item.Images[0]} className='col-2'/>
-                  <p className='col-9'>{item.Name}</p>
-                </div>
-              })
-            }
-            </>
-          )
-        }
+
         <div className='buttons-group'>
           <button className='btn back-button ms-4' onClick={handleReviewBack}>
             BACK
           </button>
 
-          {removedItems.length!=0 ?
-          <button className='btn submit-button me-4 disabled'>
+          <button className='btn submit-button me-4' onClick={handleReviewNext}>
             CONTINUE WITH THE PAYMENT
           </button>
-          :
-          <button className='btn submit-button me-4' onClick={handleReviewNext}>
-          CONTINUE WITH THE PAYMENT
-          </button>
-          }
         </div>
 
         {continuePayment && <Checkout totalOrderPrice={totalOrderPrice} />}
