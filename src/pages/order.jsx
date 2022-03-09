@@ -89,10 +89,6 @@ const Order = () => {
 
   const [checkedAddress, setCheckedAddress] = useState(0);
 
-  const getCheckedAddress = e => {
-    setCheckedAddress(Number(e.target.value));
-  };
-
   useEffect(() => {
     getDocumentByID('governorate', 'VZsmOmwYmRM8qL2TAnqR').then(data => {
       setLocations(data.Governorates);
@@ -126,7 +122,6 @@ const Order = () => {
             handleAddressNext={handleAddressNext}
             userLocations={userLocations}
             checkedAddress={checkedAddress}
-            getCheckedAddress={getCheckedAddress}
             addNewAddressRef={addNewAddressRef}
             setGov={setGov}
             gov={gov}
