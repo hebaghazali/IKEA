@@ -87,12 +87,6 @@ const Order = () => {
     setContinuePayment(true);
   };
 
-  const [checkedAddress, setCheckedAddress] = useState(0);
-
-  const getCheckedAddress = e => {
-    setCheckedAddress(Number(e.target.value));
-  };
-
   useEffect(() => {
     getDocumentByID('governorate', 'VZsmOmwYmRM8qL2TAnqR').then(data => {
       setLocations(data.Governorates);
@@ -111,7 +105,7 @@ const Order = () => {
   const [addressCollapse, setAddressCollapse] = useState(true);
 
   return (
-    <LocationProvider value={{ checkedAddress, userLocations }}>
+    <LocationProvider value={{ userLocations }}>
       <div className='order-container'>
         <div className='accordion accordion-flush' id='accordionFlushExample'>
           <AddressAccordion
@@ -125,8 +119,6 @@ const Order = () => {
             locations={locations}
             handleAddressNext={handleAddressNext}
             userLocations={userLocations}
-            checkedAddress={checkedAddress}
-            getCheckedAddress={getCheckedAddress}
             addNewAddressRef={addNewAddressRef}
             setGov={setGov}
             gov={gov}
