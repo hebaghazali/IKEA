@@ -13,7 +13,6 @@ const AddressAccordion = ({
   locations,
   handleAddressNext,
   userLocations,
-  addNewAddressRef,
   setGov,
   gov,
   locationsExist,
@@ -86,7 +85,6 @@ const AddressAccordion = ({
                 data-bs-toggle='collapse'
                 data-bs-target='#addressCollapse'
                 onClick={() => setAddressCollapse(!addressCollapse)}
-                ref={addNewAddressRef}
               >
                 ADD NEW SHIPPING ADDRESS
               </button>
