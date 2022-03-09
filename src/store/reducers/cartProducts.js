@@ -93,7 +93,7 @@ export default function cartReducer(state = initialState, action) {
 
         state.totalPrice +=
           state.cartProducts[index].PurchasedAmount *
-          (state.cartProducts[index].productData.SalePrice ? state.cartProducts[index].productData.SalePrice : state.cartProducts[index].productData.Price);
+          (state.cartProducts[index].productData.Price);
 
         state.totalAmountOfCartItems +=
           state.cartProducts[index].PurchasedAmount;
