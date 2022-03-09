@@ -107,7 +107,9 @@ const Order = () => {
   const [addressCollapse, setAddressCollapse] = useState(true);
 
   return (
-    <LocationProvider value={{ checkedAddress, userLocations }}>
+    <LocationProvider
+      value={{ checkedAddress, setCheckedAddress, userLocations }}
+    >
       <div className='order-container'>
         <div className='accordion accordion-flush' id='accordionFlushExample'>
           <AddressAccordion
@@ -121,7 +123,6 @@ const Order = () => {
             locations={locations}
             handleAddressNext={handleAddressNext}
             userLocations={userLocations}
-            checkedAddress={checkedAddress}
             addNewAddressRef={addNewAddressRef}
             setGov={setGov}
             gov={gov}
