@@ -1,3 +1,5 @@
+@import '../abstracts/mixins'  ;
+
 // var 
 $txt-color: rgb(117, 117, 117);
 $text-position : center;
@@ -102,4 +104,11 @@ $fixed-number-margin : 20px;
             }
         }
     }
+}
+
+.card-button{
+    @include ShoppingButton();
+    width: 70%;
+    margin-top: $fixed-number-margin;
+    float: right;   
 }

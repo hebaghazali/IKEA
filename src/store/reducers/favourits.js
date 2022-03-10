@@ -4,18 +4,20 @@ let initialState = {
 
 export default function favReducer(state = initialState, action) {
   switch (action.type) {
-    case 'ADD-TO-FAV':
+    case 'ADD_TO_FAV':
       return {
         ...state,
         favourits: [action.payload, ...state.favourits],
       };
 
-    case 'REMOVE-FROM-FAV':
+    case 'REMOVE_FROM_FAV':
       return {
         ...state,
-        favourits: state.favourits.filter((i) => i.id !== action.payload),
+        favourits: state.favourits.filter(i => i.id !== action.payload),
       };
-    default:
-      return state;
+      
+      default:
+        return state;
+
   }
 }

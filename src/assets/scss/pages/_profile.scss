@@ -60,3 +60,8 @@
         background-color: #333333;
     }
 }
+.order-card{
+    @include HandleBoxForEachProduct();
+    border: #dddddd solid 1px;
+    margin: 2%;
+}

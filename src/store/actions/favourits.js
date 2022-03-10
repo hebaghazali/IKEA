@@ -1,13 +1,20 @@
-export const addToFav = (data) => {
+export const addToFav = data => {
   return {
-    type: 'ADD-TO-FAV',
+    type: 'ADD_TO_FAV',
     payload: data,
   };
 };
 
-export const removeFromFav = (data) => {
+export const removeFromFav = data => {
   return {
-    type: 'REMOVE-FROM-FAV',
+    type: 'REMOVE_FROM_FAV',
+    payload: data,
+  };
+};
+
+export const setFavItemAmount = data => {
+  return {
+    type: 'SET_AMOUNT',
     payload: data,
   };
 };
