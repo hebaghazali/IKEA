@@ -69,7 +69,7 @@ const CartCard = (props) => {
               : props.product.DescriptionAr}
           </p>
           <h6>
-            {t('EGP')} {props.product.Price}
+            {t('EGP')} {props.product.SalePrice ? props.product.SalePrice:props.product.Price}
           </h6>
           <p className='txt-info'>
             {i18n.language == 'en'
@@ -80,14 +80,14 @@ const CartCard = (props) => {
           <span>
             {t('SubTotal')}:{' '}
             <strong>
-              {t('EGP')} {props.product.Price * selectedAmount}
+              {t('EGP')} { (props.product.SalePrice ? props.product.SalePrice:props.product.Price )* selectedAmount}
             </strong>
           </span>
           {props.product.SalePrice && (
             <p className='text-danger'>
               {t('SaleSubTotal')}:{' '}
               <strong>
-                {t('EGP')} {props.product.SalePrice * selectedAmount}
+                {t('EGP')} {props.product.Price * selectedAmount}
               </strong>
             </p>
           )}
