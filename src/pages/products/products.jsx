@@ -19,6 +19,7 @@ import Carousel from './../../components/carousel/carousel';
 import { useTranslation } from 'react-i18next';
 
 import FiltersMenu from './filtersMenu.jsx/filtersMenu';
+import Filters from './filters';
 
 const Products = ({ match }) => {
   const { t, i18n } = useTranslation();
@@ -28,117 +29,7 @@ const Products = ({ match }) => {
   const [currentSub, setCurrentSub] = useState(null);
   const [roomBtn, setRoomBtn] = useState(false);
   const [loading, setLoading] = useState(true);
-
-  const sortStates = [
-    {
-      label: t('Newest'),
-      id: 'CreatedAt',
-    },
-    {
-      label: t('PriceLowToHigh'),
-      id: 'Price',
-    },
-    {
-      label: t('PriceHighToLow'),
-      id: 'DPrice',
-    },
-    {
-      label: t('Name'),
-      id: 'Name',
-    },
-  ];
-
-  const colorsStates = [
-    {
-      label: 'black',
-      id: 'black',
-    },
-    {
-      label: 'brown',
-      id: 'brown',
-    },
-    {
-      label: 'white',
-      id: 'white',
-    },
-    {
-      label: 'Gray',
-      id: 'gray',
-    },
-    {
-      label: 'Beige',
-      id: 'beige',
-    },
-  ];
-
-  const pricesStates = [
-    {
-      label: t('Max2000'),
-      id: '2000',
-    },
-    {
-      label: t('Max3000'),
-      id: '3000',
-    },
-    {
-      label: t('Max4000'),
-      id: '4000',
-    },
-    {
-      label: t('Max5000'),
-      id: '5000',
-    },
-    {
-      label: t('Max10000'),
-      id: '10000',
-    },
-    {
-      label: t('Max20000'),
-      id: '20000',
-    },
-  ];
-
-  const sizesStates = [
-    {
-      label: '120 cm * 80 cm',
-      id: 'size1',
-    },
-    {
-      label: '120 cm * 90 cm',
-      id: 'size2',
-    },
-    {
-      label: '120cm * 100cm',
-      id: 'size3',
-    },
-    {
-      label: '120cm*120cm',
-      id: 'size4',
-    },
-    {
-      label: '120cm*130cm',
-      id: 'size5',
-    },
-  ];
-
-  const materialStates = [
-    {
-      label: 'Wood',
-      id: 'wood',
-    },
-    {
-      label: 'Steel',
-      id: 'steel',
-    },
-    {
-      label: 'Upholstered',
-      id: 'Upholstered',
-    },
-    {
-      label: 'Cotton',
-      id: 'cotton',
-    },
-  ];
+  const [allProducts, setAllProducts] = useState(null);
 
   const getSubCategories = () => {
     filterCollection(
@@ -167,6 +58,7 @@ const Products = ({ match }) => {
           .then((res) => {
             setLoading(true);
             setProducts(res);
+            setAllProducts(res);
             setLoading(false);
           })
           .catch((err) => console.log('error :', err));
@@ -177,6 +69,7 @@ const Products = ({ match }) => {
           .then((res) => {
             setLoading(true);
             setProducts(res);
+            setAllProducts(res);
             setLoading(false);
           })
           .catch((err) => console.log('error :', err));
@@ -188,6 +81,7 @@ const Products = ({ match }) => {
             const partOfres = res.slice(0, 10);
             setLoading(true);
             setProducts(partOfres);
+            setAllProducts(partOfres);
             setLoading(false);
           })
           .catch((err) => console.log('error :', err));
@@ -323,71 +217,14 @@ const Products = ({ match }) => {
       )}
 
       <div className='row sticky-top filter-row'>
-        <div className='col-12 col-lg-8 d-flex flex-nowrap overflow- py-3 my-2'>
-          {/* <FilterButton title="compare" /> */}
-          {!newArrival && (
-            <>
-              <FilterButton title={t('Sort')} icon='fas fa-chevron-down' />
-              <FilterDropList
-                listName='sort-group'
-                checkType='radio'
-                items={sortStates}
-                clickHandler={sortProducts}
-              />
-            </>
-          )}
-
-          <FilterButton title={t('Color')} icon='fas fa-chevron-down' />
-          <FilterDropList
-            listName='colors-group'
-            checkType='radio'
-            items={colorsStates}
-            clickHandler={(color) => filterProds('Color', color)}
-          />
-
-          <FilterButton
-            id='price-filter'
-            title={t('Price')}
-            icon='fas fa-chevron-down'
-          />
-          <FilterDropList
-            listName='price-group'
-            checkType='radio'
-            items={pricesStates}
-            clickHandler={(maxPrice) => {
-              {
-                (subId || newArrival) &&
-                  filterProds('Price', parseInt(maxPrice), '<=');
-              }
-              {
-                sale && filterProds('SalePrice', parseInt(maxPrice), '<=');
-              }
-            }}
-          />
-
-          <FilterButton title={t('Size')} icon='fas fa-chevron-down' />
-          <FilterDropList
-            listName='sizes-group'
-            checkType='radio'
-            items={sizesStates}
-          />
-
-          <FilterButton title={t('Material')} icon='fas fa-chevron-down' />
-          <FilterDropList
-            listName='material-group'
-            checkType='radio'
-            items={materialStates}
-            clickHandler={(material) => filterProds('Material', material)}
-          />
-
-          <FilterButton
-            title={t('AllFilters')}
-            icon='fas fa-filter'
-            noDrop
-            offcanvas
-          />
-          <FiltersMenu />
-        </div>
+        <Filters
+          setLoading={(v) => setLoading(v)}
+          allProducts={allProducts}
+          setProducts={(products) => setProducts(products)}
+          subId={subId}
+          sale={sale}
+          newArrival={newArrival}
+        />
 
         <ProductRoomBtn
           totalItems={products?.length}
