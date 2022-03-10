@@ -16,11 +16,7 @@ const Rating = () => {
         data-bs-target='#offcanvasRight'
         aria-controls='offcanvasRight'
       >
-        <FaStar size={12} color={'black'} />
-        <FaStar size={12} color={'black'} />
-        <FaStar size={12} color={'black'} />
-        <FaStar size={12} color={'black'} />
-        <FaStar size={12} color={'black'} />
+        add Rating
       </Link>
 
       <div
@@ -31,7 +27,7 @@ const Rating = () => {
       >
         <div class='offcanvas-header'>
           <h5 id='offcanvasRightLabel ' className='header'>
-            Reviews
+            Star Rating
           </h5>
           <button
             type='button'
@@ -48,7 +44,6 @@ const Rating = () => {
             return (
               <label>
                 <input
-                  className='radio-button'
                   type='radio'
                   name='rating'
                   value={ratingValue}
