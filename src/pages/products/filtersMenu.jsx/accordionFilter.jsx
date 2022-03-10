@@ -1,6 +1,8 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 export default function AccordionFilter({ title }) {
+  const {t} = useTranslation()
   return (
     <div className="accordion-item">
       <button
@@ -31,7 +33,7 @@ export default function AccordionFilter({ title }) {
           ))} */}
           <li className="d-flex justify-content-between my-2">
             <label className="form-check-label" htmlFor="bestmatch-radio">
-              Best match
+              {t('BestMatch')}
             </label>
             <div className="form-check">
               <input
@@ -45,7 +47,7 @@ export default function AccordionFilter({ title }) {
 
           <li className="d-flex justify-content-between my-2">
             <label className="form-check-label" htmlFor="bestmatch-radio">
-              Name
+              {t('Name')}
             </label>
             <div className="form-check">
               <input

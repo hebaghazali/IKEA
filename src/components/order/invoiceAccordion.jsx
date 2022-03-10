@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { getDocumentByID, removeCartItemFromUser } from '../../services/firebase';
 import { removeFromCart, setCartItemAmount } from '../../store/actions/cartProducts';
@@ -12,6 +13,7 @@ const InvoiceAccordion = ({
   handleInvoiceBack,
   handleInvoiceNext,
 }) => {
+  const {t,i18n} = useTranslation();
   const [message, setMessage] = useState('');
   const [itemsRemoved, setItemsRemoved] = useState([]);
   useEffect(() => {
@@ -25,9 +27,7 @@ const InvoiceAccordion = ({
           removed.push(item);
         }
         if (indx === purchasedItems.length - 1 && removed.length != 0) {
-          setMessage(
-            'Below items were removed because selected amount is not available now'
-          );
+          setMessage(t('UnavailableMessage'));
           setItemsRemoved(removed);
         }
       });
@@ -47,7 +47,7 @@ const InvoiceAccordion = ({
           disabled
           ref={invoiceAccordionBtn}
         >
-          Delivery Invoice
+        {t('DeliveryInvoice')}
         </button>
       </h2>
       <div
@@ -72,17 +72,17 @@ const InvoiceAccordion = ({
                       <strong>{item.productData.ProductName}</strong>
                     </p>
                     <p>
-                      {item.productData.ProductName} {item.productData.Name}
+                      {item.productData.ProductName} {i18n.language=='en'?item.productData.Name:item.productData.NameAr}
                     </p>
                     <p>
-                      <strong>EGP {item.productData.Price}</strong>
+                      <strong>{t('EGP')} {item.productData.Price}</strong>
                     </p>
                   </div>
                 </div>
                 <div className='right'>
                   <p>
                     <strong>
-                      EGP {item.PurchasedAmount * item.productData.Price}
+                    {t('EGP')} {item.PurchasedAmount * item.productData.Price}
                     </strong>
                   </p>
                 </div>
@@ -90,7 +90,7 @@ const InvoiceAccordion = ({
             );
           })}
           <p className='total-price'>
-            Order Total: <strong>EGP {totalOrderPrice}</strong>
+            {t('OrderTotal')}: <strong>{t('EGP')} {totalOrderPrice}</strong>
           </p>
         </div>
         {message !== '' && (
@@ -113,7 +113,7 @@ const InvoiceAccordion = ({
                     }}
                   >
                     <img src={item.productData.Images[0]} className='col-12' />
-                    <p className='text-center'>{item.productData.Name}</p>
+                    <p className='text-center'>{i18n.language=='en'?item.productData.Name:item.productData.NameAr}</p>
                   </Link>
                 );
               })}
@@ -122,14 +122,14 @@ const InvoiceAccordion = ({
         )}
         <div className='buttons-group'>
           <button className='btn back-button ms-4' onClick={handleInvoiceBack}>
-            BACK
+            {t('Back')}
           </button>
 
           <button
             className='btn submit-button me-4'
             onClick={handleInvoiceNext}
           >
-            CONTINUE
+          {t('Continue')}
           </button>
         </div>
       </div>

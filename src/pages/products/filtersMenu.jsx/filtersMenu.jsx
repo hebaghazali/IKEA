@@ -1,8 +1,10 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import AccordionFilter from "./accordionFilter";
 import FilterHeader from "./filterHeader";
 
 export default function FiltersMenu() {
+  const {t} = useTranslation();
   return (
     <div
       className="offcanvas offcanvas-end"
@@ -15,7 +17,7 @@ export default function FiltersMenu() {
       <div className="offcanvas-body">
         <div className="accordion accordion-flush" id="accordionFlushExample">
 
-          <AccordionFilter title='Sort'/>
+          <AccordionFilter title={t('Sort')}/>
 
           <div className="accordion-item">
             <button
@@ -27,7 +29,7 @@ export default function FiltersMenu() {
               aria-expanded="false"
               aria-controls="flush-collapseTwo"
             >
-              Size
+              {t('Size')}
             </button>
             <div
               id="flush-collapseTwo"
@@ -38,7 +40,7 @@ export default function FiltersMenu() {
               <ul className="w-100 px-3">
                 <li className="d-flex justify-content-between my-2">
                   <label className="form-check-label" htmlFor="">
-                    160 cm * 200 cm
+                    160 {t('cm')} * 200 {t('cm')}
                   </label>
                   <div>
                     <label className="form-check-label small-text mx-2" htmlFor="">
@@ -50,7 +52,7 @@ export default function FiltersMenu() {
 
                 <li className="d-flex justify-content-between my-2">
                   <label className="form-check-label" htmlFor="">
-                    180 cm * 200 cm
+                    180 {t('cm')} * 200 {t('cm')}
                   </label>
                   <div>
                     <label className="form-check-label small-text mx-2" htmlFor="">
@@ -77,7 +79,7 @@ export default function FiltersMenu() {
               aria-expanded="false"
               aria-controls="flush-collapseThree"
             >
-              Price
+              {t('Price')}
             </button>
 
             <div
@@ -89,7 +91,7 @@ export default function FiltersMenu() {
               <ul className="w-100 px-3">
                 <li className="d-flex justify-content-between my-2">
                   <label className="form-check-label" htmlFor="">
-                    EGP 0 - 1,999
+                  {t('EGP')} 0 - 1,999
                   </label>
                   <div>
                     <label className="form-check-label small-text mx-2" htmlFor="">
@@ -101,7 +103,7 @@ export default function FiltersMenu() {
 
                 <li className="d-flex justify-content-between">
                   <label className="form-check-label" htmlFor="">
-                    EGP 1,999 - 4,000
+                  {t('EGP')} 1,999 - 4,000
                   </label>
                   <div>
                     <label className="form-check-label small-text mx-2" htmlFor="">
@@ -128,7 +130,7 @@ export default function FiltersMenu() {
               aria-expanded="false"
               aria-controls="flush-collapseThree"
             >
-              Color
+              {t('Color')}
             </button>
 
             <div
@@ -141,7 +143,7 @@ export default function FiltersMenu() {
                 <li className="d-flex justify-content-between my-2">
                   <label className="form-check-label" htmlFor="">
                     {" "}
-                    red{" "}
+                    {t('Red')}{" "}
                   </label>
                   <div>
                     <label className="form-check-label small-text mx-2" htmlFor="">
@@ -154,7 +156,7 @@ export default function FiltersMenu() {
                 <li className="d-flex justify-content-between my-2">
                   <label className="form-check-label" htmlFor="">
                     {" "}
-                    blue{" "}
+                    {t('Blue')}{" "}
                   </label>
                   <div>
                     <label className="form-check-label small-text mx-2" htmlFor="">
@@ -175,9 +177,9 @@ export default function FiltersMenu() {
       </div>
 
       <div className="offcanvas-footer text-center">
-        <button className="rounded-pill py-1 col-5 clear-btn">Clear all</button>
+        <button className="rounded-pill py-1 col-5 clear-btn">{t('ClearAll')}</button>
         <button className="border rounded-pill py-1 col-5 text-light view-btn">
-          View
+          {t('View')} 
           <span>6</span>
         </button>
       </div>

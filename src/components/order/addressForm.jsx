@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import { useTranslation } from 'react-i18next';
 const AddressForm = ({
   handleAddressForm,
   register,
@@ -7,12 +7,13 @@ const AddressForm = ({
   gov,
   setGov,
 }) => {
+  const {t,i18n} = useTranslation();
   const [areas, setAreas] = useState([]);
 
   const handleGovSelect = e => {
     locations.forEach(loc => {
-      if (loc.Name === e.target.value) {
-        setAreas(loc.Areas);
+      if (i18n.language=='en'?loc.Name:loc.NameAr === e.target.value) {
+        setAreas(i18n.language=='en'?loc.Areas:loc.AreaAr);
         setGov({ ...gov, gov: e.target.value });
       }
     });
@@ -20,8 +21,12 @@ const AddressForm = ({
 
   const handleAreaSelect = e => {
     locations.forEach(loc => {
-      if (loc.Areas.includes(e.target.value)) {
-        loc.Areas.forEach(area => {
+      if (i18n.language=='en'?loc.Areas.includes(e.target.value):loc.AreaAr.includes(e.target.value)) {
+        i18n.language=='en'
+        ?loc.Areas.forEach(area => {
+          if (area === e.target.value) setGov({ ...gov, area: e.target.value });
+        })
+        :loc.AreaAr.forEach(area => {
           if (area === e.target.value) setGov({ ...gov, area: e.target.value });
         });
       }
@@ -35,7 +40,7 @@ const AddressForm = ({
           <input
             type='text'
             className='form-control'
-            placeholder='Full Name'
+            placeholder={t('FullName')}
             name='name'
             {...register('name')}
             required
@@ -48,12 +53,12 @@ const AddressForm = ({
           required
         >
           <option disabled value='default'>
-            Select Governorate
+            {t('SelectGovernorate')}
           </option>
 
           {locations?.map(loc => (
-            <option value={loc.Name} key={locations.indexOf(loc)}>
-              {loc.Name}
+            <option value={i18n.language=='en'?loc.Name:loc.NameAr} key={locations.indexOf(loc)}>
+              {i18n.language=='en'?loc.Name:loc.NameAr}
             </option>
           ))}
         </select>
@@ -64,7 +69,7 @@ const AddressForm = ({
           required
         >
           <option disabled value='default'>
-            Select Area
+          {t('SelectArea')}
           </option>
 
           {areas?.map(area => (
@@ -87,7 +92,7 @@ const AddressForm = ({
           <input
             type='text'
             className='form-control'
-            placeholder='Address'
+            placeholder={t('Address')}
             name='address'
             {...register('address')}
             required
@@ -97,16 +102,14 @@ const AddressForm = ({
           <input
             type='text'
             className='form-control'
-            placeholder='Building Name/Apartment No./Floor No.'
+            placeholder={t('BuildingNoPlaceHolder')}
             name='building'
             {...register('building')}
             required
           />
         </div>
         <small className='mb-3'>
-          * If there is no elevator in the building, we will deliver up to the
-          4th floor. Otherwise, the delivery to the desired floor will be on the
-          customer responsibility.
+          {t('NoElevatorNote')}
         </small>
         <div className='form-check mb-3'>
           <input
@@ -117,11 +120,11 @@ const AddressForm = ({
             {...register('isUsedAsShippingAddress')}
           />
           <label className='form-check-label' htmlFor='flexCheckDefault'>
-            <small>Use as shipping address</small>
+            <small>{t('UseAsShipping')}</small>
           </label>
         </div>
 
-        <input type='submit' className='btn submit-button' />
+        <input type='submit' className='btn submit-button' value={t('Continue')}/>
       </form>
     </>
   );

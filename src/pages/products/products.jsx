@@ -262,12 +262,12 @@ const Products = ({ match }) => {
         </div>
       </div>
 
-      <SectionTitle title='Top Seller' />
+      <SectionTitle title={t('TopSeller')} />
       <Carousel
         condition={{ property: 'SalePrice', operator: '>', value: 0 }}
       />
 
-      <SectionTitle title='Related categories' />
+      <SectionTitle title={t('RelatedCategories')} />
       {/* <Loader /> */}
       <div className='row mx-auto g-3 categories-slidder'>
         {subCategories &&
