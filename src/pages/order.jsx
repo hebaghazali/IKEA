@@ -21,7 +21,7 @@ const Order = () => {
   const { register, getValues, reset } = useForm();
   const [gov, setGov] = useState({});
 
-  const addNewAddressRef = useRef();
+  const [addressCollapse, setAddressCollapse] = useState(true);
 
   const addressAccordionBtn = useRef();
   const invoiceAccordionBtn = useRef();
@@ -38,8 +38,9 @@ const Order = () => {
 
     const newLocation = { ...getValues(), ...gov };
 
-    setUserLocations([...userLocations, newLocation]);
+    setUserLocations([newLocation, ...userLocations]);
     setUserLocation(localStorage.getItem('UID'), newLocation);
+    setCheckedAddress(0);
 
     reset({ name: '' });
     reset({ email: '' });
@@ -104,8 +105,6 @@ const Order = () => {
     }
   }, [user.Locations, locationsExist]);
 
-  const [addressCollapse, setAddressCollapse] = useState(true);
-
   return (
     <LocationProvider
       value={{ checkedAddress, setCheckedAddress, userLocations }}
@@ -123,7 +122,6 @@ const Order = () => {
             locations={locations}
             handleAddressNext={handleAddressNext}
             userLocations={userLocations}
-            addNewAddressRef={addNewAddressRef}
             setGov={setGov}
             gov={gov}
             locationsExist={locationsExist}

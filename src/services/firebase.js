@@ -14,8 +14,12 @@ import {
   Timestamp,
 } from 'firebase/firestore';
 import { fireStore } from '../config/firebaseConfig';
-import { removeFromCart, setCartItemAmount } from '../store/actions/cartProducts';
+import {
+  removeFromCart,
+  setCartItemAmount,
+} from '../store/actions/cartProducts';
 import { changeUser } from './../store/actions/auth';
+
 import store from './../store/store';
 
 export const getCollection = async (collName, condition = undefined) => {
@@ -100,13 +104,14 @@ export const addCartItemToUser = async (userID, productID) => {
     }
   });
 
-  updateDoc(doc(fireStore, 'users', userID), {
-    CartItems: [productID, ...cartItems],
-  })
-    .then(() => {
-      console.log('cart items added to current user');
+  if (!cartItems.includes(productID))
+    updateDoc(doc(fireStore, 'users', userID), {
+      CartItems: [productID, ...cartItems],
     })
-    .catch(err => console.log('adding cart items to user ERROR: ' + err));
+      .then(() => {
+        console.log('cart items added to current user');
+      })
+      .catch(err => console.log('adding cart items to user ERROR: ' + err));
 };
 
 export const getProductDataById = id => {
@@ -140,13 +145,16 @@ export const addFavItemsToUser = async (userID, productID) => {
     }
   });
 
-  updateDoc(doc(fireStore, 'users', userID), {
-    FavItems: [productID, ...favItems],
-  })
-    .then(() => {
-      console.log('Favourite items added to current user');
+  if (!favItems.includes(productID))
+    updateDoc(doc(fireStore, 'users', userID), {
+      FavItems: [productID, ...favItems],
     })
-    .catch(err => console.log('adding Favourite items to user ERROR: ' + err));
+      .then(() => {
+        console.log('Favourite items added to current user');
+      })
+      .catch(err =>
+        console.log('adding Favourite items to user ERROR: ' + err)
+      );
 };
 
 export const removeFavItemFromUser = async (userID, productID) => {
@@ -281,27 +289,27 @@ export const createNewOrder = async data => {
     UserID: data.userId,
     CheckedAddress: data.checkedAddress,
   })
-  .then(async newDoc => {
-    let purchased = [];
-    await getDoc(doc(fireStore, 'users', data.userId)).then(res => {
-      if (res.data().Purchased) {
-        purchased.push(...res.data().Purchased);
-      }
-    });
-    updateDoc(doc(fireStore, 'users', data.userId), {
-      Purchased: [newDoc.id, ...purchased],
-      CartItems: []
-    });
-  })
-  .then(()=>{
-    data.items.map(async (item)=>{
-       const res = await getDocumentByID('Products', item.ProductID);
-      updateData('Products', item.ProductID, {
-        Quantity:  ((item.Amount > res.Quantity) ? 0 : res.Quantity-item.Amount)
+    .then(async newDoc => {
+      let purchased = [];
+      await getDoc(doc(fireStore, 'users', data.userId)).then(res => {
+        if (res.data().Purchased) {
+          purchased.push(...res.data().Purchased);
+        }
       });
-      store.dispatch(removeFromCart(item.ProductID));
-      store.dispatch(setCartItemAmount(item.ProductID, 0)); 
-      console.log('hereeee');
+      updateDoc(doc(fireStore, 'users', data.userId), {
+        Purchased: [newDoc.id, ...purchased],
+        CartItems: [],
+      });
+    })
+    .then(() => {
+      data.items.map(async item => {
+        const res = await getDocumentByID('Products', item.ProductID);
+        updateData('Products', item.ProductID, {
+          Quantity: item.Amount > res.Quantity ? 0 : res.Quantity - item.Amount,
+        });
+        store.dispatch(removeFromCart(item.ProductID));
+        store.dispatch(setCartItemAmount(item.ProductID, 0));
+        console.log('hereeee');
+      });
     });
-  })
 };

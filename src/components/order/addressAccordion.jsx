@@ -14,7 +14,6 @@ const AddressAccordion = ({
   locations,
   handleAddressNext,
   userLocations,
-  addNewAddressRef,
   setGov,
   gov,
   locationsExist,
@@ -63,7 +62,7 @@ const AddressAccordion = ({
                       user.Locations.indexOf(loc) === checkedAddress
                     }
                     onChange={e => {
-                      setCheckedAddress(userLocations.indexOf(loc));
+                      setCheckedAddress(Number(e.target.value));
                     }}
                   />
                   <div className='card-body'>
@@ -87,7 +86,6 @@ const AddressAccordion = ({
                 data-bs-toggle='collapse'
                 data-bs-target='#addressCollapse'
                 onClick={() => setAddressCollapse(!addressCollapse)}
-                ref={addNewAddressRef}
               >
                 {t('AddNewAddress')}
               </button>
