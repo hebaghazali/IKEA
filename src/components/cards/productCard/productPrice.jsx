@@ -5,20 +5,20 @@ const ProductPrice = ({ Price, SalePrice }) => {
   const { t } = useTranslation();
   return (
     <div className='original-price'>
-      <div className={`${SalePrice && 'line-through text-decoration-line-through' }`}>
+      {SalePrice &&<div className={`line-through text-decoration-line-through`}>
         <sup>
-          {t('EGP')} {Price}
+          {t('EGP')} {SalePrice}
         </sup>
-      </div>
+      </div>}
 
-      {SalePrice && (
+   
         <div className='price'>
           <sup>{t('EGP')}</sup>
           <span>
-            <strong> {SalePrice} </strong>
+            <strong> {Price} </strong>
           </span>
         </div>
-      )}
+     
     </div>
   );
 };
