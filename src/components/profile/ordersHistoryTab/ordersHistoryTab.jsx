@@ -19,20 +19,21 @@ const OrdersTab = () => {
         orderList.push(order);
         if (index === purchases.length - 1) {
           setOrders(orderList);
-          setLoader(false);
         }
       });
     });
+    console.log('here')
   };
   useEffect(() => {
     if (purchases) {
       getUserOrders();
     }
+    setLoader(false);
   }, [purchases]);
   return (
     <>
       {loader && <Loader />}
-      {!purchases && (
+      {!purchases && !loader &&(
         <div className='text-center my-5'>
           <p className='fst-italic' style={{ color: 'grey' }}>
             {t('NoOrders')}

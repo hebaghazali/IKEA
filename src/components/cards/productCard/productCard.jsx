@@ -24,7 +24,7 @@ const ProductCard = ({ showOptions, pId, productData , roomBtn ,baseUrl}) => {
   const [isHovering, setIsHovering] = useState(false);
   const [variants, setVariants] = useState(null);
   const [viewedProduct, setViewedProduct] = useState({ pId, productData });
-  const { Name,NameAr, ProductName, Price, SalePrice, Width, Length, Images, Height } =
+  const { Name,NameAr, ProductName, Price, SalePrice, Width, Length, Images, Height, Quantity} =
     viewedProduct.productData;
 
   const dispatch = useDispatch();
@@ -119,7 +119,7 @@ const ProductCard = ({ showOptions, pId, productData , roomBtn ,baseUrl}) => {
           {!showOptions && !inCart && (
             <p className='more-options'>{t('MoreOptions')}</p>
           )}
-          {!inCart && (
+          {!inCart && Quantity!==0 && (
             <button className='card-icon' onClick={addCart}>
               <i className='fas fa-cart-plus'></i>
             </button>

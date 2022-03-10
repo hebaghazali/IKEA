@@ -81,6 +81,10 @@ export default function cartReducer(state = initialState, action) {
       };
     }
 
+    case 'CLEAR_CART': {
+      return (state = {})
+    }
+
     case 'SET_AMOUNT': {
       state.totalPrice = 0;
       state.totalAmountOfCartItems = 0;
