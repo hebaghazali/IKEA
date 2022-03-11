@@ -40,25 +40,25 @@ const Filters = ({
         product.data();
 
       let foundColor = colors.find(
-        (col) => col.label === (i18n.language == 'en' ? Color : ColorAr)
+        (col) => col.label === (i18n.language === 'en' ? Color : ColorAr)
       );
       !foundColor &&
         colors.push({
-          label: i18n.language == 'en' ? Color : ColorAr,
-          id: i18n.language == 'en' ? Color : ColorAr,
+          label: i18n.language === 'en' ? Color : ColorAr,
+          id: i18n.language === 'en' ? Color : ColorAr,
         });
 
       let foundMaterial = materials.find(
-        (mat) => mat.label === (i18n.language == 'en' ? Material : MaterialAr)
+        (mat) => mat.label === (i18n.language === 'en' ? Material : MaterialAr)
       );
       !foundMaterial &&
-        (i18n.language == 'en' ? Material : MaterialAr) != undefined &&
+        (i18n.language === 'en' ? Material : MaterialAr) != undefined &&
         materials.push({
-          label: i18n.language == 'en' ? Material : MaterialAr,
-          id: i18n.language == 'en' ? Material : MaterialAr,
+          label: i18n.language === 'en' ? Material : MaterialAr,
+          id: i18n.language === 'en' ? Material : MaterialAr,
         });
 
-      let foundWidth = widthes.find((wid) => wid.label === Width);
+      let foundWidth = widthes.find((wid) => wid.label == Width);
       !foundWidth &&
         Width != undefined &&
         widthes.push({ label: Width, id: Width });

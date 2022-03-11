@@ -33,7 +33,6 @@ const ProductCard = ({ showOptions, pId, productData , roomBtn ,baseUrl}) => {
       isFavourite ? removeFromFav(pId) :
       
       addToFav({ id: pId, productData }));
-      // setInCart(true);
 
     addFavItemsToUser(localStorage.getItem('UID'), pId);
     setIsFavourite(!isFavourite);
@@ -72,11 +71,6 @@ const ProductCard = ({ showOptions, pId, productData , roomBtn ,baseUrl}) => {
           className='d-flex align-items-center justify-content-between'
           style={{ padding: '.625rem' }}
         >
-          <div className='form-check'>
-            {/*TODO:  late feature */}
-            {/* <input className='form-check-input' type='checkbox' value='' id='' />
-            <small>Compare</small> */}
-          </div>
 
           <button onClick={toggleFavourite}>
             <i className={isFavourite ? 'fas fa-heart' : 'far fa-heart'}></i>
@@ -113,7 +107,7 @@ const ProductCard = ({ showOptions, pId, productData , roomBtn ,baseUrl}) => {
           <p className='product-description'>{i18n.language=='en'?Name:NameAr}</p>
 
           {/*TODO: add feature field in db*/}
-          <p>{Width && `${Width} * ${Length ? Length : Height} ${t('cm')}`}</p>
+          <p>{Width && `${Width} ${ Length ?  '*'+Length : (Height? '*'+Height:'') }  ${t('cm')}`}</p>
           <ProductPrice Price={Price} SalePrice={SalePrice} />
 
           {!showOptions && !inCart && (
