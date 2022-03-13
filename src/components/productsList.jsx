@@ -9,6 +9,7 @@ export default function ProductsList({
   filteredList,
   roomBtn,
   baseUrl,
+  search
 }) {
   return (
     <div className='carousel-body overflow-hidden px-3 pb-2 mb-5'>
@@ -37,7 +38,7 @@ export default function ProductsList({
           : productsList?.map((i) => (
               <ProductCard
                 key={i.id}
-                productData={i.data?i.data :i.data()}
+                productData={search ? i.data : i.data()}
                 pId={i.id}
                 showOptions
                 roomBtn={roomBtn}
