@@ -37,7 +37,7 @@ export default function ProductsList({
           : productsList?.map((i) => (
               <ProductCard
                 key={i.id}
-                productData={i.data()}
+                productData={i.data?i.data :i.data()}
                 pId={i.id}
                 showOptions
                 roomBtn={roomBtn}
