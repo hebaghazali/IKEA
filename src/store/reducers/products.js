@@ -1,7 +1,18 @@
 let initialState = {
     productsList: [],
     condition: 0,
-    filters: {},
+    filters: {
+      SubCategory:'',
+      SalePrice:'',
+      Price:'',
+      Color:'',
+      Material:'',
+      Width:0,
+      Length:0,
+      Height:0,
+      Sort:'',
+      limit:0
+    },
     filteredList: null,
     loading :true,
   };
@@ -13,14 +24,15 @@ let initialState = {
           ...state,
           productsList: action.payload.products,
           condition: action.payload.condition,
-          filters: { condition: action.payload.condition },
+          filters: { ...state.filters,...action.payload.condition},
           loading:false,
         };
   
       case 'UPDATE_FILTER':
+        console.log('all filters',action.payload.filterObj);
         return {
           ...state,
-          filters: action.payload.filterObj,
+          filters:{ ...state.filters,...action.payload.filterObj} ,
           filteredList: action.payload.filteredList,
         };
   
@@ -40,7 +52,7 @@ let initialState = {
         return {
           ...state,
           filteredList: null,
-          filters: { condition: state.condition },
+          filters: { ...initialState.filters,...state.condition},
         };
       }
   
@@ -48,4 +60,3 @@ let initialState = {
         return state;
     }
   }
-  

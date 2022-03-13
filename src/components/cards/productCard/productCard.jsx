@@ -55,7 +55,6 @@ const ProductCard = ({ showOptions, pId, productData , roomBtn ,baseUrl}) => {
     getCollection('Products', ['ProductName', '==', ProductName])
       .then(res => {
         setVariants(res);
-        console.log('variants', res);
       })
       .catch(err => console.log('error :', err));
   };
@@ -94,7 +93,7 @@ const ProductCard = ({ showOptions, pId, productData , roomBtn ,baseUrl}) => {
             <img
               src={roomBtn?Images[isHovering ? 0 : 1] :Images[isHovering ? 1 : 0]}
               className='card-img-top'
-              alt={i18n.language=='en'?Name:NameAr}
+              alt={i18n.language==='en'?Name:NameAr}
               onMouseOver={() => setIsHovering(true)}
               onMouseLeave={() => setIsHovering(false)}
             />
@@ -104,7 +103,7 @@ const ProductCard = ({ showOptions, pId, productData , roomBtn ,baseUrl}) => {
           {SalePrice && <p className='product-highlight'>{t('LimitedOffer')}</p>}
           {/* <p>{Material}</p> */}
           <p className='product-header'>{ProductName}</p>
-          <p className='product-description'>{i18n.language=='en'?Name:NameAr}</p>
+          <p className='product-description'>{i18n.language==='en'?Name:NameAr}</p>
 
           {/*TODO: add feature field in db*/}
           <p>{Width && `${Width} ${ Length ?  '*'+Length : (Height? '*'+Height:'') }  ${t('cm')}`}</p>

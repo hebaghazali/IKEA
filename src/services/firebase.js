@@ -291,31 +291,45 @@ export const createNewOrder = async data => {
   });
 };
 
+export const getLatestProds = async () => {
+  const q = query(collection(fireStore, 'Products'),orderBy('CreatedAt','desc'), limit(10));
+
+  let results = await getDocs(q);
+
+  return results.docs;
+};
+
 export const genericFilter = async (filterObj) => {
   let keys = Object.keys(filterObj);
   let mixedQ = null;
   let sort = null;
 
-  keys.forEach((item, index, object) => {
+  keys.forEach((item) => {
+    if (!filterObj[item]) {
+      delete filterObj[item];
+    }
+
     if (item === 'Sort') {
       sort = filterObj[item];
-      object.splice(index, 1);
+      delete filterObj[item];
     }
+
   });
 
-  let length = keys.length;
+  keys=Object.keys(filterObj);
+
+  let length =keys.length;
   
 
   let results = [];
   let err=null;
 
   try {
-    if (sort) {
+    if(sort){
       switch (length) {
         case 0:
           mixedQ = query(collection(fireStore, 'Products'), orderBy(...sort));
           break;
-  
         case 1:
           mixedQ = query(
             collection(fireStore, 'Products'),
@@ -343,21 +357,57 @@ export const genericFilter = async (filterObj) => {
           );
           break;
   
-        case 4:
+          case 4:
+            mixedQ = query(
+              collection(fireStore, 'Products'),
+              where(...filterObj[keys[0]]),
+              where(...filterObj[keys[1]]),
+              where(...filterObj[keys[2]]),
+              where(...filterObj[keys[3]]),
+              orderBy(...sort)
+            );
+            break;
+        case 5:
           mixedQ = query(
             collection(fireStore, 'Products'),
             where(...filterObj[keys[0]]),
             where(...filterObj[keys[1]]),
             where(...filterObj[keys[2]]),
             where(...filterObj[keys[3]]),
+            where(...filterObj[keys[4]]),
             orderBy(...sort)
           );
           break;
-  
+        case 6:
+            mixedQ = query(
+              collection(fireStore, 'Products'),
+              where(...filterObj[keys[0]]),
+              where(...filterObj[keys[1]]),
+              where(...filterObj[keys[2]]),
+              where(...filterObj[keys[3]]),
+              where(...filterObj[keys[4]]),
+              where(...filterObj[keys[5]]),
+              orderBy(...sort)
+            );
+          break;       
+        case 7:
+          mixedQ = query(
+            collection(fireStore, 'Products'),
+            where(...filterObj[keys[0]]),
+            where(...filterObj[keys[1]]),
+            where(...filterObj[keys[2]]),
+            where(...filterObj[keys[3]]),
+            where(...filterObj[keys[4]]),
+            where(...filterObj[keys[5]]),
+            where(...filterObj[keys[6]]),
+            orderBy(...sort)
+          );
+        break;
         default:
           break;
       }
-    } else {
+      
+    }else{
       switch (length) {
         case 1:
           mixedQ = query(
@@ -383,25 +433,62 @@ export const genericFilter = async (filterObj) => {
           );
           break;
   
-        case 4:
+          case 4:
+            mixedQ = query(
+              collection(fireStore, 'Products'),
+              where(...filterObj[keys[0]]),
+              where(...filterObj[keys[1]]),
+              where(...filterObj[keys[2]]),
+              where(...filterObj[keys[3]])
+            );
+            break;
+        case 5:
           mixedQ = query(
             collection(fireStore, 'Products'),
             where(...filterObj[keys[0]]),
             where(...filterObj[keys[1]]),
             where(...filterObj[keys[2]]),
             where(...filterObj[keys[3]]),
-            orderBy(...sort)
+            where(...filterObj[keys[4]])
+          );
+          break;
+        case 6:
+            mixedQ = query(
+              collection(fireStore, 'Products'),
+              where(...filterObj[keys[0]]),
+              where(...filterObj[keys[1]]),
+              where(...filterObj[keys[2]]),
+              where(...filterObj[keys[3]]),
+              where(...filterObj[keys[4]]),
+              where(...filterObj[keys[5]])
+            );
+          break;       
+        case 7:
+          mixedQ = query(
+            collection(fireStore, 'Products'),
+            where(...filterObj[keys[0]]),
+            where(...filterObj[keys[1]]),
+            where(...filterObj[keys[2]]),
+            where(...filterObj[keys[3]]),
+            where(...filterObj[keys[4]]),
+            where(...filterObj[keys[5]]),
+            where(...filterObj[keys[6]])
           );
           break;
         default:
           break;
       }
     }
-    results=await getDocs(mixedQ)
+    
+    
+    results=await getDocs(mixedQ);
     
   } catch (error) {
+    console.log('error in filter fun',error);
     err=error    
   }
+  if(sort)
+    filterObj['Sort']=sort;
 
 
   return err?err: results.docs;

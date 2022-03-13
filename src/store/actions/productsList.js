@@ -1,7 +1,15 @@
-import { genericFilter, getCollection } from '../../services/firebase';
+import { genericFilter, getCollection, getLatestProds } from '../../services/firebase';
 
 export const getProdList = async (condition) => {
-  let products = await getCollection('Products', condition);
+  let products = await genericFilter(condition);
+  return {
+    type: 'PROD_LIST',
+    payload: { products, condition },
+  };
+};
+
+export const getNewProds = async (condition) => {
+  let products = await getLatestProds();
   return {
     type: 'PROD_LIST',
     payload: { products, condition },
