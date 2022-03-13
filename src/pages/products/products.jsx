@@ -18,7 +18,7 @@ import {
 import ProductsList from '../../components/productsList';
 
 const Products = ({ match }) => {
-  const { i18n } = useTranslation();
+  const { t , i18n } = useTranslation();
   let { type, name, id, subName, subId, sale, newArrival } = match?.params;
 
   let { productsList, filteredList } = useSelector((state) => state.products);
