@@ -11,7 +11,6 @@ import {
   setDoc,
   limit,
   deleteDoc,
-  Timestamp,
 } from 'firebase/firestore';
 import { fireStore } from '../config/firebaseConfig';
 import { changeUser } from './../store/actions/auth';
