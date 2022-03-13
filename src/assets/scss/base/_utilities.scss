@@ -1,10 +1,11 @@
-.body-container-ltr{
+.body-container-ltr {
   width: 92vw;
   margin-left: auto;
   margin-right: $body-margin-right;
   padding-left: $body-padding-left;
 }
-.body-container-rtl{
+
+.body-container-rtl {
   width: 92vw;
   margin-right: auto;
   margin-left: $body-margin-left;
@@ -61,11 +62,11 @@
 }
 
 @media only screen and (max-width: 815px) {
-  .body-container-ltr{
+  .body-container-ltr {
     margin-right: 1rem;
     padding-left: 0;
   }
-  .body-container-rtl{
+  .body-container-rtl {
     margin-left: 1rem;
     padding-right: 0;
   }
@@ -83,10 +84,15 @@
 }
 
 @media only screen and (max-width: 750px) {
-  .body-container-ltr{
+  .body-container-ltr,
+  .body-container-rtl {
     margin: auto;
   }
-  .body-container-rtl{
-    margin: auto;
+}
+
+@media only screen and (max-width: 504px) {
+  .body-container-ltr,
+  .body-container-rtl {
+    margin-top: 14rem;
   }
 }
