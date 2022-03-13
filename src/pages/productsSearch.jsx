@@ -34,14 +34,6 @@ const ProductsSearch = () => {
         productsList={searchResult}
 
       />  
-      <ul>
-        {searchResult?.map(res => (
-          <li key={searchResult.indexOf(res)}>
-            <h4>{res.data.Name}</h4>
-            <p>{res.data.Description}</p>
-          </li>
-        ))}
-      </ul>
     </>
   );
 };
