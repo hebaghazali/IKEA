@@ -116,7 +116,7 @@
     "LowerPrice":"سعر منخفض جديد",
 
     "Male":"ذكر",
-    "Material":"المواد",
+    "Material":"الخامات",
     "Max2000":"الاقصي 2000 جنيه",
     "Max3000":"الاقصي 3000 جنيه",
     "Max4000":"الاقصي 4000 جنيه",
@@ -179,7 +179,7 @@
     "RelatedCategories":"الفئات ذات الصلة",
     "RelatedProducts":"المنتجات ذات الصله",
     "ReturnPolicy":"سياسة الإرجاع",
-    "ReviewConfirm":"",
+    "ReviewConfirm":"مراجعة وتأكيد",
     "Room":"غرفة",
     "Rooms":"الغرف",
 
@@ -198,7 +198,7 @@
     "ShoppingCart":"عربة التسوق",
     "Size":"حجم",
     "SmallAndUppercaseValidation":"حرف صغير و حرف كبير",
-    "Sort":"نوع",
+    "Sort":"رتب",
     "SpecialCharValidation":"يجب أن تحتوي كلمة المرور على حرف خاص كـ $*#@!%?_&",
     "Stores":"محلات ايكيا",
     "Stories":"القصص",
