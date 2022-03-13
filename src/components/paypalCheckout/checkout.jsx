@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import { Timestamp } from 'firebase/firestore';
 import { createNewOrder } from '../../services/firebase';
 import { locationContext } from '../../contexts/locationContext';
+import { useHistory } from 'react-router-dom';
 
 const initialOptions = {
   'client-id':
@@ -19,7 +20,7 @@ const Checkout = () => {
   const totalOrderPrice = useSelector(state => state.cartProducts.totalPrice);
 
   const [items, setItems] = useState([]);
-
+  const history =useHistory();
   useEffect(() => {
     purchasedItems.forEach(item => {
       const newItem = { ProductID: item.id, Amount: item.PurchasedAmount };
@@ -62,6 +63,7 @@ const Checkout = () => {
             return actions.order.capture().then(details => {
               const name = details.payer.name.given_name;
               alert(`Transaction completed by ${name}`);
+              history.replace('/Home')
             });
           }}
           onError={err => {

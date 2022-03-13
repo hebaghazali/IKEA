@@ -81,6 +81,10 @@ export default function cartReducer(state = initialState, action) {
       };
     }
 
+    case 'CLEAR_CART': {
+      return (state = {})
+    }
+
     case 'SET_AMOUNT': {
       state.totalPrice = 0;
       state.totalAmountOfCartItems = 0;
@@ -93,7 +97,7 @@ export default function cartReducer(state = initialState, action) {
 
         state.totalPrice +=
           state.cartProducts[index].PurchasedAmount *
-          (state.cartProducts[index].productData.SalePrice ? state.cartProducts[index].productData.SalePrice : state.cartProducts[index].productData.Price);
+          (state.cartProducts[index].productData.Price);
 
         state.totalAmountOfCartItems +=
           state.cartProducts[index].PurchasedAmount;

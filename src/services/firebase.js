@@ -13,7 +13,12 @@ import {
   deleteDoc,
 } from 'firebase/firestore';
 import { fireStore } from '../config/firebaseConfig';
+import {
+  removeFromCart,
+  setCartItemAmount,
+} from '../store/actions/cartProducts';
 import { changeUser } from './../store/actions/auth';
+
 import store from './../store/store';
 
 export const getCollection = async (collName, condition = undefined) => {
@@ -282,15 +287,28 @@ export const createNewOrder = async data => {
     TotalPrice: data.totalPrice,
     UserID: data.userId,
     CheckedAddress: data.checkedAddress,
-  }).then(async newDoc => {
-    let purchased = [];
-    await getDoc(doc(fireStore, 'users', data.userId)).then(res => {
-      if (res.data().Purchased) {
-        purchased.push(...res.data().Purchased);
-      }
+  })
+    .then(async newDoc => {
+      let purchased = [];
+      await getDoc(doc(fireStore, 'users', data.userId)).then(res => {
+        if (res.data().Purchased) {
+          purchased.push(...res.data().Purchased);
+        }
+      });
+      updateDoc(doc(fireStore, 'users', data.userId), {
+        Purchased: [newDoc.id, ...purchased],
+        CartItems: [],
+      });
+    })
+    .then(() => {
+      data.items.map(async item => {
+        const res = await getDocumentByID('Products', item.ProductID);
+        updateData('Products', item.ProductID, {
+          Quantity: item.Amount > res.Quantity ? 0 : res.Quantity - item.Amount,
+        });
+        store.dispatch(removeFromCart(item.ProductID));
+        store.dispatch(setCartItemAmount(item.ProductID, 0));
+        console.log('hereeee');
+      });
     });
-    updateDoc(doc(fireStore, 'users', data.userId), {
-      Purchased: [newDoc.id, ...purchased],
-    });
-  });
 };
