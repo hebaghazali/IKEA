@@ -134,7 +134,7 @@ const Products = ({ match }) => {
       />
 
       <SectionTitle title='Related categories' />
-      {/* <Loader /> */}
+
       <div className='row mx-auto g-3 categories-slidder'>
         {subCategories &&
           subCategories.map(subcategory => {
