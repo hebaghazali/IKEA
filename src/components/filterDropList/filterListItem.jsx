@@ -1,10 +1,9 @@
 import React from 'react';
 
-const FilterListItem = ({ id, label, listName, checkType, clickHandler }) => {
+const FilterListItem = ({ id, label, listName, checkType,condition, clickHandler,chooseOption ,selectedOPtion}) => {
   return (
     <div
       className='dropdown-item d-flex flex-row align-items-center justify-content-between'
-      onClick={() => clickHandler(id)}
     >
       <label className='form-check-label' htmlFor={id}>
         {label}
@@ -15,7 +14,11 @@ const FilterListItem = ({ id, label, listName, checkType, clickHandler }) => {
           type={checkType}
           name={listName}
           id={id}
+          value={id}
+          checked={selectedOPtion===id}
+          onChange={() => chooseOption(condition?{id,condition}:id)}
         />
+
       </div>
     </div>
   );
