@@ -1,4 +1,4 @@
-.menu-btn-ltr{
+.menu-btn-ltr {
   @include radius(50%);
   position: fixed;
   top: 2rem;
@@ -30,7 +30,7 @@
     }
   }
 }
-.menu-btn-rtl{
+.menu-btn-rtl {
   @include radius(50%);
   position: fixed;
   top: 2rem;
@@ -63,7 +63,7 @@
     }
   }
 }
-.menu-bar-ltr{
+.menu-bar-ltr {
   @media only screen and (max-width: 890px) {
     width: 100vw;
   }
@@ -126,7 +126,7 @@
     }
   }
 }
-.menu-bar-rtl{
+.menu-bar-rtl {
   @media only screen and (max-width: 890px) {
     width: 100vw;
   }

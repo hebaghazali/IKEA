@@ -32,7 +32,7 @@ const ProductsSearch = () => {
      <ProductsList
         loading={loading}
         productsList={searchResult}
-
+        search
       />  
     </>
   );
