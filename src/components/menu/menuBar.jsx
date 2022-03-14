@@ -7,13 +7,17 @@ const MenuBar = () => {
   return (
     <>
       <div
-        className={`offcanvas ${i18n.dir()==="ltr"?"offcanvas-start menu-bar-ltr":"offcanvas-end menu-bar-rtl"}`}
+        className={`offcanvas ${
+          i18n.dir() === 'ltr'
+            ? 'offcanvas-start menu-bar-ltr'
+            : 'offcanvas-end menu-bar-rtl'
+        }`}
         tabIndex='-1'
         id='offcanvasExample'
         aria-labelledby='offcanvasExampleLabel'
       >
-        <MenuHeader/>
-        <MenuMainBody/>
+        <MenuHeader />
+        <MenuMainBody />
       </div>
     </>
   );
