@@ -32,12 +32,14 @@
     
     "Cancel":"Cancel",
     "CatalogueAndBrochures":"Catalogue and brochures",
+    "Chair":"chair",
     "ChangeAccount":"Need to change account?",
     "ChangeCountry":"Change country",
     "CharPassValidation":"Password must have 8 characters",
     "Checkout":"Begin Checkout",
     "ChooseNearestStore":"Choose your nearest IKEA store",
     "ClearAll":"Clear all",
+    "Clear":"Clear",
     "ClickAndCollect":"Click and collect",
     "ClickAndCollectDesc":"Orders that you pick up yourself",
     "Close":"Close",
@@ -72,6 +74,7 @@
     "DeliveryDate":"Delivery Date",
     "DeliveryTime":"Delivery Time",
     "DemocraticDesign":"Democratic design",
+    "Desk":"desk",
     
     "Edit":"Edit",
     "EGP":"EGP",
@@ -125,6 +128,7 @@
     "Max10000":"maximum EGP 10000",
     "Max20000":"maximum EGP 20000",
     "Measurements":"Measurements",
+    "Mirror":"mirror",
     "Mobile":"Mobile",
     "MoreOptions":"More options",
     "MoreVariants":"More variants",
@@ -199,6 +203,7 @@
     "Settings":"Settings",
     "ShippingAddress":"Shipping Address",
     "ShoppingCart":"Shopping cart",
+    "ShowResultsForSearch":"Showing results for ",
     "Size":"Size",
     "SmallAndUppercaseValidation":"Password must have SmallCase and UpperCase",
     "Sort":"Sort",
@@ -208,6 +213,7 @@
     "SubTotal":"Subtotal",
     "Sustainable":"Sustainable everyday",
 
+    "Table":"table",
     "TermsConditions":"Terms and conditions",
     "Thickness":"Thickness",
     "ThisIkea":"This is IKEA",
@@ -227,5 +233,7 @@
     "Width":"Width",
     "WishList":"Wish List",
     "WorkingAtIkea":"Working at IKEA",
-    "WrongPassword":"Password is wrong"
+    "WrongPassword":"Password is wrong",
+
+    "YourSearchHistory":"Your search history"
 }

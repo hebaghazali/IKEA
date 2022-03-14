@@ -32,12 +32,14 @@
 
     "Cancel":"إلغاء",
     "CatalogueAndBrochures":"الكتالوج والبروشورات",
+    "Chair":"كرسى",
     "ChangeAccount":"بحاجة لتغيير الحساب؟",
     "ChangeCountry":"تغيير الدولة",
     "CharPassValidation":"طول 8 على الأقل",
     "Checkout":"ابدأ السداد",
     "ChooseNearestStore":"اختر أقرب محل ايكيا إليك",
     "ClearAll":"إلغاء الفرز",
+    "Clear":"مسح",
     "ClickAndCollect":"اطلب واستلم",
     "ClickAndCollectDesc":"طلبات تستلمها بنفسك",
     "Close":"إغلاق",
@@ -72,6 +74,7 @@
     "DeliveryDate":"تاريخ التوصيل",
     "DeliveryTime":"موعد التوصيل",
     "DemocraticDesign":"التصميم الديمقراطي",
+    "Desk":"مكتب",
 
     "Edit":"تعديل",
     "EGP":"جنيه",
@@ -125,6 +128,7 @@
     "Max10000":"الاقصي 10000 جنيه",
     "Max20000":"الاقصي 20000 جنيه",
     "Measurements":"قياسات",
+    "Mirror":"مرآه",
     "Mobile":"الهاتف المحمول",
     "MoreOptions":"المزيد",
     "MoreVariants":"المزيد من المتغيرات",
@@ -199,6 +203,7 @@
     "Settings":"الإعدادات",
     "ShippingAddress":"عنوان الشحن",
     "ShoppingCart":"عربة التسوق",
+    "ShowResultsForSearch":"إظهار التطابقات لـ ",
     "Size":"حجم",
     "SmallAndUppercaseValidation":"حرف صغير و حرف كبير",
     "Sort":"رتب",
@@ -208,6 +213,7 @@
     "SubTotal":"المجموع الفرعي",
     "Sustainable":"الاستدامة يوماً بعد يوم",
 
+    "Table":"مائدة",
     "TermsConditions":"الشروط والأحكام",
     "Thickness":"العمق",
     "ThisIkea":"هذه هي ايكيا",
@@ -226,5 +232,7 @@
     "Width":"العرض",
     "WishList":"قائمة الرغبات",
     "WorkingAtIkea":"العمل في ايكيا",
-    "WrongPassword":"كلمة المرور خاطئة"
+    "WrongPassword":"كلمة المرور خاطئة",
+
+    "YourSearchHistory":"سجل البحث الخاص بك"
 }
