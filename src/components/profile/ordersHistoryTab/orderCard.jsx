@@ -1,5 +1,6 @@
 import ItemCard from './itemCard';
 import { useTranslation } from 'react-i18next';
+import Rating from '../../Rating/rating'
 
 const OrderCard = ({ order }) => {
   const { t } = useTranslation();
@@ -13,6 +14,10 @@ const OrderCard = ({ order }) => {
             {order.CreatedAt.toDate().toString()}
           </small>
         </h5>
+        <small>
+          <Rating />
+        </small>
+   
         {order.Status && <h5 className='text-success'>{t('Delivered')}</h5>}
         {!order.Status && <h5 className='text-danger'>{t('Pending')}</h5>}
         <h4>{t('TotalPrice')} {t('EGP')} {order.TotalPrice}</h4>

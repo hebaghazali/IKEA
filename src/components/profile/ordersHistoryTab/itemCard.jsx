@@ -2,14 +2,18 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { getDocumentByID } from '../../../services/firebase';
 import { useTranslation } from 'react-i18next';
+import Rating from '../../Rating/rating';
 
-const ItemCard = ({ item }) => {
+const ItemCard = ({ item ,ratingValue }) => {
   const { t } = useTranslation();
   const [product, setProduct] = useState({
     Images: [],
     Name: '',
     Price: 0,
+    Rate: ''
+   
   });
+
   const getProductData = async () => {
     return getDocumentByID('Products', item.ProductID).then((product) => {
       setProduct(product);
@@ -31,6 +35,8 @@ const ItemCard = ({ item }) => {
         <small className='small-text-size fw-lighter'>
           {t('PurchasedAmount')}: {item.Amount}
         </small>
+        <br></br>
+        <small> <Rating value={ratingValue}/>  </small>
       </div>
     </div>
   );
