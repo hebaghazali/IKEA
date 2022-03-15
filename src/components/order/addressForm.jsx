@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-
 const AddressForm = ({
   handleAddressForm,
   register,
@@ -47,7 +46,7 @@ const AddressForm = ({
           <input
             type='text'
             className='form-control'
-            placeholder='Full Name'
+            placeholder={t('FullName')}
             name='name'
             {...register('name')}
             required
@@ -60,7 +59,7 @@ const AddressForm = ({
           required
         >
           <option disabled value='default'>
-            Select Governorate
+            {t('SelectGovernorate')}
           </option>
 
           {locations?.map(loc => (
@@ -102,7 +101,7 @@ const AddressForm = ({
           <input
             type='text'
             className='form-control'
-            placeholder='Address'
+            placeholder={t('Address')}
             name='address'
             {...register('address')}
             required
@@ -112,7 +111,7 @@ const AddressForm = ({
           <input
             type='text'
             className='form-control'
-            placeholder='Building Name/Apartment No./Floor No.'
+            placeholder={t('BuildingNoPlaceHolder')}
             name='building'
             {...register('building')}
             required
@@ -128,7 +127,7 @@ const AddressForm = ({
             {...register('isUsedAsShippingAddress')}
           />
           <label className='form-check-label' htmlFor='flexCheckDefault'>
-            <small>Use as shipping address</small>
+            <small>{t('UseAsShipping')}</small>
           </label>
         </div>
 

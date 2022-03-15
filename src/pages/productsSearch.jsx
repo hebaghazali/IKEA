@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { getProductsBySearchText } from '../services/firebase';
 import { useParams } from 'react-router-dom';
 import ProductsList from '../components/productsList';
+import { useTranslation } from 'react-i18next';
 
 const ProductsSearch = () => {
   const [searchResult, setSearchResult] = useState();
   const [loading, setLoading] = useState(true);
 
+  const {t} = useTranslation();
   const params = useParams();
 
   // useEffect(() => {
@@ -26,7 +28,7 @@ const ProductsSearch = () => {
   return (
     <>
       <h1>
-        Showing results for "<strong>{params.query}</strong>"
+        {t('ShowResultsForSearch')}"<strong>{params.query}</strong>"
       </h1>
 
      <ProductsList
@@ -34,14 +36,6 @@ const ProductsSearch = () => {
         productsList={searchResult}
         search
       />  
-      <ul>
-        {searchResult?.map(res => (
-          <li key={searchResult.indexOf(res)}>
-            <h4>{res.data.Name}</h4>
-            <p>{res.data.Description}</p>
-          </li>
-        ))}
-      </ul>
     </>
   );
 };

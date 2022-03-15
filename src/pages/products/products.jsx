@@ -18,7 +18,7 @@ import {
 import ProductsList from '../../components/productsList';
 
 const Products = ({ match }) => {
-  const { i18n } = useTranslation();
+  const { t , i18n } = useTranslation();
   let { type, name, id, subName, subId, sale, newArrival } = match?.params;
 
   let { productsList, filteredList } = useSelector(state => state.products);
@@ -128,13 +128,13 @@ const Products = ({ match }) => {
         baseUrl={subId && match.url}
       />
 
-      <SectionTitle title='Top Seller' />
+      <SectionTitle title={t('TopSeller')} />
       <Carousel
         condition={{ property: 'SalePrice', operator: '>', value: 0 }}
       />
 
-      <SectionTitle title='Related categories' />
-
+      <SectionTitle title={t('RelatedCategories')} />
+      {/* <Loader /> */}
       <div className='row mx-auto g-3 categories-slidder'>
         {subCategories &&
           subCategories.map(subcategory => {

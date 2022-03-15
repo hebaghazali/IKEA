@@ -1,184 +1,106 @@
-import React from "react";
-import AccordionFilter from "./accordionFilter";
-import FilterHeader from "./filterHeader";
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import AccordionFilter from './accordionFilter';
+import FilterHeader from './filterHeader';
+import { useSelector, useDispatch } from 'react-redux';
+import { clearFilters } from '../../../store/actions/productsList';
 
-export default function FiltersMenu() {
+export default function FiltersMenu({
+  sale,
+  colors,
+  materials,
+  widthes,
+  lengthes,
+  heights,
+  sortStates,
+  pricesStates,
+}) {
+  const { t, i18n } = useTranslation();
+  let { filteredList } = useSelector(state => state.products);
+  const dispatch = useDispatch();
+
+  const clearHandler = () => {
+    dispatch(clearFilters());
+  };
   return (
     <div
-      className="offcanvas offcanvas-end"
-      tabIndex="-1"
-      id="filter-menue"
-      aria-labelledby="filter-menueLabel"
+      className='offcanvas offcanvas-end'
+      tabIndex='-1'
+      id='filter-menue'
+      aria-labelledby='filter-menueLabel'
     >
-      <FilterHeader/>
+      <FilterHeader />
 
-      <div className="offcanvas-body">
-        <div className="accordion accordion-flush" id="accordionFlushExample">
+      <div className='offcanvas-body'>
+        <div className='accordion accordion-flush' id='accordionFlushExample'>
+          {!sale && (
+            <AccordionFilter
+              title={t('Sort')}
+              listName='Sort'
+              items={sortStates}
+            />
+          )}
 
-          <AccordionFilter title='Sort'/>
+          {colors && (
+            <AccordionFilter
+              listName={i18n.language === 'en' ? 'Color' : 'ColorAr'}
+              title={t('Color')}
+              items={colors}
+            />
+          )}
 
-          <div className="accordion-item">
-            <button
-              className="accordion-button fw-bold"
-              style={{background: 'white', color: 'black'}}
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#flush-collapseTwo"
-              aria-expanded="false"
-              aria-controls="flush-collapseTwo"
-            >
-              Size
-            </button>
-            <div
-              id="flush-collapseTwo"
-              className="accordion-collapse collapse"
-              aria-labelledby="flush-headingTwo"
-              data-bs-parent="#accordionFlushExample"
-            >
-              <ul className="w-100 px-3">
-                <li className="d-flex justify-content-between my-2">
-                  <label className="form-check-label" htmlFor="">
-                    160 cm * 200 cm
-                  </label>
-                  <div>
-                    <label className="form-check-label small-text mx-2" htmlFor="">
-                      30
-                    </label>
-                    <input className="form-check-input" type="checkbox" id="" />
-                  </div>
-                </li>
+          {!sale && (
+            <AccordionFilter
+              listName='Price'
+              title={t('Price')}
+              items={pricesStates}
+            />
+          )}
 
-                <li className="d-flex justify-content-between my-2">
-                  <label className="form-check-label" htmlFor="">
-                    180 cm * 200 cm
-                  </label>
-                  <div>
-                    <label className="form-check-label small-text mx-2" htmlFor="">
-                      40
-                    </label>
-                    <input
-                      className="form-check-input"
-                      type="checkbox"
-                      name=""
-                      id=""
-                    />
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div className="accordion-item">
-            <button
-              className="accordion-button fw-bold "
-              style={{background: 'white', color: 'black'}}
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#flush-collapseThree"
-              aria-expanded="false"
-              aria-controls="flush-collapseThree"
-            >
-              Price
-            </button>
+          {materials && (
+            <AccordionFilter
+              listName={i18n.language === 'en' ? 'Material' : 'MaterialAr'}
+              title={t('Material')}
+              items={materials}
+            />
+          )}
 
-            <div
-              id="flush-collapseThree"
-              className="accordion-collapse collapse"
-              aria-labelledby="flush-headingThree"
-              data-bs-parent="#accordionFlushExample"
-            >
-              <ul className="w-100 px-3">
-                <li className="d-flex justify-content-between my-2">
-                  <label className="form-check-label" htmlFor="">
-                    EGP 0 - 1,999
-                  </label>
-                  <div>
-                    <label className="form-check-label small-text mx-2" htmlFor="">
-                      30
-                    </label>
-                    <input className="form-check-input" type="checkbox" id="" />
-                  </div>
-                </li>
+          {widthes && (
+            <AccordionFilter
+              listName={'Width'}
+              title={t('Width')}
+              items={widthes}
+            />
+          )}
 
-                <li className="d-flex justify-content-between">
-                  <label className="form-check-label" htmlFor="">
-                    EGP 1,999 - 4,000
-                  </label>
-                  <div>
-                    <label className="form-check-label small-text mx-2" htmlFor="">
-                      40
-                    </label>
-                    <input
-                      className="form-check-input"
-                      type="checkbox"
-                      name=""
-                      id=""
-                    />
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div className="accordion-item">
-            <button
-              className="accordion-button fw-bold"
-              style={{background: 'white', color: 'black',border: '0'}}
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#collapse-color"
-              aria-expanded="false"
-              aria-controls="flush-collapseThree"
-            >
-              Color
-            </button>
+          {lengthes && (
+            <AccordionFilter
+              listName={'Length'}
+              title={t('Length')}
+              items={lengthes}
+            />
+          )}
 
-            <div
-              id="collapse-color"
-              className="accordion-collapse collapse"
-              aria-labelledby="flush-headingThree"
-              data-bs-parent="#accordionFlushExample"
-            >
-              <ul className="w-100 px-3">
-                <li className="d-flex justify-content-between my-2">
-                  <label className="form-check-label" htmlFor="">
-                    {" "}
-                    red{" "}
-                  </label>
-                  <div>
-                    <label className="form-check-label small-text mx-2" htmlFor="">
-                      30
-                    </label>
-                    <input className="form-check-input" type="checkbox" id="" />
-                  </div>
-                </li>
-
-                <li className="d-flex justify-content-between my-2">
-                  <label className="form-check-label" htmlFor="">
-                    {" "}
-                    blue{" "}
-                  </label>
-                  <div>
-                    <label className="form-check-label small-text mx-2" htmlFor="">
-                      40
-                    </label>
-                    <input
-                      className="form-check-input"
-                      type="checkbox"
-                      name=""
-                      id=""
-                    />
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
+          {heights && (
+            <AccordionFilter
+              listName={'Height'}
+              title={t('Height')}
+              items={heights}
+            />
+          )}
         </div>
       </div>
 
-      <div className="offcanvas-footer text-center">
-        <button className="rounded-pill py-1 col-5 clear-btn">Clear all</button>
-        <button className="border rounded-pill py-1 col-5 text-light view-btn">
+      <div className='offcanvas-footer text-center'>
+        <button
+          className='rounded-pill py-1 col-5 clear-btn'
+          onClick={clearHandler}
+        >
+          Clear all
+        </button>
+        <button className='border rounded-pill py-1 col-5 text-light view-btn'>
           View
-          <span>6</span>
+          <span>{' ' + filteredList && filteredList?.length}</span>
         </button>
       </div>
     </div>

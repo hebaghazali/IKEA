@@ -203,7 +203,16 @@ const Filters = ({ allProducts, sale }) => {
         noDrop
         offcanvas
       />
-      <FiltersMenu />
+      <FiltersMenu  
+        sale={sale} 
+        colors = {colors}
+        materials ={materials}
+        widthes = {widthes}        
+        lengthes ={lengthes}
+        heights = {heights}      
+        sortStates={sortStates}
+        pricesStates={pricesStates} 
+        />
     </div>
   );
 };

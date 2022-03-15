@@ -14,7 +14,7 @@ const NavbarSearch = () => {
   const inputRef = useRef(null);
   const overlay = useRef(null);
 
-  const { t } = useTranslation();
+  const { t , i18n } = useTranslation();
 
   const [categories, setCategories] = useState([]);
 
@@ -24,7 +24,7 @@ const NavbarSearch = () => {
   const [input, setInput] = useState('');
   const [finalInput, setFinalInput] = useState();
 
-  const recommendedSearch = ['mirror', 'desk', 'table', 'chair']; // should be guessed by AI
+  const recommendedSearch = [t('Mirror'), t('Desk'), t('Table'), t('Chair')]; // should be guessed by AI
   const [searchHistory, setSearchHistory] = useState([]);
 
   const changeHandler = e => {
@@ -122,8 +122,8 @@ const NavbarSearch = () => {
         {searchHistory.length !== 0 ? (
           <>
             <ul className='list'>
-              <p>Your search history</p>{' '}
-              <button onClick={clearSearchHistory}>Clear</button>
+              <p>{t('YourSearchHistory')}</p>{' '}
+              <button onClick={clearSearchHistory}>{t('Clear')}</button>
               {searchHistory.map(el => (
                 <li key={searchHistory.indexOf(el)}>
                   <div>
@@ -158,7 +158,7 @@ const NavbarSearch = () => {
                     to={`/category/product/${productCatName}/${productCatId}/${categoryData.data.Name}/${categoryData.id}`}
                   >
                     <i className='fas fa-list'></i>
-                    <span>{categoryData.data.Name}</span>
+                    <span>{i18n.language=='en'?categoryData.data.Name:categoryData.data.NameAr}</span>
                   </Link>
                 </li>
               );

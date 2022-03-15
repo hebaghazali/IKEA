@@ -44,7 +44,7 @@ const AddressAccordion = ({
         ref={addressAccordionCollapse}
       >
         <div className='accordion-body'>
-          <h4>Billing Address</h4>
+          <h4>{t('BillingAddress')}</h4>
 
           {userLocations.length !== 0 ? (
             <>
@@ -71,10 +71,10 @@ const AddressAccordion = ({
                       {user.LastName}
                     </p>
                     <p>
-                      <strong>Mobile:</strong> {user.PhoneNum}
+                      <strong>{t('Mobile')} :</strong> {user.PhoneNum}
                     </p>
                     <p>
-                      <strong>Address:</strong> {loc.address}
+                      <strong>{t('Address')} :</strong> {loc.address}
                       <br />
                       {loc.building}
                     </p>
@@ -88,7 +88,7 @@ const AddressAccordion = ({
                 data-bs-target='#addressCollapse'
                 onClick={() => setAddressCollapse(!addressCollapse)}
               >
-                ADD NEW SHIPPING ADDRESS
+                {t('AddNewAddress')}
               </button>
               <div className='collapse' id='addressCollapse'>
                 <div className='card card-body'>
