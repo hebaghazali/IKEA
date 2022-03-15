@@ -1,8 +1,10 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { useHistory } from 'react-router-dom';
 
 const NavbarCollapse = () => {
   const { t } = useTranslation();
+  const history = useHistory()
 
   return (
     <>
@@ -26,20 +28,20 @@ const NavbarCollapse = () => {
               {t('Rooms')}
             </p>
           </li>
-          <li className='nav-item'>
+          <li className='nav-item'
+          onClick={()=>{history.push('/offers/sale')}}
+          >
             <p
               className='nav-link'
-              data-bs-toggle='offcanvas'
-              data-bs-target='#offcanvasExample'
             >
               {t('Offers')}
             </p>
           </li>
-          <li className='nav-item'>
+          <li className='nav-item'
+          onClick={()=>{history.push('/whatsnew/newArrival')}}
+          >
             <p
               className='nav-link'
-              data-bs-toggle='offcanvas'
-              data-bs-target='#offcanvasExample'
             >
               {t('WhatNew')}
             </p>

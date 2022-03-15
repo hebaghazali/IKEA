@@ -26,6 +26,8 @@ const EditPersonalInfo = (props) => {
   });
   useEffect(() => {
     setAllValid(errors.FirstNameErr === null && errors.LastNameErr === null);
+  },[errors]);
+  useEffect(()=>{
     var dd = today.getDate();
     var mm = today.getMonth() + 1;
     var yyyy = today.getFullYear();
@@ -36,7 +38,7 @@ const EditPersonalInfo = (props) => {
       mm = '0' + mm;
     }
     setToday(yyyy + '-' + mm + '-' + dd);
-  }, [errors]);
+  },[])
   const handleSubmit = (e) => {
     if (!allValid) {
       e.preventDefault();

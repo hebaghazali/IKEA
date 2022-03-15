@@ -46,8 +46,8 @@ const AccountTab = () => {
             {!user.Gender && <p className='small-text'>{t('AddGender')}</p>}
             {user.Gender !== '' && (
               <p className='small-text'>
-                {user.Gender === '1' && 'Male'}
-                {user.Gender === '2' && 'Female'}
+                {user.Gender === '1' && t('Male')}
+                {user.Gender === '2' && t('Female')}
               </p>
             )}
           </>
