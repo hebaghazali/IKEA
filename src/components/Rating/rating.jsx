@@ -1,12 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { FaStar } from 'react-icons/fa';
-import {
-  addProductRatingToUser,
-  getProductReviewFromUser,
-} from '../../services/firebase';
+import { addProductRatingToUser } from '../../services/firebase';
 import './rating.css';
 
-const Rating = ({ productID }) => {
+const Rating = ({ productID, onReviewSubmit }) => {
   const [rating, setRating] = useState();
   const [comment, setComment] = useState('');
   const offCanvas = useRef();
@@ -26,17 +23,17 @@ const Rating = ({ productID }) => {
     }
 
     closeBtn.current.click();
+
+    onReviewSubmit(
+      comment === '' ? { rating: rating } : { rating: rating, comment: comment }
+    );
   };
 
   useEffect(() => {
-    offCanvas.current.addEventListener(
-      'hidden.bs.offcanvas',
-      () => {
-        setRating(undefined);
-        setComment('');
-      },
-      []
-    );
+    offCanvas.current.addEventListener('hidden.bs.offcanvas', () => {
+      setRating(undefined);
+      setComment('');
+    });
   }, []);
 
   return (

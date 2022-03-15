@@ -4,17 +4,7 @@ import { getProductReviewFromUser } from '../../services/firebase';
 
 import './rating.css';
 
-const ShowReview = ({ productID }) => {
-  const [review, setReview] = useState();
-
-  useEffect(() => {
-    getProductReviewFromUser(localStorage.getItem('UID'), productID).then(
-      rev => {
-        setReview(rev);
-      }
-    );
-  }, []);
-
+const ShowReview = ({ review }) => {
   return (
     <div>
       <h3 className='show-review'>Your review: </h3>

@@ -254,7 +254,7 @@ const LeftSide = props => {
                   ></button>
                 </div>
                 <div className='offcanvas-body'>
-                  <h5>Average customer ratings</h5>
+                  <h5>{t('AverageRating')}</h5>
 
                   <h2>{(sumOfRatings / reviews?.length).toFixed(2)}</h2>
                   {[...Array(5)].map((_, idx) => {

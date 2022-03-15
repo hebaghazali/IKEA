@@ -591,11 +591,12 @@ export const addProductRatingToUser = async (review, productID, userID) => {
 export const getProductReviewFromUser = async (userID, productID) => {
   let rev;
   await getDoc(doc(fireStore, 'users', userID)).then(res => {
-    res.data().Reviews.forEach(review => {
-      if (review.ProductID === productID) {
-        rev = review.Review;
-      }
-    });
+    res.data().Reviews &&
+      res.data().Reviews.forEach(review => {
+        if (review.ProductID === productID) {
+          rev = review.Review;
+        }
+      });
   });
   return rev;
 };

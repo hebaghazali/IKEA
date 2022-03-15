@@ -6,6 +6,8 @@ import {
 import { useTranslation } from 'react-i18next';
 import Rating from '../../Rating/rating';
 import ShowReview from '../../Rating/showReview';
+import { doc, onSnapshot } from 'firebase/firestore';
+import { fireStore } from '../../../config/firebaseConfig';
 
 const ItemCard = ({ item, isDelivered }) => {
   const { t } = useTranslation();
@@ -15,6 +17,9 @@ const ItemCard = ({ item, isDelivered }) => {
   const [review, setReview] = useState();
 
   const getProductData = async () => {
+    // onSnapshot(doc(fireStore, 'Products', item.ProductID), productDoc => {
+    //   setProduct(productDoc.data());
+    // });
     return getDocumentByID('Products', item.ProductID).then(prd => {
       setProduct(prd);
       console.log(prd);
@@ -33,6 +38,10 @@ const ItemCard = ({ item, isDelivered }) => {
     );
   }, []);
 
+  useEffect(() => {
+    console.log(review);
+  }, [review]);
+
   return (
     <div className='border col-12 row m-2'>
       {product && (
@@ -49,10 +58,15 @@ const ItemCard = ({ item, isDelivered }) => {
             </small>
             {review ? (
               <>
-                <ShowReview productID={item.ProductID} />
+                <ShowReview productID={item.ProductID} review={review} />
               </>
             ) : (
-              isDelivered && <Rating productID={item.ProductID} />
+              isDelivered && (
+                <Rating
+                  productID={item.ProductID}
+                  onReviewSubmit={rev => setReview(rev)}
+                />
+              )
             )}
           </div>
         </>
