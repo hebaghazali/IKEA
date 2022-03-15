@@ -19,7 +19,7 @@ const AddressAccordion = ({
   locationsExist,
 }) => {
   const { checkedAddress, setCheckedAddress } = useContext(locationContext);
-  const {t} =useTranslation();
+  const { t } = useTranslation();
   return (
     <div className='accordion-item'>
       <h2 className='accordion-header' id='flush-headingOne'>
@@ -33,7 +33,7 @@ const AddressAccordion = ({
           disabled
           ref={addressAccordionBtn}
         >
-        {t('BillingShippingAddress')}
+          {t('BillingShippingAddress')}
         </button>
       </h2>
       <div
@@ -59,7 +59,7 @@ const AddressAccordion = ({
                     name='address-radio'
                     value={userLocations.indexOf(loc)}
                     defaultChecked={
-                      user.Locations.indexOf(loc) === checkedAddress
+                      userLocations.indexOf(loc) === checkedAddress
                     }
                     onChange={e => {
                       setCheckedAddress(Number(e.target.value));
@@ -67,7 +67,8 @@ const AddressAccordion = ({
                   />
                   <div className='card-body'>
                     <p>
-                      <strong>{t('FullName')} :</strong> {user.FirstName} {user.LastName}
+                      <strong>{t('FullName')} :</strong> {user.FirstName}{' '}
+                      {user.LastName}
                     </p>
                     <p>
                       <strong>{t('Mobile')} :</strong> {user.PhoneNum}
@@ -118,7 +119,7 @@ const AddressAccordion = ({
                 className='btn submit-button me-4'
                 onClick={handleAddressNext}
               >
-               {t('Continue')}
+                {t('Continue')}
               </button>
             </div>
           )}

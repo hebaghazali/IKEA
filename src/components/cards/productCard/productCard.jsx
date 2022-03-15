@@ -7,7 +7,7 @@ import ProductVariant from './productVariant';
 import { addToCart } from './../../../store/actions/cartProducts';
 import { addCartItemToUser } from '../../../services/firebase';
 import { Link } from 'react-router-dom';
-import { getCollection } from './../../../services/firebase';
+import { getCollection , addData} from './../../../services/firebase';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -36,10 +36,13 @@ const ProductCard = ({ showOptions, pId, productData , roomBtn ,baseUrl}) => {
 
     addFavItemsToUser(localStorage.getItem('UID'), pId);
     setIsFavourite(!isFavourite);
+
     // let productData2 = productData;
-    // productData2.Color = 'green';
-    // productData2.Price = 13000;
-    // productData2.Images =['https://www.ikea.com/eg/en/images/products/smastad-loft-bed-white-green-with-desk-with-3-drawers__0946955_pe798328_s5.jpg?f=s','https://www.ikea.com/eg/en/images/products/smastad-loft-bed-white-green-with-desk-with-3-drawers__0939878_pe794702_s5.jpg?f=s']
+    // productData2.ProductName = 'SAGSTUA';
+    // productData2.Name = 'Classic bed';
+    // productData2.Color = 'white';
+    // productData2.Price = 3500;
+    // productData2.Images =['https://www.ikea.com/eg/en/images/products/sagstua-bed-frame-white-luroey__0662176_pe719097_s5.jpg?f=s','https://www.ikea.com/eg/en/images/products/sagstua-bed-frame-white-luroey__0861810_pe713114_s5.jpg?f=s']
 
     // addData(productData2);
   };
@@ -113,7 +116,7 @@ const ProductCard = ({ showOptions, pId, productData , roomBtn ,baseUrl}) => {
             <p className='more-options'>{t('MoreOptions')}</p>
           )}
           {!inCart && Quantity!==0 && (
-            <button className={`${i18n.language==='en'?'card-icon-ltr':'card-icon-rtl'}`} onClick={addCart}>
+            <button className={i18n.language==='en'?'card-icon':'cart-rev'} onClick={addCart}>
               <i className='fas fa-cart-plus'></i>
             </button>
           )}

@@ -7,13 +7,13 @@ const AddressForm = ({
   gov,
   setGov,
 }) => {
-  const {t,i18n} = useTranslation();
+  const { t, i18n } = useTranslation();
   const [areas, setAreas] = useState([]);
 
   const handleGovSelect = e => {
     locations.forEach(loc => {
-      if (i18n.language=='en'?loc.Name:loc.NameAr === e.target.value) {
-        setAreas(i18n.language=='en'?loc.Areas:loc.AreaAr);
+      if ((i18n.language === 'en' ? loc.Name : loc.NameAr) === e.target.value) {
+        setAreas(i18n.language === 'en' ? loc.Areas : loc.AreaAr);
         setGov({ ...gov, gov: e.target.value });
       }
     });
@@ -21,14 +21,20 @@ const AddressForm = ({
 
   const handleAreaSelect = e => {
     locations.forEach(loc => {
-      if (i18n.language=='en'?loc.Areas.includes(e.target.value):loc.AreaAr.includes(e.target.value)) {
-        i18n.language=='en'
-        ?loc.Areas.forEach(area => {
-          if (area === e.target.value) setGov({ ...gov, area: e.target.value });
-        })
-        :loc.AreaAr.forEach(area => {
-          if (area === e.target.value) setGov({ ...gov, area: e.target.value });
-        });
+      if (
+        i18n.language === 'en'
+          ? loc.Areas.includes(e.target.value)
+          : loc.AreaAr.includes(e.target.value)
+      ) {
+        i18n.language === 'en'
+          ? loc.Areas.forEach(area => {
+              if (area === e.target.value)
+                setGov({ ...gov, area: e.target.value });
+            })
+          : loc.AreaAr.forEach(area => {
+              if (area === e.target.value)
+                setGov({ ...gov, area: e.target.value });
+            });
       }
     });
   };
@@ -57,8 +63,11 @@ const AddressForm = ({
           </option>
 
           {locations?.map(loc => (
-            <option value={i18n.language=='en'?loc.Name:loc.NameAr} key={locations.indexOf(loc)}>
-              {i18n.language=='en'?loc.Name:loc.NameAr}
+            <option
+              value={i18n.language === 'en' ? loc.Name : loc.NameAr}
+              key={locations.indexOf(loc)}
+            >
+              {i18n.language === 'en' ? loc.Name : loc.NameAr}
             </option>
           ))}
         </select>
@@ -69,7 +78,7 @@ const AddressForm = ({
           required
         >
           <option disabled value='default'>
-          {t('SelectArea')}
+            {t('SelectArea')}
           </option>
 
           {areas?.map(area => (
@@ -108,9 +117,7 @@ const AddressForm = ({
             required
           />
         </div>
-        <small className='mb-3'>
-          {t('NoElevatorNote')}
-        </small>
+        <small className='mb-3'>{t('NoElevatorNote')}</small>
         <div className='form-check mb-3'>
           <input
             className='form-check-input'
@@ -124,7 +131,11 @@ const AddressForm = ({
           </label>
         </div>
 
-        <input type='submit' className='btn submit-button' value={t('Continue')}/>
+        <input
+          type='submit'
+          className='btn submit-button'
+          value={t('Continue')}
+        />
       </form>
     </>
   );
