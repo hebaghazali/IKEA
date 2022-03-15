@@ -233,14 +233,14 @@ export const getProductsBySearchText = async text => {
   const filteredProductsByDescription = productsDescription.filter(product =>
     text.test(product)
   );
-  const filteredProductsByDescriptionAr = productsDescriptionAr.filter(product =>
-    text.test(product)
+  const filteredProductsByDescriptionAr = productsDescriptionAr.filter(
+    product => text.test(product)
   );
   const filteredProducts = [
     ...filteredProductsByName,
     ...filteredProductsByDescription,
     ...filteredProductsByNameAr,
-    ...filteredProductsByDescriptionAr
+    ...filteredProductsByDescriptionAr,
   ];
 
   // console.log(filteredProducts);
@@ -275,13 +275,15 @@ export const getProductsBySearchText = async text => {
     let namesResultsAr = await getDocs(nameQueryAr);
     let descResultsAr = await getDocs(descriptionQueryAr);
 
-    namesResults.forEach(result =>
-      !products.some(p => p.id === result.id) &&
-      products.push({ id: result.id, data: result.data() })
+    namesResults.forEach(
+      result =>
+        !products.some(p => p.id === result.id) &&
+        products.push({ id: result.id, data: result.data() })
     );
-    namesResultsAr.forEach(result =>
-      !products.some(p => p.id === result.id) &&
-      products.push({ id: result.id, data: result.data() })
+    namesResultsAr.forEach(
+      result =>
+        !products.some(p => p.id === result.id) &&
+        products.push({ id: result.id, data: result.data() })
     );
     descResults.forEach(result => {
       !products.some(p => p.id === result.id) &&
@@ -351,19 +353,23 @@ export const createNewOrder = async data => {
 };
 
 export const getLatestProds = async () => {
-  const q = query(collection(fireStore, 'Products'), orderBy('CreatedAt', 'desc'), limit(10));
+  const q = query(
+    collection(fireStore, 'Products'),
+    orderBy('CreatedAt', 'desc'),
+    limit(10)
+  );
 
   let results = await getDocs(q);
 
   return results.docs;
 };
 
-export const genericFilter = async (filterObj) => {
+export const genericFilter = async filterObj => {
   let keys = Object.keys(filterObj);
   let mixedQ = null;
   let sort = null;
 
-  keys.forEach((item) => {
+  keys.forEach(item => {
     if (!filterObj[item]) {
       delete filterObj[item];
     }
@@ -372,13 +378,11 @@ export const genericFilter = async (filterObj) => {
       sort = filterObj[item];
       delete filterObj[item];
     }
-
   });
 
   keys = Object.keys(filterObj);
 
   let length = keys.length;
-
 
   let results = [];
   let err = null;
@@ -465,7 +469,6 @@ export const genericFilter = async (filterObj) => {
         default:
           break;
       }
-
     } else {
       switch (length) {
         case 1:
@@ -539,16 +542,42 @@ export const genericFilter = async (filterObj) => {
       }
     }
 
-
     results = await getDocs(mixedQ);
-
   } catch (error) {
     console.log('error in filter fun', error);
-    err = error
+    err = error;
   }
-  if (sort)
-    filterObj['Sort'] = sort;
-
+  if (sort) filterObj['Sort'] = sort;
 
   return err ? err : results.docs;
+};
+
+export const addProductRatingToUser = async (review, productID, userID) => {
+  const ratings = [];
+  await getDoc(doc(fireStore, 'users', userID)).then(res => {
+    if (res.data().Reviews) {
+      ratings.push(...res.data().Reviews);
+    }
+  });
+
+  // if (!ratings.includes(productID))
+  updateDoc(doc(fireStore, 'users', userID), {
+    Reviews: [...ratings, { ProductID: productID, Review: review }],
+  })
+    .then(() => {
+      console.log('rating added to current user');
+    })
+    .catch(err => console.log('adding rating to user ERROR: ' + err));
+};
+
+export const getProductReviewFromUser = async (userID, productID) => {
+  let rev;
+  await getDoc(doc(fireStore, 'users', userID)).then(res => {
+    res.data().Reviews.forEach(review => {
+      if (review.ProductID === productID) {
+        rev = review.Review;
+      }
+    });
+  });
+  return rev;
 };
