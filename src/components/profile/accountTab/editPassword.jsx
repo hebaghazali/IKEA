@@ -9,6 +9,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
+import EyeIcon from '../../eyeIcon';
 
 const EditPassword = (props) => {
   const user = useSelector((state) => state.user.user);
@@ -19,6 +20,9 @@ const EditPassword = (props) => {
   const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [secureCurrent, setSecureCurrent] = useState(true);
+  const [secureNew, setSecureNew] = useState(true);
+  const [secureConfirm, setSecureConfirm] = useState(true);
   const [errors, setErrors] = useState({
     currentPassErr: null,
     newPassErr: null,
@@ -68,9 +72,14 @@ const EditPassword = (props) => {
   return (
     <section className='col-12 col-lg-6'>
       <div className='form-floating mb-3 p-0 floating-input-holder'>
+     
+      <EyeIcon
+        isSecure={secureCurrent} 
+        setSecure={(value)=>{setSecureCurrent(value)}}
+        />
         <input
-          type='password'
-          className='form-control edit-input'
+          type={secureCurrent?'password':'text'}
+          className='form-control edit-input '
           id='floatingInput'
           placeholder=''
           onChange={(e) => {
@@ -78,14 +87,19 @@ const EditPassword = (props) => {
           }}
         />
         <label htmlFor='floatingInput'>{t('CurrentPassword')}</label>
+
         {errors.currentPassErr !== null && (
           <small className='text-danger'>{errors.currentPassErr}</small>
         )}
       </div>
       <div className='form-floating mb-3 p-0 floating-input-holder'>
+      <EyeIcon
+        isSecure={secureNew} 
+        setSecure={(value)=>{setSecureNew(value)}}
+        />
         <input
-          type='password'
-          className='form-control edit-input'
+          type={secureNew?'password':'text'}
+          className='form-control edit-input '
           id='floatingInput'
           placeholder=''
           onChange={(e) => {
@@ -125,8 +139,13 @@ const EditPassword = (props) => {
         )}
       </div>
       <div className='form-floating mb-3 p-0 floating-input-holder'>
+      <EyeIcon
+        isSecure={secureConfirm} 
+        setSecure={(value)=>{setSecureConfirm(value)}}
+        err={errors.confirmPassErr}
+        />
         <input
-          type='password'
+          type={secureConfirm?'password':'text'}
           className='form-control edit-input'
           id='floatingInput'
           placeholder=''

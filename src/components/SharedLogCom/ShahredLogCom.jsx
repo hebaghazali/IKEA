@@ -6,10 +6,11 @@ import { changeUser } from '../../store/actions/auth';
 // import {auth} from '../../config/firebaseConfig'
 // import Hello from '../Hello';
 import { useTranslation } from 'react-i18next';
+import EyeIcon from '../eyeIcon';
 
 function SharedLogComp() {
-
   const { t } = useTranslation();
+  const [isSecure, setSecure] = useState(true);
   const [users, setUser] = useState({
     Email: '',
     Password: '',
@@ -24,7 +25,7 @@ function SharedLogComp() {
   const [Password, setPassword] = useState('');
 
   // Function to hadndle change in any input and write into it
-  const handleChangeInInput = e => {
+  const handleChangeInInput = (e) => {
     const regEmail = /^([a-zA-Z0-9_\-\.]+){3,}@([a-zA-Z0-9_\-\.]+){3,}(.com)$/;
     const regName = /^\w[a-zA-Z]{3,}[^-\s][a-zA-Z]{3,}/;
     const regPassword =
@@ -77,7 +78,7 @@ function SharedLogComp() {
     setLoading(true);
     try {
       await login(emailRef.current.value, passwordRef.current.value).then(
-        userCredentials => {
+        (userCredentials) => {
           // changeUser(userCredentials.user.uid);
           localStorage.setItem('UID', userCredentials.user.uid);
         }
@@ -102,16 +103,13 @@ function SharedLogComp() {
               placeholder={t('EmailPlaceholder')}
               name='Email'
               required
-              onChange={e => {
+              onChange={(e) => {
                 handleChangeInInput(e);
               }}
               ref={emailRef}
             />
-            
-            <p className='text-secondary'>
-              {' '}
-              {t('ValidEmailExample')}
-            </p>
+
+            <p className='text-secondary'> {t('ValidEmailExample')}</p>
 
             <p></p>
             <p className='text-secondary'> {t('ValidEmailExample')}</p>
@@ -119,18 +117,26 @@ function SharedLogComp() {
             <small className='text-danger'>{errors.EmailErr}</small>
           </div>
           <div>
-            <input
-              type='password'
-              className='form-control input-sign-form'
-              id='validationCustom05'
-              required
-              name='Password'
-              placeholder={t('PasswordPlaceholder')}
-              onChange={e => {
-                handleChangeInInput(e);
-              }}
-              ref={passwordRef}
-            />
+            <div className='inpCont'>
+              <input
+                type={isSecure?'password':'text'}
+                className='form-control input-sign-form'
+                id='validationCustom05'
+                required
+                name='Password'
+                placeholder={t('PasswordPlaceholder')}
+                onChange={(e) => {
+                  handleChangeInInput(e);
+                }}
+                ref={passwordRef}
+              />
+              <EyeIcon
+                isSecure={isSecure}
+                setSecure={(value) => {
+                  setSecure(value);
+                }}
+              />
+            </div>
             <p></p>
             <p className='text-secondary'>{t('CharPassValidation')}</p>
             <p className='text-secondary'>{t('SmallAndUppercaseValidation')}</p>
@@ -148,12 +154,10 @@ function SharedLogComp() {
             {' '}
             {t('Login')}{' '}
           </button>
-
         </div>
       </div>
-
     </>
-           
-  )}         
+  );
+}
 
 export default SharedLogComp;
