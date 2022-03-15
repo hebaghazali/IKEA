@@ -22,6 +22,7 @@ const ShowReview = ({ productID }) => {
       {[...Array(5)].map((_, idx) => {
         return (
           <FaStar
+            key={idx}
             className='star'
             size={15}
             color={idx + 1 <= review?.rating ? '#ffc107' : '#e4e5e9'}

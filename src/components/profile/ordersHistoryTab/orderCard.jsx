@@ -1,6 +1,5 @@
 import ItemCard from './itemCard';
 import { useTranslation } from 'react-i18next';
-import Rating from '../../Rating/rating';
 
 const OrderCard = ({ order }) => {
   const { t } = useTranslation();

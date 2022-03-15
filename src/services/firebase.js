@@ -553,21 +553,39 @@ export const genericFilter = async filterObj => {
 };
 
 export const addProductRatingToUser = async (review, productID, userID) => {
-  const ratings = [];
+  // In User
+  const reviewsInUser = [];
   await getDoc(doc(fireStore, 'users', userID)).then(res => {
     if (res.data().Reviews) {
-      ratings.push(...res.data().Reviews);
+      reviewsInUser.push(...res.data().Reviews);
     }
   });
-
-  // if (!ratings.includes(productID))
-  updateDoc(doc(fireStore, 'users', userID), {
-    Reviews: [...ratings, { ProductID: productID, Review: review }],
-  })
-    .then(() => {
-      console.log('rating added to current user');
+  if (!reviewsInUser.includes(productID))
+    updateDoc(doc(fireStore, 'users', userID), {
+      Reviews: [{ ProductID: productID, Review: review }, ...reviewsInUser],
     })
-    .catch(err => console.log('adding rating to user ERROR: ' + err));
+      .then(() => {
+        console.log('rating added to current user');
+      })
+      .catch(err => console.log('adding rating to user ERROR: ' + err));
+
+  ///////////////////////////////
+
+  // In Product
+  const reviewsInProduct = [];
+  await getDoc(doc(fireStore, 'Products', productID)).then(res => {
+    if (res.data().Reviews) {
+      reviewsInProduct.push(...res.data().Reviews);
+    }
+  });
+  if (!reviewsInProduct.includes(productID))
+    updateDoc(doc(fireStore, 'Products', productID), {
+      Reviews: [{ UserID: userID, Review: review }, ...reviewsInProduct],
+    })
+      .then(() => {
+        console.log('rating added to current user');
+      })
+      .catch(err => console.log('adding rating to product ERROR: ' + err));
 };
 
 export const getProductReviewFromUser = async (userID, productID) => {
@@ -580,4 +598,15 @@ export const getProductReviewFromUser = async (userID, productID) => {
     });
   });
   return rev;
+};
+
+export const getProductReviews = async productID => {
+  const revs = [];
+  await getDoc(doc(fireStore, 'Products', productID)).then(res => {
+    res.data().Reviews &&
+      res.data().Reviews.forEach(review => {
+        revs.push(review);
+      });
+  });
+  return revs;
 };
