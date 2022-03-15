@@ -113,7 +113,7 @@ const ProductCard = ({ showOptions, pId, productData , roomBtn ,baseUrl}) => {
             <p className='more-options'>{t('MoreOptions')}</p>
           )}
           {!inCart && Quantity!==0 && (
-            <button className='card-icon' onClick={addCart}>
+            <button className={`${i18n.language==='en'?'card-icon-ltr':'card-icon-rtl'}`} onClick={addCart}>
               <i className='fas fa-cart-plus'></i>
             </button>
           )}
