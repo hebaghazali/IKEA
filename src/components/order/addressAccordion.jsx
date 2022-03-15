@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { useTranslation } from 'react-i18next';
 import { locationContext } from '../../contexts/locationContext';
 import AddressForm from './addressForm';
 
@@ -18,7 +19,7 @@ const AddressAccordion = ({
   locationsExist,
 }) => {
   const { checkedAddress, setCheckedAddress } = useContext(locationContext);
-
+  const { t } = useTranslation();
   return (
     <div className='accordion-item'>
       <h2 className='accordion-header' id='flush-headingOne'>
@@ -32,7 +33,7 @@ const AddressAccordion = ({
           disabled
           ref={addressAccordionBtn}
         >
-          Billing and Shipping Address
+          {t('BillingShippingAddress')}
         </button>
       </h2>
       <div
@@ -43,7 +44,7 @@ const AddressAccordion = ({
         ref={addressAccordionCollapse}
       >
         <div className='accordion-body'>
-          <h4>Billing Address</h4>
+          <h4>{t('BillingAddress')}</h4>
 
           {userLocations.length !== 0 ? (
             <>
@@ -58,7 +59,7 @@ const AddressAccordion = ({
                     name='address-radio'
                     value={userLocations.indexOf(loc)}
                     defaultChecked={
-                      user.Locations.indexOf(loc) === checkedAddress
+                      userLocations.indexOf(loc) === checkedAddress
                     }
                     onChange={e => {
                       setCheckedAddress(Number(e.target.value));
@@ -66,13 +67,14 @@ const AddressAccordion = ({
                   />
                   <div className='card-body'>
                     <p>
-                      <strong>Name:</strong> {user.FirstName} {user.LastName}
+                      <strong>{t('FullName')} :</strong> {user.FirstName}{' '}
+                      {user.LastName}
                     </p>
                     <p>
-                      <strong>Mobile:</strong> {user.PhoneNum}
+                      <strong>{t('Mobile')} :</strong> {user.PhoneNum}
                     </p>
                     <p>
-                      <strong>Address:</strong> {loc.address}
+                      <strong>{t('Address')} :</strong> {loc.address}
                       <br />
                       {loc.building}
                     </p>
@@ -86,7 +88,7 @@ const AddressAccordion = ({
                 data-bs-target='#addressCollapse'
                 onClick={() => setAddressCollapse(!addressCollapse)}
               >
-                ADD NEW SHIPPING ADDRESS
+                {t('AddNewAddress')}
               </button>
               <div className='collapse' id='addressCollapse'>
                 <div className='card card-body'>
@@ -117,7 +119,7 @@ const AddressAccordion = ({
                 className='btn submit-button me-4'
                 onClick={handleAddressNext}
               >
-                CONTINUE
+                {t('Continue')}
               </button>
             </div>
           )}

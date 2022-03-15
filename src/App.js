@@ -22,8 +22,6 @@ import ProductsSearch from './pages/productsSearch';
 import Order from './pages/order';
 
 import { updateUserStorageByID } from './services/firebase';
-import Testpage from './pages/TestPage';
-import Rating from './components/Rating/rating';
 
 function App() {
   const loginValidator = () => {

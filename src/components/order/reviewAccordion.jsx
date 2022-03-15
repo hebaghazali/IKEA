@@ -2,6 +2,7 @@ import React from 'react';
 import Checkout from '../paypalCheckout/checkout';
 import { useEffect, useContext } from 'react';
 import { locationContext } from '../../contexts/locationContext';
+import { useTranslation } from 'react-i18next';
 
 const ReviewAccordion = ({
   reviewAccordionBtn,
@@ -13,7 +14,7 @@ const ReviewAccordion = ({
   totalOrderPrice,
 }) => {
   const { checkedAddress, userLocations } = useContext(locationContext);
-
+  const {t} = useTranslation();
   return (
     <div className='accordion-item'>
       <h2 className='accordion-header' id='flush-headingThree'>
@@ -27,7 +28,7 @@ const ReviewAccordion = ({
           disabled
           ref={reviewAccordionBtn}
         >
-          Review and Confirm
+        {t('ReviewConfirm')}
         </button>
       </h2>
       <div
@@ -39,16 +40,16 @@ const ReviewAccordion = ({
       >
         <div className='accordion-body review-cards'>
           <div className='review-card'>
-            <h4>Billing Address</h4>
+            <h4>{t('BillingAddress')}</h4>
             <div className='card-body'>
               <p>
-                <strong>Name:</strong> {user.FirstName} {user.LastName}
+                <strong>{t('Name')}:</strong> {user.FirstName} {user.LastName}
               </p>
               <p>
-                <strong>Mobile:</strong> {user.PhoneNum}
+                <strong>{t('Mobile')}:</strong> {user.PhoneNum}
               </p>
               <p>
-                <strong>Address:</strong>{' '}
+                <strong>{t('Address')}:</strong>{' '}
                 {userLocations.length !== 0 &&
                   userLocations[checkedAddress].address}
                 <br />
@@ -58,16 +59,16 @@ const ReviewAccordion = ({
             </div>
           </div>
           <div className='review-card'>
-            <h4>Shipping Address</h4>
+            <h4>{t('ShippingAddress')}</h4>
             <div className='card-body'>
               <p>
-                <strong>Name:</strong> {user.FirstName} {user.LastName}
+                <strong>{t('Name')}:</strong> {user.FirstName} {user.LastName}
               </p>
               <p>
-                <strong>Mobile:</strong> {user.PhoneNum}
+                <strong>{t('Mobile')}:</strong> {user.PhoneNum}
               </p>
               <p>
-                <strong>Address:</strong>{' '}
+                <strong>{t('Address')}:</strong>{' '}
                 {userLocations.length !== 0 &&
                   userLocations[checkedAddress].address}
                 <br />
@@ -77,33 +78,32 @@ const ReviewAccordion = ({
             </div>
           </div>
           <div className='review-card'>
-            <h4>Delivery date and time</h4>
+            <h4>{t('DeliveryDateTime')}</h4>
             <div className='card-body'>
               <p>
-                <strong>Delivery Date:</strong>
+                <strong>{t('DeliveryDate')}:</strong>
               </p>
               <p>
-                <strong>Delivery Time:</strong>
+                <strong>{t('DeliveryTime')}:</strong>
               </p>
               <p>
-                <strong>Assembly Time:</strong>
+                <strong>{t('AssemblyTime')}:</strong>
               </p>
             </div>
           </div>
         </div>
         <p style={{ textAlign: 'center', fontSize: '12px' }}>
-          By clicking the "Continue with the Payment" you indicate that you
-          agree to
-          <span style={{ color: '#90baf1' }}>Terms and Conditions</span>
+          {t('ContinuePaymentConfirmation')}
+          <span style={{ color: '#90baf1' }}> {t('TermsConditions')}</span>
         </p>
 
         <div className='buttons-group'>
           <button className='btn back-button ms-4' onClick={handleReviewBack}>
-            BACK
+            {t('Back')}
           </button>
 
           <button className='btn submit-button me-4' onClick={handleReviewNext}>
-            CONTINUE WITH THE PAYMENT
+            {t('ContinueWithPayment')}
           </button>
         </div>
 

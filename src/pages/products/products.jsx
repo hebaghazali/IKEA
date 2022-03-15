@@ -18,10 +18,10 @@ import {
 import ProductsList from '../../components/productsList';
 
 const Products = ({ match }) => {
-  const { i18n } = useTranslation();
+  const { t , i18n } = useTranslation();
   let { type, name, id, subName, subId, sale, newArrival } = match?.params;
 
-  let { productsList, filteredList } = useSelector((state) => state.products);
+  let { productsList, filteredList } = useSelector(state => state.products);
   const dispatch = useDispatch();
 
   const [subCategories, setSubCategories] = useState(null);
@@ -38,13 +38,13 @@ const Products = ({ match }) => {
         `${id}`,
       ],
       ['Name', '!=', `${subName}`]
-    ).then((allSubCategories) => {
+    ).then(allSubCategories => {
       setSubCategories(allSubCategories);
     });
   };
 
   const getCurrentSub = () => {
-    getDocumentByID('subCategory', subId).then((current) => {
+    getDocumentByID('subCategory', subId).then(current => {
       setCurrentSub(current);
     });
   };
@@ -104,7 +104,7 @@ const Products = ({ match }) => {
             totalItems={
               filteredList ? filteredList?.length : productsList.length
             }
-            setRoomBtn={(val) => setRoomBtn(val)}
+            setRoomBtn={val => setRoomBtn(val)}
           />
         </div>
       )}
@@ -128,16 +128,16 @@ const Products = ({ match }) => {
         baseUrl={subId && match.url}
       />
 
-      <SectionTitle title='Top Seller' />
+      <SectionTitle title={t('TopSeller')} />
       <Carousel
         condition={{ property: 'SalePrice', operator: '>', value: 0 }}
       />
 
-      <SectionTitle title='Related categories' />
-
+      <SectionTitle title={t('RelatedCategories')} />
+      {/* <Loader /> */}
       <div className='row mx-auto g-3 categories-slidder'>
         {subCategories &&
-          subCategories.map((subcategory) => {
+          subCategories.map(subcategory => {
             return (
               <SubCategoryCard
                 element={subcategory}
