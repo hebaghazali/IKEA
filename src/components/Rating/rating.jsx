@@ -9,14 +9,12 @@ const Rating = () => {
   return (
     <div>
       <Link
-        // class="btn btn-danger"
-        // type="button"
         className='rate'
         data-bs-toggle='offcanvas'
         data-bs-target='#offcanvasRight'
         aria-controls='offcanvasRight'
       >
-        add Rating
+        Add a review
       </Link>
 
       <div
