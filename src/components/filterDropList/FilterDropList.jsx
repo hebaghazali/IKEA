@@ -58,7 +58,7 @@ const FilterDropList = (props) => {
         </div>
       ) : (
         <ul
-          className='dropdown-menu my-2'
+          className='dropdown-menu my-2 indx1'
           style={{ width: '250px' }}
           aria-labelledby='dropdownMenu'
         >
