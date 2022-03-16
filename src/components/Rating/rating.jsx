@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import { FaStar } from 'react-icons/fa';
 import { addProductRatingToUser } from '../../services/firebase';
 import './rating.css';
 
 const Rating = ({ productID, onReviewSubmit }) => {
+  const {t,i18n}=useTranslation();
   const [rating, setRating] = useState();
   const [comment, setComment] = useState('');
   const offCanvas = useRef();
@@ -44,7 +46,7 @@ const Rating = ({ productID, onReviewSubmit }) => {
         data-bs-target='#offcanvasRight'
         aria-controls='offcanvasRight'
       >
-        Add a review
+      {t('AddReview')}
       </button>
 
       <div
@@ -56,7 +58,7 @@ const Rating = ({ productID, onReviewSubmit }) => {
       >
         <div className='offcanvas-header'>
           <h5 id='offcanvasRightLabel ' className='header'>
-            Product Review
+           {t('ProductReview')}
           </h5>
           <button
             type='button'
@@ -91,7 +93,7 @@ const Rating = ({ productID, onReviewSubmit }) => {
           })}
         </div>
 
-        <label htmlFor='review'>Comment</label>
+        <label htmlFor='review'>{t('Comment')}</label>
         <textarea
           id='review'
           name='review'
@@ -108,7 +110,7 @@ const Rating = ({ productID, onReviewSubmit }) => {
           onClick={handleReviewSubmit}
           disabled={rating === undefined}
         >
-          Submit
+        {t('Submit')}
         </button>
       </div>
     </div>

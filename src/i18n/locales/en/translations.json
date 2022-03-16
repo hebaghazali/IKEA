@@ -8,6 +8,7 @@
   "AddGender": "Add gender",
   "AddMobile": "Add mobile",
   "AddNewAddress": "ADD NEW SHIPPING ADDRESS",
+  "AddReview":"Add a review",
   "AddToCart": "Add to shopping bag",
   "Added": "Added",
   "Address": "Address",
@@ -46,6 +47,7 @@
   "Close": "Close",
   "cm": "cm",
   "Color": "Color",
+  "Comment":"Comment",
   "CommunityEngagement": "Community engagement",
   "CompletedOrders": "Completed orders",
   "Contact": "Contact",
@@ -171,6 +173,7 @@
   "PlanningTools": "Planning tools",
   "PrefferedStore": "Prefered store",
   "PrefferedStoreValidation": "Please select a valid Store.",
+  "ProductReview":"Product Review",
   "Price": "Price",
   "PriceLowToHigh": "Price: low to high",
   "PriceHighToLow": "Price: high to low",
@@ -213,6 +216,7 @@
   "Stores": "Stores",
   "Stories": "Stories",
   "SubTotal": "Subtotal",
+  "Submit":"Submit",
   "Sustainable": "Sustainable everyday",
 
   "Table": "table",
@@ -237,5 +241,6 @@
   "WorkingAtIkea": "Working at IKEA",
   "WrongPassword": "Password is wrong",
 
+  "YourReview":"Your review",
   "YourSearchHistory": "Your search history"
 }

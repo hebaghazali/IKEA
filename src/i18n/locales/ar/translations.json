@@ -8,6 +8,7 @@
   "AddGender": "نوع",
   "AddMobile": "إضافة هاتفك المحمول",
   "AddNewAddress": "أضف عنوان جديد لإرسال الفواتير",
+  "AddReview":"أضف تقييما",
   "AddToCart": "أضف إلى العربة ",
   "Added": "تمت الإضافة",
   "Address": "عنوان",
@@ -46,6 +47,7 @@
   "Close": "إغلاق",
   "cm": "سم",
   "Color": "اللون",
+  "Comment":"تعليق",
   "CommunityEngagement": "مشاركة المجتمع المحلي",
   "CompletedOrders": "طلبيات تم تسليمها",
   "Contact": "التواصل",
@@ -171,6 +173,7 @@
   "PlanningTools": "أدوات التخطيط",
   "PrefferedStore": "المحل المفضل",
   "PrefferedStoreValidation": "الرجاء تحديد المتجر.",
+  "ProductReview":"تقييم المنتج",
   "Price": "السعر",
   "PriceLowToHigh": "السعر من الارخص للاعلى",
   "PriceHighToLow": "السعر الاعلى الى الادنى",
@@ -213,6 +216,7 @@
   "Stores": "محلات ايكيا",
   "Stories": "القصص",
   "SubTotal": "المجموع الفرعي",
+  "Submit":"تسجيل",
   "Sustainable": "الاستدامة يوماً بعد يوم",
 
   "Table": "مائدة",
@@ -236,5 +240,6 @@
   "WorkingAtIkea": "العمل في ايكيا",
   "WrongPassword": "كلمة المرور خاطئة",
 
+  "YourReview":"تقييمك",
   "YourSearchHistory": "سجل البحث الخاص بك"
 }
