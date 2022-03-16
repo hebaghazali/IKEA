@@ -1,17 +1,24 @@
-.header-messages {
-  min-height: 2.5rem;
-}
-
 .navbar {
-  width: 92vw;
-
+  width: 100vw;
   background-color: #fff;
   position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 2;
 
   & > *:not(.overlay-bg) {
     margin-left: 1.2rem;
+  }
+
+  &.navbar-ltr {
+    padding-left: $body-padding-start;
+    padding-right: $body-padding-end;
+  }
+
+  &.navbar-rtl {
+    padding-left: $body-margin-end;
+    padding-right: $body-padding-start;
   }
 
   .navbar-brand {
@@ -159,24 +166,17 @@
   }
 }
 
-.navbar-ltr {
-  left: auto;
-  right: $body-margin-right;
-  padding-left: $body-padding-left;
-}
-
-.navbar-rtl {
-  right: auto;
-  left: $body-margin-left;
-  padding-right: $body-padding-right;
-}
-
 @media only screen and (max-width: 1200px) {
   .resp-hide {
     display: none;
   }
 
   .navbar {
+    &.navbar-ltr,
+    &.navbar-rtl {
+      padding: 0 2rem 1rem;
+    }
+
     .location-container {
       order: 1;
       flex-basis: 100%;
@@ -202,7 +202,6 @@
 
 @media only screen and (max-width: 815px) {
   .navbar {
-    width: 90vw;
     left: 0;
     right: 0;
     margin: auto;

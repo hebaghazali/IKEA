@@ -1,15 +1,11 @@
 .body-container-ltr {
-  width: 92vw;
-  margin-left: auto;
-  margin-right: $body-margin-right;
-  padding-left: $body-padding-left;
+  padding-left: $body-padding-start;
+  padding-right: $body-padding-end;
 }
 
 .body-container-rtl {
-  width: 92vw;
-  margin-right: auto;
-  margin-left: $body-margin-left;
-  padding-right: $body-padding-right;
+  padding-left: $body-margin-end;
+  padding-right: $body-padding-start;
 }
 
 .bi {
@@ -62,14 +58,11 @@
 }
 
 @media only screen and (max-width: 815px) {
-  .body-container-ltr {
-    margin-right: 1rem;
-    padding-left: 0;
-  }
+  .body-container-ltr,
   .body-container-rtl {
-    margin-left: 1rem;
-    padding-right: 0;
+    padding: 0 1rem;
   }
+
   .mt-nav {
     // margin-top: 10rem;
   }

@@ -4,10 +4,15 @@ import FooterSocialLanguages from './footerSocialLanguages';
 import { useTranslation } from 'react-i18next';
 
 const Footer = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+
   return (
     <>
-      <footer className='footer'>
+      <footer
+        className={`footer ${
+          i18n.dir() === 'ltr' ? 'footer-ltr' : 'footer-rtl'
+        } `}
+      >
         <div className='row pb-5 mb-2'>
           <div className='col-3'>
             <ul>

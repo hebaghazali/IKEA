@@ -128,9 +128,8 @@ function App() {
             </Switch>
           </div>
         </div>
-
-        <Footer />
       </div>
+      <Footer />
     </div>
   );
 }

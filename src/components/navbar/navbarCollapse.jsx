@@ -4,12 +4,12 @@ import { useHistory } from 'react-router-dom';
 
 const NavbarCollapse = () => {
   const { t } = useTranslation();
-  const history = useHistory()
+  const history = useHistory();
 
   return (
     <>
       <div className='collapse navbar-collapse'>
-        <ul className='navbar-nav me-auto mb-2 mb-lg-0'>
+        <ul className='navbar-nav mb-2 mb-lg-0'>
           <li className='nav-item'>
             <p
               className='nav-link active'
@@ -28,23 +28,21 @@ const NavbarCollapse = () => {
               {t('Rooms')}
             </p>
           </li>
-          <li className='nav-item'
-          onClick={()=>{history.push('/offers/sale')}}
+          <li
+            className='nav-item'
+            onClick={() => {
+              history.push('/offers/sale');
+            }}
           >
-            <p
-              className='nav-link'
-            >
-              {t('Offers')}
-            </p>
+            <p className='nav-link'>{t('Offers')}</p>
           </li>
-          <li className='nav-item'
-          onClick={()=>{history.push('/whatsnew/newArrival')}}
+          <li
+            className='nav-item'
+            onClick={() => {
+              history.push('/whatsnew/newArrival');
+            }}
           >
-            <p
-              className='nav-link'
-            >
-              {t('WhatNew')}
-            </p>
+            <p className='nav-link'>{t('WhatNew')}</p>
           </li>
         </ul>
       </div>

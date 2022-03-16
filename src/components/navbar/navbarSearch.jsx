@@ -14,7 +14,7 @@ const NavbarSearch = () => {
   const inputRef = useRef(null);
   const overlay = useRef(null);
 
-  const { t , i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const [categories, setCategories] = useState([]);
 
@@ -158,7 +158,11 @@ const NavbarSearch = () => {
                     to={`/category/product/${productCatName}/${productCatId}/${categoryData.data.Name}/${categoryData.id}`}
                   >
                     <i className='fas fa-list'></i>
-                    <span>{i18n.language=='en'?categoryData.data.Name:categoryData.data.NameAr}</span>
+                    <span>
+                      {i18n.language == 'en'
+                        ? categoryData.data.Name
+                        : categoryData.data.NameAr}
+                    </span>
                   </Link>
                 </li>
               );
