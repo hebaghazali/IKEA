@@ -13,7 +13,8 @@ export const CompletedOrders = () => {
   const getUserOrders = () => {
     let orderList = [];
     purchases.forEach((element, index) => {
-      getDocumentByID('Orders', element).then((order) => {
+      getDocumentByID('Orders', element)
+      .then((order) => {
         if (order.Status) {
           order.id = element;
           orderList.push(order);
@@ -22,12 +23,18 @@ export const CompletedOrders = () => {
           setOrders(orderList);
           setLoader(false);
         }
-      });
+      })
+      .catch(()=>{
+        setLoader(false);       
+      })
     });
   };
   useEffect(() => {
     if (purchases) {
       getUserOrders();
+    }
+    else{
+      setLoader(false)
     }
   }, [purchases]);
   return (
