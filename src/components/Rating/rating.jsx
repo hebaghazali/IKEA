@@ -99,7 +99,7 @@ const Rating = ({ productID, onReviewSubmit }) => {
           name='review'
           rows='4'
           cols='50'
-          placeholder='Please add a comment'
+          placeholder={t('CommentPlaceholder')}
           className='comment-input'
           value={comment}
           onChange={handleCommentInput}
