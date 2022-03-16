@@ -151,7 +151,7 @@ const ProductCard = ({ showOptions, pId, productData, roomBtn, baseUrl }) => {
           )}
         </div>
 
-        {variants && (
+        {variants?.length>1 && (
           <div className='row mt-3'>
             <small className='col-12'>{t('MoreVariants')}</small>
 
