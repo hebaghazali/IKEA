@@ -22,12 +22,18 @@ export const PendingOrders = () => {
           setOrders(orderList);
           setLoader(false);
         }
-      });
+      })
+      .catch(()=>{
+        setLoader(false);       
+      })
     });
   };
   useEffect(() => {
     if (purchases) {
       getUserOrders();
+    }
+    else{
+      setLoader(false)
     }
   }, [purchases]);
   return (
