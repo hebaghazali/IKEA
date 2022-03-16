@@ -73,7 +73,7 @@ const LeftSide = props => {
         {/* <br></br> */}
         <hr />
         {/* details offcanva */}
-        <div className='pro-detail'>
+        <div className={i18n.language=='en'?'pro-detail':'pro-detail-ar'}>
           <span>{t('ProductDetails')}</span>
           <button
             className='btn btn-primary'
@@ -83,7 +83,7 @@ const LeftSide = props => {
             aria-controls='offcanvasRight'
           >
             {' '}
-            <i className='fas fa-arrow-right'></i>{' '}
+            <i className={i18n.language=='en'?'fas fa-arrow-right':'fas fa-arrow-left'}></i>{' '}
           </button>
 
           <div
@@ -140,7 +140,7 @@ const LeftSide = props => {
         {(Thickness || Width || Height) && (
           <>
             <hr />
-            <div className='pro-detail'>
+            <div className={i18n.language=='en'?'pro-detail':'pro-detail-ar'}>
               <span>{t('Measurements')}</span>
               <button
                 className='btn btn-primary'
@@ -150,7 +150,7 @@ const LeftSide = props => {
                 aria-controls='offcanvasRight2'
               >
                 {' '}
-                <i className='fas fa-arrow-right'></i>{' '}
+                <i className={i18n.language=='en'?'fas fa-arrow-right':'fas fa-arrow-left'}></i>{' '}
               </button>
 
               <div
@@ -200,7 +200,7 @@ const LeftSide = props => {
         {reviews?.length !== 0 && (
           <>
             <hr />
-            <div className='pro-detail'>
+            <div className={i18n.language=='en'?'pro-detail':'pro-detail-ar'}>
               <span>{t('Reviews')}</span>
               <button
                 className='btn btn-primary'
@@ -210,7 +210,7 @@ const LeftSide = props => {
                 aria-controls='reviewsOffcanvas'
                 style={{ transform: 'translateY(1rem)' }}
               >
-                <i className='fas fa-arrow-right'></i>
+                <i className={i18n.language=='en'?'fas fa-arrow-right':'fas fa-arrow-left'}></i>
               </button>
               <div>
                 {[...Array(5)].map((_, idx) => {

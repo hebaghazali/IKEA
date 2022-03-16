@@ -59,6 +59,11 @@
         background-color: $secondary-color;
       }
     }
+    @media (max-width: 768px) {
+      .card-btn{
+        margin-top: 20%;
+      }
+  }
   }
 }
 
