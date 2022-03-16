@@ -181,7 +181,7 @@ const Filters = ({ allProducts, sale }) => {
 
       {lengthes && (
         <>
-          <FilterButton title={t('Length')} icon='fas fa-chevron-down' />
+          <FilterButton title={t('Length')} icon='fas fa-chevron-down'hide />
           <FilterDropList
             listName='Length'
             checkType='radio'
@@ -192,7 +192,7 @@ const Filters = ({ allProducts, sale }) => {
 
       {heights && (
         <>
-          <FilterButton title={t('Height')} icon='fas fa-chevron-down' />
+          <FilterButton title={t('Height')} icon='fas fa-chevron-down' hide />
           <FilterDropList listName='Height' checkType='radio' items={heights} />
         </>
       )}

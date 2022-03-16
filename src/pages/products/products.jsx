@@ -97,7 +97,7 @@ const Products = ({ match }) => {
       )}
 
       {!newArrival && (
-        <div className='row  filter-row '>
+        <div className='row  filter-row justify-content-between '>
           <Filters allProducts={productsList} sale={sale} />
 
           <ProductRoomBtn

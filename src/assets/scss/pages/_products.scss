@@ -14,7 +14,12 @@
     }
   }
 }
+@media only screen and (max-width: 1120px)and (min-width: 992px) {
+  .hidden-filter{
+    display: none;
+  }
 
+}
 @media only screen and (max-width: 992px) {
   .filter-row {
     .filter-right-side {
@@ -24,10 +29,27 @@
   }
 }
 
-@media only screen and (max-width: 778px) {
+@media only screen and (max-width: 992px) {
   .scroll {
+    flex-wrap: nowrap;
     overflow-x: scroll;
+    overflow-y: hidden;
+    display: flex;
+
+    &::-webkit-scrollbar {
+      height: 3px;
+    }
+  
+    &::-webkit-scrollbar-track {
+      background-color: $secondary-color;
+    }
+  
+    &::-webkit-scrollbar-thumb {
+      background: $default-text-color;
+    }
   }
+
+  
 }
 
 .filter-btn {
