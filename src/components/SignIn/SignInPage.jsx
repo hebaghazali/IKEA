@@ -6,9 +6,11 @@ import { addDocByID } from '../../services/firebase';
 import { changeUser } from '../../store/actions/auth';
 
 import { useTranslation } from 'react-i18next';
+import EyeIcon from '../eyeIcon';
 
 function SignIn() {
   const { t } = useTranslation();
+  const [isSecure, setSecure] = useState(true);
   const [users, setUser] = useState({
     FirstName: '',
     LastName: '',
@@ -33,7 +35,7 @@ function SignIn() {
       errors.PasswordErr === null
   );
   // Function to hadndle change in any input and write into it
-  const handleChangeInInput = e => {
+  const handleChangeInInput = (e) => {
     const regName = /^\w[a-zA-Z]{3,}/;
     const regPhoneNum = /^01[0125][0-9]{8}$/;
     const regEmail = /^([a-zA-Z0-9_\-\.]+){3,}@([a-zA-Z0-9_\-\.]+){3,}(.com)$/;
@@ -264,7 +266,7 @@ function SignIn() {
                           placeholder={t('EmailPlaceholder')}
                           name='Email'
                           required
-                          onChange={e => {
+                          onChange={(e) => {
                             handleChangeInInput(e);
                           }}
                           ref={emailRef}
@@ -277,18 +279,24 @@ function SignIn() {
                         <small className='text-danger'>{errors.EmailErr}</small>
                       </div>
                       <div>
+                        <div className='inpCont'>
                         <input
-                          type='password'
+                          type={isSecure?'password':'text'}
                           className='form-control input-sign-form'
                           id='validationCustom05'
                           required
                           name='Password'
                           placeholder={t('PasswordPlaceholder')}
-                          onChange={e => {
+                          onChange={(e) => {
                             handleChangeInInput(e);
                           }}
                           ref={passwordRef}
                         />
+                         <EyeIcon 
+                          isSecure={isSecure} 
+                          setSecure={(value)=>{setSecure(value)}}
+                          />
+                          </div>
                         <p></p>
                         <p className='text-secondary'>
                           {t('CharPassValidation')}
