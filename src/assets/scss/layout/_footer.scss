@@ -97,6 +97,11 @@ footer {
 
 @media only screen and (max-width: 800px) {
   footer {
+    &.footer-ltr,
+    &.footer-rtl {
+      padding: 5rem 4rem 0;
+    }
+
     .footer-social-languages {
       flex-direction: column;
 

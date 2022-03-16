@@ -57,7 +57,7 @@
   z-index: -1; /* Specify a stack order in case you're using a different order for other elements */
 }
 
-@media only screen and (max-width: 815px) {
+@media only screen and (max-width: 800px) {
   .body-container-ltr,
   .body-container-rtl {
     padding: 0 1rem;
@@ -89,6 +89,7 @@
     margin-top: 14rem;
   }
 }
+
 .form-check-input {
   &:checked {
     background-color: #111;
