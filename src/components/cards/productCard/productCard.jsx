@@ -1,20 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToFav, removeFromFav } from '../../../store/actions/favourits';
-import { addFavItemsToUser } from '../../../services/firebase';
 import ProductPrice from './productPrice';
 import ProductVariant from './productVariant';
 import { addToCart } from './../../../store/actions/cartProducts';
-import { addCartItemToUser } from '../../../services/firebase';
+import {
+  addCartItemToUser,
+  getCollection,
+  addFavItemsToUser,
+} from '../../../services/firebase';
 import { Link } from 'react-router-dom';
-import { getCollection , addData} from './../../../services/firebase';
-import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
-const ProductCard = ({ showOptions, pId, productData , roomBtn ,baseUrl}) => {
+const ProductCard = ({ showOptions, pId, productData, roomBtn, baseUrl }) => {
   const { favourits } = useSelector(state => state.favourits);
   const { cartProducts } = useSelector(state => state.cartProducts);
-  const { t , i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   let found = favourits?.find(i => i.id === pId);
   let foundInCart = cartProducts?.find(i => i.id === pId);
@@ -24,15 +25,24 @@ const ProductCard = ({ showOptions, pId, productData , roomBtn ,baseUrl}) => {
   const [isHovering, setIsHovering] = useState(false);
   const [variants, setVariants] = useState(null);
   const [viewedProduct, setViewedProduct] = useState({ pId, productData });
-  const { Name,NameAr, ProductName, Price, SalePrice, Width, Length, Images, Height, Quantity} =
-    viewedProduct.productData;
+  const {
+    Name,
+    NameAr,
+    ProductName,
+    Price,
+    SalePrice,
+    Width,
+    Length,
+    Images,
+    Height,
+    Quantity,
+  } = viewedProduct.productData;
 
   const dispatch = useDispatch();
   const toggleFavourite = () => {
     dispatch(
-      isFavourite ? removeFromFav(pId) :
-      
-      addToFav({ id: pId, productData }));
+      isFavourite ? removeFromFav(pId) : addToFav({ id: pId, productData })
+    );
 
     addFavItemsToUser(localStorage.getItem('UID'), pId);
     setIsFavourite(!isFavourite);
@@ -73,7 +83,6 @@ const ProductCard = ({ showOptions, pId, productData , roomBtn ,baseUrl}) => {
           className='d-flex align-items-center justify-content-between'
           style={{ padding: '.625rem' }}
         >
-
           <button onClick={toggleFavourite}>
             <i className={isFavourite ? 'fas fa-heart' : 'far fa-heart'}></i>
           </button>
@@ -84,7 +93,9 @@ const ProductCard = ({ showOptions, pId, productData , roomBtn ,baseUrl}) => {
             className='card category-card col-12 '
             to={{
               // pathname: '/products/' + viewedProduct.pId,
-              pathname:baseUrl? `${baseUrl}/${Name}/${viewedProduct.pId}`: '/products/' + viewedProduct.pId,
+              pathname: baseUrl
+                ? `${baseUrl}/${Name}/${viewedProduct.pId}`
+                : '/products/' + viewedProduct.pId,
               state: {
                 prod: {
                   id: viewedProduct.pId,
@@ -94,29 +105,47 @@ const ProductCard = ({ showOptions, pId, productData , roomBtn ,baseUrl}) => {
             }}
           >
             <img
-              src={roomBtn?Images[isHovering ? 0 : 1] :Images[isHovering ? 1 : 0]}
+              src={
+                roomBtn
+                  ? Images[isHovering ? 0 : 1]
+                  : Images[isHovering ? 1 : 0]
+              }
               className='card-img-top'
-              alt={i18n.language==='en'?Name:NameAr}
+              alt={i18n.language === 'en' ? Name : NameAr}
               onMouseOver={() => setIsHovering(true)}
               onMouseLeave={() => setIsHovering(false)}
             />
           </Link>
           {/*TODO: if created recently  */}
           <strong className='new'>{t('New')}</strong>
-          {SalePrice && <p className='product-highlight'>{t('LimitedOffer')}</p>}
+          {SalePrice && (
+            <p className='product-highlight'>{t('LimitedOffer')}</p>
+          )}
           {/* <p>{Material}</p> */}
           <p className='product-header'>{ProductName}</p>
-          <p className='product-description'>{i18n.language==='en'?Name:NameAr}</p>
+          <p className='product-description'>
+            {i18n.language === 'en' ? Name : NameAr}
+          </p>
 
           {/*TODO: add feature field in db*/}
-          <p>{Width && `${Width} ${ Length ?  '*'+Length : (Height? '*'+Height:'') }  ${t('cm')}`}</p>
+          <p>
+            {Width &&
+              `${Width} ${
+                Length ? '*' + Length : Height ? '*' + Height : ''
+              }  ${t('cm')}`}
+          </p>
           <ProductPrice Price={Price} SalePrice={SalePrice} />
 
           {!showOptions && !inCart && (
             <p className='more-options'>{t('MoreOptions')}</p>
           )}
-          {!inCart && Quantity!==0 && (
-            <button className={i18n.language==='en'?'card-icon':'cart-rev'} onClick={addCart}>
+          {!inCart && Quantity !== 0 && (
+            <button
+              className={`${
+                i18n.language === 'en' ? 'card-icon-ltr' : 'card-icon-rtl'
+              }`}
+              onClick={addCart}
+            >
               <i className='fas fa-cart-plus'></i>
             </button>
           )}
