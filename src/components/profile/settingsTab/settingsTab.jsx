@@ -1,4 +1,4 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { deleteDocument, updateData } from '../../../services/firebase';
 import { updateUserStorageByID } from '../../../services/firebase';
 import { useTranslation } from 'react-i18next';
@@ -19,7 +19,7 @@ const SettingsTab = () => {
   const id = useSelector((state) => state.user.id);
 
   var userInfo = {
-    PrefferedStore: user.PrefferedStore,
+    PrefferedStore: user?.PrefferedStore,
   };
 
   const updateUser = () => {
@@ -28,7 +28,8 @@ const SettingsTab = () => {
     });
   };
   const auth = getAuth();
-  // const history = useHistory();
+  const history = useHistory();
+  const dispatch = useDispatch();
   const [password, setPassword] = useState('');
   const [valid, setValid] = useState('');
   const handleInput = (e) => {
@@ -40,15 +41,15 @@ const SettingsTab = () => {
       if (user) {
         var cred = EmailAuthProvider.credential(user.email, password);
         reauthenticateWithCredential(user, cred)
-          .then(() => {
-            // user.delete().then(()=>{
-            localStorage.removeItem('UID');
-            // history.push('/sign');
-            clearUser();
-            deleteDocument(user.uid, 'users').then(() => {
+          .then(async() => {
+            await deleteDocument(user.uid, 'users').then(() => {
               user.delete();
+              dispatch(clearUser());
+              localStorage.removeItem('UID');
             });
-            // })
+          })
+          .then(()=>{
+            window.location.replace('/');
           })
           .catch(() => {
             setValid(t('WrongPassword'));
@@ -68,7 +69,7 @@ const SettingsTab = () => {
               className='form-select edit-input'
               id='floatingSelect'
               aria-label='Floating label select example'
-              defaultValue={user.PrefferedStore}
+              defaultValue={user?.PrefferedStore}
               onChange={(e) => {
                 userInfo.PrefferedStore = e.target.value;
                 updateUser();

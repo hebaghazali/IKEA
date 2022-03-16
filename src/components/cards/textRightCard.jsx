@@ -19,7 +19,7 @@ const TextRightCard = ({ cat, type, name, id }) => {
           src={cat.data().Image}
           alt='...'
         />
-        <div className='col-12 col-sm-6 col-md-4 card-body card-right'>
+        <div className='col-12 col-sm-6 col-md-4 card-body card-right align-content-between'>
           <h4 className='card-text head-title'>
             {i18n.language === 'en' ? cat.data().Name : cat.data().NameAr}
           </h4>

@@ -11,7 +11,7 @@ import { fireStore } from '../../../config/firebaseConfig';
 import { useHistory } from 'react-router-dom';
 
 const ItemCard = ({ item, isDelivered }) => {
-  const { t } = useTranslation();
+  const { t,i18n } = useTranslation();
 
   const [product, setProduct] = useState();
   const [review, setReview] = useState();
@@ -67,7 +67,7 @@ const ItemCard = ({ item, isDelivered }) => {
             onClick={goToProductPage}
           />
           <div className='col-7 p-2'>
-            <h5>{product.Name}</h5>
+            <h5>{i18n.language==='en'?product.Name:product.NameAr}</h5>
             <small className='small-text-size fw-lighter'>
               {t('ProductPrice')}: {t('EGP')} {product.Price}
             </small>

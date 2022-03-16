@@ -72,6 +72,23 @@
      border: 0;
  }
 
+ .left .pro-detail-ar {
+    padding: 2.5rem 0;
+    align-items: center;
+    justify-content: center;
+}
+ .left .pro-detail-ar span {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #000;
+}
+ .left .pro-detail-ar button {
+    float: left;
+    color: black;
+    background-color: white;
+    border: 0;
+}
+
  // /////right///////////////////////////////////////
 
  .right {
@@ -168,6 +185,17 @@
      font-size: $span-font;
      font-weight: 700;
  }
+
+ section .left .pro-detail-ar {
+    padding: 2.5rem 0;
+    align-items: center;
+    justify-content: center;
+}
+
+section .left .pro-detail-ar span {
+    font-size: $span-font;
+    font-weight: 700;
+}
 
 
  // //////////slide 1/////////////////////////////////////////////////////////////////

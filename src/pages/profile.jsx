@@ -14,9 +14,12 @@ const Profile = () => {
   const [loader, setLoader] = useState(true);
   const { t } = useTranslation();
   useEffect(() => {
-    updateUserStorageByID(localStorage.getItem('UID')).then(() =>
+    if(localStorage.getItem('UID'))
+    {
+      updateUserStorageByID(localStorage.getItem('UID')).then(() =>
       setLoader(false)
-    );
+    ); 
+    }
   }, []);
 
   function handleLogout() {
@@ -33,7 +36,7 @@ const Profile = () => {
       {!loader && (
         <div className='col-12 col-md-11 col-lg-10 mx-auto'>
           <div className='row big-title col-12 col-md-7 pt-2' id='username'>
-            {t('Hello')} {user.FirstName}!
+            {t('Hello')} {user?.FirstName}!
           </div>
           <div className='d-flex pt-2'>
             {t('ChangeAccount')}

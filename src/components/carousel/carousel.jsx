@@ -2,8 +2,10 @@ import React, { useEffect, useRef, useState } from 'react';
 import { getCollection } from './../../services/firebase';
 import ProductCard from '../cards/productCard/productCard';
 import EmptyData from '../emptyData';
+import { useTranslation } from 'react-i18next';
 
 const Carousel = ({ condition, ignore }) => {
+  const {i18n}=useTranslation();
   const [products, setProducts] = useState([]);
 
   const getProducts = () => {
