@@ -14,14 +14,13 @@ export default function ProductsList({
   return (
     <div className='carousel-body overflow-hidden px-3 pb-2 mb-5'>
       <div className='row' id='show-proDetail'>
-        {loading && <Loader />}
-        {!loading && !productsList?.length ? (
+        {loading ? <Loader />
+        :productsList?.length === 0 ? (
           <EmptyData />
-        ) : !loading && filteredList?.length === 0 ? (
+        ) : filteredList?.length === 0 ? (
           <EmptyData />
-        ) : (
-          ''
-        )}
+        ) : ''
+        }
 
         {filteredList
           ? filteredList?.map((i) => (

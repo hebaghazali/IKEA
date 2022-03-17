@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next';
 const Carousel = ({ condition, ignore }) => {
   const {i18n}=useTranslation();
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const getProducts = () => {
     condition &&
@@ -17,6 +18,7 @@ const Carousel = ({ condition, ignore }) => {
       ])
         .then(async (res) => {
           setProducts(res.filter((prd) => prd.id !== ignore));
+          setLoading(true);
         })
         .catch((err) => console.log('error :', err));
   };
@@ -36,7 +38,7 @@ const Carousel = ({ condition, ignore }) => {
 
   return (
     <>
-      {products.length === 0 && <EmptyData />}
+      {!loading && products.length === 0 && <EmptyData />}
       {products.length !== 0 && (
         <div className='carousel'>
           <button
